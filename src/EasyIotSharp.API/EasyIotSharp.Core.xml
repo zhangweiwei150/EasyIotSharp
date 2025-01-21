@@ -1,0 +1,2030 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EasyIotSharp.Core</name>
+    </assembly>
+    <members>
+        <member name="T:EasyIotSharp.Core.BizError">
+            <summary>
+            定义业务的全局错误返回
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.BizError.ErrCode">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.BizError.ErrMessage">
+            <summary>
+            错误消息
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.BizException">
+            <summary>
+            通用的业务错误异常包装
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Caching.CachingConsts.Keys">
+            <summary>
+            缓存的所有KEY的定义
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Caching.CachingConsts.Keys.BASE">
+            <summary>
+            项目缓存前缀（清除所有用）
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Caching.CachingConsts.DEFAULT_EXPIRES_MINUTES">
+            <summary>
+            缓存默认过期 = 12小时
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Caching.CachingConsts.QUERY_EXPIRES_MINUTES">
+            <summary>
+            检索相关的缓存过期时间（相对精准）
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Caching.CachingConsts.SEARCH_EXPIRES_MINUTES">
+            <summary>
+            检索相关的缓存过期时间（非精准关键字） = 1小时
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Caching.CachingConsts.USER_EXPIRES_MINUTES">
+            <summary>
+            用户相关的缓存过期时间 = 2小时
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Caching.CachingConsts.CARD_EXPIRES_MINUTES">
+            <summary>
+            会员卡相关的缓存过期时间= 1小时
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Caching.CachingConsts.EVALUATION_EXPIRES_MINUTES">
+            <summary>
+            测评相关的缓存过期时间= 1小时
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Caching.CachingConsts.PROFESSIONORIENTATION_EXPIRES_MINUTES">
+            <summary>
+            单个专业定位测评详情相关的缓存过期时间= 半小时
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Caching.CachingConsts.TEN_EXPIRES_MINUTES">
+            <summary>
+            缓存10分钟过期
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Caching.CachingConsts.THIRTY_EXPIRES_MINUTES">
+            <summary>
+            缓存30分钟过期
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Caching.CachingConsts.TWENTY_FOUR_EXPIRES_HOURS">
+            <summary>
+            缓存24小时过期
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Caching.CachingConsts.ACCESSTOKEN_EXPIRED_SECONDS">
+            <summary>
+            微信开发平台授权ACCESSTOKEN过期时间（官方默认过期时间7200秒，考虑接口调用耗时，本地缓存缩短30秒）
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Caching.CachingServiceBase">
+            <summary>
+            缓存服务基类
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Caching.CurrentRedisCacheDatabaseProvider">
+            <summary>
+            自定义的配置
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Caching.CurrentRedisCacheDatabaseProvider.GetDatabase">
+             <summary>
+            获取数据库连接
+             </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Caching.CurrentRedisCacheDatabaseProvider_TwemProxy">
+            <summary>
+            自定义的配置(分片)
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Caching.CurrentRedisCacheManagerProvider">
+            <summary>
+            根据配置文件返回CacheManager的提供
+            Redis或内存
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Caching.Extensions">
+            <summary>
+            缓存扩展
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Caching.Extensions.EncryptKeyParam(System.String)">
+            <summary>
+            加密Key的参数，主要为了加密中文等非法字符（统一用一种加密方式） 如果感觉参数值有可能会出现非法，则使用此方法加密
+            </summary>
+            <param name="keyParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Caching.Extensions.GetAsyncExt``2(UPrime.Runtime.Caching.ICache,``0,System.Func{System.Threading.Tasks.Task{``1}},System.TimeSpan)">
+            <summary>
+            获取缓存扩展
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="cache"></param>
+            <param name="key"></param>
+            <param name="factory"></param>
+            <param name="strategy">指定缓存策略</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Caching.Extensions.GetExt``2(UPrime.Runtime.Caching.ICache,``0,System.Func{``1},System.Int32)">
+            <summary>
+            获取缓存扩展
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="cache"></param>
+            <param name="key"></param>
+            <param name="factory"></param>
+            <param name="strategy">指定缓存策略</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Caching.Extensions.Days(System.Int32)">
+            <summary>按天缓存时间</summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Caching.Extensions.Hours(System.Int32)">
+            <summary>按小时缓存时间</summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Caching.Extensions.Minutes(System.Int32)">
+            <summary>按分钟缓存时间</summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Caching.Extensions.Seconds(System.Int32)">
+            <summary>按秒缓存时间</summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Caching.ICacheService">
+            <summary>
+            缓存服务的标记
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Configuration.APIServiceOptions">
+            <summary>
+            依赖的外部服务配置项
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.APIServiceOptions.BasicLib">
+            <summary>
+            datalib url
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Configuration.AppOptions">
+            <summary>
+            【配置项】应用下所有配置的聚合
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.AppOptions.Name">
+            <summary>
+            应用名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.AppOptions.Host">
+            <summary>
+            主机地址+端口
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.AppOptions.SetMinThreads">
+            <summary>
+            最小工作线程
+            16 = 不设置
+            https://stackexchange.github.io/StackExchange.Redis/Timeouts
+            当大量并发进入服务器时，线程池立即创建线程来达到这个最小值，超过最小值后线程池创建新的线程速率是比较慢的，这时新的线程来不及创建补充从而造成阻塞排队。
+            16 核 16G 最大工作线程 = 32767
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.AppOptions.StorageOptions">
+            <summary>
+            存储配置
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.AppOptions.CachingOptions">
+            <summary>
+            缓存配置
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.AppOptions.APIServiceOptions">
+            <summary>
+            DMS api 地址相关
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.AppOptions.WatchmenOptions">
+             <summary>
+            【watchmen】token配置项
+             </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.AppOptions.ESPaggingOptions">
+            <summary>
+            es 分页读写相关
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.AppOptions.QueueOptions">
+            <summary>
+            消息队列配置
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.AppOptions.CorpWeixinOptions">
+            <summary>
+            企业微信通知发送配置
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Configuration.AppOptions.ReadFromConfiguration(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            初始化读取
+            </summary>
+            <param name="config"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Configuration.CachingOptions">
+            <summary>
+            应用缓存配置
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.CachingOptions.IsOpen">
+            <summary>
+            是否开启缓存
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.CachingOptions.RedisEnabled">
+            <summary>
+            是否开启Redis cache true = redis false = 内存
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.CachingOptions.RedisConnStr">
+            <summary>
+            Redis连接字符串
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.CachingOptions.RedisTwemProxyEnabled">
+            <summary>
+            是否开启 twemproxy 分片代理
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.CachingOptions.RedisDatabaseId">
+            <summary>
+            数据库Id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Configuration.CorpWeixinOptions">
+            <summary>
+            企业微信配置
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.CorpWeixinOptions.CorpId">
+            <summary>
+            企业微信ID
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.CorpWeixinOptions.AuthAgentId">
+             <summary>
+            代理商授权ID
+             </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.CorpWeixinOptions.AuthSecret">
+             <summary>
+            密钥
+             </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Configuration.CorpWeixinOptions.ReadFromConfiguration(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            初始化读取
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Configuration.ESPaggingOptions">
+            <summary>
+            es分页相关配置
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.ESPaggingOptions.MaxReadCount">
+            <summary>
+            单次读取的最大数量
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.ESPaggingOptions.MaxWriteCount">
+            <summary>
+            单次写入的最大数量
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Configuration.IgnoreParamAttribute">
+            <summary>
+            实体转换为字典时忽略的参数
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Configuration.JWTTokenOptions">
+            <summary>
+            JWTToken验证配置
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.JWTTokenOptions.PublicKey">
+            <summary>
+            RS256公钥
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Configuration.JWT_User">
+            <summary>
+            JWT Token解析后的用户对象
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.JWT_User.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.JWT_User.IssuedAt">
+            <summary>
+            签发时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.JWT_User.ExpireTime">
+            <summary>
+            过期时间
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Configuration.QueueOptions">
+            <summary>
+            消息中间件配置项
+            - Kafka
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.QueueOptions.KafkaEnabled">
+            <summary>
+            Kafka：是否开启
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.QueueOptions.KafkaBrokerList">
+            <summary>
+            Kafka：broker 服务列表
+             ex: x.x.x.x:9092
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.QueueOptions.KafkaGroupId">
+            <summary>
+            Kafka：订阅组标识
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Configuration.StorageOptions">
+            <summary>
+            应用的数据库存储配置
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.StorageOptions.Elasticsearch">
+            <summary>
+            elasticsearch 连接配置
+            ["node1:9200", "node2:9200", .. ]
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.UserTokenData.UserId">
+            <summary>
+            当前用户Id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Configuration.WatchmenOptions">
+            <summary>
+            【watchmen】token配置项
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.WatchmenOptions.APIBaseUrl">
+            <summary>
+            API地址
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.WatchmenOptions.AppId">
+            <summary>
+            应用id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.WatchmenOptions.Secret">
+            <summary>
+            应用秘钥
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.WatchmenOptions.GrantType">
+            <summary>
+            授权模式
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Domain.BaseEntity`1">
+            <summary>
+            实体类基类
+            </summary>
+            <typeparam name="TPrimaryKey"></typeparam>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.BaseEntity`1.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.BaseEntity`1.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.BaseEntity`1.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.BaseEntity`1.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Domain.BaseEntity`1.IsTransient">
+            <summary>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Domain.TenantAccount.Menu">
+            <summary>
+            租户菜单表
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Menu.TenantId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Menu.ParentId">
+            <summary>
+            父级id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Menu.ParentName">
+            <summary>
+            父级名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Menu.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Menu.Icon">
+            <summary>
+            菜单图标
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Menu.Url">
+            <summary>
+            菜单路径
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Menu.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Domain.TenantAccount.Role">
+            <summary>
+            租户角色表
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Role.TenantId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Role.Name">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Role.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Domain.TenantAccount.RoleMenu">
+            <summary>
+            角色菜单表
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.RoleMenu.TenantId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.RoleMenu.SoldierId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.RoleMenu.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.RoleMenu.MenuId">
+            <summary>
+            菜单id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Domain.TenantAccount.Soldier">
+            <summary>
+            租户用户表
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.TenantId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.IsManager">
+            <summary>
+            是否管理员
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.Username">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.IsTest">
+            <summary>
+            是否测试
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.PictureId">
+            <summary>
+            照片Id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.PictureUrl">
+            <summary>
+            照片路径
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.Sex">
+            <summary>
+            姓别：1=男，2=女，-1 = 不选
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.IdCard">
+            <summary>
+            身份证号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.IdCardPicUrl">
+            <summary>
+            身份证照路径
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.LastLoginTime">
+            <summary>
+            最后一次登录时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.ExpiredTime">
+            <summary>
+            过期时间
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Domain.TenantAccount.SoldierRole">
+            <summary>
+            用户角色表
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.SoldierRole.TenantId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.SoldierRole.SoldierId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.SoldierRole.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Domain.Tenant.Tenant">
+            <summary>
+            租户表
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.Name">
+            <summary>
+            租户名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.StoreKey">
+            <summary>
+            机构的（唯一的等同Id）
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.ContractName">
+            <summary>
+            合同名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.ContractOwnerName">
+            <summary>
+            合同所属人
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.ContractOwnerMobile">
+            <summary>
+            合同所属人电话
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.ContractStartTime">
+            <summary>
+            合同开始时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.ContractEndTime">
+            <summary>
+            合同结束时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.Mobile">
+            <summary>
+            机构的负责人手机号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.StoreLogoUrl">
+            <summary>
+            机构的Logo url
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.Remark">
+            <summary>
+            机构的备注
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.Email">
+            <summary>
+            机构的电子邮箱
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.ExpiredTime">
+            <summary>
+            过期时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.ManagerId">
+            <summary>
+            机构的系统管理员Id 详见 <see cref="T:EasyIotSharp.Core.Domain.TenantAccount.Soldier"/>
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.VersionTypeId">
+            <summary>
+            版本类型，详见 <see cref="T:Elasticsearch.Net.VersionType"/>
+            1=入门版
+            2=基础版
+            3=旗舰版
+            5=全国版
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.IsFreeze">
+            <summary>
+            是否冻结
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.FreezeDes">
+            <summary>
+            冻结描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Common.Params.UploadImageInput.ImgFile">
+            <summary>
+            图片文件上传
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Common.ProvinceDto">
+            <summary>
+            静态省份数据dto
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Common.ProvinceDto.Code">
+            <summary>
+            省份国标
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Common.ProvinceDto.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Common.ProvinceDto.FriendlyName">
+            <summary>
+            友好名称（带省市）
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Common.ProvinceDto.Letter">
+            <summary>
+            首字母
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Common.ProvinceDto.IsNewGaoKao">
+            <summary>
+            是否为新高考
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Common.ProvinceDto.NumId">
+            <summary>
+            老的省份id
+            <remarks>
+            老的省份id,仅供过渡使用,所有新业务请使用code
+            </remarks>
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.DeleteAdminInput">
+            <summary>
+            删除输入参数
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.DeleteAdminInput.Id">
+            <summary>
+            对象id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.DeleteInput">
+            <summary>
+            删除输入参数
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.DeleteInput.Id">
+            <summary>
+            对象id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.OperateUserInput">
+            <summary>
+            操作用户信息输入
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.OperateUserInput.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.OperateUserInput.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.PagingInput">
+            <summary>
+            分页基类 其他需分页类的Input须集成该类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.PagingInput.PageIndex">
+            <summary>
+            当前开始页
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.PagingInput.PageSize">
+            <summary>
+            页大小
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.Name">
+            <summary>
+            租户名称
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Watchmen.Params.GetUserTokenInput">
+            <summary>
+            获取用户Token入参
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Watchmen.Params.GetUserTokenInput.AppId">
+            <summary>
+            小程序唯一凭证 appId
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Watchmen.Params.GetUserTokenInput.Secret">
+            <summary>
+            小程序唯一凭证密钥 appSecret
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Watchmen.Params.GetUserTokenInput.GrantType">
+            <summary>
+            授权类型
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Watchmen.Params.GetUserTokenInput.UId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Watchmen.Params.GetUserTokenOutput">
+            <summary>
+            获取用户Token返回参数
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Watchmen.Params.GetUserTokenOutput.Code">
+            <summary>
+            请求状态码
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Watchmen.Params.GetUserTokenOutput.AccessToken">
+            <summary>
+            获取到的凭证
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Watchmen.Params.GetUserTokenOutput.ExpiredIn">
+            <summary>
+            凭证有效时间
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Users.UserTokenDto">
+            <summary>
+            用户Token令牌DTO
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Users.UserTokenDto.AccessToken">
+            <summary>
+            Token
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Users.UserTokenDto.ExpirationTime">
+            <summary>
+            过期时间
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.EasyIotSharpCoreModule.Initialize">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.ConfigurationExtensions.GetEnvFromArgs(System.String[])">
+            <summary>
+            从CMD获取当前指定环境的模式
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Extensions.EncryptExtensions">
+            <summary>
+            加密扩展
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.EncryptExtensions.GetTimeStamp">
+            <summary>
+            获取时间戳（把当前时间转换为毫秒数）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.EnumerableExtensions.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            根据集合中指定的列过滤重复
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <param name="source"></param>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Extensions.ExcelRangeBaseExtensions">
+            <summary>
+            导出Excel拓展
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.ExcelRangeBaseExtensions.LoadFromCollection``1(OfficeOpenXml.ExcelRangeBase,System.Collections.Generic.IEnumerable{``0},System.String[],System.Boolean)">
+            <summary>
+            从IEnumerable加载数据拓展(定制忽略属性)
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="this"></param>
+            <param name="collection"></param>
+            <param name="ignorePropertyNames"></param>
+            <param name="printHeaders"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.ExcelRangeBaseExtensions.GetExcelColumnName(System.Int32)">
+            <summary>
+            根据数值获取excel对应的列名（address letter）
+            </summary>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.Extensions.GetTimeStamp(System.Boolean)">
+            <summary>
+            获取当前时间戳
+            </summary>
+            <param name="bflag">为真时获取10位时间戳,为假时获取13位时间戳.bool bflag = true</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.Extensions.GetTimeStamp(System.DateTime)">
+            <summary>
+            获取当前时间戳
+            </summary>
+            <param name="dateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.Extensions.ConvertToDateTime(System.String)">
+            <summary>
+            Unix时间戳转DateTime
+            </summary>
+            <param name="timestamp">时间戳</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.Extensions.ConvertToDic``1(``0)">
+            <summary>
+            实体转换为字典
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.Extensions.EncryptMobileNumber(System.String)">
+            <summary>
+            加密11位手机号
+            </summary>
+            <param name="mobileNumber">手机号</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.Extensions.ToObjectId(System.String)">
+            <summary>
+            String to MongoDb.Bson.ObjectId
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.Extensions.GenerateMobileAuthCode(System.Int32)">
+            <summary>
+            生成随机的手机验证码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.Extensions.AddProperty(System.Object,System.Object)">
+            <summary>
+            对象添加属性
+            </summary>
+            <param name="sourceObj"></param>
+            <param name="value">属性名称使用类名</param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.Extensions.AddProperty(System.Object,System.String,System.Object)">
+            <summary>
+            对象添加属性
+            </summary>
+            <param name="sourceObj"></param>
+            <param name="name">指定的属性名称</param>
+            <param name="value"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.Extensions.RemoveProperty(System.Object,System.String)">
+            <summary>
+            移除指定的属性名称
+            </summary>
+            <param name="sourceObj"></param>
+            <param name="name">属性名称使用类名</param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Extensions.FileStreamExtensions">
+            <summary>
+            文件流处理扩展
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.FileStreamExtensions.StreamToBytes(System.IO.Stream)">
+            <summary>
+            Stream 转换 byte[]
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.FileStreamExtensions.UploadUFile(System.Byte[],System.String,System.String)">
+            <summary>
+            上传文件至UFile
+            </summary>
+            <param name="buffer"></param>
+            <param name="fileName"></param>
+            <param name="bucket"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.HttpClientExtensions.PostFormData``1(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            请求发送链接
+            </summary>
+            <param name="url"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.HttpClientExtensions.Request``1(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Text.Encoding,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            http/https请求响应
+            </summary>
+            <param name="method"></param>
+            <param name="url">地址（要带上http或https）</param>
+            <param name="headers">请求头</param>
+            <param name="parameters">提交数据</param>
+            <param name="dataEncoding">编码类型 utf-8</param>
+            <param name="contentType">application/x-www-form-urlencoded</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.HttpClientExtensions.RequestPost``1(System.String,System.String,System.Text.Encoding,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            http/https请求响应
+            </summary>
+            <param name="url">地址（要带上http或https）</param>
+            <param name="headers">请求头</param>
+            <param name="json">提交数据</param>
+            <param name="dataEncoding">编码类型 utf-8</param>
+            <param name="contentType">application/x-www-form-urlencoded</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.HttpClientExtensions.RequestPost(System.String,System.String,System.Text.Encoding,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            http/https请求响应
+            </summary>
+            <param name="url"></param>
+            <param name="json"></param>
+            <param name="dataEncoding"></param>
+            <param name="headers"></param>
+            <param name="contentType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.HttpClientExtensions.HttpUploadFile``1(System.String,System.Byte[],System.String,System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            http上传文件
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="url"></param>
+            <param name="buffer"></param>
+            <param name="paramName"></param>
+            <param name="contentType"></param>
+            <param name="nameValueCollection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.HttpClientExtensions.CreateRequest(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Text.Encoding,System.String)">
+            <summary>
+            创建HTTP请求对象
+            </summary>
+            <param name="getOrPost"></param>
+            <param name="url"></param>
+            <param name="headers"></param>
+            <param name="parameters"></param>
+            <param name="paraEncoding"></param>
+            <param name="contentType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.HttpClientExtensions.FormatRequestHeaders(System.Collections.Generic.Dictionary{System.String,System.String},System.Net.HttpWebRequest)">
+            <summary>
+            格式化请求头信息
+            </summary>
+            <param name="headers"></param>
+            <param name="request"></param>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.HttpClientExtensions.FormatGetParametersToUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Text.Encoding)">
+            <summary>
+            格式化Get请求参数
+            </summary>
+            <param name="url">URL</param>
+            <param name="parameters">参数</param>
+            <param name="paraEncoding">编码格式</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.HttpClientExtensions.FormatPostParameters(System.Collections.Generic.Dictionary{System.String,System.String},System.Text.Encoding,System.String)">
+            <summary>
+            格式化Post请求参数
+            </summary>
+            <param name="parameters">编码格式</param>
+            <param name="dataEncoding">编码格式</param>
+            <param name="contentType">类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.HttpClientExtensions.GetResponseStringJson(System.Net.HttpWebResponse)">
+            <summary>
+             获取响应的json数据
+            </summary>
+            <param name="httpResponse"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.HttpClientExtensions.ReadFully(System.IO.Stream)">
+            <summary>
+            数据流转byte数组
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.MatchExtensions.MatchPhoneNumber(System.String,System.Boolean@)">
+            <summary>
+            匹配手机号码
+            </summary>
+            <param name="s">源字符串</param>
+            <param name="isMatch">是否匹配成功，若返回true，则会得到一个Match对象，否则为null</param>
+            <returns>匹配对象</returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.MatchExtensions.MatchPhoneNumber(System.String)">
+            <summary>
+            匹配手机号码
+            </summary>
+            <param name="s">源字符串</param>
+            <returns>是否匹配成功</returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.StringExtensions.ReplaceCharsByEmpty(System.String)">
+            <summary>
+             去掉字符串中的特殊字符
+            </summary>
+            <param name="chars"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.StringExtensions.ConvertEncodeBase64(System.String)">
+            <summary>
+            Base64加密，采用utf8编码方式加密
+            </summary>
+            <param name="source">待加密的明文</param>
+            <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.StringExtensions.GetMd5(System.String)">
+            <summary>
+            MD5　32位加密
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.StringExtensions.GetUtf8(System.String)">
+            <summary>
+            转换格式
+            </summary>
+            <param name="unicodeString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.StringExtensions.IsLetter(System.String,System.String)">
+            <summary>
+            是否为字母
+            </summary>
+            <param name="content"></param>
+            <param name="pattern"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.StringExtensions.GetShortUrl(System.String)">
+            <summary>
+            长链接转短链接，用于发送带链接的短信，邮件等
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.StringExtensions.DesensitizationTreatment(System.String)">
+            <summary>
+            手机号脱敏
+            </summary>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.TokenExtensions.GetUserTokenIdentifier(System.Security.Principal.IIdentity)">
+            <summary>
+            获取Token用户身份对象
+            </summary>
+            <param name="identity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.GlobalConsts">
+            <summary>
+            全局的常量
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.GlobalConsts.ESSettings">
+            <summary>
+            es 默认setting
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.ESSettings.TIEBREAKER">
+            <summary>
+            es 评分系数
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.ESSettings.MAXRESULTWINDOW">
+            <summary>
+            ES默认最大返回数量
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.ESSettings.DEFAULT">
+            <summary>
+            ES默认最大返回数量
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.GlobalConsts.TaskLog">
+            <summary>任务日志相关定义</summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.GlobalConsts.TaskLog.Module">
+            <summary>
+            模块名称定义
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.GlobalConsts.TaskLog.Template">
+            <summary>任务日志模板定义</summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.GlobalConsts.TaskLog.Status">
+            <summary>任务日志模板状态定义</summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.TaskLog.Status.SUCCESS">
+            <summary>成功</summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.TaskLog.Status.FAIL">
+            <summary>失败</summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.GlobalConsts.TaskLog.Status.GetStatusValue(System.Boolean)">
+            <summary> 状态值 </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.GlobalConsts.CacheStrategy">
+            <summary>
+            缓存过期时间策略定义
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.CacheStrategy.ONE_DAY">
+            <summary>
+            一天过期24小时
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.CacheStrategy.HALF_DAY">
+            <summary>
+            12小时过期
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.CacheStrategy.EIGHT_HOURS">
+            <summary>
+            8小时过期
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.CacheStrategy.FIVE_HOURS">
+            <summary>
+            5小时过期
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.CacheStrategy.THREE_HOURS">
+            <summary>
+            3小时过期
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.CacheStrategy.TWO_HOURS">
+            <summary>
+            2小时过期
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.CacheStrategy.ONE_HOURS">
+            <summary>
+            1小时过期
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.CacheStrategy.HALF_HOURS">
+            <summary>
+            半小时过期
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.CacheStrategy.TEN_MINUTES">
+            <summary>
+            10分钟过期
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.CacheStrategy.NEVER">
+            <summary>
+            永不过期
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.GlobalConsts.PageSizeNums">
+            <summary>分页查询页大小定义</summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.PageSizeNums._4">
+            <summary>页大小</summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.PageSizeNums._5">
+            <summary>页大小</summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.PageSizeNums._10">
+            <summary>每页10条</summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.PageSizeNums._20">
+            <summary>每页20条</summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.PageSizeNums._50">
+            <summary>每页50条</summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.PageSizeNums._100">
+            <summary>每页100条</summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.PageSizeNums._1000">
+            <summary>每页1000条</summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.GlobalConsts.KnowHttpMethods">
+            <summary>
+            定义http请求方式
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.KnowHttpMethods.POST">
+            <summary>
+            POST
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.GlobalConsts.KnowHttpMethods.GET">
+            <summary>
+            GET
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Queue.IKafkaService">
+            <summary>
+            Kafka 消息中间件服务，处理消息的发送与订阅
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Queue.IKafkaService.PublishAsync``1(System.String,``0)">
+            <summary>
+            发送消息至指定主题
+            </summary>
+            <typeparam name="TMessage"></typeparam>
+            <param name="topicName"></param>
+            <param name="message">message value</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Queue.IKafkaService.Subscribe``1(System.String,System.Action{``0},System.Threading.CancellationToken,System.Int32)">
+            <summary>
+            从指定的主题订阅消息
+            </summary>
+            <param name="topicName"></param>
+            <param name="messageFunc">消费的回调函数</param>
+            <param name="cancellationToken">线程取消通知</param>
+            <param name="delay">延迟</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Queue.IKafkaService.Subscribe``1(System.String,System.Action{System.Collections.Generic.IList{``0}},System.Threading.CancellationToken,System.Int32)">
+            <summary>
+            从指定的主题订阅消息，并在达到一定条数时才触发回调函数
+            </summary>
+            <param name="topicName"></param>
+            <param name="messageFunc">消费的回调函数</param>
+            <param name="cancellationToken">线程取消通知</param>
+            <param name="threshold">达到触发回调函数的消息数阈值</param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Queue.IPipelineService">
+            <summary>
+            管道服务：所有使用消息中间件的业务都在这里注册使用
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Queue.QueueConsts.KAFKA_SUBSCRIBE">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.RegexExpressions">
+            <summary>
+            正则表达式
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.OBJECT_ID">
+            <summary>
+            ObjectId
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.NUMBER">
+            <summary>
+            数字
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.NUMBER_OR_EMPTY">
+            <summary>
+            正整数或空字符串
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.OBJECT_ID_OR_EMPTY">
+            <summary>
+            ObjectId或空字符串
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.LETTER_NUMBER">
+            <summary>
+            数字和字母
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.PROVINCE_CODE">
+            <summary>
+            省份代码
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.COLLEGE_CODE">
+            <summary>
+            院校代码
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.URL">
+            <summary>
+            Url地址 TODO 此正则需调整
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.NON_SPECIALCHAR">
+            <summary>
+            非特殊字符
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.PHONE">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.VERSIONTYPE">
+            <summary>
+            机构版本
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.DATETIME">
+            <summary>
+            时间
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.EMAIL">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.MOBILE">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.ONE_OR_TWO">
+            <summary>
+            1 or 2
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.ZERO_OR_ONE">
+            <summary>
+            0 or 1
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.CERTIFICATENO">
+            <summary>
+            身份证
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.NUMBE_RANGE_ONE_THREE">
+            <summary>
+            1-3
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.NUMBE_RANGE_THREE_FOUR">
+            <summary>
+            3 or 4
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.NON_ZERO_POSITIVE_INTEGER">
+            <summary>
+            只能是非零的正整数
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.RegexExpressions.BOOL_TRUE_FALSE">
+            <summary>
+            true or false
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TPrimaryKey"></typeparam>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.InsertAsync(`0)">
+            <summary>
+            添加实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.InserManyAsync(System.Collections.Generic.List{`0})">
+            <summary>
+            批量添加实体
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.DeleteByIdAsync(System.Object)">
+            <summary>
+            根据主键删除实体
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.DeleteAsync(`0)">
+            <summary>
+            删除实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.UpdateAsync(`0)">
+            <summary>
+            更新实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.GetByIdAsync(System.Object)">
+            <summary>
+            查询实体
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.GetAllAsync">
+            <summary>
+            查询所有实体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TPrimaryKey"></typeparam>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.#ctor(EasyIotSharp.Core.Repositories.Mysql.ISqlSugarDatabaseProvider)">
+            <summary>
+            
+            </summary>
+            <param name="databaseProvider"></param>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.InsertAsync(`0)">
+            <summary>
+            添加实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.InserManyAsync(System.Collections.Generic.List{`0})">
+            <summary>
+            批量添加实体
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.DeleteByIdAsync(System.Object)">
+            <summary>
+            根据主键删除实体
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.DeleteAsync(`0)">
+            <summary>
+            删除实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.UpdateAsync(`0)">
+            <summary>
+            更新实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.GetByIdAsync(System.Object)">
+            <summary>
+            查询实体
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.GetAllAsync">
+            <summary>
+            查询所有实体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Repositories.Tenant.Impl.TenantRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Tenant.Impl.TenantRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
+            <summary>
+            
+            </summary>
+            <param name="databaseProvider"></param>
+        </member>
+        <member name="T:EasyIotSharp.Core.Repositories.Tenant.ITenantRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Services.APIProvider.IWatchmenAPIService">
+            <summary>
+            Watchmen服务
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.APIProvider.IWatchmenAPIService.GetUserToken(System.String)">
+             <summary>
+            根据用户Id从Watchmen获取用户token
+             </summary>
+             <param name="uid"></param>
+             <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Cache.Admin.ICacheAdminService.ClearAll">
+            <summary>
+            清除项目所有缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Services.Common.ICommonService">
+            <summary>
+            UFile服务
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Common.ICommonService.UploadImage(EasyIotSharp.Core.Dto.Common.Params.UploadImageInput)">
+            <summary>
+            图片文件上传
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="P:EasyIotSharp.Core.Services.Common.Impl.ProvinceService.ProvinceList">
+            <summary>
+            省份
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Common.Impl.ProvinceService.GetByCode(System.String)">
+            <summary>
+            通过代号获取省份信息
+            </summary>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Common.Impl.ProvinceService.GetByCodes(System.Collections.Generic.IList{System.String})">
+            <summary>
+            通过代号获取省份信息
+            </summary>
+            <param name="codes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Common.Impl.ProvinceService.GetByNunId(System.Int32)">
+            <summary>
+            通过代号获取省份信息
+            </summary>
+            <param name="numId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Common.Impl.ProvinceService.GetByName(System.String)">
+            <summary>
+            通过省份名称获取省份信息
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Common.Impl.ProvinceService.QueryAll">
+            <summary>
+            获取所有省份列表（静态的）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Services.Common.IProvinceService">
+            <summary>
+            地区的省份服务，提供静态的省份的处理业务
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Common.IProvinceService.GetByCode(System.String)">
+            <summary>
+            通过国标获取省份
+            </summary>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Common.IProvinceService.GetByCodes(System.Collections.Generic.IList{System.String})">
+             <summary>
+            
+             </summary>
+             <param name="codes"></param>
+             <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Common.IProvinceService.GetByName(System.String)">
+            <summary>
+            通过省份名称获取省份信息
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Common.IProvinceService.QueryAll">
+            <summary>
+            获取所有省份列表（静态的）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:EasyIotSharp.Core.Services.IO.Impl.TempFolderService.Path">
+            <summary>
+            临时文件夹应用绝对路径
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Services.IO.Impl.TempFolderService.GeneratePdfPath">
+            <summary>
+            临时文件夹生成Pdf的应用绝对路径
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.IO.Impl.TempFolderService.GetFileWithPath(System.String)">
+            <summary>
+            通过临时文件夹路径获取绝对路径
+            </summary>
+            <param name="ext">后缀名（如：.txt等）</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.IO.Impl.TempFolderService.DeleteFile(System.String)">
+            <summary>
+            从临时文件夹删除文件
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:EasyIotSharp.Core.Services.IO.ITempFolderService.Path">
+            <summary>
+            临时文件夹应用绝对路径
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Services.IO.ITempFolderService.GeneratePdfPath">
+            <summary>
+             临时文件夹导出的Excel应用绝对路径
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.IO.ITempFolderService.GetFileWithPath(System.String)">
+            <summary>
+            通过临时文件夹路径获取绝对路径
+            </summary>
+            <param name="ext">后缀名（如：.txt）</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.IO.ITempFolderService.DeleteFile(System.String)">
+            <summary>
+            从临时文件夹删除文件
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="F:EasyIotSharp.Core.Services.Tenant.Impl.TenantService._tenantRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Tenant.Impl.TenantService.#ctor(EasyIotSharp.Core.Repositories.Tenant.ITenantRepository)">
+            <summary>
+            
+            </summary>
+            <param name="tenantRepository"></param>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Tenant.ITenantService.InsertTenant(EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput)">
+            <summary>
+            添加一个租户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Validator.ComplexPasswordAttribute">
+            <summary>
+            强密码验证
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Validator.ComplexPasswordAttribute.MustNumber">
+            <summary>
+            必须包含数字
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Validator.ComplexPasswordAttribute.MustLetter">
+            <summary>
+            必须包含小写或大写字母
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Validator.ComplexPasswordAttribute.MustSymbol">
+            <summary>
+            必须包含特殊符号
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Validator.ComplexPasswordAttribute.IsValid(System.Object)">
+            <summary>
+            校验密码强度
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Validator.ConstsOfAttribute">
+            <summary>
+            常量验证
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Validator.ConstsOfAttribute.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Validator.ConstsOfAttribute.IsValid(System.Object)">
+            <summary>
+            验证常量值是否存在
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Validator.EnumOfAttribute">
+            <summary>
+            判断枚举是否存在
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Validator.IsBoolAttribute">
+            <summary>
+            Bool类型验证
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Validator.IsCollegeCodeAttribute">
+            <summary>
+            院校代码验证
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Validator.IsCollegeCodeAttribute.IsValid(System.Object)">
+            <summary>
+            验证院校代码格式及长度
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Validator.IsMongoObjectIdAttribute">
+            <summary>
+            验证MongoObjectId是否合法
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Validator.IsPhoneAttribute">
+            <summary>
+            验证手机号码是否合法
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Validator.IsPhoneAttribute.IsValid(System.Object)">
+            <summary>
+            验证手机号码是否合法
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Validator.IsProvinceCodeAttribute">
+            <summary>
+            省份代码格式验证
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Validator.MinItemsCountAttribute">
+            <summary>
+            元素最小个数校验
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Validator.MinItemsCountAttribute.#ctor(System.Int32)">
+            <summary>
+            最小个数
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:EasyIotSharp.Core.Validator.MinItemsCountAttribute.IsValid(System.Object)">
+            <summary>
+            校验
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Validator.StringItemsLengthAttribute">
+            <summary>
+            字符串数组项长度和数组大小验证
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Validator.StringItemsLengthAttribute.Length">
+            <summary>
+            字符串数组项长度
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Validator.StringItemsLengthAttribute.MinSize">
+            <summary>
+            数组大小
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Validator.StringItemsLengthAttribute.#ctor(System.Int32,System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="length">字符串数组项长度</param>
+             <param name="minSize">数组大小</param>
+        </member>
+        <member name="F:EasyIotSharp.Repositories.DbConsts.CollectionNames.DB">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:EasyIotSharp.Repositories.Elasticsearch.CustomerIndex">
+            <summary>
+            es 自定义索引
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Repositories.Elasticsearch.CustomerIndex.Settings">
+             <summary>
+            初始化Settings
+             </summary>
+        </member>
+        <member name="P:EasyIotSharp.Repositories.Elasticsearch.CustomerIndex.DefaultSettings">
+            <summary>
+            自定义setting
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Repositories.Elasticsearch.CustomerIndex.MappingProperty">
+            <summary>
+            custom mapping property
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Repositories.Elasticsearch.CustomerIndex.MappingProperty.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:EasyIotSharp.Repositories.Elasticsearch.CustomerIndex.MappingProperty.#ctor(System.String,Nest.FieldType)">
+             <summary>
+            
+             </summary>
+             <param name="filed"></param>
+             <param name="type"></param>
+        </member>
+        <member name="P:EasyIotSharp.Repositories.Elasticsearch.CustomerIndex.MappingProperty.LocalMetadata">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:EasyIotSharp.Repositories.Elasticsearch.CustomerIndex.MappingProperty.Meta">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:EasyIotSharp.Repositories.Elasticsearch.CustomerIndex.MappingProperty.Name">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:EasyIotSharp.Repositories.Elasticsearch.CustomerIndex.MappingProperty.Type">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:EasyIotSharp.Repositories.Elasticsearch.CustomerIndex.MappingProperty.Fields">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:EasyIotSharp.Repositories.Elasticsearch.ElasticsearchRepositoryBase">
+            <summary>
+             nest: https://github.com/elastic/elasticsearch-net
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Repositories.Elasticsearch.IElasticsearchRepository`1">
+            <summary>
+            You know for search
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="T:EasyIotSharp.Repositories.Elasticsearch.IndexConsts">
+            <summary>
+            data lib es index
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Repositories.Elasticsearch.IndexConsts.DB">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ServiceBase">
+            <summary>
+            所有应用服务的基类，实现类必须继承此类
+            </summary>
+        </member>
+        <member name="P:ServiceBase.ContextUser">
+            <summary>
+            获取当前上下文用户对象
+            </summary>
+        </member>
+        <member name="M:ServiceBase.TaskReturnNull">
+            <summary>
+            空返回相当于void
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

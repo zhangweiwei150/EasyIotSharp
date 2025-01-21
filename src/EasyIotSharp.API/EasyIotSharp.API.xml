@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EasyIotSharp.API</name>
+    </assembly>
+    <members>
+        <member name="P:EasyIotSharp.API.Controllers.ApiControllerBase.TokenUserId">
+            <summary>
+            获取用户标识
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantController.InsertTenant(EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantController.GetTenant(EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput)">
+            <summary>
+            查询
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Extensions.GetClientIp(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取客户端IP
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Extensions.GetAbsoluteUri(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            获取全路径Url
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.API.Filters.AuthorizeAttribute">
+            <summary>
+            拦截器(验证用户token信息)
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.API.Filters.GlobalExceptionDto.Method">
+            <summary>
+            请求方式
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.API.Filters.GlobalExceptionDto.Url">
+            <summary>
+            Url
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.API.Filters.GlobalExceptionDto.Headers">
+            <summary>
+            请求头
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.API.Filters.GlobalExceptionDto.QueryString">
+            <summary>
+            查询参数
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.API.Filters.GlobalExceptionDto.Body">
+            <summary>
+            请求体
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.API.Filters.GlobalExceptionDto.ClientIp">
+            <summary>
+            客户端IP
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.API.Filters.GlobalExceptionDto.Exception">
+            <summary>
+            异常消息
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.API.Filters.GlobalExceptionFilter">
+            <summary>
+            全局的错误响应消息处理
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.API.Program">
+            <summary>
+            应用启动程序入口
+               - 通过环境获取并初始化应用配置项
+               - 初始化UPrime引擎
+               - 初始化Serilog
+               - 创建应用程序
+            Serilog: https://github.com/serilog/serilog
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Swagger_TagDesc">
+            <summary>
+            swagger 标签描述
+            </summary>
+        </member>
+    </members>
+</doc>

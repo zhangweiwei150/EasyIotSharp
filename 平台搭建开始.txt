@@ -1,0 +1,286 @@
+技术栈：
+前端：Vue3,Unity(考虑通过Iframe嵌套) 灵活配置的UI组件（如图表、表单等）。
+后端：.NET Core 3.1，数据库使用MySQL、Redis、InfluxDB，数据缓存优先使用Redis。
+中间件：MQTT、RabbitMQ、MinIO。
+多租户: 数据隔离每个租户在InfluxDB对应一个库,Mysql使用同一个库业务扩大在拓展
+
+微服务架构：
+API网关-(Ocelot)：负责路由和接口分发。
+业务资源服务：负责与数据库交互，增删改查数据，优先查询Redis缓存。
+数据处理服务：消费消息队列，处理数据告警与清洗。
+定时任务服务：定时生成日报等周期性任务。
+
+
+
+设备类型: MQTTServer 主动上报, ModbusRTU 下发指令,TCPServer 主动上报的,  UDPServer主动上报的
+设备采集仪类型:银耳达DTU 才茂DTU 加速度采集仪 XX采集仪
+传感器型号: 倾角仪,温湿度,风速风向,加速度,应变计,索力计,静力水准计
+数据上报类型: 主动上报模式, 请求-响应模式
+通讯协议类型: 
+MQTT订阅者
+TCPServer
+UDPServer
+2025-01-08
+设计一下表结构
+
+-- 租户表
+CREATE TABLE tenant (
+    tenant_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '租户ID',
+    tenant_name VARCHAR(100) NOT NULL COMMENT '租户名称',
+    tenant_code VARCHAR(50) NOT NULL UNIQUE COMMENT '租户编码，唯一',
+    is_active BOOLEAN DEFAULT TRUE COMMENT '租户是否激活',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '记录最后更新时间'
+);
+
+-- 用户表
+CREATE TABLE user (
+    user_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '用户ID',
+    user_name VARCHAR(100) NOT NULL COMMENT '用户名',
+    email VARCHAR(100) NOT NULL COMMENT '用户邮箱',
+    password_hash VARCHAR(255) NOT NULL COMMENT '密码哈希值',
+    tenant_id INT COMMENT '所属租户ID',
+    is_active BOOLEAN DEFAULT TRUE COMMENT '用户是否激活',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '记录最后更新时间'
+);
+
+-- 角色表
+CREATE TABLE role (
+    role_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '角色ID',
+    role_name VARCHAR(100) NOT NULL COMMENT '角色名称',
+    tenant_id INT COMMENT '所属租户ID',
+    is_active BOOLEAN DEFAULT TRUE COMMENT '角色是否激活',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '记录最后更新时间'
+);
+
+-- 用户角色关联表
+CREATE TABLE auth_user_role (
+    user_role_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '用户角色关联ID',
+    user_id INT COMMENT '用户ID',
+    role_id INT COMMENT '角色ID',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间'
+);
+
+-- 权限表
+CREATE TABLE auth_permission (
+    permission_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '权限ID',
+    permission_name VARCHAR(100) NOT NULL COMMENT '权限名称',
+    permission_code VARCHAR(50) NOT NULL UNIQUE COMMENT '权限编码，唯一',
+    tenant_id INT COMMENT '所属租户ID',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '记录最后更新时间'
+);
+
+-- 角色权限关联表
+CREATE TABLE auth_role_permission (
+    role_permission_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '角色权限关联ID',
+    role_id INT COMMENT '角色ID',
+    permission_id INT COMMENT '权限ID',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间'
+);
+
+-- 菜单表
+CREATE TABLE auth_menu (
+    menu_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '菜单ID',
+    menu_name VARCHAR(100) NOT NULL COMMENT '菜单名称',
+    parent_menu_id INT COMMENT '父菜单ID，若无父菜单则为NULL',
+    menu_url VARCHAR(255) COMMENT '菜单链接URL',
+    tenant_id INT COMMENT '所属租户ID',
+    is_active BOOLEAN DEFAULT TRUE COMMENT '菜单是否激活',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '记录最后更新时间'
+);
+
+-- 按钮权限表
+CREATE TABLE auth_button_permission (
+    button_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '按钮权限ID',
+    button_name VARCHAR(100) NOT NULL COMMENT '按钮名称',
+    button_text VARCHAR(100) NOT NULL COMMENT '按钮文本',
+    button_action VARCHAR(50) NOT NULL COMMENT '按钮操作名称',
+    tenant_id INT COMMENT '所属租户ID',
+    is_active BOOLEAN DEFAULT TRUE COMMENT '按钮权限是否激活',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '记录最后更新时间'
+);
+
+-- 角色-按钮权限关联表
+CREATE TABLE auth_role_button_permission (
+    role_button_permission_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '角色按钮权限关联ID',
+    role_id INT COMMENT '角色ID',
+    button_id INT COMMENT '按钮权限ID',
+    has_permission BOOLEAN DEFAULT TRUE COMMENT '是否具有按钮权限',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间'
+);
+
+-- 用户-菜单权限关联表
+CREATE TABLE auth_user_menu_permission (
+    user_menu_permission_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '用户菜单权限关联ID',
+    user_id INT COMMENT '用户ID',
+    menu_id INT COMMENT '菜单ID',
+    has_access BOOLEAN DEFAULT TRUE COMMENT '用户是否具有该菜单权限',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间'
+);
+
+-- 项目表
+CREATE TABLE base_project (
+    project_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '项目ID',
+    tenant_id INT COMMENT '所属租户ID',
+    project_name VARCHAR(255) NOT NULL COMMENT '项目名称',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间'
+);
+ 
+
+-- 协议表
+CREATE TABLE base_protocol (
+    project_id INT COMMENT '所属项目ID',
+    tenant_id INT COMMENT '所属租户ID',
+    protocol_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '协议ID',
+    protocol_name VARCHAR(50) NOT NULL COMMENT '协议名称（如Modbus、 TCP、UDP、MQTT）',
+    description VARCHAR(255) COMMENT '协议描述',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+);
+{
+		-- MQTT 协议配置 (示例)
+		INSERT INTO base_protocol_config (protocol_id, config_key, config_value) 
+		VALUES 
+			(1, 'topic', 'sensor/+/data'),  -- Topic 格式
+			(1, 'json_field_device_id', 'device_id'),  -- JSON 字段：device_id
+			(1, 'json_field_temperature', 'temperature'),  -- JSON 字段：temperature
+			(1, 'json_field_humidity', 'humidity');  -- JSON 字段：humidity
+
+		-- 为 Modbus 协议插入配置项
+		INSERT INTO base_protocol_config (protocol_id, config_key, config_value)
+		VALUES (1, 'modbus_register_address', '40001'),    -- 寄存器地址
+			   (1, 'modbus_register_count', '10');          -- 寄存器数量
+
+}
+-- 协议配置表
+CREATE TABLE base_protocol_config (
+    project_id INT COMMENT '所属项目ID',
+    tenant_id INT COMMENT '所属租户ID',
+    config_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '配置ID',
+    protocol_id INT NOT NULL COMMENT '协议ID（外键，关联到base_protocol）',
+	device_id INT COMMENT '设备ID（外键，关联到base_device）',
+    config_key VARCHAR(100) NOT NULL COMMENT '配置项名称（如：Modbus 寄存器地址、寄存器数量等）',
+    config_value VARCHAR(255) NOT NULL COMMENT '配置项的值（如：寄存器地址、数量等）',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间' 
+);
+
+-- 测点表
+CREATE TABLE base_sensor_point (
+    sensor_point_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '测点ID',
+    project_id INT COMMENT '所属项目ID',
+    tenant_id INT COMMENT '所属租户ID',
+    sensor_name VARCHAR(255) NOT NULL COMMENT '测点名称',
+    sensor_type_id INT COMMENT '测点类型ID',
+	location_id INT COMMENT '关联位置ID',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间'
+);
+
+-- 设备表
+CREATE TABLE base_device (
+    device_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '设备ID',
+    tenant_id INT COMMENT '所属租户ID',
+    project_id INT COMMENT '所属项目ID',
+    device_name VARCHAR(255) NOT NULL COMMENT '设备名称',
+    device_status VARCHAR(50) NOT NULL COMMENT '设备状态',
+	protocol_id INT NOT NULL COMMENT '协议ID（外键，关联到base_protocol）',
+    port_number INT COMMENT '设备端口号',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间'
+);
+
+-- 测点类型表
+CREATE TABLE base_type (
+    measurement_type_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '测点类型ID',
+    tenant_id INT COMMENT '所属租户ID',
+    measurement_type_name VARCHAR(255) NOT NULL COMMENT '测点类型名称'
+);
+
+-- 测点类型对应指标表
+CREATE TABLE base_type_quota (
+    measurement_indicator_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '指标ID',
+    measurement_type_id INT COMMENT '测点类型ID',
+    tenant_id INT COMMENT '所属租户ID',
+    indicator_name VARCHAR(255) NOT NULL COMMENT '指标名称',
+    unit VARCHAR(50) COMMENT '指标单位'
+);
+
+-- 位置表
+CREATE TABLE base_location (
+    location_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '位置ID',
+    tenant_id INT COMMENT '所属租户ID',
+    project_id INT COMMENT '所属项目ID',
+    location_name VARCHAR(255) NOT NULL COMMENT '位置名称',
+    latitude DECIMAL(9, 6) COMMENT '纬度',
+    longitude DECIMAL(9, 6) COMMENT '经度',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间'
+);
+-- 告警阈值表设计
+CREATE TABLE base_alarm_threshold (
+    threshold_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '阈值ID',
+    tenant_id INT COMMENT '租户ID',
+    project_id INT COMMENT '项目ID',
+    device_id INT COMMENT '设备ID（外键）',
+    measurement_type_id INT COMMENT '测点类型ID（外键，关联 base_measurement_type）',
+    threshold_type ENUM('upper', 'lower') NOT NULL COMMENT '阈值类型（upper：上限，lower：下限）',
+    threshold_value DECIMAL(10, 2) NOT NULL COMMENT '阈值值',
+    alarm_type VARCHAR(50) COMMENT '报警类型（如“温度过高”）',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '记录更新时间'
+);
+
+-- 设备数据表
+CREATE TABLE base_device_data (
+    device_data_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '数据ID',
+    device_id INT COMMENT '设备ID（外键，关联base_device）',
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '数据接收时间戳',
+    raw_data JSON COMMENT '原始数据（Modbus 数据包）',
+    parsed_data JSON COMMENT '解析后的数据（例如：温度、湿度等）',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    FOREIGN KEY (device_id) REFERENCES base_device(device_id) COMMENT '外键，关联设备表'
+);
+-- 告警处理表
+CREATE TABLE base_alarm_rule (
+    rule_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '报警规则ID',
+    threshold_id INT COMMENT '阈值ID（外键，关联 base_alarm_threshold）',
+    alarm_level ENUM('high', 'medium', 'low') NOT NULL COMMENT '报警级别（高、中、低）',
+    frequency INT DEFAULT 1 COMMENT '报警触发频率（多少次才触发报警）',
+    handler_id INT COMMENT '处理人员ID（可以关联到用户表）',
+    status ENUM('pending', 'resolved', 'acknowledged') DEFAULT 'pending' COMMENT '报警处理状态（待处理、已处理、已确认）',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '规则创建时间',
+    FOREIGN KEY (threshold_id) REFERENCES base_alarm_threshold(threshold_id) COMMENT '外键，关联阈值表'
+);
+
+-- 设备告警表
+CREATE TABLE base_alarm (
+    alarm_id INT PRIMARY KEY AUTO_INCREMENT COMMENT '报警ID',
+    device_id INT COMMENT '设备ID（外键）',
+    alarm_type VARCHAR(50) COMMENT '报警类型（如温度过高、设备离线等）',
+    alarm_value DECIMAL(10, 2) COMMENT '报警值',
+    threshold DECIMAL(10, 2) COMMENT '阈值',
+    status VARCHAR(50) DEFAULT 'unresolved' COMMENT '报警状态（如未处理、已处理等）',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '报警时间',
+    FOREIGN KEY (device_id) REFERENCES base_device(device_id) COMMENT '外键，关联设备表'
+);
+
+
+租户设置表（TenantSettings） （可选）
+CREATE TABLE TenantSettings (
+    TenantId INT PRIMARY KEY,                   -- 租户ID
+    SettingKey VARCHAR(255) NOT NULL,            -- 设置项键
+    SettingValue VARCHAR(255),                   -- 设置项值
+    FOREIGN KEY (TenantId) REFERENCES Tenants(TenantId)
+);
+访问日志表（AccessLogs） （可选）
+CREATE TABLE AccessLogs (
+    LogId INT AUTO_INCREMENT PRIMARY KEY,        -- 日志ID
+    UserId INT NOT NULL,                          -- 用户ID
+    Action VARCHAR(255) NOT NULL,                 -- 操作内容
+    IpAddress VARCHAR(255),                       -- 用户IP地址
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP, -- 操作时间
+    FOREIGN KEY (UserId) REFERENCES Users(UserId)  -- 外键约束
+);

@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>..\EasyIotSharp.API\EasyIotSharp.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Repositories\WatchLog\**" />
+    <EmbeddedResource Remove="Repositories\WatchLog\**" />
+    <None Remove="Repositories\WatchLog\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Confluent.Kafka" Version="1.7.0" />
+    <PackageReference Include="EPPlus" Version="4.5.3.3" />
+    <PackageReference Include="FluentValidation" Version="9.5.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.19" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.5" />
+    <PackageReference Include="MySql.Data" Version="9.1.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+    <PackageReference Include="SqlSugarCore" Version="5.1.4.175" />
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
+    <PackageReference Include="UPrime" Version="2.6.27" />
+    <PackageReference Include="UPrime.AutoMapper" Version="2.2.1" />
+    <PackageReference Include="UPrime.Elasticsearch" Version="2.0.1" />
+    <PackageReference Include="UPrime.MongoDb" Version="2.3.4" />
+    <PackageReference Include="UPrime.RedisCache" Version="2.4.12" />
+    <PackageReference Include="UPrime.SDK.Sms" Version="2.1.2" />
+    <PackageReference Include="UPrime.SDK.UCloudUFile" Version="2.1.1" />
+    <PackageReference Include="UPrime.SDK.Weixin" Version="2.2.6" />
+  </ItemGroup>
+</Project>

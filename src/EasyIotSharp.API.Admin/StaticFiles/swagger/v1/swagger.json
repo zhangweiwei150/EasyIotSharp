@@ -1,0 +1,1054 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "service.toc.mps：优志愿消息通知API",
+    "version": "v1"
+  },
+  "paths": {
+    "/swagger-gen": {
+      "get": {
+        "tags": [
+          "Home"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/youzy.toc.mps.health.check": {
+      "get": {
+        "tags": [
+          "Home"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/youzy.toc.mps.notification.quick.byprovinceId.query": {
+      "post": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "获取所有可用通知的小优快讯",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryQuickNotificationAsyncInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryQuickNotificationAsyncInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryQuickNotificationAsyncInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryQuickNotificationAsyncInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuickNotificationDtoListUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuickNotificationDtoListUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuickNotificationDtoListUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/youzy.toc.mps.notification.quick.groupbydate.query": {
+      "post": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "查询小优快讯通知(按照时间分组)",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryQuickNotificationGroupByDateInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryQuickNotificationGroupByDateInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryQuickNotificationGroupByDateInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryQuickNotificationGroupByDateInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryQuickNotificationGroupByDateOutputUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryQuickNotificationGroupByDateOutputUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryQuickNotificationGroupByDateOutputUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/youzy.toc.mps.notification.sitemsg.bytoken.unread.count": {
+      "post": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "获取当前用户站内信的未读数量",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountSiteMsgIsUnReadOutputListUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountSiteMsgIsUnReadOutputListUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountSiteMsgIsUnReadOutputListUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/youzy.toc.mps.notification.sitemsg.bytoken.query": {
+      "post": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "通过条件分页获取站内信列表",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySiteMsgInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySiteMsgInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySiteMsgInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySiteMsgInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteMsgDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteMsgDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteMsgDtoPagedResultDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/youzy.toc.mps.notification.sitemsg.bytoken.readstatus.update": {
+      "post": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "通过用户id修改站内信未读数量",
+        "parameters": [
+          {
+            "name": "Type",
+            "in": "query",
+            "description": "站内信类型\r\n1=文章、课程、应用通知\r\n2=数据变动通知、小优快讯\r\n3=社区",
+            "schema": {
+              "type": "integer",
+              "description": "站内信类型\r\n1=文章、课程、应用通知\r\n2=数据变动通知、小优快讯\r\n3=社区",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/youzy.toc.mps.vipuser.zhiyuantable.byid.count": {
+      "post": {
+        "tags": [
+          "ZhiYuanTable"
+        ],
+        "summary": "通过志愿表id集合查询“dms数据变动”影响的志愿表院校专业未确定数量(一院校多专业)",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CountByZhiYuanTableIdsInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CountByZhiYuanTableIdsInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CountByZhiYuanTableIdsInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CountByZhiYuanTableIdsInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountByZhiYuanTableIdsOutputListUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountByZhiYuanTableIdsOutputListUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountByZhiYuanTableIdsOutputListUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/youzy.toc.mps.vipuser.zhiyuantable.byid.update": {
+      "post": {
+        "tags": [
+          "ZhiYuanTable"
+        ],
+        "summary": "用户确定经过“dms数据变动”营销的志愿表院校专业信息(一院校多专业)",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStatusByZhiYuanTableIdInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStatusByZhiYuanTableIdInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStatusByZhiYuanTableIdInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStatusByZhiYuanTableIdInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/youzy.toc.mps.vipuser.zhiyuantable.cp.byid.count": {
+      "post": {
+        "tags": [
+          "ZhiYuanTable"
+        ],
+        "summary": "通过志愿表id集合查询“dms数据变动”影响的志愿表院校专业未确定数量(一院校一专业)",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CountByZhiYuanTableIdsInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CountByZhiYuanTableIdsInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CountByZhiYuanTableIdsInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CountByZhiYuanTableIdsInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountByZhiYuanTableIdsOutputListUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountByZhiYuanTableIdsOutputListUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountByZhiYuanTableIdsOutputListUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/youzy.toc.mps.vipuser.zhiyuantable.cp.byid.update": {
+      "post": {
+        "tags": [
+          "ZhiYuanTable"
+        ],
+        "summary": "用户确定经过“dms数据变动”影响的志愿表院校专业信息(一院校一专业)",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStatusByZhiYuanTableIdInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStatusByZhiYuanTableIdInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStatusByZhiYuanTableIdInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStatusByZhiYuanTableIdInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "QueryQuickNotificationAsyncInput": {
+        "type": "object",
+        "properties": {
+          "provinceId": {
+            "type": "integer",
+            "description": "省份numId",
+            "format": "int32"
+          },
+          "count": {
+            "type": "integer",
+            "description": "数量",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "获取所有可用通知的小优快讯的入参类"
+      },
+      "QuickNotificationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "对象ID",
+            "nullable": true
+          },
+          "quickContent": {
+            "type": "string",
+            "description": "快讯内容",
+            "nullable": true
+          },
+          "linkUrl": {
+            "type": "string",
+            "description": "链接URL",
+            "nullable": true
+          },
+          "provinceIds": {
+            "type": "string",
+            "description": "省份Id(多个)",
+            "nullable": true
+          },
+          "provinceNames": {
+            "type": "string",
+            "description": "省份名称(多个)",
+            "nullable": true
+          },
+          "isSent": {
+            "type": "boolean",
+            "description": "是否推送/推送状态（默认值False,未推送）"
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "friendlyCreationTime": {
+            "type": "string",
+            "description": "创建时间（友好的)",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "小优快讯数据传输模型"
+      },
+      "QuickNotificationDtoListUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuickNotificationDto"
+            },
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryQuickNotificationGroupByDateInput": {
+        "required": [
+          "pageIndex"
+        ],
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer",
+            "description": "页索引",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "查询小优快讯通知的入参类"
+      },
+      "QuickNotificationBriefDto": {
+        "type": "object",
+        "properties": {
+          "quickContent": {
+            "type": "string",
+            "description": "通知内容",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "小优快讯简要数据传输模型"
+      },
+      "QuickNotificationGroupByDateResult": {
+        "type": "object",
+        "properties": {
+          "dateTime": {
+            "type": "string",
+            "description": "日期",
+            "nullable": true
+          },
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuickNotificationBriefDto"
+            },
+            "description": "小优快讯列表（优先全国之后按照省份）",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "按照日期分组结果"
+      },
+      "QueryQuickNotificationGroupByDateOutput": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuickNotificationGroupByDateResult"
+            },
+            "description": "按照日期分组结果",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "按照日期分组查询小优快讯通知"
+      },
+      "QueryQuickNotificationGroupByDateOutputUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/QueryQuickNotificationGroupByDateOutput"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CountSiteMsgIsUnReadOutput": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "integer",
+            "description": "站内信类型\r\n1=文章、课程、应用通知\r\n2=小优快讯、数据变动通知\r\n3=社区\r\n4=问题反馈",
+            "format": "int32"
+          },
+          "unReadCount": {
+            "type": "integer",
+            "description": "未读数量",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "description": "最新一条的内容",
+            "nullable": true
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "最新一条的时间",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "查询每个类型的站内信未读数量的出参类"
+      },
+      "CountSiteMsgIsUnReadOutputListUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountSiteMsgIsUnReadOutput"
+            },
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuerySiteMsgInput": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "integer",
+            "description": "站内信类型\r\n1=文章、课程、应用通知\r\n2=数据变动通知、小优快讯\r\n3=社区\r\n4=问题反馈",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "起始页",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过条件分页查询站内信列表的入参类"
+      },
+      "SiteMsgDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "消息标题",
+            "nullable": true
+          },
+          "content": {
+            "type": "string",
+            "description": "消息内容",
+            "nullable": true
+          },
+          "link": {
+            "type": "string",
+            "description": "链接（如需要跳转页面时使用）",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注（特殊情况下使用，自定义参数列表）\r\n社区回复( 评论类型   1.动态评论  2.文章评论  3.讲堂视频评论  4.德智课程评论  5.数据中心报告评论)\r\n社区关注( 社区用户个人中心)\r\n社区点赞( 动态详情)\r\n社区艾特( 动态详情)",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "description": "消息类型ToC.MPS.Core.GlobalConsts.PushTaskType\r\n文章=article\r\n课程=classroom\r\n小优快讯=quick\r\n数据通知=data\r\n应用通知=app\r\n问题反馈回复通知=feedback\r\n社区-关注=community_follow\r\n社区-点赞=community_Fabulous\r\n社区-回复=community_reply\r\n社区-艾特=community_at",
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "description": "接收者用户ID，为空的时候代表推送所有用户",
+            "nullable": true
+          },
+          "userNumId": {
+            "type": "integer",
+            "description": "接收者用户NumId",
+            "format": "int32"
+          },
+          "userHeadUrl": {
+            "type": "string",
+            "description": "用户头像地址(只有社区会用到，展示的是给你点赞的人、评论的头像)",
+            "nullable": true
+          },
+          "userGender": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "objectId": {
+            "type": "string",
+            "description": "消息对象ID",
+            "nullable": true
+          },
+          "replyContentUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "反馈内容(图片/视频)",
+            "nullable": true
+          },
+          "replyContentType": {
+            "type": "integer",
+            "description": "反馈内容(图片/视频)   类型\r\n1=图片\r\n2=视频",
+            "format": "int32"
+          },
+          "isRead": {
+            "type": "boolean",
+            "description": "是否已读"
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "代表一条站内信的‘DTO’"
+      },
+      "SiteMsgDtoPagedResultDto": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SiteMsgDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SiteMsgDtoPagedResultDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/SiteMsgDtoPagedResultDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CountByZhiYuanTableIdsInput": {
+        "type": "object",
+        "properties": {
+          "zhiYuanTableIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "志愿表Id集合",
+            "nullable": true
+          },
+          "provinceNumId": {
+            "type": "integer",
+            "description": "省份numId",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过志愿表id集合查询志愿表数据变动记录的入参类"
+      },
+      "CountByZhiYuanTableIdsOutput": {
+        "type": "object",
+        "properties": {
+          "zhiYuanTableId": {
+            "type": "string",
+            "description": "志愿表id",
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean",
+            "description": "是否有待处理的志愿表"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过志愿表id集合查询志愿表数据变动记录的出参类"
+      },
+      "CountByZhiYuanTableIdsOutputListUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountByZhiYuanTableIdsOutput"
+            },
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateStatusByZhiYuanTableIdInput": {
+        "type": "object",
+        "properties": {
+          "zhiYuanTableId": {
+            "type": "string",
+            "description": "志愿表Id",
+            "nullable": true
+          },
+          "provinceNumId": {
+            "type": "integer",
+            "description": "省份numid",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过志愿表id修改志愿表变更确认状态的入参类"
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Value Bearer {token}",
+        "name": "u-token",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ],
+  "tags": [
+    {
+      "name": "Home",
+      "description": "<code>Swagger</code>",
+      "externalDocs": {
+        "description": ""
+      }
+    },
+    {
+      "name": "Notification",
+      "description": "<code>通知</code>",
+      "externalDocs": {
+        "description": "小优快讯、站内信"
+      }
+    },
+    {
+      "name": "ZhiYuanTable",
+      "description": "<code>志愿表变动</code>",
+      "externalDocs": {
+        "description": "VIP用户志愿表填报院校、专业信息"
+      }
+    }
+  ]
+}

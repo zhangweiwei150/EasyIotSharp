@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EasyIotSharp.API.Admin</name>
+    </assembly>
+    <members>
+        <member name="M:EasyIotSharp.API.Admin.Extensions.GetClientIp(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取客户端IP
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Admin.Extensions.GetAbsoluteUri(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            获取全路径Url
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="P:EasyIotSharp.API.Admin.Filters.GlobalExceptionDto.Method">
+            <summary>
+            请求方式
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.API.Admin.Filters.GlobalExceptionDto.Url">
+            <summary>
+            Url
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.API.Admin.Filters.GlobalExceptionDto.Headers">
+            <summary>
+            请求头
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.API.Admin.Filters.GlobalExceptionDto.QueryString">
+            <summary>
+            查询参数
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.API.Admin.Filters.GlobalExceptionDto.Body">
+            <summary>
+            请求体
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.API.Admin.Filters.GlobalExceptionDto.ClientIp">
+            <summary>
+            客户端IP
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.API.Admin.Filters.GlobalExceptionDto.Exception">
+            <summary>
+            异常消息
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.API.Admin.Filters.GlobalExceptionFilter">
+            <summary>
+            全局的错误响应消息处理
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.API.Admin.Middleware.EagleExceptionMiddleware">
+            <summary>
+            全局错误的中间件
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.API.Admin.Program">
+            <summary>
+            应用启动程序入口
+               - 通过环境获取并初始化应用配置项
+               - 初始化UPrime引擎
+               - 初始化Serilog
+               - 创建应用程序
+            Serilog: https://github.com/serilog/serilog
+            </summary>
+        </member>
+    </members>
+</doc>

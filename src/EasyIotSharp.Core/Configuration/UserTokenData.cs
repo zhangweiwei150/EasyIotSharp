@@ -1,0 +1,56 @@
+using System.Security.Claims;
+using System.Security.Principal;
+
+namespace EasyIotSharp.Core.Configuration
+{
+    public class UserTokenData
+    {
+        public UserTokenData()
+        {
+            UserId = string.Empty;
+        }
+
+        /// <summary>
+        /// 当前用户Id
+        /// </summary>
+        public string UserId { get; set; }
+    }
+
+    public class UserTokenIdentity : IIdentity
+    {
+        public UserTokenIdentity(UserTokenData identifier)
+        {
+            SetIdentifier(identifier);
+        }
+
+        private UserTokenData identifier = new UserTokenData();
+
+        public UserTokenData GetIdentifier()
+        {
+            return identifier;
+        }
+
+        public void SetIdentifier(UserTokenData value)
+        {
+            identifier = value;
+        }
+
+        public string AuthenticationType => "Token";
+
+        public bool IsAuthenticated => GetIdentifier() != null;
+
+        public string Name => GetIdentifier() == null ? "" : GetIdentifier().UserId;
+    }
+
+    public class UserTokenPrincipal : ClaimsPrincipal
+    {
+        private readonly UserTokenIdentity _userTokenIdentity;
+
+        public UserTokenPrincipal(UserTokenIdentity userTokenIdentity)
+        {
+            _userTokenIdentity = userTokenIdentity;
+        }
+
+        public override IIdentity Identity => _userTokenIdentity;
+    }
+}
