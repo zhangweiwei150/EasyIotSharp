@@ -1616,6 +1616,36 @@
             
             </summary>
         </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.MenuRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
+            <summary>
+            
+            </summary>
+            <param name="databaseProvider"></param>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.RoleMenuRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
+            <summary>
+            
+            </summary>
+            <param name="databaseProvider"></param>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.RoleRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
+            <summary>
+            
+            </summary>
+            <param name="databaseProvider"></param>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.SoldierRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
+            <summary>
+            
+            </summary>
+            <param name="databaseProvider"></param>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.SoldierRoleRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
+            <summary>
+            
+            </summary>
+            <param name="databaseProvider"></param>
+        </member>
         <member name="T:EasyIotSharp.Core.Repositories.Tenant.Impl.TenantRepository">
             <summary>
             
