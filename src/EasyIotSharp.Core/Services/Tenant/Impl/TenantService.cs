@@ -23,7 +23,7 @@ namespace EasyIotSharp.Core.Services.Tenant.Impl
             _tenantRepository = tenantRepository;
         }
 
-        public async Task InsertTenant(InsertTenantInput input)
+        public async Task InsertTenant(InsertTenantInput input) 
         {
             var model = new EasyIotSharp.Core.Domain.Tenant.Tenant();
             model.Name = input.Name;
