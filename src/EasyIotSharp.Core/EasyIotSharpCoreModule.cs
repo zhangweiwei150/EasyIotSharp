@@ -17,6 +17,8 @@ using EasyIotSharp.Repositories.Mysql;
 using EasyIotSharp.Core.Repositories.Mysql;
 using EasyIotSharp.Core.Repositories.Tenant;
 using EasyIotSharp.Core.Repositories.Tenant.Impl;
+using EasyIotSharp.Core.Repositories.TenantAccount;
+using EasyIotSharp.Core.Repositories.TenantAccount.Impl;
 
 namespace EasyIotSharp.Core
 {
@@ -51,6 +53,12 @@ namespace EasyIotSharp.Core
 
             //²Ö´¢
             IocManager.Register<ITenantRepository, TenantRepository>();
+
+            IocManager.Register<IMenuRepository, MenuRepository>();
+            IocManager.Register<IRoleMenuRepository, RoleMenuRepository>();
+            IocManager.Register<IRoleRepository, RoleRepository>();
+            IocManager.Register<ISoldierRepository, SoldierRepository>();
+            IocManager.Register<ISoldierRoleRepository, SoldierRoleRepository>();
         }
 
         /// <summary>
