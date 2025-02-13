@@ -36,7 +36,10 @@ namespace EasyIotSharp.Core.Services.Tenant.Impl
 
         public async Task<PagedResultDto<TenantDto>> QueryTenant(QueryTenantInput input)
         {
-            return new PagedResultDto<TenantDto>();
+            var query = await _tenantRepository.Query(input.Keyword, input.ExpiredType, input.ContractStartTime, input.ContractEndTime, input.IsFreeze, input.PageIndex, input.PageSize);
+            int totalCount = query.toalCount;
+            var list = query.items.MapTo<List<TenantDto>>();
+            return new PagedResultDto<TenantDto>() { TotalCount = totalCount, Items = list };
         }
 
         public async Task InsertTenant(InsertTenantInput input)
