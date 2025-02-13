@@ -13,6 +13,7 @@ namespace EasyIotSharp.Core.Repositories.Mysql
     public abstract class MySqlRepositoryBase<TEntity, TPrimaryKey>: IMySqlRepositoryBase<TEntity, TPrimaryKey> where TEntity : class, IEntity<TPrimaryKey>, new()
     {
         private ISqlSugarDatabaseProvider _databaseProvider;
+        public ISqlSugarClient Client;
 
         /// <summary>
         /// 
@@ -21,6 +22,7 @@ namespace EasyIotSharp.Core.Repositories.Mysql
         public MySqlRepositoryBase(ISqlSugarDatabaseProvider databaseProvider)
         {
             _databaseProvider = databaseProvider;
+            Client = _databaseProvider.Client;
         }
 
         /// <summary>

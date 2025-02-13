@@ -1,19 +1,30 @@
-﻿using EasyIotSharp.Core.Domain.TenantAccount;
+﻿using EasyIotSharp.Core.Domain;
+using EasyIotSharp.Core.Domain.TenantAccount;
 using Elasticsearch.Net;
+using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasyIotSharp.Core.Dto.Tenant.Params
+namespace EasyIotSharp.Core.Dto.Tenant
 {
-    public class InsertTenantInput:OperateUserInput
+    /// <summary>
+    /// 代表一个租户实体的“DTO”
+    /// </summary>
+    public class TenantDto : BaseEntity<int>
     {
         /// <summary>
         /// 租户名称
         /// </summary>
+        [SugarColumn(ColumnDataType = "NVARCHAR(50)")]
         public string Name { get; set; }
 
         #region 基本信息
+
+        /// <summary>
+        /// 机构的（唯一的等同Id）
+        /// </summary>
+        public string StoreKey { get; set; }
 
         /// <summary>
         /// 合同名称
@@ -63,6 +74,44 @@ namespace EasyIotSharp.Core.Dto.Tenant.Params
         #endregion 基本信息
 
         #region 版本 / 帐号 / 状态
+
+        /// <summary>
+        /// 过期状态
+        /// 0=待授权
+        /// 1=生效
+        /// 2=已过期
+        /// </summary>
+        public int ExpiredType
+        {
+            get
+            {
+                if (ContractStartTime.IsNull() && ContractEndTime.IsNull())
+                {
+                    return 0;
+                }
+                else if (ContractStartTime.IsNotNull() && ContractStartTime > DateTime.Now)
+                {
+                    return 0;
+                }
+                else if (ContractEndTime.IsNotNull() && ContractEndTime < DateTime.Now)
+                {
+                    return 2;
+                }
+                else if (ContractStartTime.IsNotNull()&&ContractEndTime.IsNotNull()&& ContractStartTime<DateTime.Now&& ContractEndTime>DateTime.Now)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 机构的系统管理员Id 详见 <see cref="Soldier"/>
+        /// </summary>
+        public int ManagerId { get; set; }
 
         /// <summary>
         /// 版本类型，详见 <see cref="VersionType"/>

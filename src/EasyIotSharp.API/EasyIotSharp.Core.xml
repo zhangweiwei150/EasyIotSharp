@@ -538,6 +538,11 @@
             租户id
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.IsSuperAdmin">
+            <summary>
+            是否admin(超级管理员，没有租户限制)
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.IsManager">
             <summary>
             是否管理员
@@ -683,11 +688,6 @@
             机构的电子邮箱
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.ExpiredTime">
-            <summary>
-            过期时间
-            </summary>
-        </member>
         <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.ManagerId">
             <summary>
             机构的系统管理员Id 详见 <see cref="T:EasyIotSharp.Core.Domain.TenantAccount.Soldier"/>
@@ -805,9 +805,321 @@
             页大小
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.DeleteTenantInput.Id">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.DeleteTenantInput.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.Name">
             <summary>
             租户名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.ContractName">
+            <summary>
+            合同名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.ContractOwnerName">
+            <summary>
+            合同所属人
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.ContractOwnerMobile">
+            <summary>
+            合同所属人电话
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.ContractStartTime">
+            <summary>
+            合同开始时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.ContractEndTime">
+            <summary>
+            合同结束时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.Mobile">
+            <summary>
+            机构的负责人手机号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.StoreLogoUrl">
+            <summary>
+            机构的Logo url
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.Remark">
+            <summary>
+            机构的备注
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.Email">
+            <summary>
+            机构的电子邮箱
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.VersionTypeId">
+            <summary>
+            版本类型，详见 <see cref="T:Elasticsearch.Net.VersionType"/>
+            1=入门版
+            2=基础版
+            3=旗舰版
+            5=全国版
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.IsFreeze">
+            <summary>
+            是否冻结
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.FreezeDes">
+            <summary>
+            冻结描述
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Tenant.Params.QueryTenantInput">
+            <summary>
+            通过条件分页查询租户列表的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.QueryTenantInput.Keyword">
+            <summary>
+            租户名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.QueryTenantInput.ExpiredType">
+            <summary>
+            过期状态
+            -1=不参与查询
+            0=待授权
+            1=生效
+            2=已过期
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.QueryTenantInput.ContractStartTime">
+            <summary>
+            合同开始时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.QueryTenantInput.ContractEndTime">
+            <summary>
+            合同结束时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.QueryTenantInput.IsFreeze">
+            <summary>
+            冻结状态
+            -1=不参与查询
+            1=已冻结
+            2=未冻结
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Tenant.Params.UpdateIsFreezeTenantTenantInput">
+            <summary>
+            通过id修改一个租户的冻结状态得入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateIsFreezeTenantTenantInput.Id">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateIsFreezeTenantTenantInput.IsFreeze">
+            <summary>
+            是否冻结
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateIsFreezeTenantTenantInput.FreezeDes">
+            <summary>
+            冻结描述
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput">
+            <summary>
+            通过id修改一个租户信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.Id">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.Name">
+            <summary>
+            租户名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.StoreKey">
+            <summary>
+            机构的（唯一的等同Id）
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.ContractName">
+            <summary>
+            合同名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.ContractOwnerName">
+            <summary>
+            合同所属人
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.ContractOwnerMobile">
+            <summary>
+            合同所属人电话
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.ContractStartTime">
+            <summary>
+            合同开始时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.ContractEndTime">
+            <summary>
+            合同结束时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.Mobile">
+            <summary>
+            机构的负责人手机号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.StoreLogoUrl">
+            <summary>
+            机构的Logo url
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.Remark">
+            <summary>
+            机构的备注
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.Email">
+            <summary>
+            机构的电子邮箱
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.ManagerId">
+            <summary>
+            机构的系统管理员Id 详见 <see cref="T:EasyIotSharp.Core.Domain.TenantAccount.Soldier"/>
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.VersionTypeId">
+            <summary>
+            版本类型，详见 <see cref="T:Elasticsearch.Net.VersionType"/>
+            1=入门版
+            2=基础版
+            3=旗舰版
+            5=全国版
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.IsFreeze">
+            <summary>
+            是否冻结
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput.FreezeDes">
+            <summary>
+            冻结描述
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Tenant.TenantDto">
+            <summary>
+            代表一个租户实体的“DTO”
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.Name">
+            <summary>
+            租户名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.StoreKey">
+            <summary>
+            机构的（唯一的等同Id）
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.ContractName">
+            <summary>
+            合同名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.ContractOwnerName">
+            <summary>
+            合同所属人
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.ContractOwnerMobile">
+            <summary>
+            合同所属人电话
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.ContractStartTime">
+            <summary>
+            合同开始时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.ContractEndTime">
+            <summary>
+            合同结束时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.Mobile">
+            <summary>
+            机构的负责人手机号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.StoreLogoUrl">
+            <summary>
+            机构的Logo url
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.Remark">
+            <summary>
+            机构的备注
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.Email">
+            <summary>
+            机构的电子邮箱
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.ExpiredType">
+            <summary>
+            过期状态
+            0=待授权
+            1=生效
+            2=已过期
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.ManagerId">
+            <summary>
+            机构的系统管理员Id 详见 <see cref="T:EasyIotSharp.Core.Domain.TenantAccount.Soldier"/>
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.VersionTypeId">
+            <summary>
+            版本类型，详见 <see cref="T:Elasticsearch.Net.VersionType"/>
+            1=入门版
+            2=基础版
+            3=旗舰版
+            5=全国版
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.IsFreeze">
+            <summary>
+            是否冻结
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.FreezeDes">
+            <summary>
+            冻结描述
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.Watchmen.Params.GetUserTokenInput">
@@ -1659,8 +1971,21 @@
         </member>
         <member name="T:EasyIotSharp.Core.Repositories.Tenant.ITenantRepository">
             <summary>
-            
+            租户仓储接口类
             </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Tenant.ITenantRepository.Query(System.String,System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            通过条件分页查询租户列表
+            </summary>
+            <param name="keyword">租户名称</param>
+            <param name="expiredType">-1=不参与查询 0=待授权 1=生效 2=已过期</param>
+            <param name="contractStartTime">合同开始日期</param>
+            <param name="contractEndTime">合同结束日期</param>
+            <param name="isFreeze">-1=不参与查询 1=已冻结 2=未冻结</param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条</param>
+            <returns></returns>
         </member>
         <member name="T:EasyIotSharp.Core.Services.APIProvider.IWatchmenAPIService">
             <summary>
@@ -1822,9 +2147,44 @@
             </summary>
             <param name="tenantRepository"></param>
         </member>
+        <member name="M:EasyIotSharp.Core.Services.Tenant.ITenantService.GetTenant(System.Int32)">
+            <summary>
+            通过租户id获取一条租户信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Tenant.ITenantService.QueryTenant(EasyIotSharp.Core.Dto.Tenant.Params.QueryTenantInput)">
+            <summary>
+            通过条件分页查询租户列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.Core.Services.Tenant.ITenantService.InsertTenant(EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput)">
             <summary>
-            添加一个租户
+            添加一个租户信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Tenant.ITenantService.UpdateTenant(EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput)">
+            <summary>
+            通过id修改一个租户信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Tenant.ITenantService.UpdateIsFreezeTenant(EasyIotSharp.Core.Dto.Tenant.Params.UpdateIsFreezeTenantTenantInput)">
+            <summary>
+            通过id修改一个租户的冻结状态
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Tenant.ITenantService.DeleteTenant(EasyIotSharp.Core.Dto.Tenant.Params.DeleteTenantInput)">
+            <summary>
+            通过id删除一个租户信息
             </summary>
             <param name="input"></param>
             <returns></returns>

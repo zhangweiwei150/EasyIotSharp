@@ -6,14 +6,27 @@ using System.Text;
 
 namespace EasyIotSharp.Core.Dto.Tenant.Params
 {
-    public class InsertTenantInput:OperateUserInput
+    /// <summary>
+    /// 通过id修改一个租户信息的入参类
+    /// </summary>
+    public class UpdateTenantInput : OperateUserInput
     {
+        /// <summary>
+        /// 租户id
+        /// </summary>
+        public int Id { get; set; }
+
         /// <summary>
         /// 租户名称
         /// </summary>
-        public string Name { get; set; }
+        public int Name { get; set; }
 
         #region 基本信息
+
+        /// <summary>
+        /// 机构的（唯一的等同Id）
+        /// </summary>
+        public string StoreKey { get; set; }
 
         /// <summary>
         /// 合同名称
@@ -63,6 +76,11 @@ namespace EasyIotSharp.Core.Dto.Tenant.Params
         #endregion 基本信息
 
         #region 版本 / 帐号 / 状态
+
+        /// <summary>
+        /// 机构的系统管理员Id 详见 <see cref="Soldier"/>
+        /// </summary>
+        public int ManagerId { get; set; }
 
         /// <summary>
         /// 版本类型，详见 <see cref="VersionType"/>

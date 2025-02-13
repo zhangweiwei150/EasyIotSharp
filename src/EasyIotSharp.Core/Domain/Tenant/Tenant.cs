@@ -77,11 +77,6 @@ namespace EasyIotSharp.Core.Domain.Tenant
         #region 版本 / 帐号 / 状态
 
         /// <summary>
-        /// 过期时间
-        /// </summary>
-        public DateTime ExpiredTime { get; set; }
-
-        /// <summary>
         /// 机构的系统管理员Id 详见 <see cref="Soldier"/>
         /// </summary>
         public int ManagerId { get; set; }
