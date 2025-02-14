@@ -9,7 +9,59 @@
             获取用户标识
             </summary>
         </member>
-        <member name="M:EasyIotSharp.API.Controllers.TenantController.GetTenant(System.Int32)">
+        <member name="T:EasyIotSharp.API.Controllers.TenantAccountController">
+            <summary>
+            租户账号控制器
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.GetSoldier(System.String)">
+            <summary>
+            通过id获取一条用户信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.QuerySoldier(EasyIotSharp.Core.Dto.TenantAccount.Params.QuerySoldierInput)">
+            <summary>
+            通过条件分页查询用户列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.InsertSoldier(EasyIotSharp.Core.Dto.TenantAccount.Params.InsertSoldierInput)">
+            <summary>
+            添加一条用户信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.UpdateSoldier(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateSoldierInput)">
+            <summary>
+            通过id修改一条用户信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.UpdateSoldierIsEnable(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateSoldierIsEnableInput)">
+            <summary>
+            通过id修改一条用户信息的启用状态
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.DeleteSoldier(EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteSoldierInput)">
+            <summary>
+            通过id删除一条用户信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.API.Controllers.TenantController">
+            <summary>
+            租户控制器
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantController.GetTenant(System.String)">
              <summary>
             通过租户id获取一条租户信息
              </summary>

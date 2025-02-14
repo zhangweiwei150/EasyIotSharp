@@ -556,6 +556,8 @@
         <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.IsManager">
             <summary>
             是否管理员
+            1=管理员
+            2=普通用户
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.Mobile">
@@ -666,6 +668,11 @@
         <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.Mobile">
             <summary>
             机构的负责人手机号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.Owner">
+            <summary>
+            机构的负责人姓名
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Domain.Tenant.Tenant.StoreLogoUrl">
@@ -833,6 +840,8 @@
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertSoldierInput.IsManager">
             <summary>
             是否管理员
+            1=管理员
+            2=普通用户
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertSoldierInput.Mobile">
@@ -946,6 +955,8 @@
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.IsManager">
             <summary>
             是否管理员
+            1=管理员
+            2=普通用户
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.Mobile">
@@ -1031,6 +1042,11 @@
         <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.Mobile">
             <summary>
             机构的负责人手机号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.Owner">
+            <summary>
+            机构的负责人姓名
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput.StoreLogoUrl">
@@ -1266,6 +1282,11 @@
         <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.Mobile">
             <summary>
             机构的负责人手机号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.Owner">
+            <summary>
+            机构的负责人姓名
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.StoreLogoUrl">
