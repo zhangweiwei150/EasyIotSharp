@@ -1,5 +1,7 @@
 ﻿using SqlSugar;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using UPrime.Domain.Entities;
 
@@ -93,6 +95,69 @@ namespace EasyIotSharp.Core.Repositories.Mysql
         public virtual async Task<List<TEntity>> GetAllAsync()
         {
             return await _databaseProvider.Client.Queryable<TEntity>().ToListAsync();
+        }
+
+        /// <summary>
+        /// 根据条件查询第一个实体，如果没有则返回默认值
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public virtual async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await _databaseProvider.Client.Queryable<TEntity>().FirstAsync(predicate);
+        }
+
+        /// <summary>
+        /// 根据条件查询是否存在符合条件的实体
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public virtual async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await _databaseProvider.Client.Queryable<TEntity>().AnyAsync(predicate);
+        }
+
+        /// <summary>
+        /// 获取实体的总数
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<int> CountAsync()
+        {
+            return await _databaseProvider.Client.Queryable<TEntity>().CountAsync();
+        }
+
+        /// <summary>
+        /// 根据条件获取实体的总数
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public virtual async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await _databaseProvider.Client.Queryable<TEntity>().CountAsync(predicate);
+        }
+
+        /// <summary>
+        /// 根据条件查询实体列表
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public virtual async Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await _databaseProvider.Client.Queryable<TEntity>().Where(predicate).ToListAsync();
+        }
+
+        /// <summary>
+        /// 分页查询实体列表
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public virtual async Task<List<TEntity>> GetPagedListAsync(Expression<Func<TEntity, bool>> predicate, int pageIndex, int pageSize)
+        {
+            return await _databaseProvider.Client.Queryable<TEntity>()
+                .Where(predicate)
+                .ToPageListAsync(pageIndex, pageSize);
         }
 
         /// <summary>

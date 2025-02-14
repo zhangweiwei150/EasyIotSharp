@@ -43,6 +43,16 @@ namespace EasyIotSharp.Core.Domain
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
+        /// 操作人标识
+        /// </summary>
+        public string OperatorId { get; set; }
+
+        /// <summary>
+        /// 操作人
+        /// </summary>
+        public string OperatorName { get; set; }
+
+        /// <summary>
         /// </summary>
         /// <returns></returns>
         public bool IsTransient()

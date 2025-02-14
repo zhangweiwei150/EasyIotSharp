@@ -438,6 +438,16 @@
             修改时间
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Domain.BaseEntity`1.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.BaseEntity`1.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
         <member name="M:EasyIotSharp.Core.Domain.BaseEntity`1.IsTransient">
             <summary>
             </summary>
@@ -1862,6 +1872,49 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.FirstOrDefaultAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            根据条件查询第一个实体，如果没有则返回默认值
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.AnyAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            根据条件查询是否存在符合条件的实体
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.CountAsync">
+            <summary>
+            获取实体的总数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            根据条件获取实体的总数
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.GetListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            根据条件查询实体列表
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.GetPagedListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int32,System.Int32)">
+            <summary>
+            分页查询实体列表
+            </summary>
+            <param name="predicate"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
         <member name="T:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2">
             <summary>
             
@@ -1921,6 +1974,49 @@
             <summary>
             查询所有实体
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.FirstOrDefaultAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            根据条件查询第一个实体，如果没有则返回默认值
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.AnyAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            根据条件查询是否存在符合条件的实体
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.CountAsync">
+            <summary>
+            获取实体的总数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            根据条件获取实体的总数
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.GetListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            根据条件查询实体列表
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.GetPagedListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int32,System.Int32)">
+            <summary>
+            分页查询实体列表
+            </summary>
+            <param name="predicate"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.Mysql.MySqlRepositoryBase`2.Dispose">
@@ -2135,17 +2231,6 @@
             </summary>
             <param name="fileName"></param>
             <returns></returns>
-        </member>
-        <member name="F:EasyIotSharp.Core.Services.Tenant.Impl.TenantService._tenantRepository">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Tenant.Impl.TenantService.#ctor(EasyIotSharp.Core.Repositories.Tenant.ITenantRepository)">
-            <summary>
-            
-            </summary>
-            <param name="tenantRepository"></param>
         </member>
         <member name="M:EasyIotSharp.Core.Services.Tenant.ITenantService.GetTenant(System.Int32)">
             <summary>

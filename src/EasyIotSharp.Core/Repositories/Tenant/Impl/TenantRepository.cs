@@ -30,7 +30,7 @@ namespace EasyIotSharp.Core.Repositories.Tenant.Impl
                                                                                                      int pageIndex, 
                                                                                                      int pageSize)
         {
-            var sql = "SELECT * FROM Tenants where 1=1 ";
+            var sql = "SELECT * FROM Tenants where 1=1 and IsDelete=false ";
             string whereStr = default;
             if (!string.IsNullOrWhiteSpace(keyword)) 
             {

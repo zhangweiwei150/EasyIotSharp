@@ -9,16 +9,43 @@
             获取用户标识
             </summary>
         </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantController.GetTenant(System.Int32)">
+             <summary>
+            通过租户id获取一条租户信息
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantController.QueryTenant(EasyIotSharp.Core.Dto.Tenant.Params.QueryTenantInput)">
+             <summary>
+            通过条件分页查询租户列表
+             </summary>
+             <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.API.Controllers.TenantController.InsertTenant(EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput)">
             <summary>
-            
+            添加一条租户信息
             </summary>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.API.Controllers.TenantController.GetTenant(EasyIotSharp.Core.Dto.Tenant.Params.InsertTenantInput)">
+        <member name="M:EasyIotSharp.API.Controllers.TenantController.UpdateTenant(EasyIotSharp.Core.Dto.Tenant.Params.UpdateTenantInput)">
             <summary>
-            查询
+            通过id修改一个租户信息
             </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantController.UpdateIsFreezeTenant(EasyIotSharp.Core.Dto.Tenant.Params.UpdateIsFreezeTenantTenantInput)">
+            <summary>
+            通过id修改一个租户的冻结状态
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantController.DeleteTenant(EasyIotSharp.Core.Dto.Tenant.Params.DeleteTenantInput)">
+            <summary>
+            通过id删除一个租户信息
+            </summary>
+            <param name="input"></param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.API.Extensions.GetClientIp(Microsoft.AspNetCore.Http.HttpContext)">

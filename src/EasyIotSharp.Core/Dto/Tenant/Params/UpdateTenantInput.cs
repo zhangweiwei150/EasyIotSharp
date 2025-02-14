@@ -19,7 +19,7 @@ namespace EasyIotSharp.Core.Dto.Tenant.Params
         /// <summary>
         /// 租户名称
         /// </summary>
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         #region 基本信息
 
