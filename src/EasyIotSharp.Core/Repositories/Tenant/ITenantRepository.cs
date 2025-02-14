@@ -8,7 +8,7 @@ namespace EasyIotSharp.Core.Repositories.Tenant
     /// <summary>
     /// 租户仓储接口类
     /// </summary>
-    public interface ITenantRepository: IMySqlRepositoryBase<EasyIotSharp.Core.Domain.Tenant.Tenant, int>
+    public interface ITenantRepository: IMySqlRepositoryBase<EasyIotSharp.Core.Domain.Tenant.Tenant, string>
     {
         /// <summary>
         /// 通过条件分页查询租户列表

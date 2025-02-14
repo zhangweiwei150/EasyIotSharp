@@ -11,12 +11,16 @@ namespace EasyIotSharp.Core.Dto.Tenant
     /// <summary>
     /// 代表一个租户实体的“DTO”
     /// </summary>
-    public class TenantDto : BaseEntity<int>
+    public class TenantDto : BaseEntity<string>
     {
+        /// <summary>
+        /// 租户numId
+        /// </summary>
+        public int NumId { get; set; }
+
         /// <summary>
         /// 租户名称
         /// </summary>
-        [SugarColumn(ColumnDataType = "NVARCHAR(50)")]
         public string Name { get; set; }
 
         #region 基本信息
@@ -55,6 +59,11 @@ namespace EasyIotSharp.Core.Dto.Tenant
         /// 机构的负责人手机号
         /// </summary>
         public string Mobile { get; set; }
+
+        /// <summary>
+        /// 机构的负责人姓名
+        /// </summary>
+        public string Owner { get; set; }
 
         /// <summary>
         /// 机构的Logo url

@@ -46,6 +46,11 @@ namespace EasyIotSharp.Core.Dto.Tenant.Params
         public string Mobile { get; set; }
 
         /// <summary>
+        /// 机构的负责人姓名
+        /// </summary>
+        public string Owner { get; set; }
+
+        /// <summary>
         /// 机构的Logo url
         /// </summary>
         public string StoreLogoUrl { get; set; }

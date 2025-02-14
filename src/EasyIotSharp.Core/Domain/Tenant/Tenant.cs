@@ -12,8 +12,13 @@ namespace EasyIotSharp.Core.Domain.Tenant
     /// 租户表
     /// </summary>
     [SugarTable("Tenants")]
-    public class Tenant: BaseEntity<int>
+    public class Tenant: BaseEntity<string>
     {
+        /// <summary>
+        /// numId
+        /// </summary>
+        public int NumId { get; set; }
+
         /// <summary>
         /// 租户名称
         /// </summary>
@@ -58,6 +63,11 @@ namespace EasyIotSharp.Core.Domain.Tenant
         public string Mobile { get; set; }
 
         /// <summary>
+        /// 机构的负责人姓名
+        /// </summary>
+        public string Owner { get; set; }
+
+        /// <summary>
         /// 机构的Logo url
         /// </summary>
         public string StoreLogoUrl { get; set; }
@@ -79,7 +89,7 @@ namespace EasyIotSharp.Core.Domain.Tenant
         /// <summary>
         /// 机构的系统管理员Id 详见 <see cref="Soldier"/>
         /// </summary>
-        public int ManagerId { get; set; }
+        public string ManagerId { get; set; }
 
         /// <summary>
         /// 版本类型，详见 <see cref="VersionType"/>

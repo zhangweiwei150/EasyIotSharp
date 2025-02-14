@@ -14,7 +14,12 @@ namespace EasyIotSharp.Core.Dto.Tenant.Params
         /// <summary>
         /// 租户id
         /// </summary>
-        public int Id { get; set; }
+        public string Id { get; set; }
+
+        /// <summary>
+        /// 租户numId
+        /// </summary>
+        public int NumId { get; set; }
 
         /// <summary>
         /// 租户名称

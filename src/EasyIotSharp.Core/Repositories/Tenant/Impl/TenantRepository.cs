@@ -11,7 +11,7 @@ namespace EasyIotSharp.Core.Repositories.Tenant.Impl
     /// <summary>
     /// 
     /// </summary>
-    public class TenantRepository : MySqlRepositoryBase<EasyIotSharp.Core.Domain.Tenant.Tenant,int>, ITenantRepository
+    public class TenantRepository : MySqlRepositoryBase<EasyIotSharp.Core.Domain.Tenant.Tenant,string>, ITenantRepository
     {
         /// <summary>
         /// 
@@ -34,7 +34,7 @@ namespace EasyIotSharp.Core.Repositories.Tenant.Impl
             string whereStr = default;
             if (!string.IsNullOrWhiteSpace(keyword)) 
             {
-                whereStr += $" and Name like '{keyword}'";
+                whereStr += $" and Name like '%{keyword}%'";
             }
             if (expiredType>-1)
             {
@@ -84,15 +84,14 @@ namespace EasyIotSharp.Core.Repositories.Tenant.Impl
             {
                 whereStr += $" and IsFreeze={(isFreeze == 1 ? true : false)}";
             }
-            string totalCountSql = "SELECT count(1) FROM Tenants where 1=1 " + whereStr;
+            string totalCountSql = "SELECT count(1) FROM Tenants where 1=1 and IsDelete=false " + whereStr;
             var totalCount = await Client.Ado.GetIntAsync(totalCountSql);
             if (totalCount<=0)
             {
                 return (0, new List<Domain.Tenant.Tenant>());
             }
-            var items = await Client.Ado.SqlQueryAsync<EasyIotSharp.Core.Domain.Tenant.Tenant>(sql);
+            var items = await Client.Ado.SqlQueryAsync<EasyIotSharp.Core.Domain.Tenant.Tenant>(sql + whereStr);
             return (totalCount,items);
         }
-
     }
 }

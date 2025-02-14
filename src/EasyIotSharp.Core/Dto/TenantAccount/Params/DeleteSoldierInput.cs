@@ -9,5 +9,14 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
     /// </summary>
     public class DeleteSoldierInput : OperateUserInput
     {
+        /// <summary>
+        /// id
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// 是否删除 
+        /// </summary>
+        public bool IsDelete { get; set; }
     }
 }

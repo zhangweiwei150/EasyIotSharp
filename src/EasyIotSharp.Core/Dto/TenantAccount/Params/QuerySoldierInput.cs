@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace EasyIotSharp.Core.Dto.TenantAccount.Params
 {
+    /// <summary>
+    /// 通过条件分页查询用户列表的入参类
+    /// </summary>
     public class QuerySoldierInput:PagingInput
     {
         /// <summary>
@@ -22,6 +22,6 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
         /// 1=启用
         /// 2=禁用
         /// </summary>
-        public bool IsEnable { get; set; }
+        public int IsEnable { get; set; }
     }
 }

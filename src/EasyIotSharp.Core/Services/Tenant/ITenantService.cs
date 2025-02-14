@@ -15,7 +15,7 @@ namespace EasyIotSharp.Core.Services.Tenant
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<TenantDto> GetTenant(int id);
+        Task<TenantDto> GetTenant(string id);
 
         /// <summary>
         /// 通过条件分页查询租户列表

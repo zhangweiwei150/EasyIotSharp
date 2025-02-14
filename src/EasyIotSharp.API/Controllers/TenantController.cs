@@ -13,7 +13,9 @@ using UPrime.WebApi;
 
 namespace EasyIotSharp.API.Controllers
 {
-    
+    /// <summary>
+    /// 租户控制器
+    /// </summary>
     public class TenantController : ApiControllerBase
     {
         private readonly ITenantService _tenantService;
@@ -28,8 +30,7 @@ namespace EasyIotSharp.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("/Tenant/Get")]
-        [Authorize]
-        public async Task<UPrimeResponse<TenantDto>> GetTenant(int id)
+        public async Task<UPrimeResponse<TenantDto>> GetTenant(string id)
         {
             UPrimeResponse<TenantDto> res = new UPrimeResponse<TenantDto>();
             res.Result= await _tenantService.GetTenant(id);
@@ -41,7 +42,6 @@ namespace EasyIotSharp.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("/Tenant/Query")]
-        [Authorize]
         public async Task<UPrimeResponse<PagedResultDto<TenantDto>>> QueryTenant([FromBody] QueryTenantInput input)
         {
             UPrimeResponse<PagedResultDto<TenantDto>> res = new UPrimeResponse<PagedResultDto<TenantDto>>();

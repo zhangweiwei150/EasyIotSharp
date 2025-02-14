@@ -3,7 +3,7 @@ using System;
 
 namespace EasyIotSharp.Core.Dto.TenantAccount
 {
-    public class SoldierDto : BaseEntity<int>
+    public class SoldierDto : BaseEntity<string>
     {
         /// <summary>
         /// 租户id
@@ -17,6 +17,8 @@ namespace EasyIotSharp.Core.Dto.TenantAccount
 
         /// <summary>
         /// 是否管理员
+        /// 1=管理员
+        /// 2=普通用户
         /// </summary>
         public int IsManager { get; set; }
 
@@ -59,10 +61,5 @@ namespace EasyIotSharp.Core.Dto.TenantAccount
         /// 最后一次登录时间
         /// </summary>
         public DateTime? LastLoginTime { get; set; }
-
-        /// <summary>
-        /// 过期时间
-        /// </summary>
-        public DateTime? ExpiredTime { get; set; }
     }
 }

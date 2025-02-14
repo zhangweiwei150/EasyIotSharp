@@ -9,12 +9,12 @@ namespace EasyIotSharp.Core.Domain.TenantAccount
     /// 租户用户表
     /// </summary>
     [SugarTable("Soldiers")]
-    public class Soldier : BaseEntity<int>
+    public class Soldier : BaseEntity<string>
     {
         /// <summary>
-        /// 租户id
+        /// 租户numId
         /// </summary>
-        public int TenantId { get; set; }
+        public int TenantNumId { get; set; }
 
         /// <summary>
         /// 是否admin(超级管理员，没有租户限制)
@@ -23,6 +23,8 @@ namespace EasyIotSharp.Core.Domain.TenantAccount
 
         /// <summary>
         /// 是否管理员
+        /// 1=管理员
+        /// 2=普通用户
         /// </summary>
         public int IsManager { get; set; }
 
@@ -65,10 +67,5 @@ namespace EasyIotSharp.Core.Domain.TenantAccount
         /// 最后一次登录时间
         /// </summary>
         public DateTime? LastLoginTime { get; set; }
-
-        /// <summary>
-        /// 过期时间
-        /// </summary>
-        public DateTime? ExpiredTime { get; set; }
     }
 }
