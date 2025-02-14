@@ -10,6 +10,8 @@ using UPrime.AutoMapper;
 using EasyIotSharp.Core.Repositories.Tenant;
 using EasyIotSharp.Core.Domain.TenantAccount;
 using EasyIotSharp.Core.Extensions;
+using static EasyIotSharp.Core.GlobalConsts;
+using EasyIotSharp.Core.Dto.Tenant;
 
 namespace EasyIotSharp.Core.Services.TenantAccount.Impl
 {
@@ -29,6 +31,56 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
         {
             var info = await _soldierRepository.FirstOrDefaultAsync(x => x.IsDelete == false && x.Id == id);
             return info.MapTo<SoldierDto>();
+        }
+
+        public async Task<ValidateSoldierOutput> ValidateSoldier(ValidateSoldierInput input)
+        {
+            ValidateSoldierOutput res = new ValidateSoldierOutput();
+            input.Mobile = input.Mobile.Trim();
+            input.Password = input.Password.Trim();
+
+            input.Password = AESHelper.Decrypt(input.Password, AES_KEY.Key);
+            var md5Password = input.Password.Md5();
+
+            //有同时存在不同的机构，不同职位同一个手机号的情况
+            var user = await _soldierRepository.FirstOrDefaultAsync(x => x.Mobile == input.Mobile && x.Password == md5Password && x.IsDelete == false);
+            if (user.IsNull())
+            {
+                res.Status = ValidateSoldierStatus.InvalidNameOrPassword;
+                return res;
+            }
+            if (user.IsEnable==false)
+            {
+                res.Status = ValidateSoldierStatus.SoldiersIsDisable;
+                return res;
+            }
+            var tenant = await _tenantRepository.FirstOrDefaultAsync(x => x.NumId == user.TenantNumId);
+            if (tenant.IsNull())
+            {
+                res.Status = ValidateSoldierStatus.TenantIsNotExists;
+            }
+            if (tenant.IsDelete)
+            {
+                res.Status = ValidateSoldierStatus.TenantIsDeleted;
+                return res;
+            }
+            if (tenant.IsFreeze)
+            {
+                res.Status = ValidateSoldierStatus.TenantIsFreeze;
+                return res;
+            }
+            if (tenant.ContractEndTime < DateTime.Now)
+            {
+                res.Status = ValidateSoldierStatus.TenantIsExpired;
+                return res;
+            }
+            user.LastLoginTime = DateTime.Now;
+            //更新登录时间
+            await _soldierRepository.UpdateAsync(user);
+            res.Solider = user.MapTo<SoldierDto>();
+            res.Tenant = tenant.MapTo<TenantDto>();
+            res.Token = TokenExtensions.GenerateToken(res.Solider.Id);
+            return res;
         }
 
         public async Task<PagedResultDto<SoldierDto>> QuerySoldier(QuerySoldierInput input)

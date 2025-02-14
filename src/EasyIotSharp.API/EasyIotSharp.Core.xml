@@ -329,6 +329,11 @@
             RS256公钥
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Configuration.JWTTokenOptions.PrivateKey">
+            <summary>
+            RS256私钥
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Configuration.JWT_User">
             <summary>
             JWT Token解析后的用户对象
@@ -942,6 +947,107 @@
             是否启用
             </summary>
         </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierInput">
+            <summary>
+            用户登录验证的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierInput.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierInput.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierOutput">
+            <summary>
+            用户验证登录的出参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierOutput.Status">
+            <summary>
+            验证状态
+            1=成功
+            2=用户名或密码有误
+            3=账号已禁用
+            21=租户不存在
+            22=租户已被删除
+            23=租户已被冻结
+            24=租户已过期
+            51=登录失败次数过多，账号锁定30分钟
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierOutput.Token">
+            <summary>
+            验证成功后返回的Token信息（包括过期时间）
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierOutput.Solider">
+            <summary>
+            获取的用户信息
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierOutput.Tenant">
+            <summary>
+            获取的租户信息
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierStatus">
+            <summary>
+            验证状态
+            1=成功
+            2=用户名或密码有误
+            3=账号已禁用
+            21=租户不存在
+            22=租户已被删除
+            23=租户已被冻结
+            24=租户已过期
+            51=登录失败次数过多，账号锁定30分钟
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierStatus.Success">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierStatus.InvalidNameOrPassword">
+            <summary>
+            用户名或密码有误
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierStatus.SoldiersIsDisable">
+            <summary>
+            账号已禁用
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierStatus.TenantIsNotExists">
+            <summary>
+            租户不存在
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierStatus.TenantIsDeleted">
+            <summary>
+            租户已被删除
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierStatus.TenantIsFreeze">
+            <summary>
+            租户已被冻结
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierStatus.TenantIsExpired">
+            <summary>
+            租户已过期
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierStatus.SoldiersLock">
+            <summary>
+            登录失败次数过多，账号锁定30分钟
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.TenantId">
             <summary>
             租户id
@@ -1400,6 +1506,27 @@
             <summary>
             </summary>
         </member>
+        <member name="T:EasyIotSharp.Core.Extensions.AESHelper">
+            <summary>
+            AES加密解密
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.AESHelper.Encrypt(System.String,System.String)">
+            <summary>
+            使用AES加密字符串
+            </summary>
+            <param name="content">加密内容</param>
+            <param name="key">秘钥</param>
+            <returns>Base64字符串结果</returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Extensions.AESHelper.Decrypt(System.String,System.String)">
+            <summary>
+            使用AES解密字符串
+            </summary>
+            <param name="content">内容</param>
+            <param name="key">秘钥</param>
+            <returns>UTF8解密结果</returns>
+        </member>
         <member name="M:EasyIotSharp.Core.Extensions.ConfigurationExtensions.GetEnvFromArgs(System.String[])">
             <summary>
             从CMD获取当前指定环境的模式
@@ -1732,6 +1859,14 @@
             <param name="identity"></param>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.Core.Extensions.TokenExtensions.GenerateToken(System.String,System.Int32)">
+            <summary>
+            生成 JWT Token
+            </summary>
+            <param name="userId">用户 ID</param>
+            <param name="expireMinutes">过期时间（分钟）默认七天</param>
+            <returns>生成的 Token</returns>
+        </member>
         <member name="T:EasyIotSharp.Core.GlobalConsts">
             <summary>
             全局的常量
@@ -1858,6 +1993,11 @@
         </member>
         <member name="F:EasyIotSharp.Core.GlobalConsts.PageSizeNums._1000">
             <summary>每页1000条</summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.GlobalConsts.AES_KEY">
+            <summary>
+            AES_KEY
+            </summary>
         </member>
         <member name="T:EasyIotSharp.Core.GlobalConsts.KnowHttpMethods">
             <summary>
@@ -2459,6 +2599,13 @@
             通过id获取一条用户信息
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.ISoldierService.ValidateSoldier(EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierInput)">
+            <summary>
+            用户登录验证
+            </summary>
+            <param name="input"></param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Services.TenantAccount.ISoldierService.QuerySoldier(EasyIotSharp.Core.Dto.TenantAccount.Params.QuerySoldierInput)">

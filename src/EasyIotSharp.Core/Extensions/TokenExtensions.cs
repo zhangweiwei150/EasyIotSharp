@@ -1,5 +1,11 @@
 using System.Security.Principal;
 using EasyIotSharp.Core.Configuration;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using Microsoft.IdentityModel.Tokens;
+using EasyIotSharp.Core.Dto.Users;
 
 namespace EasyIotSharp.Core.Extensions
 {
@@ -13,6 +19,63 @@ namespace EasyIotSharp.Core.Extensions
         public static UserTokenData GetUserTokenIdentifier(this IIdentity identity)
         {
             return (identity as UserTokenIdentity)?.GetIdentifier();
+        }
+
+        /// <summary>
+        /// 生成 JWT Token
+        /// </summary>
+        /// <param name="userId">用户 ID</param>
+        /// <param name="expireMinutes">过期时间（分钟）默认七天</param>
+        /// <returns>生成的 Token</returns>
+        public static UserTokenDto GenerateToken(string userId, int expireMinutes = 10080)
+        {
+            // 1. 定义 Payload
+            var claims = new[]
+            {
+            new Claim("UserId", userId), // 用户 ID
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) // Token ID
+        };
+
+            // 2. 获取 RSA 私钥
+            using var rsa = LoadPrivateKeyFromPem(JWTTokenOptions.PrivateKey);
+
+            // 3. 定义签名凭证
+            var credentials = new SigningCredentials(
+                new RsaSecurityKey(rsa),
+                SecurityAlgorithms.RsaSsaPssSha256 // 使用 RS256 算法
+            );
+
+            // 4. 定义 Token 描述
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.AddMinutes(expireMinutes), // 过期时间
+                SigningCredentials = credentials
+            };
+
+            // 5. 生成 Token
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            // 6. 返回生成的 Token
+            return new UserTokenDto() { AccessToken = tokenHandler.WriteToken(token), ExpirationTime = DateTime.UtcNow.AddMinutes(expireMinutes) };
+        }
+        public static RSA LoadPrivateKeyFromPem(string pem)
+        {
+            // 去掉 PEM 文件的头和尾
+            var base64 = pem
+                .Replace("-----BEGIN RSA PRIVATE KEY-----", "")
+                .Replace("-----END RSA PRIVATE KEY-----", "")
+                .Replace("\n", "")
+                .Replace("\r", "");
+
+            // 解码 Base64
+            var privateKeyBytes = Convert.FromBase64String(base64);
+
+            // 导入私钥
+            var rsa = RSA.Create();
+            rsa.ImportRSAPrivateKey(privateKeyBytes, out _);
+            return rsa;
         }
     }
 }

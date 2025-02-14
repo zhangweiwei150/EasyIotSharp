@@ -10,13 +10,19 @@ namespace EasyIotSharp.Core.Configuration
     {
         static JWTTokenOptions()
         {
-            PublicKey = File.ReadAllText("Config/watchmen_public.key");
+            PublicKey = File.ReadAllText("Config/token_public_key.pem");
+            PrivateKey = File.ReadAllText("Config/token_private_key.pem");
         }
 
         /// <summary>
         /// RS256公钥
         /// </summary>
         public static string PublicKey { get; set; }
+
+        /// <summary>
+        /// RS256私钥
+        /// </summary>
+        public static string PrivateKey { get; set; }
     }
 
     /// <summary>

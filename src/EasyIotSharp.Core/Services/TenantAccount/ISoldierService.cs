@@ -18,6 +18,13 @@ namespace EasyIotSharp.Core.Services.TenantAccount
         Task<SoldierDto> GetSoldier(string id);
 
         /// <summary>
+        /// 用户登录验证
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<ValidateSoldierOutput> ValidateSoldier(ValidateSoldierInput input);
+
+        /// <summary>
         /// 通过条件分页查询用户列表
         /// </summary>
         /// <param name="input"></param>

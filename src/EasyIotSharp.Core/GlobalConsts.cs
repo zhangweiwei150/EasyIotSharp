@@ -206,6 +206,18 @@ namespace EasyIotSharp.Core
 
         #endregion 分页查询页大小定义
 
+        #region AES
+
+        /// <summary>
+        /// AES_KEY
+        /// </summary>
+        public static class AES_KEY
+        {
+            public const string Key = "EwuuGgRrQVRfdY95EsvhWjKqW7zrM8YJ";
+        }
+
+        #endregion AES
+
 
         /// <summary>
         /// 定义http请求方式

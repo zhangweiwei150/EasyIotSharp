@@ -21,6 +21,13 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.ValidateSoldier(EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierInput)">
+            <summary>
+            用户登录验证
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.QuerySoldier(EasyIotSharp.Core.Dto.TenantAccount.Params.QuerySoldierInput)">
             <summary>
             通过条件分页查询用户列表

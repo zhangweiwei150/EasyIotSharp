@@ -291,3 +291,18 @@ DEBUG 2025-02-15 02:34:37,928 [1    ] UPrime.Modules.UPrimeModuleManager       -
 DEBUG 2025-02-15 02:34:37,930 [1    ] UPrime.Modules.UPrimeModuleManager       - 9 modules loaded.
 DEBUG 2025-02-15 02:34:41,654 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - Found 0 classes define auto mapping attributes
 DEBUG 2025-02-15 02:34:42,760 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化完成.
+DEBUG 2025-02-15 04:43:47,353 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化中.
+DEBUG 2025-02-15 04:43:47,520 [1    ] UPrime.Modules.UPrimeModuleManager       - Loading UPrime modules...
+DEBUG 2025-02-15 04:43:47,789 [1    ] UPrime.Modules.UPrimeModuleManager       - Found 9 UPrime modules in total.
+DEBUG 2025-02-15 04:43:47,793 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.API.EasyIotSharpAPICoreModule, EasyIotSharp.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-15 04:43:47,795 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.Core.EasyIotSharpCoreModule, EasyIotSharp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-15 04:43:47,795 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.UPrimeLeadershipModule, UPrime, Version=2.6.27.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-15 04:43:47,796 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.Runtime.Caching.Redis.UPrimeRedisCacheModule, UPrime.RedisCache, Version=2.4.12.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-15 04:43:47,796 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.AutoMapper.UPrimeAutoMapperModule, UPrime.AutoMapper, Version=2.2.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-15 04:43:47,797 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Weixin.UPrimeSDKWeixinModule, UPrime.SDK.Weixin, Version=2.2.6.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-15 04:43:47,797 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UPrimeSDKModule, UPrime.SDK, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-15 04:43:47,798 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UCloudUFile.UPrimeSDKUCloudUFileModule, UPrime.SDK.UCloudUFile, Version=2.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-15 04:43:47,798 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Sms.UPrimeSDKSmsModule, UPrime.SDK.Sms, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-15 04:43:47,800 [1    ] UPrime.Modules.UPrimeModuleManager       - 9 modules loaded.
+DEBUG 2025-02-15 04:43:50,808 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - Found 0 classes define auto mapping attributes
+DEBUG 2025-02-15 04:43:51,725 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化完成.

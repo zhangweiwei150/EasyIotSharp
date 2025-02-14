@@ -38,6 +38,19 @@ namespace EasyIotSharp.API.Controllers
         }
 
         /// <summary>
+        /// 用户登录验证
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/TenantAccount/Soldier/Validate")]
+        public async Task<UPrimeResponse<ValidateSoldierOutput>> ValidateSoldier([FromBody] ValidateSoldierInput input)
+        {
+            UPrimeResponse<ValidateSoldierOutput> res = new UPrimeResponse<ValidateSoldierOutput>();
+            res.Result = await _soldierService.ValidateSoldier(input);
+            return res;
+        }
+
+        /// <summary>
         /// 通过条件分页查询用户列表
         /// </summary>
         /// <param name="input"></param>
