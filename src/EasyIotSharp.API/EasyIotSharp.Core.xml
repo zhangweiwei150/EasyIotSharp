@@ -578,29 +578,14 @@
             是否测试
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.PictureId">
-            <summary>
-            照片Id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.PictureUrl">
-            <summary>
-            照片路径
-            </summary>
-        </member>
         <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.Sex">
             <summary>
             姓别：1=男，2=女，-1 = 不选
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.IdCard">
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.IsEnable">
             <summary>
-            身份证号
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.IdCardPicUrl">
-            <summary>
-            身份证照路径
+            是否启用
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Soldier.Email">
@@ -813,6 +798,104 @@
         <member name="P:EasyIotSharp.Core.Dto.PagingInput.PageSize">
             <summary>
             页大小
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteSoldierInput">
+            <summary>
+            通过id删除一条用户信息的入参类
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertSoldierInput">
+            <summary>
+            添加一条用户信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QuerySoldierInput.TenantId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QuerySoldierInput.Keyword">
+            <summary>
+            手机号/用户名
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QuerySoldierInput.IsEnable">
+            <summary>
+            是否启用
+            -1=不参与查询
+            1=启用
+            2=禁用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateSoldierInput">
+            <summary>
+            通过id修改一条用户信息的入参类
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateSoldierIsEnableInput">
+            <summary>
+            根据id修改用户的是否启用状态的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.TenantId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.IsSuperAdmin">
+            <summary>
+            是否admin(超级管理员，没有租户限制)
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.IsManager">
+            <summary>
+            是否管理员
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.Username">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.IsTest">
+            <summary>
+            是否测试
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.Sex">
+            <summary>
+            姓别：1=男，2=女，-1 = 不选
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.LastLoginTime">
+            <summary>
+            最后一次登录时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.ExpiredTime">
+            <summary>
+            过期时间
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Tenant.Params.DeleteTenantInput.Id">
@@ -2230,6 +2313,48 @@
             从临时文件夹删除文件
             </summary>
             <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.ISoldierService.GetSoldier(System.Int32)">
+            <summary>
+            通过id获取一条用户信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.ISoldierService.QuerySoldier(EasyIotSharp.Core.Dto.TenantAccount.Params.QuerySoldierInput)">
+            <summary>
+            通过条件分页查询用户列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.ISoldierService.InsertSoldier(EasyIotSharp.Core.Dto.TenantAccount.Params.InsertSoldierInput)">
+            <summary>
+            添加一条用户信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.ISoldierService.UpdateSoldier(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateSoldierInput)">
+            <summary>
+            通过id修改一条用户信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.ISoldierService.UpdateSoldierIsEnable(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateSoldierIsEnableInput)">
+            <summary>
+            通过id修改一条用户信息的启用状态
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.ISoldierService.DeleteSoldier(EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteSoldierInput)">
+            <summary>
+            通过id删除一条用户信息
+            </summary>
+            <param name="input"></param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Services.Tenant.ITenantService.GetTenant(System.Int32)">

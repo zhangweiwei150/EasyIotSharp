@@ -1,15 +1,9 @@
-﻿using SqlSugar;
+﻿using EasyIotSharp.Core.Domain;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace EasyIotSharp.Core.Domain.TenantAccount
+namespace EasyIotSharp.Core.Dto.TenantAccount
 {
-    /// <summary>
-    /// 租户用户表
-    /// </summary>
-    [SugarTable("Soldiers")]
-    public class Soldier : BaseEntity<int>
+    public class SoldierDto : BaseEntity<int>
     {
         /// <summary>
         /// 租户id
@@ -54,7 +48,7 @@ namespace EasyIotSharp.Core.Domain.TenantAccount
         /// <summary>
         /// 是否启用
         /// </summary>
-        public bool IsEnable{ get; set; }
+        public bool IsEnable { get; set; }
 
         /// <summary>
         /// 邮箱
