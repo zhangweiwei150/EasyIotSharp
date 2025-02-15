@@ -31,6 +31,7 @@ namespace EasyIotSharp.Core.Repositories.Tenant.Impl
                                                                                                      int pageSize)
         {
             var sql = "SELECT * FROM Tenants where 1=1 and IsDelete=false ";
+            string pageStr = $"LIMIT {pageSize} OFFSET ({pageIndex} - 1) * {pageSize}";
             string whereStr = default;
             if (!string.IsNullOrWhiteSpace(keyword)) 
             {
@@ -84,13 +85,14 @@ namespace EasyIotSharp.Core.Repositories.Tenant.Impl
             {
                 whereStr += $" and IsFreeze={(isFreeze == 1 ? true : false)}";
             }
-            string totalCountSql = "SELECT count(1) FROM Tenants where 1=1 and IsDelete=false " + whereStr;
+            string totalCountSql = "SELECT count(1) FROM Tenants where 1=1 and IsDelete=false " + whereStr + pageStr;
             var totalCount = await Client.Ado.GetIntAsync(totalCountSql);
             if (totalCount<=0)
             {
                 return (0, new List<Domain.Tenant.Tenant>());
             }
-            var items = await Client.Ado.SqlQueryAsync<EasyIotSharp.Core.Domain.Tenant.Tenant>(sql + whereStr);
+            string sortStr = " ORDER BY CreationTime DESC";
+            var items = await Client.Ado.SqlQueryAsync<EasyIotSharp.Core.Domain.Tenant.Tenant>(sql + whereStr + sortStr + pageStr);
             return (totalCount,items);
         }
     }

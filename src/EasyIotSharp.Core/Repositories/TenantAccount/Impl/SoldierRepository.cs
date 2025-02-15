@@ -19,13 +19,14 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
 
         }
 
-        public async Task<(int totalCount, List<Soldier> items)> Query(int tenantId, string keyword, int isEnable, int pageIndex, int pageSize)
+        public async Task<(int totalCount, List<Soldier> items)> Query(int tenantNumId, string keyword, int isEnable, int pageIndex, int pageSize)
         {
             var sql = "SELECT * FROM Soldiers where 1=1 and IsDelete=false ";
+            string pageStr = $"LIMIT {pageSize} OFFSET ({pageIndex} - 1) * {pageSize}";
             string whereStr = default;
-            if (tenantId>0)
+            if (tenantNumId > 0)
             {
-                whereStr += $" and TenantId={tenantId}";
+                whereStr += $" and TenantNumId={tenantNumId}";
             }
             if (!string.IsNullOrWhiteSpace(keyword))
             {
@@ -33,15 +34,16 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             }
             if (isEnable > -1)
             {
-                whereStr += $" and IzEnable={(isEnable == 1 ? true : false)}";
+                whereStr += $" and IsEnable={(isEnable == 1 ? true : false)}";
             }
-            string totalCountSql = "SELECT count(1) FROM Soldiers where 1=1 and IsDelete=false " + whereStr;
+            string totalCountSql = "SELECT count(1) FROM Soldiers where 1=1 and IsDelete=false " + whereStr + pageStr;
             var totalCount = await Client.Ado.GetIntAsync(totalCountSql);
             if (totalCount <= 0)
             {
                 return (0, new List<Soldier>());
             }
-            var items = await Client.Ado.SqlQueryAsync<Soldier>(sql + whereStr);
+            string sortStr = " ORDER BY CreationTime DESC";
+            var items = await Client.Ado.SqlQueryAsync<Soldier>(sql + whereStr + sortStr + pageStr);
             return (totalCount, items);
         }
     }

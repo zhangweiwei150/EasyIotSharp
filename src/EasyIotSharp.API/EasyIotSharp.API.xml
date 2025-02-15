@@ -63,6 +63,90 @@
             <param name="input"></param>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.GetMenu(System.String)">
+            <summary>
+            通过id获取一条菜单信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.QueryMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.QueryMenuInput)">
+            <summary>
+            通通过条件分页查询菜单列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.InsertMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput)">
+            <summary>
+            添加一条菜单信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.UpdateMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateMenuInput)">
+            <summary>
+            通过id修改一条菜单信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.UpdateIsEnableMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateIsEnableMenuInput)">
+            <summary>
+            通过od修改一条菜单是否启用状态
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.DeleteMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteMenuInput)">
+            <summary>
+            通过id获取一条菜单信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.GetRoleMenu(System.String)">
+            <summary>
+            通过id获取一条角色菜单信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.QueryRole(EasyIotSharp.Core.Dto.TenantAccount.Params.QueryRoleInput)">
+            <summary>
+            通通过条件分页查询菜单列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.InsertRole(EasyIotSharp.Core.Dto.TenantAccount.Params.InsertRoleInput)">
+            <summary>
+            添加一条角色信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.UpdateRole(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateRoleInput)">
+            <summary>
+            通过id修改一条菜单信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.UpdateIsEnableRole(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateIsEnableRoleInput)">
+            <summary>
+            通通过id修改一条菜单是否启用状态
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.DeleteRole(EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteRoleInput)">
+            <summary>
+            通过id获取一条角色信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="T:EasyIotSharp.API.Controllers.TenantController">
             <summary>
             租户控制器

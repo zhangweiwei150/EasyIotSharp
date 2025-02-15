@@ -463,7 +463,7 @@
             租户菜单表
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Menu.TenantId">
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Menu.TenantNumId">
             <summary>
             租户id
             </summary>
@@ -493,6 +493,14 @@
             菜单路径
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Menu.Type">
+            <summary>
+            类型
+            1=菜单
+            2=路由
+            3=按钮
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Menu.IsEnable">
             <summary>
             是否启用
@@ -503,7 +511,7 @@
             租户角色表
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Role.TenantId">
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Role.TenantNumId">
             <summary>
             租户id
             </summary>
@@ -511,6 +519,11 @@
         <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Role.Name">
             <summary>
             角色名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Role.Remark">
+            <summary>
+            备注
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Role.IsEnable">
@@ -523,14 +536,9 @@
             角色菜单表
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.RoleMenu.TenantId">
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.RoleMenu.TenantNumId">
             <summary>
             租户id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.RoleMenu.SoldierId">
-            <summary>
-            用户id
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Domain.TenantAccount.RoleMenu.RoleId">
@@ -812,6 +820,84 @@
             页大小
             </summary>
         </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.MenuDto">
+            <summary>
+            代表一条菜单的“DTO”
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.ParentId">
+            <summary>
+            父级id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.ParentName">
+            <summary>
+            父级名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.Icon">
+            <summary>
+            菜单图标
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.Url">
+            <summary>
+            菜单路径
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.Type">
+            <summary>
+            类型
+            1=菜单
+            2=路由
+            3=按钮
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteMenuInput">
+            <summary>
+            通过id删除一条菜单信息
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteMenuInput.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteMenuInput.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteRoleInput">
+            <summary>
+            通过id删除一条角色信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteRoleInput.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteRoleInput.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteSoldierInput">
             <summary>
             通过id删除一条用户信息的入参类
@@ -825,6 +911,123 @@
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteSoldierInput.IsDelete">
             <summary>
             是否删除 
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput">
+            <summary>
+            通过id查询一条角色菜单信息的出参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput.Id">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput.Name">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput.Menus">
+            <summary>
+            菜单信息
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput">
+            <summary>
+            添加一条菜单信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput.ParentId">
+            <summary>
+            父级id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput.ParentName">
+            <summary>
+            父级名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput.Icon">
+            <summary>
+            菜单图标
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput.Url">
+            <summary>
+            菜单路径
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput.Type">
+            <summary>
+            类型
+            1=菜单
+            2=路由
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertRoleInput">
+            <summary>
+            添加一条角色信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertRoleInput.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertRoleInput.Name">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertRoleInput.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertRoleInput.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertRoleInput.Menus">
+            <summary>
+            菜单信息
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertSoldierInput">
@@ -879,6 +1082,42 @@
             邮箱
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryMenuInput.Keyword">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryMenuInput.IsEnable">
+            <summary>
+            是否启用
+            -1=不参与查询
+            1=启用
+            2=禁用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryRoleInput">
+            <summary>
+            通过条件查询角色列表的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryRoleInput.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryRoleInput.Keyword">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryRoleInput.IsEnable">
+            <summary>
+            是否启用
+            -1=不参与查询
+            1=启用
+            2=禁用
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.QuerySoldierInput">
             <summary>
             通过条件分页查询用户列表的入参类
@@ -900,6 +1139,106 @@
             -1=不参与查询
             1=启用
             2=禁用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateIsEnableMenuInput">
+            <summary>
+            通过id修改一条菜单信息的是否启用状态的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateIsEnableMenuInput.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateIsEnableMenuInput.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateIsEnableRoleInput">
+            <summary>
+            通过id修改一条角色信息的是否启用状态的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateIsEnableRoleInput.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateIsEnableRoleInput.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateMenuInput">
+            <summary>
+            通过id修改一条菜单信息
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateMenuInput.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateMenuInput.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateMenuInput.Icon">
+            <summary>
+            菜单图标
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateMenuInput.Url">
+            <summary>
+            菜单路径
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateMenuInput.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateRoleInput">
+            <summary>
+            通过id修改一个角色信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateRoleInput.Id">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateRoleInput.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateRoleInput.Name">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateRoleInput.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateRoleInput.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateRoleInput.IsUpdateMenu">
+            <summary>
+            是否修改菜单
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateRoleInput.Menus">
+            <summary>
+            菜单信息
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateSoldierInput">
@@ -1046,6 +1385,26 @@
         <member name="F:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierStatus.SoldiersLock">
             <summary>
             登录失败次数过多，账号锁定30分钟
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.RoleDto.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.RoleDto.Name">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.RoleDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.RoleDto.IsEnable">
+            <summary>
+            是否启用
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.TenantId">
@@ -2375,6 +2734,23 @@
             
             </summary>
         </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.IMenuRepository.Query(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            通过条件分页查询菜单列表
+            </summary>
+            <param name="keyword"></param>
+            <param name="isEnable">-1=不参与查询  1=启用  2=禁用</param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.IMenuRepository.QueryByIds(System.Collections.Generic.List{System.String})">
+            <summary>
+            通过id集合获取菜单列表
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.MenuRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
             <summary>
             
@@ -2405,11 +2781,29 @@
             </summary>
             <param name="databaseProvider"></param>
         </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.IRoleMenuRepository.DeleteManyByRoleId(System.String)">
+            <summary>
+            通过角色id批量删除角色菜单信息
+            </summary>
+            <param name="roleId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.IRoleRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            通过条件分页查询角色列表
+            </summary>
+            <param name="tenantNumId">租户numId</param>
+            <param name="keyword">名字</param>
+            <param name="isEnable">是否启用 -1=不参与查询  1=启用 2=禁用</param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条数据</param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.ISoldierRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
             <summary>
             通过条件分页查询用户列表
             </summary>
-            <param name="tenantId">租户id</param>
+            <param name="tenantNumId">租户id</param>
             <param name="keyword">姓名/手机号</param>
             <param name="isEnable">是否启用 -1=不参与查询 1=启用 2=禁用</param>
             <param name="pageIndex">起始页</param>
@@ -2592,6 +2986,90 @@
             从临时文件夹删除文件
             </summary>
             <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IMenuService.GetMenu(System.String)">
+            <summary>
+            通过id获取一条菜单信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IMenuService.QueryMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.QueryMenuInput)">
+            <summary>
+            通过id获取一条菜单信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IMenuService.InsertMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput)">
+            <summary>
+            添加一条菜单信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IMenuService.UpdateMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateMenuInput)">
+            <summary>
+            通过id修改一条菜单信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IMenuService.UpdateIsEnableMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateIsEnableMenuInput)">
+            <summary>
+            通过id修改一条菜单是否启用状态
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IMenuService.DeleteMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteMenuInput)">
+            <summary>
+            通过id获取一条菜单信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IRoleService.GetRoleMenu(System.String)">
+            <summary>
+            通过id查询一条角色菜单信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IRoleService.QueryRole(EasyIotSharp.Core.Dto.TenantAccount.Params.QueryRoleInput)">
+            <summary>
+            通过条件分页查询角色列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IRoleService.InsertRole(EasyIotSharp.Core.Dto.TenantAccount.Params.InsertRoleInput)">
+            <summary>
+            添加一条角色信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IRoleService.UpdateRole(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateRoleInput)">
+            <summary>
+            通过id修改一条角色信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IRoleService.UpdateIsEnableRole(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateIsEnableRoleInput)">
+            <summary>
+            通过id修改一条菜单是否启用状态
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IRoleService.DeleteRole(EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteRoleInput)">
+            <summary>
+            通过id获取一条角色信息
+            </summary>
+            <param name="input"></param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Services.TenantAccount.ISoldierService.GetSoldier(System.String)">

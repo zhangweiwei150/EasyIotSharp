@@ -1,15 +1,11 @@
-﻿using SqlSugar;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EasyIotSharp.Core.Domain;
 
-namespace EasyIotSharp.Core.Domain.TenantAccount
+namespace EasyIotSharp.Core.Dto.TenantAccount
 {
     /// <summary>
-    /// 租户菜单表
+    /// 代表一条菜单的“DTO”
     /// </summary>
-    [SugarTable("Menus")]
-    public class Menu : BaseEntity<string>
+    public class MenuDto : BaseEntity<string>
     {
         /// <summary>
         /// 租户id
@@ -19,7 +15,7 @@ namespace EasyIotSharp.Core.Domain.TenantAccount
         /// <summary>
         /// 父级id
         /// </summary>
-        public string ParentId{ get; set; }
+        public string ParentId { get; set; }
 
         /// <summary>
         /// 父级名称

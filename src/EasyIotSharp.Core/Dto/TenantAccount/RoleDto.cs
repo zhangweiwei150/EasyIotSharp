@@ -1,15 +1,14 @@
-﻿using SqlSugar;
+﻿using EasyIotSharp.Core.Domain;
+using EasyIotSharp.Core.Domain.TenantAccount;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UPrime.AutoMapper;
 
-namespace EasyIotSharp.Core.Domain.TenantAccount
+namespace EasyIotSharp.Core.Dto.TenantAccount
 {
-    /// <summary>
-    /// 租户角色表
-    /// </summary>
-    [SugarTable("Roles")]
-    public class Role : BaseEntity<string>
+    [AutoMapFrom(typeof(Role))]
+    public class RoleDto : BaseEntity<string>
     {
         /// <summary>
         /// 租户id

@@ -1,15 +1,12 @@
-﻿using SqlSugar;
-using System;
+﻿
 using System.Collections.Generic;
-using System.Text;
 
-namespace EasyIotSharp.Core.Domain.TenantAccount
+namespace EasyIotSharp.Core.Dto.TenantAccount.Params
 {
     /// <summary>
-    /// 租户角色表
+    /// 添加一条角色信息的入参类
     /// </summary>
-    [SugarTable("Roles")]
-    public class Role : BaseEntity<string>
+    public class InsertRoleInput:OperateUserInput
     {
         /// <summary>
         /// 租户id
@@ -30,5 +27,10 @@ namespace EasyIotSharp.Core.Domain.TenantAccount
         /// 是否启用
         /// </summary>
         public bool IsEnable { get; set; }
+        
+        /// <summary>
+        /// 菜单信息
+        /// </summary>
+        public List<MenuDto> Menus { get; set; }
     }
 }
