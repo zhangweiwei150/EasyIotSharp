@@ -4,7 +4,7 @@ using EasyIotSharp.Core.Dto.TenantAccount.Params;
 using EasyIotSharp.Core.Repositories.TenantAccount;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using UPrime.AutoMapper;
 using UPrime.Services.Dto;
@@ -14,10 +14,16 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
     public class MenuService : ServiceBase, IMenuService
     {
         private readonly IMenuRepository _menuRepository;
+        private readonly IRoleMenuRepository _roleMenuRepository;
+        private readonly ISoldierRoleRepository _soldierRoleRepository;
 
-        public MenuService(IMenuRepository menuRepository)
+        public MenuService(IMenuRepository menuRepository,
+                           IRoleMenuRepository roleMenuRepository,
+                           ISoldierRoleRepository soldierRoleRepository)
         {
             _menuRepository = menuRepository;
+            _roleMenuRepository = roleMenuRepository;
+            _soldierRoleRepository = soldierRoleRepository;
         }
 
         public async Task<MenuDto> GetMenu(string id)
@@ -32,6 +38,64 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             int totalCount = query.totalCount;
             var list = query.items.MapTo<List<MenuDto>>();
             return new PagedResultDto<MenuDto>() { TotalCount = totalCount, Items = list };
+        }
+
+        public async Task<List<QueryMenuBySoldierIdOutput>> QueryMenuBySoldierId(string soldierId)
+        {
+            var soldierRoles = await _soldierRoleRepository.QueryBySoldierId(soldierId);
+            if (soldierRoles.Count<=0)
+            {
+                return new List<QueryMenuBySoldierIdOutput>();
+            }
+            var roleIds = soldierRoles.Select(x => x.RoleId).ToList();
+            var roleMenus = await _roleMenuRepository.QueryByRoleIds(roleIds);
+            if (roleMenus.Count<=0)
+            {
+                return new List<QueryMenuBySoldierIdOutput>();
+            }
+            var menuIds = roleMenus.Select(x => x.MenuId).ToList();
+            var menus = await _menuRepository.QueryByIds(menuIds);
+            if (menus.Count<=0)
+            {
+                return new List<QueryMenuBySoldierIdOutput>();
+            }
+            List<QueryMenuBySoldierIdOutput> output = new List<QueryMenuBySoldierIdOutput>();
+            var firstMenus = menus.Where(x => string.IsNullOrWhiteSpace(x.ParentId)).ToList();
+            foreach (var item in firstMenus)
+            {
+                QueryMenuBySoldierIdOutput model = new QueryMenuBySoldierIdOutput();
+                model.Name = item.Name;
+                model.Icon = item.Icon;
+                model.Url = item.Url;
+                model.Type = item.Type;
+                model.Children = new List<ChildrenMenu>();
+                model.Children = GetChildrenMenus(menus, item.Id); // 递归获取子菜单
+                output.Add(model);
+            }
+            List<ChildrenMenu> GetChildrenMenus(List<Menu> menus, string parentId)
+            {
+                var children = new List<ChildrenMenu>();
+
+                // 获取当前菜单的所有子菜单
+                var childMenus = menus.Where(x => x.ParentId == parentId).ToList();
+
+                // 遍历子菜单，递归构建子菜单树
+                foreach (var item in childMenus)
+                {
+                    var child = new ChildrenMenu
+                    {
+                        Name = item.Name,
+                        Icon = item.Icon,
+                        Url = item.Url,
+                        Type = item.Type,
+                        Children = GetChildrenMenus(menus, item.Id) // 递归获取子菜单的子菜单
+                    };
+                    children.Add(child);
+                }
+
+                return children;
+            }
+            return output;
         }
 
         public async Task InsertMenu(InsertMenuInput input)

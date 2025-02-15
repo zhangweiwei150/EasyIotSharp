@@ -1082,6 +1082,67 @@
             邮箱
             </summary>
         </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryMenuBySoldierIdOutput">
+            <summary>
+            通过用户id查询对应菜单列表的出参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryMenuBySoldierIdOutput.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryMenuBySoldierIdOutput.Icon">
+            <summary>
+            菜单图标
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryMenuBySoldierIdOutput.Url">
+            <summary>
+            菜单路径
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryMenuBySoldierIdOutput.Type">
+            <summary>
+            类型
+            1=菜单
+            2=路由
+            3=按钮
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryMenuBySoldierIdOutput.Children">
+            <summary>
+            子类菜单
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.ChildrenMenu.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.ChildrenMenu.Icon">
+            <summary>
+            菜单图标
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.ChildrenMenu.Url">
+            <summary>
+            菜单路径
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.ChildrenMenu.Type">
+            <summary>
+            类型
+            1=菜单
+            2=路由
+            3=按钮
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.ChildrenMenu.Children">
+            <summary>
+            子类菜单
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryMenuInput.Keyword">
             <summary>
             菜单名称
@@ -2796,6 +2857,13 @@
             </summary>
             <param name="databaseProvider"></param>
         </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.IRoleMenuRepository.QueryByRoleIds(System.Collections.Generic.List{System.String})">
+            <summary>
+            通过角色id集合获取角色菜单列表
+            </summary>
+            <param name="roleIds"></param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.IRoleMenuRepository.DeleteManyByRoleId(System.String)">
             <summary>
             通过角色id批量删除角色菜单信息
@@ -2823,6 +2891,13 @@
             <param name="isEnable">是否启用 -1=不参与查询 1=启用 2=禁用</param>
             <param name="pageIndex">起始页</param>
             <param name="pageSize">每页多少条</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.ISoldierRoleRepository.QueryBySoldierId(System.String)">
+            <summary>
+            通过用户id查询用户角色列表
+            </summary>
+            <param name="soldierId"></param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.ISoldierRoleRepository.DeleteManyBySoldierId(System.String)">
@@ -3022,6 +3097,13 @@
             通过id获取一条菜单信息
             </summary>
             <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IMenuService.QueryMenuBySoldierId(System.String)">
+            <summary>
+            通过用户id获取用户对应的菜单列表
+            </summary>
+            <param name="soldierId"></param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Services.TenantAccount.IMenuService.InsertMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput)">

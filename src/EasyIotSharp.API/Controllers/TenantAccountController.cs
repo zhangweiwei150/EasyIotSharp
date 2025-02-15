@@ -162,6 +162,19 @@ namespace EasyIotSharp.API.Controllers
         }
 
         /// <summary>
+        /// 通过用户id获取用户对应的菜单列表
+        /// </summary>
+        /// <param name="soldierId"></param>
+        /// <returns></returns>
+        [HttpPost("/TenantAccount/Menu/Soldier/Query")]
+        public async Task<UPrimeResponse<List<QueryMenuBySoldierIdOutput>>> QueryMenuBySoldierId(string soldierId)
+        {
+            UPrimeResponse<List<QueryMenuBySoldierIdOutput>> res = new UPrimeResponse<List<QueryMenuBySoldierIdOutput>>();
+            res.Result = await _menuService.QueryMenuBySoldierId(soldierId);
+            return res;
+        }
+
+        /// <summary>
         /// 添加一条菜单信息
         /// </summary>
         /// <param name="input"></param>

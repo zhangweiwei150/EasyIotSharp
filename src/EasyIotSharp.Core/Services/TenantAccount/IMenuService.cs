@@ -25,6 +25,13 @@ namespace EasyIotSharp.Core.Services.TenantAccount
         Task<PagedResultDto<MenuDto>> QueryMenu(QueryMenuInput input);
 
         /// <summary>
+        /// 通过用户id获取用户对应的菜单列表
+        /// </summary>
+        /// <param name="soldierId"></param>
+        /// <returns></returns>
+        Task<List<QueryMenuBySoldierIdOutput>> QueryMenuBySoldierId(string soldierId);
+
+        /// <summary>
         /// 添加一条菜单信息
         /// </summary>
         /// <param name="input"></param>
