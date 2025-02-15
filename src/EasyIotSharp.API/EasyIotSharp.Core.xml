@@ -618,7 +618,7 @@
             用户角色表
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.SoldierRole.TenantId">
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.SoldierRole.TenantNumId">
             <summary>
             租户id
             </summary>
@@ -1284,6 +1284,21 @@
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateSoldierIsEnableInput.IsEnable">
             <summary>
             是否启用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateSoldierRoleInput">
+            <summary>
+            通过用户id修改对应的角色的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateSoldierRoleInput.SoldierId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateSoldierRoleInput.Roles">
+            <summary>
+            角色信息
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.ValidateSoldierInput">
@@ -2810,6 +2825,13 @@
             <param name="pageSize">每页多少条</param>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.ISoldierRoleRepository.DeleteManyBySoldierId(System.String)">
+            <summary>
+            通过用户id批量删除用户角色信息
+            </summary>
+            <param name="soldierId"></param>
+            <returns></returns>
+        </member>
         <member name="T:EasyIotSharp.Core.Repositories.Tenant.Impl.TenantRepository">
             <summary>
             
@@ -3068,6 +3090,13 @@
         <member name="M:EasyIotSharp.Core.Services.TenantAccount.IRoleService.DeleteRole(EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteRoleInput)">
             <summary>
             通过id获取一条角色信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.ISoldierRoleService.UpdateSoldierRole(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateSoldierRoleInput)">
+            <summary>
+            通过用户id修改对应的角色
             </summary>
             <param name="input"></param>
             <returns></returns>

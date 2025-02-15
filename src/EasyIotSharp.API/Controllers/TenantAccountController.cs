@@ -20,12 +20,14 @@ namespace EasyIotSharp.API.Controllers
         private readonly ISoldierService _soldierService;
         private readonly IMenuService _menuService;
         private readonly IRoleService _roleService;
+        private readonly ISoldierRoleService _soldierRoleService;
 
         public TenantAccountController()
         {
             _soldierService = UPrime.UPrimeEngine.Instance.Resolve<ISoldierService>();
             _menuService = UPrime.UPrimeEngine.Instance.Resolve<IMenuService>();
             _roleService = UPrime.UPrimeEngine.Instance.Resolve<IRoleService>();
+            _soldierRoleService= UPrime.UPrimeEngine.Instance.Resolve<ISoldierRoleService>();
         }
 
         #region 用户
@@ -114,6 +116,18 @@ namespace EasyIotSharp.API.Controllers
         public async Task<UPrimeResponse> DeleteSoldier([FromBody] DeleteSoldierInput input)
         {
             await _soldierService.DeleteSoldier(input);
+            return new UPrimeResponse();
+        }
+
+        /// <summary>
+        /// 通过id修改一条用户的角色信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/TenantAccount/Soldier/Role/Update")]
+        public async Task<UPrimeResponse> UpdateSoldierRole([FromBody] UpdateSoldierRoleInput input)
+        {
+            await _soldierRoleService.UpdateSoldierRole(input);
             return new UPrimeResponse();
         }
 

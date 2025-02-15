@@ -63,6 +63,13 @@
             <param name="input"></param>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.UpdateSoldierRole(EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateSoldierRoleInput)">
+            <summary>
+            通过id修改一条用户的角色信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.GetMenu(System.String)">
             <summary>
             通过id获取一条菜单信息

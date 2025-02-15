@@ -1,9 +1,6 @@
 ﻿using EasyIotSharp.Core.Domain.TenantAccount;
 using EasyIotSharp.Core.Repositories.Mysql;
 using EasyIotSharp.Repositories.Mysql;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
@@ -24,6 +21,5 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             var count = await Client.Deleteable<RoleMenu>().Where(x => x.RoleId == roleId).ExecuteCommandAsync();
             return count;
         }
-
     }
 }

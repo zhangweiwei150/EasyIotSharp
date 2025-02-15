@@ -1,13 +1,11 @@
 ﻿using EasyIotSharp.Core.Domain.TenantAccount;
 using EasyIotSharp.Core.Repositories.Mysql;
 using EasyIotSharp.Repositories.Mysql;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
 {
-    public class SoldierRoleRepository : MySqlRepositoryBase<SoldierRole, int>, ISoldierRoleRepository
+    public class SoldierRoleRepository : MySqlRepositoryBase<SoldierRole, string>, ISoldierRoleRepository
     {
         /// <summary>
         /// 
@@ -16,6 +14,12 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
         public SoldierRoleRepository(SqlSugarDatabaseProvider databaseProvider) : base(databaseProvider)
         {
 
+        }
+
+        public async Task<int> DeleteManyBySoldierId(string soldierId)
+        {
+            var count = await Client.Deleteable<SoldierRole>().Where(x => x.SoldierId == soldierId).ExecuteCommandAsync();
+            return count;
         }
     }
 }
