@@ -745,3 +745,71 @@ DEBUG 2025-02-16 18:44:46,869 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule -
 DEBUG 2025-02-16 18:44:46,869 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.RoleDto
 DEBUG 2025-02-16 18:44:46,871 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput
 DEBUG 2025-02-16 18:44:47,442 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化完成.
+DEBUG 2025-02-16 19:11:47,075 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化中.
+DEBUG 2025-02-16 19:11:47,119 [1    ] UPrime.Modules.UPrimeModuleManager       - Loading UPrime modules...
+DEBUG 2025-02-16 19:11:47,246 [1    ] UPrime.Modules.UPrimeModuleManager       - Found 9 UPrime modules in total.
+DEBUG 2025-02-16 19:11:47,257 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.API.EasyIotSharpAPICoreModule, EasyIotSharp.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:11:47,259 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.Core.EasyIotSharpCoreModule, EasyIotSharp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:11:47,260 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.UPrimeLeadershipModule, UPrime, Version=2.6.27.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:11:47,263 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.Runtime.Caching.Redis.UPrimeRedisCacheModule, UPrime.RedisCache, Version=2.4.12.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:11:47,264 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.AutoMapper.UPrimeAutoMapperModule, UPrime.AutoMapper, Version=2.2.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:11:47,265 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Weixin.UPrimeSDKWeixinModule, UPrime.SDK.Weixin, Version=2.2.6.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:11:47,265 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UPrimeSDKModule, UPrime.SDK, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:11:47,266 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UCloudUFile.UPrimeSDKUCloudUFileModule, UPrime.SDK.UCloudUFile, Version=2.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:11:47,266 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Sms.UPrimeSDKSmsModule, UPrime.SDK.Sms, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:11:47,268 [1    ] UPrime.Modules.UPrimeModuleManager       - 9 modules loaded.
+DEBUG 2025-02-16 19:11:48,885 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - Found 2 classes define auto mapping attributes
+DEBUG 2025-02-16 19:11:48,885 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.RoleDto
+DEBUG 2025-02-16 19:11:48,887 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput
+DEBUG 2025-02-16 19:11:49,434 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化完成.
+DEBUG 2025-02-16 19:14:58,187 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化中.
+DEBUG 2025-02-16 19:14:58,228 [1    ] UPrime.Modules.UPrimeModuleManager       - Loading UPrime modules...
+DEBUG 2025-02-16 19:14:58,275 [1    ] UPrime.Modules.UPrimeModuleManager       - Found 9 UPrime modules in total.
+DEBUG 2025-02-16 19:14:58,279 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.API.EasyIotSharpAPICoreModule, EasyIotSharp.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:14:58,281 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.Core.EasyIotSharpCoreModule, EasyIotSharp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:14:58,281 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.UPrimeLeadershipModule, UPrime, Version=2.6.27.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:14:58,281 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.Runtime.Caching.Redis.UPrimeRedisCacheModule, UPrime.RedisCache, Version=2.4.12.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:14:58,282 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.AutoMapper.UPrimeAutoMapperModule, UPrime.AutoMapper, Version=2.2.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:14:58,282 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Weixin.UPrimeSDKWeixinModule, UPrime.SDK.Weixin, Version=2.2.6.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:14:58,282 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UPrimeSDKModule, UPrime.SDK, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:14:58,283 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UCloudUFile.UPrimeSDKUCloudUFileModule, UPrime.SDK.UCloudUFile, Version=2.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:14:58,283 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Sms.UPrimeSDKSmsModule, UPrime.SDK.Sms, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:14:58,285 [1    ] UPrime.Modules.UPrimeModuleManager       - 9 modules loaded.
+DEBUG 2025-02-16 19:14:59,756 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - Found 2 classes define auto mapping attributes
+DEBUG 2025-02-16 19:14:59,756 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.RoleDto
+DEBUG 2025-02-16 19:14:59,758 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput
+DEBUG 2025-02-16 19:15:00,310 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化完成.
+DEBUG 2025-02-16 19:17:26,725 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化中.
+DEBUG 2025-02-16 19:17:26,779 [1    ] UPrime.Modules.UPrimeModuleManager       - Loading UPrime modules...
+DEBUG 2025-02-16 19:17:26,843 [1    ] UPrime.Modules.UPrimeModuleManager       - Found 9 UPrime modules in total.
+DEBUG 2025-02-16 19:17:26,847 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.API.EasyIotSharpAPICoreModule, EasyIotSharp.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:17:26,851 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.Core.EasyIotSharpCoreModule, EasyIotSharp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:17:26,852 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.UPrimeLeadershipModule, UPrime, Version=2.6.27.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:17:26,853 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.Runtime.Caching.Redis.UPrimeRedisCacheModule, UPrime.RedisCache, Version=2.4.12.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:17:26,853 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.AutoMapper.UPrimeAutoMapperModule, UPrime.AutoMapper, Version=2.2.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:17:26,854 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Weixin.UPrimeSDKWeixinModule, UPrime.SDK.Weixin, Version=2.2.6.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:17:26,854 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UPrimeSDKModule, UPrime.SDK, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:17:26,854 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UCloudUFile.UPrimeSDKUCloudUFileModule, UPrime.SDK.UCloudUFile, Version=2.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:17:26,855 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Sms.UPrimeSDKSmsModule, UPrime.SDK.Sms, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:17:26,857 [1    ] UPrime.Modules.UPrimeModuleManager       - 9 modules loaded.
+DEBUG 2025-02-16 19:17:28,339 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - Found 2 classes define auto mapping attributes
+DEBUG 2025-02-16 19:17:28,339 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.RoleDto
+DEBUG 2025-02-16 19:17:28,341 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput
+DEBUG 2025-02-16 19:17:28,945 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化完成.
+DEBUG 2025-02-16 19:19:55,821 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化中.
+DEBUG 2025-02-16 19:19:55,865 [1    ] UPrime.Modules.UPrimeModuleManager       - Loading UPrime modules...
+DEBUG 2025-02-16 19:19:55,914 [1    ] UPrime.Modules.UPrimeModuleManager       - Found 9 UPrime modules in total.
+DEBUG 2025-02-16 19:19:55,918 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.API.EasyIotSharpAPICoreModule, EasyIotSharp.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:19:55,919 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.Core.EasyIotSharpCoreModule, EasyIotSharp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:19:55,920 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.UPrimeLeadershipModule, UPrime, Version=2.6.27.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:19:55,920 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.Runtime.Caching.Redis.UPrimeRedisCacheModule, UPrime.RedisCache, Version=2.4.12.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:19:55,921 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.AutoMapper.UPrimeAutoMapperModule, UPrime.AutoMapper, Version=2.2.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:19:55,921 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Weixin.UPrimeSDKWeixinModule, UPrime.SDK.Weixin, Version=2.2.6.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:19:55,921 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UPrimeSDKModule, UPrime.SDK, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:19:55,921 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UCloudUFile.UPrimeSDKUCloudUFileModule, UPrime.SDK.UCloudUFile, Version=2.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:19:55,921 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Sms.UPrimeSDKSmsModule, UPrime.SDK.Sms, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-02-16 19:19:55,923 [1    ] UPrime.Modules.UPrimeModuleManager       - 9 modules loaded.
+DEBUG 2025-02-16 19:19:57,366 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - Found 2 classes define auto mapping attributes
+DEBUG 2025-02-16 19:19:57,366 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.RoleDto
+DEBUG 2025-02-16 19:19:57,368 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput
+DEBUG 2025-02-16 19:19:57,931 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化完成.
