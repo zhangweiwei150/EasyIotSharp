@@ -51,7 +51,7 @@ namespace EasyIotSharp.Core.Services.Tenant.Impl
             string managerId = await _soldierService.InsertSoldier(new InsertSoldierInput()
             {
                 TenantNumId = numId,
-                IsSuperAdmin=false,
+                IsSuperAdmin=true,
                 IsManager=1,
                 Mobile=input.Mobile,
                 Username=input.Owner,

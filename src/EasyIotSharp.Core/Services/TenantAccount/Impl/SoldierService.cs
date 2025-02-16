@@ -122,7 +122,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             model.IsManager = input.IsManager;
             model.Mobile = input.Mobile;
             model.Username = input.Username;
-            model.Password = 6.GenerateRadomPassword().Md5();
+            model.Password = "123456".Md5();
             model.IsTest = false;
             model.Sex = input.Sex;
             model.IsEnable = true;

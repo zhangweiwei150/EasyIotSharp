@@ -54,7 +54,6 @@ namespace EasyIotSharp.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("/Tenant/Insert")]
-        [Authorize]
         public async Task<UPrimeResponse> InsertTenant([FromBody]InsertTenantInput input)
         {
             await _tenantService.InsertTenant(input);

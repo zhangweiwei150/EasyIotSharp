@@ -18,7 +18,7 @@ namespace EasyIotSharp.Core.Domain
             UpdatedAt = DateTime.Now;
         }
 
-        [SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
+        [SugarColumn(IsPrimaryKey = true)]
         public TPrimaryKey Id { get; set; }
 
         /// <summary>
