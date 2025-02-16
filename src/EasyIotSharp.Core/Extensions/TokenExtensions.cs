@@ -37,7 +37,7 @@ namespace EasyIotSharp.Core.Extensions
         };
 
             // 2. 获取 RSA 私钥
-            using var rsa = LoadPrivateKeyFromPem(JWTTokenOptions.PrivateKey);
+            var rsa = GetCachedPrivateKey();
 
             // 3. 定义签名凭证
             var credentials = new SigningCredentials(
@@ -76,6 +76,16 @@ namespace EasyIotSharp.Core.Extensions
             var rsa = RSA.Create();
             rsa.ImportPkcs8PrivateKey(privateKeyBytes, out _);
             return rsa;
+        }
+
+        private static readonly Lazy<RSA> _rsaPrivateKey = new Lazy<RSA>(() =>
+        {
+            return LoadPrivateKeyFromPem(JWTTokenOptions.PrivateKey);
+        });
+
+        public static RSA GetCachedPrivateKey()
+        {
+            return _rsaPrivateKey.Value;
         }
     }
 }

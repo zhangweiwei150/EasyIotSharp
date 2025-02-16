@@ -1,4 +1,5 @@
-﻿using EasyIotSharp.Core.Dto.TenantAccount;
+﻿using EasyIotSharp.API.Filters;
+using EasyIotSharp.Core.Dto.TenantAccount;
 using EasyIotSharp.Core.Dto.TenantAccount.Params;
 using EasyIotSharp.Core.Services.TenantAccount;
 using Microsoft.AspNetCore.Http;
@@ -38,10 +39,11 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Soldier/Get")]
-        public async Task<UPrimeResponse<SoldierDto>> GetSoldier(string id)
+        [Authorize]
+        public async Task<UPrimeResponse<SoldierDto>> GetSoldier()
         {
             UPrimeResponse<SoldierDto> res = new UPrimeResponse<SoldierDto>();
-            res.Result = await _soldierService.GetSoldier(id);
+            res.Result = await _soldierService.GetSoldier(TokenUserId);
             return res;
         }
 

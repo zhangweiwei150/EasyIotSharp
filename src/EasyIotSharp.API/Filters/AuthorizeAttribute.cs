@@ -28,20 +28,20 @@ namespace EasyIotSharp.API.Filters
 
                     if (token.IsNotNullOrEmpty())
                     {
-                        try
-                        {
+                        //try
+                        //{
                             var json = JsonWebToken<string>.Parse(token.ToString(), sign);
                             var parsedObj = json.DeserializeFromJson<JWT_User>();
                             var nowTimeStamp = ConvertToTimeStamp(DateTime.Now);
                             var nowTimeStamp_10 = Convert.ToInt64(nowTimeStamp.ToString().Substring(0, 10));
                             isExpired = parsedObj.ExpireTime <= nowTimeStamp_10;
                             userId = parsedObj.UserId;
-                        }
-                        catch (Exception ex)
-                        {
-                            //换证书兼容PV4Y，PV4Y只验证了40003跳出登录
-                            throw new BizException(BizError.TOKEN_EXCEPTION);
-                        }
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    //换证书兼容PV4Y，PV4Y只验证了40003跳出登录
+                        //    throw new BizException(BizError.TOKEN_EXCEPTION);
+                        //}
                     }
                     else
                     {
