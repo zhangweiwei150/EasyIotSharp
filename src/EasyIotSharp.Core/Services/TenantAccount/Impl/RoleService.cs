@@ -112,29 +112,32 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             role.OperatorId = input.OperatorId;
             role.OperatorName = input.OperatorName;
             await _roleRepository.UpdateAsync(role);
-            //批量删除老的角色菜单表
-            await _roleMenuRepository.DeleteManyByRoleId(role.Id);
+            if (input.IsUpdateMenu==true)
+            {
+                //批量删除老的角色菜单表
+                await _roleMenuRepository.DeleteManyByRoleId(role.Id);
 
-            //批量添加新的角色菜单表
-            var roleMenuInsertList = new List<RoleMenu>();
-            foreach (var item in input.Menus)
-            {
-                roleMenuInsertList.Add(new RoleMenu()
+                //批量添加新的角色菜单表
+                var roleMenuInsertList = new List<RoleMenu>();
+                foreach (var item in input.Menus)
                 {
-                    Id = Guid.NewGuid().ToString().Replace("-", ""),
-                    TenantNumId = input.TenantNumId,
-                    RoleId = role.Id,
-                    MenuId = item.Id,
-                    CreationTime = DateTime.Now,
-                    UpdatedAt = DateTime.Now,
-                    OperatorId = input.OperatorId,
-                    OperatorName = input.OperatorName
-                });
-            }
-            if (roleMenuInsertList.Count > 0)
-            {
-                await _roleMenuRepository.InserManyAsync(roleMenuInsertList);
-            }
+                    roleMenuInsertList.Add(new RoleMenu()
+                    {
+                        Id = Guid.NewGuid().ToString().Replace("-", ""),
+                        TenantNumId = input.TenantNumId,
+                        RoleId = role.Id,
+                        MenuId = item.Id,
+                        CreationTime = DateTime.Now,
+                        UpdatedAt = DateTime.Now,
+                        OperatorId = input.OperatorId,
+                        OperatorName = input.OperatorName
+                    });
+                }
+                if (roleMenuInsertList.Count > 0)
+                {
+                    await _roleMenuRepository.InserManyAsync(roleMenuInsertList);
+                }
+            }   
         }
 
         public async Task UpdateIsEnableRole(UpdateIsEnableRoleInput input)

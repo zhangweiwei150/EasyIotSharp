@@ -6,11 +6,11 @@ Host: '106.75.118.194:5999'
 Storage: 
   Elasticsearch:
     - 'http://106.75.84.97:9200'
-  MysqlServers:  '117.50.11.43:27019'
-  MysqlConnectionMode:
-  MysqlDbName:  'youzy_easyiotsharp'
+  MysqlServers:  '82.156.125.76:3306'
+  MysqlConnectionMode: ''
+  MysqlDbName:  'easyiotsharp'
   MysqlUsername:  'root'
-  MysqlPassword:  '6d77cXXs1s1pFsaLiLoNgET8LzLj27'
+  MysqlPassword:  'jichang2025!@#'
 
 Caching:
   IsOpen: true
