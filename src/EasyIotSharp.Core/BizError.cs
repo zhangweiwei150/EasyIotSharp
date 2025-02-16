@@ -17,12 +17,14 @@ namespace EasyIotSharp.Core
 
         //JWT
         public static BizError TOKEN_EXPIRED = new BizError(40003, "token expired");
-
         public static BizError TOKEN_EXCEPTION = new BizError(40004, "token exception");
         public static BizError TOKEN_NULLOREMPTY = new BizError(40005, "token nullorempty");
+        public static BizError TOKEN_SIGNATURE = new BizError(40006, "token signerror");
+        public static BizError TOKEN_INVALID_USER_CLAIMS= new BizError(40006, "token claimserror");
 
         public static BizError USER_MOBILE_VERIFY_ERROR = new BizError(20004, "验证码错误");
         public static BizError USER_MOBILE_VERIFY_EXPIRED = new BizError(20005, "验证码超时");
+
 
         #region Bytedance
 
