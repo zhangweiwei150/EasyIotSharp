@@ -825,6 +825,36 @@
             代表一条菜单的“DTO”
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.TenantNumId">
             <summary>
             租户id
@@ -1463,6 +1493,36 @@
             登录失败次数过多，账号锁定30分钟
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.RoleDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.RoleDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.RoleDto.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.RoleDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.RoleDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.RoleDto.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.RoleDto.TenantNumId">
             <summary>
             租户id
@@ -1483,7 +1543,37 @@
             是否启用
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.TenantId">
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.TenantNumId">
             <summary>
             租户id
             </summary>
@@ -1778,6 +1868,36 @@
         <member name="T:EasyIotSharp.Core.Dto.Tenant.TenantDto">
             <summary>
             代表一个租户实体的“DTO”
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.OperatorName">
+            <summary>
+            操作人
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Tenant.TenantDto.NumId">
