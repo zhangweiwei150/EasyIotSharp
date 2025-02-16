@@ -16,6 +16,8 @@ namespace EasyIotSharp.Core.Domain
         {
             CreationTime = DateTime.Now;
             UpdatedAt = DateTime.Now;
+            OperatorId = "";
+            OperatorName = "";
         }
 
         [SugarColumn(IsPrimaryKey = true)]

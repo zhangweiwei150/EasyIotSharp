@@ -127,6 +127,8 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             model.Sex = input.Sex;
             model.IsEnable = true;
             model.Email = input.Email;
+            model.OperatorId = input.OperatorId;
+            model.OperatorName = input.OperatorName;
             await _soldierRepository.InsertAsync(model);
             return model.Id;
         }

@@ -64,8 +64,8 @@ namespace EasyIotSharp.Core.Extensions
         {
             // 去掉 PEM 文件的头和尾
             var base64 = pem
-                .Replace("-----BEGIN RSA PRIVATE KEY-----", "")
-                .Replace("-----END RSA PRIVATE KEY-----", "")
+                .Replace("-----BEGIN PRIVATE KEY-----", "")
+                .Replace("-----END PRIVATE KEY-----", "")
                 .Replace("\n", "")
                 .Replace("\r", "");
 

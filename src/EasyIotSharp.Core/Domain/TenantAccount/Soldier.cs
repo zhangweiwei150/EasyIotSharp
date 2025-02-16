@@ -66,6 +66,7 @@ namespace EasyIotSharp.Core.Domain.TenantAccount
         /// <summary>
         /// 最后一次登录时间
         /// </summary>
+        [SugarColumn(IsNullable = true)]
         public DateTime? LastLoginTime { get; set; }
     }
 }

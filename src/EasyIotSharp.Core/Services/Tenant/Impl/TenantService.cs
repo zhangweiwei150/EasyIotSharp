@@ -51,14 +51,16 @@ namespace EasyIotSharp.Core.Services.Tenant.Impl
             string managerId = await _soldierService.InsertSoldier(new InsertSoldierInput()
             {
                 TenantNumId = numId,
-                IsSuperAdmin=true,
-                IsManager=1,
-                Mobile=input.Mobile,
-                Username=input.Owner,
-                IsTest=false,
-                Sex=-1,
-                IsEnable=true,
-                Email=""
+                IsSuperAdmin = true,
+                IsManager = 1,
+                Mobile = input.Mobile,
+                Username = input.Owner,
+                IsTest = false,
+                Sex = -1,
+                IsEnable = true,
+                Email = "",
+                OperatorId = input.OperatorId,
+                OperatorName = input.OperatorName
             });
 
 
@@ -66,11 +68,13 @@ namespace EasyIotSharp.Core.Services.Tenant.Impl
             model.Id = Guid.NewGuid().ToString().Replace("-", "");
             model.NumId = numId;
             model.Name = input.Name;
+            model.StoreKey = "";
             model.ContractName = input.ContractName;
             model.ContractOwnerName = input.ContractOwnerName;
             model.ContractOwnerMobile = input.ContractOwnerMobile;
             model.ContractStartTime = input.ContractStartTime;
             model.ContractEndTime = input.ContractEndTime;
+            model.Owner = input.Owner;
             model.Mobile = input.Mobile;
             model.StoreLogoUrl = input.StoreLogoUrl;
             model.Remark = input.Remark;

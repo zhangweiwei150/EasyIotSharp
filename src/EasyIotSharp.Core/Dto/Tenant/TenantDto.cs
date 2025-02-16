@@ -152,7 +152,7 @@ namespace EasyIotSharp.Core.Dto.Tenant
         /// <summary>
         /// 机构的系统管理员Id 详见 <see cref="Soldier"/>
         /// </summary>
-        public int ManagerId { get; set; }
+        public string ManagerId { get; set; }
 
         /// <summary>
         /// 版本类型，详见 <see cref="VersionType"/>
