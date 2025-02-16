@@ -21,6 +21,13 @@ namespace EasyIotSharp.Core.Repositories.Tenant
         /// <param name="pageIndex">起始页</param>
         /// <param name="pageSize">每页多少条</param>
         /// <returns></returns>
-        Task<(int toalCount, List<EasyIotSharp.Core.Domain.Tenant.Tenant> items)> Query(string keyword,int expiredType,DateTime? contractStartTime,DateTime? contractEndTime,int isFreeze,int pageIndex,int pageSize);
+        Task<(int totalCount, List<EasyIotSharp.Core.Domain.Tenant.Tenant> items)> Query(
+            string keyword,
+            int expiredType,
+            DateTime? contractStartTime,
+            DateTime? contractEndTime,
+            int isFreeze,
+            int pageIndex,
+            int pageSize);
     }
 }

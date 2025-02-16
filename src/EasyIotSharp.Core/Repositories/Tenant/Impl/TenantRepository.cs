@@ -1,99 +1,81 @@
-﻿using EasyIotSharp.Repositories.Mysql;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using EasyIotSharp.Core.Repositories.Mysql;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Org.BouncyCastle.Tls.Crypto.Impl.BC;
+using EasyIotSharp.Core.Repositories.Mysql;
+using LinqKit;
 
 namespace EasyIotSharp.Core.Repositories.Tenant.Impl
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class TenantRepository : MySqlRepositoryBase<EasyIotSharp.Core.Domain.Tenant.Tenant,string>, ITenantRepository
+    public class TenantRepository : MySqlRepositoryBase<EasyIotSharp.Core.Domain.Tenant.Tenant, string>, ITenantRepository
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="databaseProvider"></param>
-        public TenantRepository(SqlSugarDatabaseProvider databaseProvider) : base(databaseProvider)
+        public TenantRepository(ISqlSugarDatabaseProvider databaseProvider) : base(databaseProvider)
         {
-
         }
 
-        public async Task<(int toalCount, List<EasyIotSharp.Core.Domain.Tenant.Tenant> items)> Query(string keyword, 
-                                                                                                     int expiredType, 
-                                                                                                     DateTime? contractStartTime, 
-                                                                                                     DateTime? contractEndTime, 
-                                                                                                     int isFreeze, 
-                                                                                                     int pageIndex, 
-                                                                                                     int pageSize)
+        public async Task<(int totalCount, List<EasyIotSharp.Core.Domain.Tenant.Tenant> items)> Query(
+            string keyword,
+            int expiredType,
+            DateTime? contractStartTime,
+            DateTime? contractEndTime,
+            int isFreeze,
+            int pageIndex,
+            int pageSize)
         {
-            var sql = "SELECT * FROM Tenants where 1=1 and IsDelete=false ";
-            string pageStr = $"LIMIT {pageSize} OFFSET ({pageIndex} - 1) * {pageSize}";
-            string whereStr = default;
-            if (!string.IsNullOrWhiteSpace(keyword)) 
+            // 初始化条件
+            var predicate = PredicateBuilder.New<EasyIotSharp.Core.Domain.Tenant.Tenant>(t => t.IsDelete == false);
+
+            if (!string.IsNullOrWhiteSpace(keyword))
             {
-                whereStr += $" and Name like '%{keyword}%'";
+                predicate = predicate.And(t => t.Name.Contains(keyword));
             }
-            if (expiredType>-1)
+
+            switch (expiredType)
             {
-                switch (expiredType)
-                {
-                    //待授权
-                    case 0:
-
-                        whereStr += $" and ContractStartTime>{DateTime.Now}";
-
-                        break;
-
-                    //生效中
-                    case 1:
-
-                        whereStr += $" and ContractStartTime<{DateTime.Now} and ContractEndTime>{DateTime.Now}";
-
-                        break;
-
-                    //已过期
-                    case 2:
-
-                        whereStr += $" and ContractEndTime<{DateTime.Now}";
-
-                        break;
-
-                    default:
-                        break;
-                }
+                case 0: // 待授权
+                    predicate = predicate.And(t => t.ContractStartTime > DateTime.Now);
+                    break;
+                case 1: // 生效中
+                    predicate = predicate.And(t => t.ContractStartTime <= DateTime.Now && t.ContractEndTime > DateTime.Now);
+                    break;
+                case 2: // 已过期
+                    predicate = predicate.And(t => t.ContractEndTime <= DateTime.Now);
+                    break;
             }
-            if (contractStartTime.IsNotNull()&&contractEndTime.IsNotNull())
+
+            if (contractStartTime.HasValue && contractEndTime.HasValue)
             {
-                whereStr += $" and ContractStartTime<{DateTime.Now} and ContractEndTime>{DateTime.Now}";
+                predicate = predicate.And(t => t.ContractStartTime >= contractStartTime.Value && t.ContractEndTime <= contractEndTime.Value);
             }
             else
             {
-                if (contractStartTime.IsNotNull())
+                if (contractStartTime.HasValue)
                 {
-                    whereStr += $" and ContractStartTime<{DateTime.Now}";
+                    predicate = predicate.And(t => t.ContractStartTime >= contractStartTime.Value);
                 }
-                if (contractEndTime.IsNotNull())
+                if (contractEndTime.HasValue)
                 {
-                    whereStr += $" and ContractEndTime>{DateTime.Now}";
+                    predicate = predicate.And(t => t.ContractEndTime <= contractEndTime.Value);
                 }
             }
+
             if (isFreeze > -1)
             {
-                whereStr += $" and IsFreeze={(isFreeze == 1 ? true : false)}";
+                predicate = predicate.And(t => t.IsFreeze == (isFreeze == 1));
             }
-            string totalCountSql = "SELECT count(1) FROM Tenants where 1=1 and IsDelete=false " + whereStr + pageStr;
-            var totalCount = await Client.Ado.GetIntAsync(totalCountSql);
-            if (totalCount<=0)
+
+            // 获取总记录数
+            var totalCount = await CountAsync(predicate);
+            if (totalCount == 0)
             {
-                return (0, new List<Domain.Tenant.Tenant>());
+                return (0, new List<EasyIotSharp.Core.Domain.Tenant.Tenant>());
             }
-            string sortStr = " ORDER BY CreationTime DESC";
-            var items = await Client.Ado.SqlQueryAsync<EasyIotSharp.Core.Domain.Tenant.Tenant>(sql + whereStr + sortStr + pageStr);
-            return (totalCount,items);
+
+            // 分页查询
+            var items = await GetPagedListAsync(predicate, pageIndex, pageSize);
+
+            return (totalCount, items);
         }
     }
 }

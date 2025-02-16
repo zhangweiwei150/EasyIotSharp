@@ -3027,17 +3027,6 @@
             <param name="soldierId"></param>
             <returns></returns>
         </member>
-        <member name="T:EasyIotSharp.Core.Repositories.Tenant.Impl.TenantRepository">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Tenant.Impl.TenantRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
-            <summary>
-            
-            </summary>
-            <param name="databaseProvider"></param>
-        </member>
         <member name="T:EasyIotSharp.Core.Repositories.Tenant.ITenantRepository">
             <summary>
             租户仓储接口类
