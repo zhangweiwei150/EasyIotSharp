@@ -74,7 +74,7 @@ namespace EasyIotSharp.Core.Extensions
 
             // 导入私钥
             var rsa = RSA.Create();
-            rsa.ImportRSAPrivateKey(privateKeyBytes, out _);
+            rsa.ImportPkcs8PrivateKey(privateKeyBytes, out _);
             return rsa;
         }
     }
