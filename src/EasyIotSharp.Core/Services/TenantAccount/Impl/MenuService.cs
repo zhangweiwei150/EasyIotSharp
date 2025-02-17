@@ -14,16 +14,19 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
     public class MenuService : ServiceBase, IMenuService
     {
         private readonly IMenuRepository _menuRepository;
+        private readonly ISoldierRepository _soldierRepository;
         private readonly IRoleMenuRepository _roleMenuRepository;
         private readonly ISoldierRoleRepository _soldierRoleRepository;
 
         public MenuService(IMenuRepository menuRepository,
                            IRoleMenuRepository roleMenuRepository,
-                           ISoldierRoleRepository soldierRoleRepository)
+                           ISoldierRoleRepository soldierRoleRepository,
+                           ISoldierRepository soldierRepository)
         {
             _menuRepository = menuRepository;
             _roleMenuRepository = roleMenuRepository;
             _soldierRoleRepository = soldierRoleRepository;
+            _soldierRepository = soldierRepository;
         }
 
         public async Task<MenuDto> GetMenu(string id)
@@ -34,27 +37,46 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
 
         public async Task<PagedResultDto<MenuDto>> QueryMenu(QueryMenuInput input)
         {
-            var query = await _menuRepository.Query(input.Keyword,input.IsEnable,input.PageIndex,input.PageSize);
+            var soldier = await _soldierRepository.FirstOrDefaultAsync(x => x.IsDelete == false && x.Id == ContextUser.UserId);
+            if (soldier.IsNull())
+            {
+                throw new BizException(BizError.BIND_EXCEPTION_ERROR, "未找到指定资源");
+            }
+            var query = await _menuRepository.Query(soldier.IsSuperAdmin == true ? 1 : 2, input.Keyword, input.IsEnable, input.PageIndex, input.PageSize);
             int totalCount = query.totalCount;
             var list = query.items.MapTo<List<MenuDto>>();
             return new PagedResultDto<MenuDto>() { TotalCount = totalCount, Items = list };
         }
 
-        public async Task<List<QueryMenuBySoldierIdOutput>> QueryMenuBySoldierId(string soldierId)
+        public async Task<List<QueryMenuBySoldierIdOutput>> QueryMenuBySoldierId()
         {
-            var soldierRoles = await _soldierRoleRepository.QueryBySoldierId(soldierId);
-            if (soldierRoles.Count<=0)
+            var soldier = await _soldierRepository.FirstOrDefaultAsync(x => x.IsDelete == false && x.Id == ContextUser.UserId);
+            if (soldier.IsNull())
             {
-                return new List<QueryMenuBySoldierIdOutput>();
+                throw new BizException(BizError.BIND_EXCEPTION_ERROR,"未找到指定资源");
             }
-            var roleIds = soldierRoles.Select(x => x.RoleId).ToList();
-            var roleMenus = await _roleMenuRepository.QueryByRoleIds(roleIds);
-            if (roleMenus.Count<=0)
+            var menus = new List<Menu>();
+            if (soldier.IsSuperAdmin==true)
             {
-                return new List<QueryMenuBySoldierIdOutput>();
+                menus = await _menuRepository.GetAllAsync();
             }
-            var menuIds = roleMenus.Select(x => x.MenuId).ToList();
-            var menus = await _menuRepository.QueryByIds(menuIds);
+            else
+            {
+                var soldierRoles = await _soldierRoleRepository.QueryBySoldierId(ContextUser.UserId);
+                if (soldierRoles.Count <= 0)
+                {
+                    return new List<QueryMenuBySoldierIdOutput>();
+                }
+                var roleIds = soldierRoles.Select(x => x.RoleId).ToList();
+                var roleMenus = await _roleMenuRepository.QueryByRoleIds(roleIds);
+                if (roleMenus.Count <= 0)
+                {
+                    return new List<QueryMenuBySoldierIdOutput>();
+                }
+                var menuIds = roleMenus.Select(x => x.MenuId).ToList();
+                menus = await _menuRepository.QueryByIds(menuIds);
+            }
+            
             if (menus.Count<=0)
             {
                 return new List<QueryMenuBySoldierIdOutput>();
@@ -107,18 +129,17 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             }
             var model = new Menu();
             model.Id= Guid.NewGuid().ToString().Replace("-", "");
-            model.TenantNumId = 0;
             model.ParentId = input.ParentId;
-            model.ParentName = input.ParentName;
             model.Name = input.Name;
             model.Icon = input.Icon;
             model.Url = input.Url;
             model.Type = input.Type;
             model.IsEnable = true;
+            model.IsSuperAdmin = input.IsSuperAdmin;
             model.CreationTime = DateTime.Now;
             model.UpdatedAt = DateTime.Now;
-            model.OperatorId = input.OperatorId;
-            model.OperatorName = input.OperatorName;
+            model.OperatorId = ContextUser.UserId;
+            model.OperatorName = ContextUser.UserName;
             await _menuRepository.InsertAsync(model);
         }
 
@@ -138,8 +159,9 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             info.Icon = input.Icon;
             info.Url = input.Url;
             info.IsEnable = input.IsEnable;
-            info.OperatorId = input.OperatorId;
-            info.OperatorName = input.OperatorName;
+            info.IsSuperAdmin = input.IsSuperAdmin;
+            info.OperatorId = ContextUser.UserId;
+            info.OperatorName = ContextUser.UserName;
             info.UpdatedAt = DateTime.Now;
             await _menuRepository.UpdateAsync(info);
         }
@@ -154,8 +176,8 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             if (info.IsEnable!=input.IsEnable)
             {
                 info.IsEnable = info.IsEnable;
-                info.OperatorId = input.OperatorId;
-                info.OperatorName = input.OperatorName;
+                info.OperatorId = ContextUser.UserId;
+                info.OperatorName = ContextUser.UserName;
                 info.UpdatedAt = DateTime.Now;
                 await _menuRepository.UpdateAsync(info);
             }
@@ -171,8 +193,8 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             if (info.IsDelete != input.IsDelete)
             {
                 info.IsDelete = info.IsDelete;
-                info.OperatorId = input.OperatorId;
-                info.OperatorName = input.OperatorName;
+                info.OperatorId = ContextUser.UserId;
+                info.OperatorName = ContextUser.UserName;
                 info.UpdatedAt = DateTime.Now;
                 await _menuRepository.UpdateAsync(info);
             }

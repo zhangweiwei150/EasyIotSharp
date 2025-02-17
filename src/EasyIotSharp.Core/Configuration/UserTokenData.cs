@@ -10,7 +10,7 @@ namespace EasyIotSharp.Core.Configuration
             UserId = string.Empty;
             UserName = string.Empty;
             TenantId = string.Empty;
-
+            TenantNumId = default;
         }
 
         /// <summary>
@@ -26,6 +26,11 @@ namespace EasyIotSharp.Core.Configuration
         /// 当前租户Id
         /// </summary>
         public string TenantId { get; set; }
+
+        /// <summary>
+        /// 当前租户NumId
+        /// </summary>
+        public int TenantNumId { get; set; }
     }
 
     public class UserTokenIdentity : IIdentity

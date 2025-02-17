@@ -27,9 +27,8 @@ namespace EasyIotSharp.Core.Services.TenantAccount
         /// <summary>
         /// 通过用户id获取用户对应的菜单列表
         /// </summary>
-        /// <param name="soldierId"></param>
         /// <returns></returns>
-        Task<List<QueryMenuBySoldierIdOutput>> QueryMenuBySoldierId(string soldierId);
+        Task<List<QueryMenuBySoldierIdOutput>> QueryMenuBySoldierId();
 
         /// <summary>
         /// 添加一条菜单信息

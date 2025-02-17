@@ -7,17 +7,12 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
     /// <summary>
     /// 通过id修改一个角色信息的入参类
     /// </summary>
-    public class UpdateRoleInput:OperateUserInput
+    public class UpdateRoleInput
     {
         /// <summary>
         /// 角色id
         /// </summary>
         public string Id { get; set; }
-
-        /// <summary>
-        /// 租户id
-        /// </summary>
-        public int TenantNumId { get; set; }
 
         /// <summary>
         /// 角色名称
@@ -40,8 +35,8 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
         public bool IsUpdateMenu { get; set; }
 
         /// <summary>
-        /// 菜单信息
+        /// 子集菜单id集合
         /// </summary>
-        public List<MenuDto> Menus { get; set; }
+        public List<string> Menus { get; set; }
     }
 }

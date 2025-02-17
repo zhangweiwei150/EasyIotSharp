@@ -41,8 +41,8 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
                     RoleId = item.Id,
                     CreationTime = DateTime.Now,
                     UpdatedAt = DateTime.Now,
-                    OperatorId = input.OperatorId,
-                    OperatorName = input.OperatorName
+                    OperatorId = ContextUser.UserId,
+                    OperatorName = ContextUser.UserName
                 });
             }
             if (soldierRoleInsertList.Count > 0)

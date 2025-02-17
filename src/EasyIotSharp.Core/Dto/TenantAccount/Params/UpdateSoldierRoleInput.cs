@@ -5,7 +5,7 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
     /// <summary>
     /// 通过用户id修改对应的角色的入参类
     /// </summary>
-    public class UpdateSoldierRoleInput:OperateUserInput
+    public class UpdateSoldierRoleInput
     {
         /// <summary>
         /// 用户id

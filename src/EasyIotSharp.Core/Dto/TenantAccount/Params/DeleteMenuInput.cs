@@ -4,7 +4,7 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
     /// <summary>
     /// 通过id删除一条菜单信息
     /// </summary>
-    public class DeleteMenuInput:OperateUserInput
+    public class DeleteMenuInput
     {
         /// <summary>
         /// id

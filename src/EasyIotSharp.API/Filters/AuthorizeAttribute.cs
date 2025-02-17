@@ -58,11 +58,13 @@ namespace EasyIotSharp.API.Filters
                         var userIdClaim = principal.Claims.FirstOrDefault(c => c.Type == "UserId");
                         var userNameClaim = principal.Claims.FirstOrDefault(c => c.Type == "UserName");
                         var tenantIdClaim = principal.Claims.FirstOrDefault(c => c.Type == "TenantId");
+                        var tenantNumIdClaim = principal.Claims.FirstOrDefault(c => c.Type == "TenantNumId");
 
                         // 验证 Claim 是否存在且有效
                         if (userIdClaim == null || string.IsNullOrEmpty(userIdClaim.Value) ||
                             userNameClaim == null || string.IsNullOrEmpty(userNameClaim.Value) ||
-                            tenantIdClaim == null || string.IsNullOrEmpty(tenantIdClaim.Value))
+                            tenantIdClaim == null || string.IsNullOrEmpty(tenantIdClaim.Value) ||
+                            tenantNumIdClaim == null || string.IsNullOrEmpty(tenantNumIdClaim.Value))
                         {
                             throw new BizException(BizError.TOKEN_INVALID_USER_CLAIMS);
                         }
@@ -70,13 +72,14 @@ namespace EasyIotSharp.API.Filters
                         var userId = userIdClaim.Value;
                         var userName = userNameClaim.Value;
                         var tenantId = tenantIdClaim.Value;
-
+                        var tenantNumId = tenantIdClaim.Value;
                         // 设置用户身份信息（包含 UserId、UserName 和 TenantId）
                         var userTokenData = new UserTokenData
                         {
                             UserId = userId,
                             UserName = userName,
-                            TenantId = tenantId
+                            TenantId = tenantId,
+                            TenantNumId = tenantNumId.ToInt()
                         };
                         context.HttpContext.User = new UserTokenPrincipal(new UserTokenIdentity(userTokenData));
                     }

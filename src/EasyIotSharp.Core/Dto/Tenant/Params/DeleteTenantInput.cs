@@ -1,7 +1,7 @@
 ﻿
 namespace EasyIotSharp.Core.Dto.Tenant.Params
 {
-    public class DeleteTenantInput : OperateUserInput
+    public class DeleteTenantInput
     {
         /// <summary>
         /// 租户id

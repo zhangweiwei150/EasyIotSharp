@@ -7,11 +7,6 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
     public class QueryRoleInput:PagingInput
     {
         /// <summary>
-        /// 租户id
-        /// </summary>
-        public int TenantNumId { get; set; }
-
-        /// <summary>
         /// 名字
         /// </summary>
         public string Keyword { get; set; }

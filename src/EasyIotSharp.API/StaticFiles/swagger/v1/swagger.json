@@ -310,47 +310,31 @@
           "Tenant"
         ],
         "summary": "通过id删除一个租户信息",
-        "parameters": [
-          {
-            "name": "Id",
-            "in": "query",
-            "description": "租户id",
-            "schema": {
-              "type": "string",
-              "description": "租户id",
-              "nullable": true
-            }
-          },
-          {
-            "name": "IsDelete",
-            "in": "query",
-            "description": "是否删除",
-            "schema": {
-              "type": "boolean",
-              "description": "是否删除"
-            }
-          },
-          {
-            "name": "OperatorId",
-            "in": "query",
-            "description": "操作人标识",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "操作人标识"
-            }
-          },
-          {
-            "name": "OperatorName",
-            "in": "query",
-            "description": "操作人",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "操作人"
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTenantInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTenantInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTenantInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTenantInput"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -381,18 +365,6 @@
           "TenantAccount"
         ],
         "summary": "通过id获取一条用户信息",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "description": "",
-            "schema": {
-              "type": "string",
-              "description": "",
-              "nullable": true
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -410,6 +382,61 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SoldierDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Soldier/Validate": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "用户登录验证",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateSoldierInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateSoldierInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateSoldierInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateSoldierInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidateSoldierOutputUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidateSoldierOutputUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidateSoldierOutputUPrimeResponse"
                 }
               }
             }
@@ -691,6 +718,725 @@
           }
         }
       }
+    },
+    "/TenantAccount/Soldier/Role/Update": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "通过id修改一条用户的角色信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSoldierRoleInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSoldierRoleInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSoldierRoleInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSoldierRoleInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Menu/Get": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "通过id获取一条菜单信息",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string",
+              "description": "",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Menu/Query": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "通通过条件分页查询菜单列表",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryMenuInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryMenuInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryMenuInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryMenuInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuDtoPagedResultDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Menu/Soldier/Query": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "通过用户id获取用户对应的菜单列表",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryMenuBySoldierIdOutputListUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryMenuBySoldierIdOutputListUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryMenuBySoldierIdOutputListUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Menu/Insert": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "添加一条菜单信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertMenuInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertMenuInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertMenuInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertMenuInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Menu/Update": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "通过id修改一条菜单信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMenuInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMenuInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMenuInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMenuInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Menu/UpdateIsEnable": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "通过od修改一条菜单是否启用状态",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateIsEnableMenuInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateIsEnableMenuInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateIsEnableMenuInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateIsEnableMenuInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Menu/Delete": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "通过id获取一条菜单信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteMenuInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteMenuInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteMenuInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteMenuInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Role/Menu/Get": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "通过id获取一条角色菜单信息",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string",
+              "description": "",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetRoleMenuOutputUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetRoleMenuOutputUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetRoleMenuOutputUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Role/Query": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "通通过条件分页查询菜单列表",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryRoleInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryRoleInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryRoleInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryRoleInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleDtoPagedResultDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Role/Insert": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "添加一条角色信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertRoleInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertRoleInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertRoleInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertRoleInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Role/Update": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "通过id修改一条菜单信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoleInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoleInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoleInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoleInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Role/UpdateIsEnable": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "通通过id修改一条菜单是否启用状态",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateIsEnableRoleInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateIsEnableRoleInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateIsEnableRoleInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateIsEnableRoleInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Role/Delete": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "通过id获取一条角色信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteRoleInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteRoleInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteRoleInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteRoleInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -698,6 +1444,40 @@
       "TenantDto": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          },
+          "deleteTime": {
+            "type": "string",
+            "description": "删除时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "operatorId": {
+            "type": "string",
+            "description": "操作人标识",
+            "nullable": true
+          },
+          "operatorName": {
+            "type": "string",
+            "description": "操作人",
+            "nullable": true
+          },
           "numId": {
             "type": "integer",
             "description": "租户numId",
@@ -770,9 +1550,9 @@
             "readOnly": true
           },
           "managerId": {
-            "type": "integer",
+            "type": "string",
             "description": "机构的系统管理员Id 详见 EasyIotSharp.Core.Domain.TenantAccount.Soldier",
-            "format": "int32"
+            "nullable": true
           },
           "versionTypeId": {
             "type": "integer",
@@ -786,40 +1566,6 @@
           "freezeDes": {
             "type": "string",
             "description": "冻结描述",
-            "nullable": true
-          },
-          "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "creationTime": {
-            "type": "string",
-            "description": "创建时间",
-            "format": "date-time"
-          },
-          "isDelete": {
-            "type": "boolean",
-            "description": "是否删除"
-          },
-          "deleteTime": {
-            "type": "string",
-            "description": "删除时间",
-            "format": "date-time",
-            "nullable": true
-          },
-          "updatedAt": {
-            "type": "string",
-            "description": "修改时间",
-            "format": "date-time"
-          },
-          "operatorId": {
-            "type": "string",
-            "description": "操作人标识",
-            "nullable": true
-          },
-          "operatorName": {
-            "type": "string",
-            "description": "操作人",
             "nullable": true
           }
         },
@@ -946,10 +1692,6 @@
         "additionalProperties": false
       },
       "InsertTenantInput": {
-        "required": [
-          "operatorId",
-          "operatorName"
-        ],
         "type": "object",
         "properties": {
           "name": {
@@ -1020,14 +1762,6 @@
             "type": "string",
             "description": "冻结描述",
             "nullable": true
-          },
-          "operatorId": {
-            "type": "string",
-            "description": "操作人标识"
-          },
-          "operatorName": {
-            "type": "string",
-            "description": "操作人"
           }
         },
         "additionalProperties": false
@@ -1059,10 +1793,6 @@
         "additionalProperties": false
       },
       "UpdateTenantInput": {
-        "required": [
-          "operatorId",
-          "operatorName"
-        ],
         "type": "object",
         "properties": {
           "id": {
@@ -1148,24 +1878,12 @@
             "type": "string",
             "description": "冻结描述",
             "nullable": true
-          },
-          "operatorId": {
-            "type": "string",
-            "description": "操作人标识"
-          },
-          "operatorName": {
-            "type": "string",
-            "description": "操作人"
           }
         },
         "additionalProperties": false,
         "description": "通过id修改一个租户信息的入参类"
       },
       "UpdateIsFreezeTenantTenantInput": {
-        "required": [
-          "operatorId",
-          "operatorName"
-        ],
         "type": "object",
         "properties": {
           "id": {
@@ -1181,23 +1899,64 @@
             "type": "string",
             "description": "冻结描述",
             "nullable": true
-          },
-          "operatorId": {
-            "type": "string",
-            "description": "操作人标识"
-          },
-          "operatorName": {
-            "type": "string",
-            "description": "操作人"
           }
         },
         "additionalProperties": false,
         "description": "通过id修改一个租户的冻结状态得入参类"
       },
+      "DeleteTenantInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "租户id",
+            "nullable": true
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          }
+        },
+        "additionalProperties": false
+      },
       "SoldierDto": {
         "type": "object",
         "properties": {
-          "tenantId": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          },
+          "deleteTime": {
+            "type": "string",
+            "description": "删除时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "operatorId": {
+            "type": "string",
+            "description": "操作人标识",
+            "nullable": true
+          },
+          "operatorName": {
+            "type": "string",
+            "description": "操作人",
+            "nullable": true
+          },
+          "tenantNumId": {
             "type": "integer",
             "description": "租户id",
             "format": "int32"
@@ -1249,40 +2008,6 @@
             "description": "最后一次登录时间",
             "format": "date-time",
             "nullable": true
-          },
-          "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "creationTime": {
-            "type": "string",
-            "description": "创建时间",
-            "format": "date-time"
-          },
-          "isDelete": {
-            "type": "boolean",
-            "description": "是否删除"
-          },
-          "deleteTime": {
-            "type": "string",
-            "description": "删除时间",
-            "format": "date-time",
-            "nullable": true
-          },
-          "updatedAt": {
-            "type": "string",
-            "description": "修改时间",
-            "format": "date-time"
-          },
-          "operatorId": {
-            "type": "string",
-            "description": "操作人标识",
-            "nullable": true
-          },
-          "operatorName": {
-            "type": "string",
-            "description": "操作人",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1316,14 +2041,106 @@
         },
         "additionalProperties": false
       },
+      "ValidateSoldierInput": {
+        "type": "object",
+        "properties": {
+          "mobile": {
+            "type": "string",
+            "description": "手机号",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "description": "密码",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "用户登录验证的入参类"
+      },
+      "ValidateSoldierStatus": {
+        "enum": [
+          1,
+          2,
+          3,
+          21,
+          22,
+          23,
+          24,
+          51
+        ],
+        "type": "integer",
+        "description": "验证状态\r\n1=成功\r\n2=用户名或密码有误\r\n3=账号已禁用\r\n21=租户不存在\r\n22=租户已被删除\r\n23=租户已被冻结\r\n24=租户已过期\r\n51=登录失败次数过多，账号锁定30分钟",
+        "format": "int32"
+      },
+      "UserTokenDto": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "description": "Token",
+            "nullable": true
+          },
+          "expirationTime": {
+            "type": "string",
+            "description": "过期时间",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "用户Token令牌DTO"
+      },
+      "ValidateSoldierOutput": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ValidateSoldierStatus"
+          },
+          "token": {
+            "$ref": "#/components/schemas/UserTokenDto"
+          },
+          "solider": {
+            "$ref": "#/components/schemas/SoldierDto"
+          },
+          "tenant": {
+            "$ref": "#/components/schemas/TenantDto"
+          }
+        },
+        "additionalProperties": false,
+        "description": "用户验证登录的出参类"
+      },
+      "ValidateSoldierOutputUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/ValidateSoldierOutput"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
       "QuerySoldierInput": {
         "type": "object",
         "properties": {
-          "tenantId": {
-            "type": "integer",
-            "description": "租户id",
-            "format": "int32"
-          },
           "keyword": {
             "type": "string",
             "description": "手机号/用户名",
@@ -1395,26 +2212,8 @@
         "additionalProperties": false
       },
       "InsertSoldierInput": {
-        "required": [
-          "operatorId",
-          "operatorName"
-        ],
         "type": "object",
         "properties": {
-          "tenantNumId": {
-            "type": "integer",
-            "description": "租户id",
-            "format": "int32"
-          },
-          "isSuperAdmin": {
-            "type": "boolean",
-            "description": "是否admin(超级管理员，没有租户限制)"
-          },
-          "isManager": {
-            "type": "integer",
-            "description": "是否管理员\r\n1=管理员\r\n2=普通用户",
-            "format": "int32"
-          },
           "mobile": {
             "type": "string",
             "description": "手机号",
@@ -1443,23 +2242,16 @@
             "description": "邮箱",
             "nullable": true
           },
-          "operatorId": {
+          "roleId": {
             "type": "string",
-            "description": "操作人标识"
-          },
-          "operatorName": {
-            "type": "string",
-            "description": "操作人"
+            "description": "角色id",
+            "nullable": true
           }
         },
         "additionalProperties": false,
         "description": "添加一条用户信息的入参类"
       },
       "UpdateSoldierInput": {
-        "required": [
-          "operatorId",
-          "operatorName"
-        ],
         "type": "object",
         "properties": {
           "id": {
@@ -1486,23 +2278,20 @@
             "description": "邮箱",
             "nullable": true
           },
-          "operatorId": {
-            "type": "string",
-            "description": "操作人标识"
+          "isUpdateRole": {
+            "type": "boolean",
+            "description": "是否修改角色"
           },
-          "operatorName": {
+          "roleId": {
             "type": "string",
-            "description": "操作人"
+            "description": "角色id",
+            "nullable": true
           }
         },
         "additionalProperties": false,
         "description": "通过id修改一条用户信息的入参类"
       },
       "UpdateSoldierIsEnableInput": {
-        "required": [
-          "operatorId",
-          "operatorName"
-        ],
         "type": "object",
         "properties": {
           "id": {
@@ -1513,24 +2302,12 @@
           "isEnable": {
             "type": "boolean",
             "description": "是否启用"
-          },
-          "operatorId": {
-            "type": "string",
-            "description": "操作人标识"
-          },
-          "operatorName": {
-            "type": "string",
-            "description": "操作人"
           }
         },
         "additionalProperties": false,
         "description": "根据id修改用户的是否启用状态的入参类"
       },
       "DeleteSoldierInput": {
-        "required": [
-          "operatorId",
-          "operatorName"
-        ],
         "type": "object",
         "properties": {
           "id": {
@@ -1541,18 +2318,718 @@
           "isDelete": {
             "type": "boolean",
             "description": "是否删除"
-          },
-          "operatorId": {
-            "type": "string",
-            "description": "操作人标识"
-          },
-          "operatorName": {
-            "type": "string",
-            "description": "操作人"
           }
         },
         "additionalProperties": false,
         "description": "通过id删除一条用户信息的入参类"
+      },
+      "RoleDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          },
+          "deleteTime": {
+            "type": "string",
+            "description": "删除时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "operatorId": {
+            "type": "string",
+            "description": "操作人标识",
+            "nullable": true
+          },
+          "operatorName": {
+            "type": "string",
+            "description": "操作人",
+            "nullable": true
+          },
+          "tenantNumId": {
+            "type": "integer",
+            "description": "租户id",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "角色名称",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注",
+            "nullable": true
+          },
+          "isEnable": {
+            "type": "boolean",
+            "description": "是否启用"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSoldierRoleInput": {
+        "type": "object",
+        "properties": {
+          "soldierId": {
+            "type": "string",
+            "description": "用户id",
+            "nullable": true
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoleDto"
+            },
+            "description": "角色信息",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过用户id修改对应的角色的入参类"
+      },
+      "MenuDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          },
+          "deleteTime": {
+            "type": "string",
+            "description": "删除时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "operatorId": {
+            "type": "string",
+            "description": "操作人标识",
+            "nullable": true
+          },
+          "operatorName": {
+            "type": "string",
+            "description": "操作人",
+            "nullable": true
+          },
+          "parentId": {
+            "type": "string",
+            "description": "父级id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "菜单名称",
+            "nullable": true
+          },
+          "icon": {
+            "type": "string",
+            "description": "菜单图标",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "菜单路径",
+            "nullable": true
+          },
+          "type": {
+            "type": "integer",
+            "description": "类型\r\n1=菜单\r\n2=路由\r\n3=按钮",
+            "format": "int32"
+          },
+          "isSuperAdmin": {
+            "type": "boolean",
+            "description": "是否admin(超级管理员，没有租户限制)"
+          },
+          "isEnable": {
+            "type": "boolean",
+            "description": "是否启用"
+          }
+        },
+        "additionalProperties": false,
+        "description": "代表一条菜单的“DTO”"
+      },
+      "MenuDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/MenuDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryMenuInput": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "菜单名称",
+            "nullable": true
+          },
+          "isEnable": {
+            "type": "integer",
+            "description": "是否启用\r\n-1=不参与查询\r\n1=启用\r\n2=禁用",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前开始页",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "页大小",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MenuDtoPagedResultDto": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MenuDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MenuDtoPagedResultDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/MenuDtoPagedResultDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChildrenMenu": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "菜单名称",
+            "nullable": true
+          },
+          "icon": {
+            "type": "string",
+            "description": "菜单图标",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "菜单路径",
+            "nullable": true
+          },
+          "type": {
+            "type": "integer",
+            "description": "类型\r\n1=菜单\r\n2=路由\r\n3=按钮",
+            "format": "int32"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChildrenMenu"
+            },
+            "description": "子类菜单",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryMenuBySoldierIdOutput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "菜单名称",
+            "nullable": true
+          },
+          "icon": {
+            "type": "string",
+            "description": "菜单图标",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "菜单路径",
+            "nullable": true
+          },
+          "type": {
+            "type": "integer",
+            "description": "类型\r\n1=菜单\r\n2=路由\r\n3=按钮",
+            "format": "int32"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChildrenMenu"
+            },
+            "description": "子类菜单",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过用户id查询对应菜单列表的出参类"
+      },
+      "QueryMenuBySoldierIdOutputListUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QueryMenuBySoldierIdOutput"
+            },
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InsertMenuInput": {
+        "type": "object",
+        "properties": {
+          "parentId": {
+            "type": "string",
+            "description": "父级id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "菜单名称",
+            "nullable": true
+          },
+          "icon": {
+            "type": "string",
+            "description": "菜单图标",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "菜单路径",
+            "nullable": true
+          },
+          "type": {
+            "type": "integer",
+            "description": "类型\r\n1=菜单\r\n2=路由",
+            "format": "int32"
+          },
+          "isSuperAdmin": {
+            "type": "boolean",
+            "description": "是否admin(超级管理员，没有租户限制)"
+          },
+          "isEnable": {
+            "type": "boolean",
+            "description": "是否启用"
+          }
+        },
+        "additionalProperties": false,
+        "description": "添加一条菜单信息的入参类"
+      },
+      "UpdateMenuInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "菜单名称",
+            "nullable": true
+          },
+          "icon": {
+            "type": "string",
+            "description": "菜单图标",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "菜单路径",
+            "nullable": true
+          },
+          "isEnable": {
+            "type": "boolean",
+            "description": "是否启用"
+          },
+          "isSuperAdmin": {
+            "type": "boolean",
+            "description": "是否admin(超级管理员，没有租户限制)"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id修改一条菜单信息"
+      },
+      "UpdateIsEnableMenuInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id",
+            "nullable": true
+          },
+          "isEnable": {
+            "type": "boolean",
+            "description": "是否启用"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id修改一条菜单信息的是否启用状态的入参类"
+      },
+      "DeleteMenuInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id",
+            "nullable": true
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id删除一条菜单信息"
+      },
+      "GetRoleMenuOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "角色id",
+            "nullable": true
+          },
+          "tenantNumId": {
+            "type": "integer",
+            "description": "租户id",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "角色名称",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注",
+            "nullable": true
+          },
+          "isEnable": {
+            "type": "boolean",
+            "description": "是否启用"
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "menus": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MenuDto"
+            },
+            "description": "菜单信息",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id查询一条角色菜单信息的出参类"
+      },
+      "GetRoleMenuOutputUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/GetRoleMenuOutput"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryRoleInput": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "名字",
+            "nullable": true
+          },
+          "isEnable": {
+            "type": "integer",
+            "description": "是否启用\r\n-1=不参与查询\r\n1=启用\r\n2=禁用",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前开始页",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "页大小",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过条件查询角色列表的入参类"
+      },
+      "RoleDtoPagedResultDto": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoleDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RoleDtoPagedResultDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/RoleDtoPagedResultDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InsertRoleInput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "角色名称",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注",
+            "nullable": true
+          },
+          "isEnable": {
+            "type": "boolean",
+            "description": "是否启用"
+          },
+          "menus": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "子集菜单id集合",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "添加一条角色信息的入参类"
+      },
+      "UpdateRoleInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "角色id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "角色名称",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注",
+            "nullable": true
+          },
+          "isEnable": {
+            "type": "boolean",
+            "description": "是否启用"
+          },
+          "isUpdateMenu": {
+            "type": "boolean",
+            "description": "是否修改菜单"
+          },
+          "menus": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "子集菜单id集合",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id修改一个角色信息的入参类"
+      },
+      "UpdateIsEnableRoleInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id",
+            "nullable": true
+          },
+          "isEnable": {
+            "type": "boolean",
+            "description": "是否启用"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id修改一条角色信息的是否启用状态的入参类"
+      },
+      "DeleteRoleInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id",
+            "nullable": true
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id删除一条角色信息的入参类"
       }
     },
     "securitySchemes": {

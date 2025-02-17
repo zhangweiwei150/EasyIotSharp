@@ -7,7 +7,7 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
     /// <summary>
     /// 通过id修改一条菜单信息
     /// </summary>
-    public class UpdateMenuInput:OperateUserInput
+    public class UpdateMenuInput
     {
         /// <summary>
         /// id
@@ -33,5 +33,10 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
         /// 是否启用
         /// </summary>
         public bool IsEnable { get; set; }
+
+        /// <summary>
+        /// 是否admin(超级管理员，没有租户限制)
+        /// </summary>
+        public bool IsSuperAdmin { get; set; }
     }
 }

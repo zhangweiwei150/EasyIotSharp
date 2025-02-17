@@ -7,22 +7,12 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
     /// <summary>
     /// 添加一条菜单信息的入参类
     /// </summary>
-    public class InsertMenuInput:OperateUserInput
+    public class InsertMenuInput
     {
-        /// <summary>
-        /// 租户id
-        /// </summary>
-        public int TenantNumId { get; set; }
-
         /// <summary>
         /// 父级id
         /// </summary>
         public string ParentId { get; set; }
-
-        /// <summary>
-        /// 父级名称
-        /// </summary>
-        public string ParentName { get; set; }
 
         /// <summary>
         /// 菜单名称
@@ -45,6 +35,11 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
         /// 2=路由
         /// </summary>
         public int Type { get; set; }
+
+        /// <summary>
+        /// 是否admin(超级管理员，没有租户限制)
+        /// </summary>
+        public bool IsSuperAdmin { get; set; }
 
         /// <summary>
         /// 是否启用

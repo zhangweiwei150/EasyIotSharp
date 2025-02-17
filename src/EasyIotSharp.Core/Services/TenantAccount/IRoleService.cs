@@ -29,6 +29,13 @@ namespace EasyIotSharp.Core.Services.TenantAccount
         Task InsertRole(InsertRoleInput input);
 
         /// <summary>
+        /// 添加一条管理员角色信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<string> InsertAdminRole(InsertAdminRoleInput input);
+
+        /// <summary>
         /// 通过id修改一条角色信息
         /// </summary>
         /// <param name="input"></param>

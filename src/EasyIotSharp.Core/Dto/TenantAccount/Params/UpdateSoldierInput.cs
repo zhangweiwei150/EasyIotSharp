@@ -4,7 +4,7 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
     /// <summary>
     /// 通过id修改一条用户信息的入参类
     /// </summary>
-    public class UpdateSoldierInput:OperateUserInput
+    public class UpdateSoldierInput
     {
         /// <summary>
         /// id
@@ -30,5 +30,15 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
         /// 邮箱
         /// </summary>
         public string Email { get; set; }
+
+        /// <summary>
+        /// 是否修改角色
+        /// </summary>
+        public bool IsUpdateRole { get; set; }
+
+        /// <summary>
+        /// 角色id
+        /// </summary>
+        public string RoleId { get; set; }
     }
 }

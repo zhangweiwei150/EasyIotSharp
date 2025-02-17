@@ -41,19 +41,9 @@ namespace EasyIotSharp.Core.Dto.TenantAccount
         public string OperatorName { get; set; }
 
         /// <summary>
-        /// 租户id
-        /// </summary>
-        public int TenantNumId { get; set; }
-
-        /// <summary>
         /// 父级id
         /// </summary>
         public string ParentId { get; set; }
-
-        /// <summary>
-        /// 父级名称
-        /// </summary>
-        public string ParentName { get; set; }
 
         /// <summary>
         /// 菜单名称
@@ -77,6 +67,11 @@ namespace EasyIotSharp.Core.Dto.TenantAccount
         /// 3=按钮
         /// </summary>
         public int Type { get; set; }
+
+        /// <summary>
+        /// 是否admin(超级管理员，没有租户限制)
+        /// </summary>
+        public bool IsSuperAdmin { get; set; }
 
         /// <summary>
         /// 是否启用

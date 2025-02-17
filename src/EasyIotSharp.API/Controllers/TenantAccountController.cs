@@ -66,6 +66,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Soldier/Query")]
+        [Authorize]
         public async Task<UPrimeResponse<PagedResultDto<SoldierDto>>> QuerySoldier([FromBody] QuerySoldierInput input)
         {
             UPrimeResponse<PagedResultDto<SoldierDto>> res = new UPrimeResponse<PagedResultDto<SoldierDto>>();
@@ -79,6 +80,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Soldier/Insert")]
+        [Authorize]
         public async Task<UPrimeResponse> InsertSoldier([FromBody] InsertSoldierInput input)
         {
             await _soldierService.InsertSoldier(input);
@@ -91,6 +93,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Soldier/Update")]
+        [Authorize]
         public async Task<UPrimeResponse> UpdateSoldier([FromBody] UpdateSoldierInput input)
         {
             await _soldierService.UpdateSoldier(input);
@@ -103,6 +106,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Soldier/UpdateIsEnable")]
+        [Authorize]
         public async Task<UPrimeResponse> UpdateSoldierIsEnable([FromBody] UpdateSoldierIsEnableInput input)
         {
             await _soldierService.UpdateSoldierIsEnable(input);
@@ -115,6 +119,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Soldier/Delete")]
+        [Authorize]
         public async Task<UPrimeResponse> DeleteSoldier([FromBody] DeleteSoldierInput input)
         {
             await _soldierService.DeleteSoldier(input);
@@ -127,6 +132,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Soldier/Role/Update")]
+        [Authorize]
         public async Task<UPrimeResponse> UpdateSoldierRole([FromBody] UpdateSoldierRoleInput input)
         {
             await _soldierRoleService.UpdateSoldierRole(input);
@@ -143,6 +149,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Menu/Get")]
+        [Authorize]
         public async Task<UPrimeResponse<MenuDto>> GetMenu(string id)
         {
             UPrimeResponse<MenuDto> res = new UPrimeResponse<MenuDto>();
@@ -156,6 +163,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Menu/Query")]
+        [Authorize]
         public async Task<UPrimeResponse<PagedResultDto<MenuDto>>> QueryMenu([FromBody]QueryMenuInput input)
         {
             UPrimeResponse<PagedResultDto<MenuDto>> res = new UPrimeResponse<PagedResultDto<MenuDto>>();
@@ -166,13 +174,13 @@ namespace EasyIotSharp.API.Controllers
         /// <summary>
         /// 通过用户id获取用户对应的菜单列表
         /// </summary>
-        /// <param name="soldierId"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Menu/Soldier/Query")]
-        public async Task<UPrimeResponse<List<QueryMenuBySoldierIdOutput>>> QueryMenuBySoldierId(string soldierId)
+        [Authorize]
+        public async Task<UPrimeResponse<List<QueryMenuBySoldierIdOutput>>> QueryMenuBySoldierId()
         {
             UPrimeResponse<List<QueryMenuBySoldierIdOutput>> res = new UPrimeResponse<List<QueryMenuBySoldierIdOutput>>();
-            res.Result = await _menuService.QueryMenuBySoldierId(soldierId);
+            res.Result = await _menuService.QueryMenuBySoldierId();
             return res;
         }
 
@@ -182,6 +190,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Menu/Insert")]
+        [Authorize]
         public async Task<UPrimeResponse> InsertMenu([FromBody]InsertMenuInput input)
         {
             await _menuService.InsertMenu(input);
@@ -194,6 +203,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Menu/Update")]
+        [Authorize]
         public async Task<UPrimeResponse> UpdateMenu([FromBody]UpdateMenuInput input)
         {
             await _menuService.UpdateMenu(input);
@@ -206,6 +216,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Menu/UpdateIsEnable")]
+        [Authorize]
         public async Task<UPrimeResponse> UpdateIsEnableMenu([FromBody] UpdateIsEnableMenuInput input)
         {
             await _menuService.UpdateIsEnableMenu(input);
@@ -218,6 +229,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Menu/Delete")]
+        [Authorize]
         public async Task<UPrimeResponse> DeleteMenu([FromBody] DeleteMenuInput input)
         {
             await _menuService.DeleteMenu(input);
@@ -234,6 +246,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Role/Menu/Get")]
+        [Authorize]
         public async Task<UPrimeResponse<GetRoleMenuOutput>> GetRoleMenu(string id)
         {
             UPrimeResponse<GetRoleMenuOutput> res = new UPrimeResponse<GetRoleMenuOutput>();
@@ -247,6 +260,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Role/Query")]
+        [Authorize]
         public async Task<UPrimeResponse<PagedResultDto<RoleDto>>> QueryRole([FromBody] QueryRoleInput input)
         {
             UPrimeResponse<PagedResultDto<RoleDto>> res = new UPrimeResponse<PagedResultDto<RoleDto>>();
@@ -260,6 +274,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Role/Insert")]
+        [Authorize]
         public async Task<UPrimeResponse> InsertRole([FromBody] InsertRoleInput input)
         {
             await _roleService.InsertRole(input);
@@ -272,6 +287,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Role/Update")]
+        [Authorize]
         public async Task<UPrimeResponse> UpdateRole([FromBody] UpdateRoleInput input)
         {
             await _roleService.UpdateRole(input);
@@ -284,6 +300,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Role/UpdateIsEnable")]
+        [Authorize]
         public async Task<UPrimeResponse> UpdateIsEnableRole([FromBody] UpdateIsEnableRoleInput input)
         {
             await _roleService.UpdateIsEnableRole(input);
@@ -296,6 +313,7 @@ namespace EasyIotSharp.API.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Role/Delete")]
+        [Authorize]
         public async Task<UPrimeResponse> DeleteRole([FromBody] DeleteRoleInput input)
         {
             await _roleService.DeleteRole(input);

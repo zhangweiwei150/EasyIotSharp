@@ -48,19 +48,13 @@ namespace EasyIotSharp.Core.Services.Tenant.Impl
             }
             int numId= (await _tenantRepository.CountAsync()) + 1;
             //创建租户管理员账号
-            string managerId = await _soldierService.InsertSoldier(new InsertSoldierInput()
+            string managerId = await _soldierService.InsertAdminSoldier(new InsertAdminSoldierInput()
             {
-                TenantNumId = numId,
-                IsSuperAdmin = true,
-                IsManager = 1,
                 Mobile = input.Mobile,
                 Username = input.Owner,
                 IsTest = false,
                 Sex = -1,
-                IsEnable = true,
                 Email = "",
-                OperatorId = ContextUser.UserId,
-                OperatorName = ContextUser.UserName
             });
 
 
@@ -134,8 +128,8 @@ namespace EasyIotSharp.Core.Services.Tenant.Impl
                 info.IsFreeze = input.IsFreeze;
                 info.FreezeDes = input.FreezeDes;
                 info.UpdatedAt = DateTime.Now;
-                info.OperatorId = input.OperatorId;
-                info.OperatorName = input.OperatorName;
+                info.OperatorId = ContextUser.UserId;
+                info.OperatorName = ContextUser.UserName;
                 await _tenantRepository.UpdateAsync(info);
             }
         }

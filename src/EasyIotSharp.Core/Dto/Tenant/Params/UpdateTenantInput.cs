@@ -9,7 +9,7 @@ namespace EasyIotSharp.Core.Dto.Tenant.Params
     /// <summary>
     /// 通过id修改一个租户信息的入参类
     /// </summary>
-    public class UpdateTenantInput : OperateUserInput
+    public class UpdateTenantInput
     {
         /// <summary>
         /// 租户id

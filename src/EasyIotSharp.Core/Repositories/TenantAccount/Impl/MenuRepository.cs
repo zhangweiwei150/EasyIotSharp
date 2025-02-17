@@ -20,18 +20,15 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
         {
         }
 
-        /// <summary>
-        /// 分页查询菜单列表
-        /// </summary>
-        /// <param name="keyword">关键字（模糊匹配菜单名称）</param>
-        /// <param name="isEnable">是否启用（-1=不参与查询，0=禁用，1=启用）</param>
-        /// <param name="pageIndex">当前页码</param>
-        /// <param name="pageSize">每页记录数</param>
-        /// <returns>返回总记录数和分页数据</returns>
-        public async Task<(int totalCount, List<Menu> items)> Query(string keyword, int isEnable, int pageIndex, int pageSize)
+        public async Task<(int totalCount, List<Menu> items)> Query(int isSugerAdmin, string keyword, int isEnable, int pageIndex, int pageSize, bool isPage = true)
         {
             // 初始化条件
             var predicate = PredicateBuilder.New<Menu>(m => m.IsDelete == false);
+
+            if (isSugerAdmin>-1)
+            {
+                predicate = predicate.And(m => m.IsSuperAdmin == (isSugerAdmin == 1 ? true : false)) ;
+            }
 
             // 关键字模糊查询
             if (!string.IsNullOrWhiteSpace(keyword))
@@ -51,16 +48,28 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             {
                 return (0, new List<Menu>());
             }
+            if (isPage==true)
+            {
+                // 手动拼接排序和分页逻辑
+                var query = Client.Queryable<Menu>().Where(predicate)
+                                  .OrderByDescending(m => m.CreationTime) // 默认按 CreationTime 降序排序
+                                  .Skip((pageIndex - 1) * pageSize)
+                                  .Take(pageSize);
 
-            // 手动拼接排序和分页逻辑
-            var query = Client.Queryable<Menu>().Where(predicate)
-                              .OrderByDescending(m => m.CreationTime) // 默认按 CreationTime 降序排序
-                              .Skip((pageIndex - 1) * pageSize)
-                              .Take(pageSize);
+                // 查询数据
+                var items = await query.ToListAsync();
+                return (totalCount, items);
+            }
+            else
+            {
+                // 手动拼接排序和分页逻辑
+                var query = Client.Queryable<Menu>().Where(predicate)
+                                  .OrderByDescending(m => m.CreationTime); // 默认按 CreationTime 降序排序
 
-            // 查询数据
-            var items = await query.ToListAsync();
-            return (totalCount, items);
+                // 查询数据
+                var items = await query.ToListAsync();
+                return (totalCount, items);
+            }
         }
 
         /// <summary>

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace EasyIotSharp.Core.Dto.TenantAccount.Params
 {
     /// <summary>
-    /// 添加一条用户信息的入参类
+    /// 创建租户添加系统管理员的入参类
     /// </summary>
-    public class InsertSoldierInput
+    public class InsertAdminSoldierInput
     {
         /// <summary>
         /// 手机号
@@ -30,18 +27,8 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
         public int Sex { get; set; } = -1;
 
         /// <summary>
-        /// 是否启用
-        /// </summary>
-        public bool IsEnable { get; set; }
-
-        /// <summary>
         /// 邮箱
         /// </summary>
         public string Email { get; set; }
-
-        /// <summary>
-        /// 角色id
-        /// </summary>
-        public string RoleId { get; set; }
     }
 }

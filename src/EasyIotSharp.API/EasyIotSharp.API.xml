@@ -84,11 +84,10 @@
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.QueryMenuBySoldierId(System.String)">
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.QueryMenuBySoldierId">
             <summary>
             通过用户id获取用户对应的菜单列表
             </summary>
-            <param name="soldierId"></param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.InsertMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput)">

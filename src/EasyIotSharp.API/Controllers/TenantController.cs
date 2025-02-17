@@ -30,6 +30,7 @@ namespace EasyIotSharp.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("/Tenant/Get")]
+        [Authorize]
         public async Task<UPrimeResponse<TenantDto>> GetTenant(string id)
         {
             UPrimeResponse<TenantDto> res = new UPrimeResponse<TenantDto>();
@@ -55,6 +56,7 @@ namespace EasyIotSharp.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("/Tenant/Insert")]
+        [Authorize]
         public async Task<UPrimeResponse> InsertTenant([FromBody]InsertTenantInput input)
         {
             await _tenantService.InsertTenant(input);
@@ -94,7 +96,7 @@ namespace EasyIotSharp.API.Controllers
         /// <returns></returns>
         [HttpPost("/Tenant/Delete")]
         [Authorize]
-        public async Task<UPrimeResponse> DeleteTenant(DeleteTenantInput input)
+        public async Task<UPrimeResponse> DeleteTenant([FromBody]DeleteTenantInput input)
         {
             await _tenantService.DeleteTenant(input);
             return new UPrimeResponse();

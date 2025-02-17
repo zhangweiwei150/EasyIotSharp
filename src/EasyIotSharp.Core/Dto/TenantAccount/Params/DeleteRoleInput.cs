@@ -7,7 +7,7 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
     /// <summary>
     /// 通过id删除一条角色信息的入参类
     /// </summary>
-    public class DeleteRoleInput:OperateUserInput
+    public class DeleteRoleInput
     {
         /// <summary>
         /// id

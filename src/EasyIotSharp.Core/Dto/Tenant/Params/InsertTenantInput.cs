@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EasyIotSharp.Core.Dto.Tenant.Params
 {
-    public class InsertTenantInput:OperateUserInput
+    public class InsertTenantInput
     {
         /// <summary>
         /// 租户名称

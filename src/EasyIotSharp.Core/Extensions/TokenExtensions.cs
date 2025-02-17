@@ -29,7 +29,7 @@ namespace EasyIotSharp.Core.Extensions
         /// <param name="tenantId">租户 ID</param>
         /// <param name="expireMinutes">过期时间（分钟）默认七天</param>
         /// <returns>生成的 Token</returns>
-        public static UserTokenDto GenerateToken(string userId, string userName, string tenantId, int expireMinutes = 10080)
+        public static UserTokenDto GenerateToken(string userId, string userName, string tenantId,string tenantNumId, int expireMinutes = 10080)
         {
             // 1. 定义 Payload
             var claims = new[]
@@ -37,6 +37,7 @@ namespace EasyIotSharp.Core.Extensions
             new Claim("UserId", userId), // 用户 ID
             new Claim("UserName", userName), // 用户名称
             new Claim("TenantId", tenantId), // 租户 ID
+            new Claim("TenantNumId", tenantNumId), // 租户 NumID
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) // Token ID
         };
 

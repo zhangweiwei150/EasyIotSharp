@@ -39,6 +39,13 @@ namespace EasyIotSharp.Core.Services.TenantAccount
         Task<string> InsertSoldier(InsertSoldierInput input);
 
         /// <summary>
+        /// 创建租户，默认添加一条租户管理员信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<string> InsertAdminSoldier(InsertAdminSoldierInput input);
+
+        /// <summary>
         /// 通过id修改一条用户信息
         /// </summary>
         /// <param name="input"></param>

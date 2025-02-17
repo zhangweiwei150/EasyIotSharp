@@ -7,7 +7,7 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
     /// <summary>
     /// 通过id修改一条菜单信息的是否启用状态的入参类
     /// </summary>
-    public class UpdateIsEnableMenuInput:OperateUserInput
+    public class UpdateIsEnableMenuInput
     {
         /// <summary>
         /// id
