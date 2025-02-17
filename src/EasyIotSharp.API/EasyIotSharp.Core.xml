@@ -2949,9 +2949,26 @@
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.MenuRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
             <summary>
-            
+            构造函数
             </summary>
-            <param name="databaseProvider"></param>
+            <param name="databaseProvider">数据库提供者</param>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.MenuRepository.Query(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            分页查询菜单列表
+            </summary>
+            <param name="keyword">关键字（模糊匹配菜单名称）</param>
+            <param name="isEnable">是否启用（-1=不参与查询，0=禁用，1=启用）</param>
+            <param name="pageIndex">当前页码</param>
+            <param name="pageSize">每页记录数</param>
+            <returns>返回总记录数和分页数据</returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.MenuRepository.QueryByIds(System.Collections.Generic.List{System.String})">
+            <summary>
+            根据ID集合查询菜单
+            </summary>
+            <param name="ids">菜单ID集合</param>
+            <returns>返回菜单列表</returns>
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.RoleMenuRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
             <summary>
