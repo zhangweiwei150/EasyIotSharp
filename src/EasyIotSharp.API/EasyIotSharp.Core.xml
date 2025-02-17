@@ -392,6 +392,16 @@
             当前用户Id
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Configuration.UserTokenData.UserName">
+            <summary>
+            当前用户名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.UserTokenData.TenantId">
+            <summary>
+            当前租户Id
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Configuration.WatchmenOptions">
             <summary>
             【watchmen】token配置项
@@ -2414,11 +2424,13 @@
             <param name="identity"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.Core.Extensions.TokenExtensions.GenerateToken(System.String,System.Int32)">
+        <member name="M:EasyIotSharp.Core.Extensions.TokenExtensions.GenerateToken(System.String,System.String,System.String,System.Int32)">
             <summary>
             生成 JWT Token
             </summary>
             <param name="userId">用户 ID</param>
+            <param name="userName">用户名称</param>
+            <param name="tenantId">租户 ID</param>
             <param name="expireMinutes">过期时间（分钟）默认七天</param>
             <returns>生成的 Token</returns>
         </member>

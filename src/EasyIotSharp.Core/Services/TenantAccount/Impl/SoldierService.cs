@@ -79,7 +79,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             await _soldierRepository.UpdateAsync(user);
             res.Solider = user.MapTo<SoldierDto>();
             res.Tenant = tenant.MapTo<TenantDto>();
-            res.Token = TokenExtensions.GenerateToken(res.Solider.Id);
+            res.Token = TokenExtensions.GenerateToken(res.Solider.Id, res.Solider.Username, res.Tenant.Id);
             return res;
         }
 

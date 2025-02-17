@@ -8,12 +8,24 @@ namespace EasyIotSharp.Core.Configuration
         public UserTokenData()
         {
             UserId = string.Empty;
+            UserName = string.Empty;
+            TenantId = string.Empty;
+
         }
 
         /// <summary>
         /// 当前用户Id
         /// </summary>
         public string UserId { get; set; }
+        /// <summary>
+        /// 当前用户名称
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// 当前租户Id
+        /// </summary>
+        public string TenantId { get; set; }
     }
 
     public class UserTokenIdentity : IIdentity

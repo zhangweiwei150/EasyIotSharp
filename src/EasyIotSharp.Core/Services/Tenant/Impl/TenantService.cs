@@ -59,8 +59,8 @@ namespace EasyIotSharp.Core.Services.Tenant.Impl
                 Sex = -1,
                 IsEnable = true,
                 Email = "",
-                OperatorId = input.OperatorId,
-                OperatorName = input.OperatorName
+                OperatorId = ContextUser.UserId,
+                OperatorName = ContextUser.UserName
             });
 
 
@@ -86,8 +86,8 @@ namespace EasyIotSharp.Core.Services.Tenant.Impl
             model.IsDelete = false;
             model.CreationTime = DateTime.Now;
             model.UpdatedAt = DateTime.Now;
-            model.OperatorId = input.OperatorId;
-            model.OperatorName = input.OperatorName;
+            model.OperatorId = ContextUser.UserId;
+            model.OperatorName = ContextUser.UserName;
             await _tenantRepository.InsertAsync(model);
         }
 
@@ -117,8 +117,8 @@ namespace EasyIotSharp.Core.Services.Tenant.Impl
             info.IsFreeze = input.IsFreeze;
             info.FreezeDes = input.FreezeDes;
             info.UpdatedAt = DateTime.Now;
-            info.OperatorId = input.OperatorId;
-            info.OperatorName = input.OperatorName;
+            info.OperatorId = ContextUser.UserId;
+            info.OperatorName = ContextUser.UserName;
             await _tenantRepository.UpdateAsync(info);
         }
 
@@ -151,8 +151,8 @@ namespace EasyIotSharp.Core.Services.Tenant.Impl
             {
                 info.IsDelete = input.IsDelete;
                 info.UpdatedAt = DateTime.Now;
-                info.OperatorId = input.OperatorId;
-                info.OperatorName = input.OperatorName;
+                info.OperatorId = ContextUser.UserId;
+                info.OperatorName = ContextUser.UserName;
                 await _tenantRepository.UpdateAsync(info);
             }
         }

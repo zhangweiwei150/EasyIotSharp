@@ -56,14 +56,29 @@ namespace EasyIotSharp.API.Filters
                         principal = tokenHandler.ValidateToken(token, validationParameters, out var validatedToken);
                         // 提取用户信息
                         var userIdClaim = principal.Claims.FirstOrDefault(c => c.Type == "UserId");
-                        if (userIdClaim == null || string.IsNullOrEmpty(userIdClaim.Value))
+                        var userNameClaim = principal.Claims.FirstOrDefault(c => c.Type == "UserName");
+                        var tenantIdClaim = principal.Claims.FirstOrDefault(c => c.Type == "TenantId");
+
+                        // 验证 Claim 是否存在且有效
+                        if (userIdClaim == null || string.IsNullOrEmpty(userIdClaim.Value) ||
+                            userNameClaim == null || string.IsNullOrEmpty(userNameClaim.Value) ||
+                            tenantIdClaim == null || string.IsNullOrEmpty(tenantIdClaim.Value))
                         {
                             throw new BizException(BizError.TOKEN_INVALID_USER_CLAIMS);
                         }
 
                         var userId = userIdClaim.Value;
-                        // 设置用户身份信息
-                        context.HttpContext.User = new UserTokenPrincipal(new UserTokenIdentity(new UserTokenData { UserId = userId }));
+                        var userName = userNameClaim.Value;
+                        var tenantId = tenantIdClaim.Value;
+
+                        // 设置用户身份信息（包含 UserId、UserName 和 TenantId）
+                        var userTokenData = new UserTokenData
+                        {
+                            UserId = userId,
+                            UserName = userName,
+                            TenantId = tenantId
+                        };
+                        context.HttpContext.User = new UserTokenPrincipal(new UserTokenIdentity(userTokenData));
                     }
                     catch (SecurityTokenExpiredException)
                     {
