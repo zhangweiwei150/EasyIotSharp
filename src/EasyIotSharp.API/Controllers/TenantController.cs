@@ -42,6 +42,7 @@ namespace EasyIotSharp.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("/Tenant/Query")]
+        [Authorize]
         public async Task<UPrimeResponse<PagedResultDto<TenantDto>>> QueryTenant([FromBody] QueryTenantInput input)
         {
             UPrimeResponse<PagedResultDto<TenantDto>> res = new UPrimeResponse<PagedResultDto<TenantDto>>();

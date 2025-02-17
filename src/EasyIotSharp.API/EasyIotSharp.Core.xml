@@ -2972,27 +2972,77 @@
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.RoleMenuRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
             <summary>
-            
+            构造函数
             </summary>
-            <param name="databaseProvider"></param>
+            <param name="databaseProvider">数据库提供者</param>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.RoleMenuRepository.QueryByRoleIds(System.Collections.Generic.List{System.String})">
+            <summary>
+            根据角色ID集合查询角色菜单关系
+            </summary>
+            <param name="roleIds">角色ID集合</param>
+            <returns>返回角色菜单关系列表</returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.RoleMenuRepository.DeleteManyByRoleId(System.String)">
+            <summary>
+            根据角色ID删除角色菜单关系
+            </summary>
+            <param name="roleId">角色ID</param>
+            <returns>返回受影响的行数</returns>
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.RoleRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
             <summary>
-            
+            构造函数
             </summary>
-            <param name="databaseProvider"></param>
+            <param name="databaseProvider">数据库提供者</param>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.RoleRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            分页查询角色列表
+            </summary>
+            <param name="tenantNumId">租户编号（大于0时参与查询）</param>
+            <param name="keyword">关键字（模糊匹配角色名称）</param>
+            <param name="isEnable">是否启用（-1=不参与查询，0=禁用，1=启用）</param>
+            <param name="pageIndex">当前页码</param>
+            <param name="pageSize">每页记录数</param>
+            <returns>返回总记录数和分页数据</returns>
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.SoldierRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
             <summary>
-            
+            构造函数
             </summary>
-            <param name="databaseProvider"></param>
+            <param name="databaseProvider">数据库提供者</param>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.SoldierRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            分页查询用户列表
+            </summary>
+            <param name="tenantNumId">租户编号（大于0时参与查询）</param>
+            <param name="keyword">关键字（模糊匹配用户名或手机号）</param>
+            <param name="isEnable">是否启用（-1=不参与查询，0=禁用，1=启用）</param>
+            <param name="pageIndex">当前页码</param>
+            <param name="pageSize">每页记录数</param>
+            <returns>返回总记录数和分页数据</returns>
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.SoldierRoleRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
             <summary>
-            
+            构造函数
             </summary>
-            <param name="databaseProvider"></param>
+            <param name="databaseProvider">数据库提供者</param>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.SoldierRoleRepository.QueryBySoldierId(System.String)">
+            <summary>
+            根据用户ID查询用户角色关系
+            </summary>
+            <param name="soldierId">用户ID</param>
+            <returns>返回用户角色关系列表</returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.SoldierRoleRepository.DeleteManyBySoldierId(System.String)">
+            <summary>
+            根据用户ID删除用户角色关系
+            </summary>
+            <param name="soldierId">用户ID</param>
+            <returns>返回受影响的行数</returns>
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.IRoleMenuRepository.QueryByRoleIds(System.Collections.Generic.List{System.String})">
             <summary>
