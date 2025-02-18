@@ -75,7 +75,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             await _roleRepository.InsertAsync(roleMedel);
 
             //通过子集菜单id获取父级菜单id
-            var parentMenus = GetParentMenus((await _menuRepository.Query(2, "", 1, 0, 0, false)).items, input.Menus);
+            var parentMenus = GetParentMenus((await _menuRepository.Query(0, "", 1, 1, 999, false)).items, input.Menus);
 
             var menuIds = parentMenus.Select(x => x.Id).ToList();
             menuIds.AddRange(input.Menus);
