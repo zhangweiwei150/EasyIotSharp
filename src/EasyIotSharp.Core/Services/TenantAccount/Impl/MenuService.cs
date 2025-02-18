@@ -43,7 +43,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
                 throw new BizException(BizError.BIND_EXCEPTION_ERROR, "未找到指定资源");
             }
             // 查询菜单数据
-            var query = await _menuRepository.Query(soldier.IsSuperAdmin == true ? 1 : 2, input.Keyword, input.IsEnable, input.PageIndex, input.PageSize);
+            var query = await _menuRepository.Query(soldier.IsSuperAdmin == true ? -1 : 0, input.Keyword, input.IsEnable, input.PageIndex, input.PageSize);
             int totalCount = query.totalCount;
             var list = query.items.MapTo<List<MenuDto>>();
 
