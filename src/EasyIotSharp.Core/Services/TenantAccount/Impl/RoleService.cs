@@ -116,7 +116,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             roleMedel.OperatorName = ContextUser.UserName;
             await _roleRepository.InsertAsync(roleMedel);
             //创建一个管理员角色，包含所有非系统级别启用的菜单
-            var menus = await _menuRepository.Query(2, "", 1, 0, 0, false);
+            var menus = await _menuRepository.Query(0, "", 1, 0, 0, false);
             var roleMenuInsertList = new List<RoleMenu>();
             foreach (var item in menus.items)
             {
