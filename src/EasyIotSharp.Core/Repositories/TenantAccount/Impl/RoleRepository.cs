@@ -59,7 +59,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
                 return (0, new List<Role>());
             }
             // 手动拼接排序和分页逻辑
-            var query = Client.Queryable<Role>().Where(predicate)
+            var query = GetDbClient().Queryable<Role>().Where(predicate)
                               .OrderByDescending(m => m.CreationTime) // 默认按 CreationTime 降序排序
                               .Skip((pageIndex - 1) * pageSize)
                               .Take(pageSize);

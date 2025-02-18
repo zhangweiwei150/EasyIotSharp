@@ -52,7 +52,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             if (isPage==true)
             {
                 // 手动拼接排序和分页逻辑
-                var query = Client.Queryable<Menu>().Where(predicate)
+                var query = GetDbClient().Queryable<Menu>().Where(predicate)
                                   .OrderByDescending(m => m.CreationTime) // 默认按 CreationTime 降序排序
                                   .Skip((pageIndex - 1) * pageSize)
                                   .Take(pageSize);
@@ -64,7 +64,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             else
             {
                 // 手动拼接排序和分页逻辑
-                var query = Client.Queryable<Menu>().Where(predicate)
+                var query = GetDbClient().Queryable<Menu>().Where(predicate)
                                   .OrderByDescending(m => m.CreationTime); // 默认按 CreationTime 降序排序
 
                 // 查询数据

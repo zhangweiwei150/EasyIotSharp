@@ -53,7 +53,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             }
 
             // 删除符合条件的数据
-            var count = await Client.Deleteable<SoldierRole>()
+            var count = await GetDbClient().Deleteable<SoldierRole>()
                                      .Where(sr => sr.SoldierId == soldierId)
                                      .ExecuteCommandAsync();
             return count;
