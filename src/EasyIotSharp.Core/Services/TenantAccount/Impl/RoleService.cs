@@ -199,7 +199,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             }
             if (info.IsEnable != input.IsEnable)
             {
-                info.IsEnable = info.IsEnable;
+                info.IsEnable = input.IsEnable;
                 info.OperatorId = ContextUser.UserId;
                 info.OperatorName = ContextUser.UserName;
                 info.UpdatedAt = DateTime.Now;
@@ -216,7 +216,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             }
             if (info.IsDelete != input.IsDelete)
             {
-                info.IsDelete = info.IsDelete;
+                info.IsDelete = input.IsDelete;
                 info.OperatorId = ContextUser.UserId;
                 info.OperatorName = ContextUser.UserName;
                 info.UpdatedAt = DateTime.Now;
