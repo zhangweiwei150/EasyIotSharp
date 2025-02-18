@@ -164,15 +164,15 @@ namespace EasyIotSharp.API.Controllers
         /// <returns></returns>
         [HttpPost("/TenantAccount/Menu/Query")]
         [Authorize]
-        public async Task<UPrimeResponse<PagedResultDto<MenuDto>>> QueryMenu([FromBody]QueryMenuInput input)
+        public async Task<UPrimeResponse<PagedResultDto<MenuTreeDto>>> QueryMenu([FromBody]QueryMenuInput input)
         {
-            UPrimeResponse<PagedResultDto<MenuDto>> res = new UPrimeResponse<PagedResultDto<MenuDto>>();
+            UPrimeResponse<PagedResultDto<MenuTreeDto>> res = new UPrimeResponse<PagedResultDto<MenuTreeDto>>();
             res.Result = await _menuService.QueryMenu(input);
             return res;
         }
 
         /// <summary>
-        /// 通过用户id获取用户对应的菜单列表
+        /// 获取菜单列表
         /// </summary>
         /// <returns></returns>
         [HttpPost("/TenantAccount/Menu/Soldier/Query")]

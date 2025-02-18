@@ -2,6 +2,7 @@
 using EasyIotSharp.Core.Domain.TenantAccount;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using EasyIotSharp.Core.Dto.TenantAccount;
 
 namespace EasyIotSharp.Core.Repositories.TenantAccount
 {
@@ -25,5 +26,11 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount
         /// <param name="ids"></param>
         /// <returns></returns>
         Task<List<Menu>> QueryByIds(List<string> ids);
+        /// <summary>
+        /// 通过父级id创建Tree
+        /// </summary>
+        /// <param name="menuList"></param>
+        /// <returns></returns>
+        List<MenuTreeDto> BuildMenuTree(List<MenuDto> menuList);
     }
 }

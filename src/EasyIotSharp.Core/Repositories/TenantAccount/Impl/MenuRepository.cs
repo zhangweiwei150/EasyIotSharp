@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using EasyIotSharp.Core.Domain.TenantAccount;
+using EasyIotSharp.Core.Dto.TenantAccount;
 using EasyIotSharp.Core.Repositories.Mysql;
 using EasyIotSharp.Repositories.Mysql;
 using LinqKit;
@@ -95,6 +96,69 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             // 查询数据
             var items = await GetListAsync(predicate);
             return items.ToList();
+        }
+
+
+        /// <summary>
+        /// 构建菜单树形结构
+        /// </summary>
+        public List<MenuTreeDto> BuildMenuTree(List<MenuDto> menuList)
+        {
+            // 找到所有顶级菜单（ParentId 为 null 的菜单）
+            var topLevelMenus = menuList.Where(menu => string.IsNullOrEmpty(menu.ParentId)).ToList();
+
+            // 递归构建子菜单
+            var tree = topLevelMenus.Select(menu => new MenuTreeDto
+            {
+                Id = menu.Id,
+                CreationTime = menu.CreationTime,
+                IsDelete = menu.IsDelete,
+                DeleteTime = menu.DeleteTime,
+                UpdatedAt = menu.UpdatedAt,
+                OperatorId = menu.OperatorId,
+                OperatorName = menu.OperatorName,
+                ParentId = menu.ParentId,
+                Name = menu.Name,
+                Icon = menu.Icon,
+                Url = menu.Url,
+                Type = menu.Type,
+                IsSuperAdmin = menu.IsSuperAdmin,
+                IsEnable = menu.IsEnable,
+                Children = GetChildren(menu.Id, menuList)
+            }).ToList();
+
+            return tree;
+        }
+
+        /// <summary>
+        /// 递归获取子菜单
+        /// </summary>
+        private List<MenuTreeDto> GetChildren(string parentId, List<MenuDto> menuList)
+        {
+            var children = menuList.Where(menu => menu.ParentId == parentId).ToList();
+            if (children.Count == 0)
+            {
+                return null; // 没有子菜单时返回 null
+            }
+
+            return children.Select(child => new MenuTreeDto
+            {
+                Id = child.Id,
+                CreationTime = child.CreationTime,
+                IsDelete = child.IsDelete,
+                DeleteTime = child.DeleteTime,
+                UpdatedAt = child.UpdatedAt,
+                OperatorId = child.OperatorId,
+                OperatorName = child.OperatorName,
+                ParentId = child.ParentId,
+                Name = child.Name,
+                Icon = child.Icon,
+                Url = child.Url,
+                Type = child.Type,
+                IsSuperAdmin = child.IsSuperAdmin,
+                IsEnable = child.IsEnable,
+                Children = GetChildren(child.Id, menuList) // 递归调用
+            }).ToList();
         }
     }
 }

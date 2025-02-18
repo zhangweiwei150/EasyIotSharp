@@ -35,17 +35,21 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             return info.MapTo<MenuDto>();
         }
 
-        public async Task<PagedResultDto<MenuDto>> QueryMenu(QueryMenuInput input)
+        public async Task<PagedResultDto<MenuTreeDto>> QueryMenu(QueryMenuInput input)
         {
             var soldier = await _soldierRepository.FirstOrDefaultAsync(x => x.IsDelete == false && x.Id == ContextUser.UserId);
             if (soldier.IsNull())
             {
                 throw new BizException(BizError.BIND_EXCEPTION_ERROR, "未找到指定资源");
             }
+            // 查询菜单数据
             var query = await _menuRepository.Query(soldier.IsSuperAdmin == true ? 1 : 2, input.Keyword, input.IsEnable, input.PageIndex, input.PageSize);
             int totalCount = query.totalCount;
             var list = query.items.MapTo<List<MenuDto>>();
-            return new PagedResultDto<MenuDto>() { TotalCount = totalCount, Items = list };
+
+            // 构建树形结构
+            var tree = _menuRepository.BuildMenuTree(list);
+            return new PagedResultDto<MenuTreeDto>() { TotalCount = totalCount, Items = tree };
         }
 
         public async Task<List<QueryMenuBySoldierIdOutput>> QueryMenuBySoldierId()

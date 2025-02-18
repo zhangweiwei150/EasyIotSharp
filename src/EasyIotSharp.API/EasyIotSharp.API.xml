@@ -86,7 +86,7 @@
         </member>
         <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.QueryMenuBySoldierId">
             <summary>
-            通过用户id获取用户对应的菜单列表
+            获取菜单列表
             </summary>
             <returns></returns>
         </member>

@@ -917,6 +917,74 @@
             是否启用
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.ParentId">
+            <summary>
+            父级id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.Icon">
+            <summary>
+            菜单图标
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.Url">
+            <summary>
+            菜单路径
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.Type">
+            <summary>
+            类型
+            1=菜单
+            2=路由
+            3=按钮
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.IsSuperAdmin">
+            <summary>
+            是否admin(超级管理员，没有租户限制)
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.DeleteMenuInput">
             <summary>
             通过id删除一条菜单信息
@@ -2993,6 +3061,13 @@
             <param name="ids"></param>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.IMenuRepository.BuildMenuTree(System.Collections.Generic.List{EasyIotSharp.Core.Dto.TenantAccount.MenuDto})">
+            <summary>
+            通过父级id创建Tree
+            </summary>
+            <param name="menuList"></param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.MenuRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
             <summary>
             构造函数
@@ -3005,6 +3080,16 @@
             </summary>
             <param name="ids">菜单ID集合</param>
             <returns>返回菜单列表</returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.MenuRepository.BuildMenuTree(System.Collections.Generic.List{EasyIotSharp.Core.Dto.TenantAccount.MenuDto})">
+            <summary>
+            构建菜单树形结构
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.MenuRepository.GetChildren(System.String,System.Collections.Generic.List{EasyIotSharp.Core.Dto.TenantAccount.MenuDto})">
+            <summary>
+            递归获取子菜单
+            </summary>
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.RoleMenuRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
             <summary>

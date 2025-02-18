@@ -22,7 +22,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultDto<MenuDto>> QueryMenu(QueryMenuInput input);
+        Task<PagedResultDto<MenuTreeDto>> QueryMenu(QueryMenuInput input);
 
         /// <summary>
         /// 通过用户id获取用户对应的菜单列表
