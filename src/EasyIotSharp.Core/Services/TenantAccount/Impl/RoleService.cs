@@ -40,7 +40,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             var roleMenus = await _roleMenuRepository.GetListAsync(x => x.RoleId == id);
             if (roleMenus.Count>0)
             {
-                var menus = roleMenus.Select(x => x.Id).ToList();
+                var menus = roleMenus.Select(x => x.MenuId).ToList();
                 output.Menus = menus.MapTo<List<string>>();
             }
             return output;
