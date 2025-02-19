@@ -36,12 +36,12 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             }
             GetRoleMenuOutput output = new GetRoleMenuOutput();
             output = role.MapTo<GetRoleMenuOutput>();
-            output.Menus = new List<MenuDto>();
+            output.Menus = new List<string>();
             var roleMenus = await _roleMenuRepository.GetListAsync(x => x.RoleId == id);
             if (roleMenus.Count>0)
             {
-                var menus = await _menuRepository.QueryByIds(roleMenus.Select(x => x.Id).ToList());
-                output.Menus = menus.MapTo<List<MenuDto>>();
+                var menus = roleMenus.Select(x => x.Id).ToList();
+                output.Menus = menus.MapTo<List<string>>();
             }
             return output;
         }
@@ -73,14 +73,8 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             roleMedel.OperatorId = ContextUser.UserId;
             roleMedel.OperatorName = ContextUser.UserName;
             await _roleRepository.InsertAsync(roleMedel);
-
-            //通过子集菜单id获取父级菜单id
-            var parentMenus = GetParentMenus((await _menuRepository.Query(0, "", 1, 1, 999, false)).items, input.Menus);
-
-            var menuIds = parentMenus.Select(x => x.Id).ToList();
-            menuIds.AddRange(input.Menus);
             var roleMenuInsertList = new List<RoleMenu>();
-            foreach (var item in menuIds)
+            foreach (var item in input.Menus)
             {
                 roleMenuInsertList.Add(new RoleMenu()
                 {
@@ -163,10 +157,6 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
                 //批量删除老的角色菜单表
                 await _roleMenuRepository.DeleteManyByRoleId(role.Id);
 
-                //通过子集菜单id获取父级菜单id
-                var parentMenus = GetParentMenus(await _menuRepository.GetAllAsync(), input.Menus);
-                var menuIds = parentMenus.Select(x => x.Id).ToList();
-                menuIds.AddRange(input.Menus);
                 //批量添加新的角色菜单表
                 var roleMenuInsertList = new List<RoleMenu>();
                 foreach (var item in input.Menus)
@@ -223,42 +213,5 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
                 await _roleRepository.UpdateAsync(info);
             }
         }
-
-        #region private
-
-        // 通过子集ID数组获取所有父级直至顶级
-        private List<Menu> GetParentMenus(List<Menu> menus, List<string> childIds)
-        {
-            var allParentMenus = new List<Menu>();
-
-            foreach (var childId in childIds)
-            {
-                var parentMenus = new List<Menu>();
-                var currentMenu = menus.FirstOrDefault(x => x.Id == childId);
-
-                // 向上查找父级菜单
-                while (currentMenu != null && !string.IsNullOrWhiteSpace(currentMenu.ParentId))
-                {
-                    currentMenu = menus.FirstOrDefault(x => x.Id == currentMenu.ParentId);
-                    if (currentMenu != null)
-                    {
-                        parentMenus.Add(currentMenu);
-                    }
-                }
-
-                // 反转列表，使得顶级菜单在最前面
-                parentMenus.Reverse();
-
-                // 将当前子集的父级菜单添加到总结果中
-                allParentMenus.AddRange(parentMenus);
-            }
-
-            // 去重（如果多个子集有相同的父级菜单）
-            allParentMenus = allParentMenus.Distinct().ToList();
-
-            return allParentMenus;
-        }
-
-        #endregion
     }
 }

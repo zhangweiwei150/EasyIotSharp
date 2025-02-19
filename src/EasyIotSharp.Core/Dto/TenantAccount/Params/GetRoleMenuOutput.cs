@@ -45,6 +45,6 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
         /// <summary>
         /// 菜单信息
         /// </summary>
-        public List<MenuDto> Menus { get; set; }
+        public List<string> Menus { get; set; }
     }
 }

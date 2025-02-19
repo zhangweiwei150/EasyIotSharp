@@ -1,7 +1,6 @@
 ﻿using SqlSugar;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using UPrime.Domain.Entities;
@@ -18,97 +17,94 @@ namespace EasyIotSharp.Core.Repositories.Mysql
             _databaseProvider = databaseProvider;
         }
 
-        /// <summary>
-        /// 确保连接已打开
-        /// </summary>
-        public void EnsureConnectionOpen()
+        protected ISqlSugarClient GetDbClient()
         {
-            if (!_databaseProvider.Client.CurrentConnectionConfig.IsAutoCloseConnection)
+            return new SqlSugarClient(new ConnectionConfig()
             {
-                if (_databaseProvider.Client.Ado.Connection.State != ConnectionState.Open)
-                {
-                    _databaseProvider.Client.Ado.Connection.Open();
-                }
-            }
+                ConnectionString = _databaseProvider.Client.CurrentConnectionConfig.ConnectionString,
+                DbType = DbType.MySql,
+                IsAutoCloseConnection = true,
+                InitKeyType = InitKeyType.Attribute
+            });
         }
 
         public virtual async Task<int> InsertAsync(TEntity entity)
         {
-            EnsureConnectionOpen();
-            return await _databaseProvider.Client.Insertable(entity).ExecuteCommandAsync();
+            using var db = GetDbClient();
+            return await db.Insertable(entity).ExecuteCommandAsync();
         }
 
         public virtual async Task<int> InserManyAsync(List<TEntity> entities)
         {
-            EnsureConnectionOpen();
-            return await _databaseProvider.Client.Insertable(entities).ExecuteCommandAsync();
+            using var db = GetDbClient();
+            return await db.Insertable(entities).ExecuteCommandAsync();
         }
 
         public virtual async Task<bool> DeleteByIdAsync(object id)
         {
-            EnsureConnectionOpen();
-            return await _databaseProvider.Client.Deleteable<TEntity>().In(id).ExecuteCommandAsync() > 0;
+            using var db = GetDbClient();
+            return await db.Deleteable<TEntity>().In(id).ExecuteCommandAsync() > 0;
         }
 
         public virtual async Task<bool> DeleteAsync(TEntity entity)
         {
-            EnsureConnectionOpen();
-            return await _databaseProvider.Client.Deleteable(entity).ExecuteCommandAsync() > 0;
+            using var db = GetDbClient();
+            return await db.Deleteable(entity).ExecuteCommandAsync() > 0;
         }
 
         public virtual async Task<bool> UpdateAsync(TEntity entity)
         {
-            EnsureConnectionOpen();
-            var result = await _databaseProvider.Client.Updateable(entity).ExecuteCommandAsync();
+            using var db = GetDbClient();
+            var result = await db.Updateable(entity).ExecuteCommandAsync();
             return result > 0;
         }
 
         public virtual async Task<TEntity> GetByIdAsync(object id)
         {
-            EnsureConnectionOpen();
-            return await _databaseProvider.Client.Queryable<TEntity>().InSingleAsync(id);
+            using var db = GetDbClient();
+            return await db.Queryable<TEntity>().InSingleAsync(id);
         }
 
         public virtual async Task<List<TEntity>> GetAllAsync()
         {
-            EnsureConnectionOpen();
-            return await _databaseProvider.Client.Queryable<TEntity>().ToListAsync();
+            using var db = GetDbClient();
+            return await db.Queryable<TEntity>().ToListAsync();
         }
 
         public virtual async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            EnsureConnectionOpen();
-            return await _databaseProvider.Client.Queryable<TEntity>().FirstAsync(predicate);
+            using var db = GetDbClient();
+            return await db.Queryable<TEntity>().FirstAsync(predicate);
         }
 
         public virtual async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            EnsureConnectionOpen();
-            return await _databaseProvider.Client.Queryable<TEntity>().AnyAsync(predicate);
+            using var db = GetDbClient();
+            return await db.Queryable<TEntity>().AnyAsync(predicate);
         }
 
         public virtual async Task<int> CountAsync()
         {
-            EnsureConnectionOpen();
-            return await _databaseProvider.Client.Queryable<TEntity>().CountAsync();
+            using var db = GetDbClient();
+            return await db.Queryable<TEntity>().CountAsync();
         }
 
         public virtual async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            EnsureConnectionOpen();
-            return await _databaseProvider.Client.Queryable<TEntity>().CountAsync(predicate);
+            using var db = GetDbClient();
+            return await db.Queryable<TEntity>().CountAsync(predicate);
         }
 
         public virtual async Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            EnsureConnectionOpen();
-            return await _databaseProvider.Client.Queryable<TEntity>().Where(predicate).ToListAsync();
+            using var db = GetDbClient();
+            return await db.Queryable<TEntity>().Where(predicate).ToListAsync();
         }
 
         public virtual async Task<List<TEntity>> GetPagedListAsync(Expression<Func<TEntity, bool>> predicate, int pageIndex, int pageSize)
         {
-            EnsureConnectionOpen();
-            return await _databaseProvider.Client.Queryable<TEntity>()
+            using var db = GetDbClient();
+            return await db.Queryable<TEntity>()
                 .Where(predicate)
                 .ToPageListAsync(pageIndex, pageSize);
         }
