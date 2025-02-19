@@ -63,7 +63,6 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             }
             else
             {
-                // 手动拼接排序和分页逻辑
                 var query = GetDbClient().Queryable<Menu>().Where(predicate)
                                   .OrderByDescending(m => m.CreationTime); // 默认按 CreationTime 降序排序
 
