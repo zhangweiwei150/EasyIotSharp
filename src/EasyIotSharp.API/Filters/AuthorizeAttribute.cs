@@ -72,7 +72,7 @@ namespace EasyIotSharp.API.Filters
                         var userId = userIdClaim.Value;
                         var userName = userNameClaim.Value;
                         var tenantId = tenantIdClaim.Value;
-                        var tenantNumId = tenantIdClaim.Value;
+                        var tenantNumId = tenantNumIdClaim.Value;
                         // 设置用户身份信息（包含 UserId、UserName 和 TenantId）
                         var userTokenData = new UserTokenData
                         {

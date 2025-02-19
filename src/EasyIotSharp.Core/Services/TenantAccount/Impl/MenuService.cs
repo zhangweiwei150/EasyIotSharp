@@ -86,7 +86,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
                 return new List<QueryMenuBySoldierIdOutput>();
             }
             List<QueryMenuBySoldierIdOutput> output = new List<QueryMenuBySoldierIdOutput>();
-            var firstMenus = menus.Where(x => string.IsNullOrWhiteSpace(x.ParentId)).ToList();
+            var firstMenus = menus.Where(x => string.IsNullOrWhiteSpace(x.ParentId)).OrderBy(x=>x.CreationTime).ToList();
             foreach (var item in firstMenus)
             {
                 QueryMenuBySoldierIdOutput model = new QueryMenuBySoldierIdOutput();
@@ -103,7 +103,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
                 var children = new List<ChildrenMenu>();
 
                 // 获取当前菜单的所有子菜单
-                var childMenus = menus.Where(x => x.ParentId == parentId).ToList();
+                var childMenus = menus.Where(x => x.ParentId == parentId).OrderBy(x => x.CreationTime).ToList();
 
                 // 遍历子菜单，递归构建子菜单树
                 foreach (var item in childMenus)
