@@ -144,6 +144,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             //添加一个用户角色信息
             await _soldierRoleRepository.InsertAsync(new SoldierRole()
             {
+                Id= Guid.NewGuid().ToString().Replace("-", ""),
                 TenantNumId = ContextUser.TenantNumId,
                 IsManager = model.IsManager,
                 SoldierId = model.Id,
@@ -187,6 +188,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             //添加一个用户角色信息
             await _soldierRoleRepository.InsertAsync(new SoldierRole()
             {
+                Id = Guid.NewGuid().ToString().Replace("-", ""),
                 TenantNumId = ContextUser.TenantNumId,
                 IsManager = model.IsManager,
                 SoldierId = model.Id,
@@ -231,6 +233,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
                 //添加一个用户角色信息
                 await _soldierRoleRepository.InsertAsync(new SoldierRole()
                 {
+                    Id = Guid.NewGuid().ToString().Replace("-", ""),
                     TenantNumId = ContextUser.TenantNumId,
                     IsManager = info.IsManager,
                     SoldierId = info.Id,

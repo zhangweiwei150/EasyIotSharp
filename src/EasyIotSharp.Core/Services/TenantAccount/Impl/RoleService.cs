@@ -187,6 +187,10 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             {
                 throw new BizException(BizError.BIND_EXCEPTION_ERROR, "未找到指定数据");
             }
+            if (info.IsManager == 1)
+            {
+                throw new BizException(BizError.BIND_EXCEPTION_ERROR, "管理员角色不可禁用");
+            }
             if (info.IsEnable != input.IsEnable)
             {
                 info.IsEnable = input.IsEnable;
@@ -203,6 +207,10 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             if (info.IsNull())
             {
                 throw new BizException(BizError.BIND_EXCEPTION_ERROR, "未找到指定数据");
+            }
+            if (info.IsManager==1)
+            {
+                throw new BizException(BizError.BIND_EXCEPTION_ERROR, "管理员角色不可删除");
             }
             if (info.IsDelete != input.IsDelete)
             {

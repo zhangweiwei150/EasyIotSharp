@@ -91,6 +91,8 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
                 var tempId = id; // 避免闭包问题
                 predicate = predicate.Or(m => m.Id == tempId);
             }
+            predicate = predicate.And(m => m.IsDelete == false); // 是否删除 = false
+            predicate = predicate.And(m => m.IsEnable == true);  // 是否启用 = true
 
             // 查询数据
             var items = await GetListAsync(predicate);

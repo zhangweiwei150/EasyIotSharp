@@ -79,5 +79,33 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
                 return (totalCount, items);
             }
         }
+
+        /// <summary>
+        /// 根据ID集合查询菜单
+        /// </summary>
+        /// <param name="ids">菜单ID集合</param>
+        /// <returns>返回菜单列表</returns>
+        public async Task<List<Role>> QueryByIds(List<string> ids)
+        {
+            if (ids == null || ids.Count == 0)
+            {
+                return new List<Role>();
+            }
+
+            // 使用表达式构建查询条件
+            var predicate = PredicateBuilder.New<Role>(false); // 初始化为空条件
+            foreach (var id in ids)
+            {
+                var tempId = id; // 避免闭包问题
+                predicate = predicate.Or(m => m.Id == tempId);
+            }
+            // 添加是否删除 = false 和 是否启用 = true 条件
+            predicate = predicate.And(m => m.IsDelete == false); // 是否删除 = false
+            predicate = predicate.And(m => m.IsEnable == true);  // 是否启用 = true
+
+            // 查询数据
+            var items = await GetListAsync(predicate);
+            return items.ToList();
+        }
     }
 }

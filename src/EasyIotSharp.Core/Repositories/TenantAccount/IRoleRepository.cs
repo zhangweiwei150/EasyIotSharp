@@ -19,5 +19,12 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount
         /// <param name="pageSize">每页多少条数据</param>
         /// <returns></returns>
         Task<(int totalCount, List<Role> items)> Query(int tenantNumId,string keyword,int isEnable,int pageIndex,int pageSize,bool isPage = true);
+
+        /// <summary>
+        /// 通过id集合获取角色列表
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        Task<List<Role>> QueryByIds(List<string> ids);
     }
 }

@@ -3024,6 +3024,13 @@
             <param name="pageSize">每页记录数</param>
             <returns>返回总记录数和分页数据</returns>
         </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.RoleRepository.QueryByIds(System.Collections.Generic.List{System.String})">
+            <summary>
+            根据ID集合查询菜单
+            </summary>
+            <param name="ids">菜单ID集合</param>
+            <returns>返回菜单列表</returns>
+        </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.SoldierRepository.#ctor(EasyIotSharp.Repositories.Mysql.SqlSugarDatabaseProvider)">
             <summary>
             构造函数
@@ -3084,6 +3091,13 @@
             <param name="isEnable">是否启用 -1=不参与查询  1=启用 2=禁用</param>
             <param name="pageIndex">起始页</param>
             <param name="pageSize">每页多少条数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.IRoleRepository.QueryByIds(System.Collections.Generic.List{System.String})">
+            <summary>
+            通过id集合获取角色列表
+            </summary>
+            <param name="ids"></param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.ISoldierRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Int32)">

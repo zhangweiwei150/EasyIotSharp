@@ -15,18 +15,21 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
     {
         private readonly IMenuRepository _menuRepository;
         private readonly ISoldierRepository _soldierRepository;
+        private readonly IRoleRepository _roleRepository;
         private readonly IRoleMenuRepository _roleMenuRepository;
         private readonly ISoldierRoleRepository _soldierRoleRepository;
 
         public MenuService(IMenuRepository menuRepository,
                            IRoleMenuRepository roleMenuRepository,
                            ISoldierRoleRepository soldierRoleRepository,
-                           ISoldierRepository soldierRepository)
+                           ISoldierRepository soldierRepository,
+                           IRoleRepository roleRepository)
         {
             _menuRepository = menuRepository;
             _roleMenuRepository = roleMenuRepository;
             _soldierRoleRepository = soldierRoleRepository;
             _soldierRepository = soldierRepository;
+            _roleRepository = roleRepository;
         }
 
         public async Task<MenuDto> GetMenu(string id)
@@ -71,7 +74,13 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
                 {
                     return new List<QueryMenuBySoldierIdOutput>();
                 }
-                var roleIds = soldierRoles.Select(x => x.RoleId).ToList();
+                var soldierRoleIds = soldierRoles.Select(x => x.RoleId).ToList();
+                var roles = await _roleRepository.QueryByIds(soldierRoleIds);
+                if (roles.Count<=0)
+                {
+                    return new List<QueryMenuBySoldierIdOutput>();
+                }
+                var roleIds = roles.Select(x => x.Id).ToList();
                 var roleMenus = await _roleMenuRepository.QueryByRoleIds(roleIds);
                 if (roleMenus.Count <= 0)
                 {
