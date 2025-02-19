@@ -130,7 +130,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
                 IsSuperAdmin = menu.IsSuperAdmin,
                 IsEnable = menu.IsEnable,
                 Children = GetChildren(menu.Id, menuList)
-            }).OrderBy(x => x.Sort).OrderBy(x => x.CreationTime).ToList();
+            }).OrderBy(x => x.Sort).ToList();
 
             return tree;
         }
