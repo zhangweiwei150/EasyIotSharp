@@ -844,6 +844,11 @@
             页大小
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.PagingInput.isPage">
+            <summary>
+            是否分页
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Dto.TenantAccount.MenuDto">
             <summary>
             代表一条菜单的“DTO”
@@ -3008,7 +3013,7 @@
             </summary>
             <param name="databaseProvider">数据库提供者</param>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.RoleRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.Impl.RoleRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Int32,System.Boolean)">
             <summary>
             分页查询角色列表
             </summary>
@@ -3070,7 +3075,7 @@
             <param name="roleId"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.IRoleRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Int32)">
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.IRoleRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Int32,System.Boolean)">
             <summary>
             通过条件分页查询角色列表
             </summary>

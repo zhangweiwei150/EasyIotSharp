@@ -48,7 +48,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
 
         public async Task<PagedResultDto<RoleDto>> QueryRole(QueryRoleInput input)
         {
-            var query = await _roleRepository.Query(ContextUser.TenantNumId, input.Keyword, input.IsEnable, input.PageIndex, input.PageSize);
+            var query = await _roleRepository.Query(ContextUser.TenantNumId, input.Keyword, input.IsEnable, input.PageIndex, input.PageSize, input.isPage);
             int totalCount = query.totalCount;
             var list = query.items.MapTo<List<RoleDto>>();
             return new PagedResultDto<RoleDto>() { TotalCount = totalCount, Items = list };

@@ -14,5 +14,10 @@ namespace EasyIotSharp.Core.Dto
         /// 页大小
         /// </summary>
         public int PageSize { get; set; } = 20;
+
+        /// <summary>
+        /// 是否分页
+        /// </summary>
+        public bool isPage { get; set; } = true;
     }
 }
