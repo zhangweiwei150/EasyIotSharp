@@ -992,6 +992,12 @@
             3=按钮
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.Sort">
+            <summary>
+            排序字段
+            数字越大越靠前
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuTreeDto.IsSuperAdmin">
             <summary>
             是否admin(超级管理员，没有租户限制)

@@ -156,6 +156,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
                 OperatorId = child.OperatorId,
                 OperatorName = child.OperatorName,
                 ParentId = child.ParentId,
+                Sort=child.Sort,
                 Name = child.Name,
                 Icon = child.Icon,
                 Url = child.Url,
