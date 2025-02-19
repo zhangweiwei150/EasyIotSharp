@@ -40,6 +40,12 @@ namespace EasyIotSharp.Core.Domain.TenantAccount
         public int Type { get; set; }
 
         /// <summary>
+        /// 排序
+        /// (数字越大越靠前）
+        /// </summary>
+        public int Sort { get; set; }
+
+        /// <summary>
         /// 是否admin(超级管理员，没有租户限制)
         /// </summary>
         public bool IsSuperAdmin { get; set; }

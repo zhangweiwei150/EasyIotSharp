@@ -8,6 +8,7 @@ using EasyIotSharp.Core.Dto.TenantAccount;
 using EasyIotSharp.Core.Repositories.Mysql;
 using EasyIotSharp.Repositories.Mysql;
 using LinqKit;
+using SqlSugar;
 
 namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
 {
@@ -53,7 +54,8 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             {
                 // 手动拼接排序和分页逻辑
                 var query = GetDbClient().Queryable<Menu>().Where(predicate)
-                                  .OrderByDescending(m => m.CreationTime) // 默认按 CreationTime 降序排序
+                                  .OrderBy(x => x.Sort, OrderByType.Desc) // 先按 Sort 降序排序
+                                  .OrderBy(m => m.CreationTime, OrderByType.Desc) // 再按 CreationTime 降序排序
                                   .Skip((pageIndex - 1) * pageSize)
                                   .Take(pageSize);
 
@@ -64,7 +66,8 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             else
             {
                 var query = GetDbClient().Queryable<Menu>().Where(predicate)
-                                  .OrderByDescending(m => m.CreationTime); // 默认按 CreationTime 降序排序
+                                               .OrderBy(x => x.Sort, OrderByType.Desc) // 先按 Sort 降序排序
+                                               .OrderBy(m => m.CreationTime, OrderByType.Desc); // 再按 CreationTime 降序排序
 
                 // 查询数据
                 var items = await query.ToListAsync();
@@ -123,10 +126,11 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
                 Icon = menu.Icon,
                 Url = menu.Url,
                 Type = menu.Type,
+                Sort=menu.Sort,
                 IsSuperAdmin = menu.IsSuperAdmin,
                 IsEnable = menu.IsEnable,
                 Children = GetChildren(menu.Id, menuList)
-            }).OrderBy(x=>x.CreationTime).ToList();
+            }).OrderBy(x => x.Sort).OrderBy(x => x.CreationTime).ToList();
 
             return tree;
         }

@@ -30,6 +30,12 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
         public string Url { get; set; }
 
         /// <summary>
+        /// 排序字段
+        /// 数字越大越靠前
+        /// </summary>
+        public int Sort { get; set; }
+
+        /// <summary>
         /// 是否启用
         /// </summary>
         public bool IsEnable { get; set; }

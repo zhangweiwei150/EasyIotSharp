@@ -506,6 +506,12 @@
             3=按钮
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Menu.Sort">
+            <summary>
+            排序
+            (数字越大越靠前）
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Domain.TenantAccount.Menu.IsSuperAdmin">
             <summary>
             是否admin(超级管理员，没有租户限制)
@@ -912,6 +918,12 @@
             3=按钮
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.Sort">
+            <summary>
+            排序
+            (数字越大越靠前）
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.MenuDto.IsSuperAdmin">
             <summary>
             是否admin(超级管理员，没有租户限制)
@@ -1152,6 +1164,12 @@
             2=路由
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput.Sort">
+            <summary>
+            排序字段
+            数字越大越靠前
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput.IsSuperAdmin">
             <summary>
             是否admin(超级管理员，没有租户限制)
@@ -1390,6 +1408,12 @@
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateMenuInput.Url">
             <summary>
             菜单路径
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateMenuInput.Sort">
+            <summary>
+            排序字段
+            数字越大越靠前
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateMenuInput.IsEnable">

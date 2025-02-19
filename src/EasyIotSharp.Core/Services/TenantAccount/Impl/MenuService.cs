@@ -130,6 +130,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
 
                 return children;
             }
+            output = output.OrderByDescending(x => x.Type).ToList();
             return output;
         }
 
@@ -147,6 +148,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             model.Icon = input.Icon;
             model.Url = input.Url;
             model.Type = input.Type;
+            model.Sort = input.Sort;
             model.IsEnable = true;
             model.IsSuperAdmin = input.IsSuperAdmin;
             model.CreationTime = DateTime.Now;
@@ -171,6 +173,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             info.Name = input.Name;
             info.Icon = input.Icon;
             info.Url = input.Url;
+            info.Sort = input.Sort;
             info.IsEnable = input.IsEnable;
             info.IsSuperAdmin = input.IsSuperAdmin;
             info.OperatorId = ContextUser.UserId;
