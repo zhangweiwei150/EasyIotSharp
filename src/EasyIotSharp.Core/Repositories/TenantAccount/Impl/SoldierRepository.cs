@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using EasyIotSharp.Core.Domain.TenantAccount;
+using EasyIotSharp.Core.Dto.TenantAccount;
 using EasyIotSharp.Core.Repositories.Mysql;
 using EasyIotSharp.Repositories.Mysql;
 using LinqKit;
@@ -29,7 +30,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
         /// <param name="pageIndex">当前页码</param>
         /// <param name="pageSize">每页记录数</param>
         /// <returns>返回总记录数和分页数据</returns>
-        public async Task<(int totalCount, List<Soldier> items)> Query(int tenantNumId, string keyword, int isEnable, int pageIndex, int pageSize)
+        public async Task<(int totalCount, List<SoldierDto> items)> Query(int tenantNumId, string keyword, int isEnable, int pageIndex, int pageSize)
         {
             // 初始化条件
             var predicate = PredicateBuilder.New<Soldier>(s => s.IsDelete == false);
@@ -56,13 +57,28 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             var totalCount = await CountAsync(predicate);
             if (totalCount == 0)
             {
-                return (0, new List<Soldier>());
+                return (0, new List<SoldierDto>());
             }
 
             // 手动拼接排序和分页逻辑
             var query = GetDbClient().Queryable<Soldier>()
+                               .LeftJoin<SoldierRole>((s, ur) => s.Id == ur.SoldierId) // 左连接 Soldier 和 UserRole
                                .Where(predicate)
                                .OrderByDescending(s => s.CreationTime) // 默认按 CreationTime 降序排序
+                               .Select((s, ur) => new SoldierDto
+                               {
+                                   Id = s.Id,
+                                   Username = s.Username,
+                                   Mobile = s.Mobile,
+                                   Email=s.Email,
+                                   IsManager=s.IsManager,
+                                   TenantNumId = s.TenantNumId,
+                                   LastLoginTime=s.LastLoginTime,
+                                   IsEnable = s.IsEnable,
+                                   IsDelete = s.IsDelete,
+                                   CreationTime = s.CreationTime,
+                                   RoleId = ur.RoleId
+                               })
                                .Skip((pageIndex - 1) * pageSize)
                                .Take(pageSize);
 

@@ -1,4 +1,5 @@
 ﻿using EasyIotSharp.Core.Domain.TenantAccount;
+using EasyIotSharp.Core.Dto.TenantAccount;
 using EasyIotSharp.Core.Repositories.Mysql;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,6 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount
         /// <param name="pageIndex">起始页</param>
         /// <param name="pageSize">每页多少条</param>
         /// <returns></returns>
-        Task<(int totalCount, List<Soldier> items)> Query(int tenantNumId, string keyword, int isEnable, int pageIndex, int pageSize);
+        Task<(int totalCount, List<SoldierDto> items)> Query(int tenantNumId, string keyword, int isEnable, int pageIndex, int pageSize);
     }
 }
