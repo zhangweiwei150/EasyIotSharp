@@ -1770,6 +1770,11 @@
             邮箱
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.TenantAccount.SoldierDto.LastLoginTime">
             <summary>
             最后一次登录时间
@@ -3146,6 +3151,13 @@
             通过用户id查询用户角色列表
             </summary>
             <param name="soldierId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.ISoldierRoleRepository.QueryBySoldierIds(System.Collections.Generic.List{System.String})">
+            <summary>
+            通过用户id集合查询用户角色列表
+            </summary>
+            <param name="soldierIds"></param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.ISoldierRoleRepository.DeleteManyBySoldierId(System.String)">

@@ -90,8 +90,14 @@ namespace EasyIotSharp.Core.Dto.TenantAccount
         public string Email { get; set; }
 
         /// <summary>
+        /// 角色id
+        /// </summary>
+        public string RoleId { get; set; }
+
+        /// <summary>
         /// 最后一次登录时间
         /// </summary>
         public DateTime? LastLoginTime { get; set; }
+
     }
 }
