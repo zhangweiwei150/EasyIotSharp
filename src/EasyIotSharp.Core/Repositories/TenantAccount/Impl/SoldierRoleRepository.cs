@@ -40,21 +40,6 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             return items.ToList();
         }
 
-        public async Task<List<SoldierRole>> QueryBySoldierIds(List<string> soldierIds)
-        {
-            if (soldierIds.Count<=0)
-            {
-                return new List<SoldierRole>();
-            }
-
-            // 使用表达式构建查询条件
-            var predicate = PredicateBuilder.New<SoldierRole>(sr => soldierIds.Contains(sr.SoldierId);
-
-            // 查询数据
-            var items = await GetListAsync(predicate);
-            return items.ToList();
-        }
-
         /// <summary>
         /// 根据用户ID删除用户角色关系
         /// </summary>

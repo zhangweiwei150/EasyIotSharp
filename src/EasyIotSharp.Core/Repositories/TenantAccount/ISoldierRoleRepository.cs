@@ -17,13 +17,6 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount
         Task<List<SoldierRole>> QueryBySoldierId(string soldierId);
 
         /// <summary>
-        /// 通过用户id集合查询用户角色列表
-        /// </summary>
-        /// <param name="soldierIds"></param>
-        /// <returns></returns>
-        Task<List<SoldierRole>> QueryBySoldierIds(List<string> soldierIds);
-
-        /// <summary>
         /// 通过用户id批量删除用户角色信息
         /// </summary>
         /// <param name="soldierId"></param>

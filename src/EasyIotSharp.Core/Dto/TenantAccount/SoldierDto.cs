@@ -98,7 +98,5 @@ namespace EasyIotSharp.Core.Dto.TenantAccount
         /// 最后一次登录时间
         /// </summary>
         public DateTime? LastLoginTime { get; set; }
-
-        public string RoleId { get; set; }
     }
 }
