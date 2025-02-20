@@ -1,8 +1,11 @@
 ﻿using EasyIotSharp.Core.Domain;
+using EasyIotSharp.Core.Domain.TenantAccount;
 using System;
+using UPrime.AutoMapper;
 
 namespace EasyIotSharp.Core.Dto.TenantAccount
 {
+    [AutoMapFrom(typeof(Soldier))]
     public class SoldierDto
     {
         public string Id { get; set; }

@@ -13,6 +13,7 @@ using EasyIotSharp.Core.Extensions;
 using static EasyIotSharp.Core.GlobalConsts;
 using EasyIotSharp.Core.Dto.Tenant;
 using System.Linq;
+using SixLabors.ImageSharp.Processing.Processors.Dithering;
 
 namespace EasyIotSharp.Core.Services.TenantAccount.Impl
 {
@@ -21,17 +22,20 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
         private readonly ISoldierRepository _soldierRepository;
         private readonly ITenantRepository _tenantRepository;
         private readonly ISoldierRoleRepository _soldierRoleRepository;
+        private readonly IRoleRepository _roleRepository;
 
         private readonly IRoleService _roleService;
 
         public SoldierService(ISoldierRepository soldierRepository,
                               ITenantRepository tenantRepository,
                               ISoldierRoleRepository soldierRoleRepository,
-                              IRoleService roleService)
+                              IRoleService roleService,
+                              IRoleRepository roleRepository)
         {
             _soldierRepository = soldierRepository;
             _tenantRepository = tenantRepository;
             _soldierRoleRepository = soldierRoleRepository;
+            _roleRepository = roleRepository;
 
             _roleService = roleService;
         }
@@ -101,12 +105,13 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             if (soldierIds.Count>0)
             {
                 var soldierRoles = await _soldierRoleRepository.QueryBySoldierIds(soldierIds);
+                var roles = await _roleRepository.QueryByIds(soldierRoles.Select(x => x.RoleId).ToList());
                 foreach (var item in list)
                 {
                     var soldierRole = soldierRoles.FirstOrDefault(x => x.SoldierId == item.Id);
                     if (soldierRole.IsNotNull())
                     {
-                        item.RoleId= soldierRole.RoleId;
+                        item.RoleId = roles.FirstOrDefault(x => x.Id == soldierRole.RoleId)?.Id;
                     }
                 }
             }
