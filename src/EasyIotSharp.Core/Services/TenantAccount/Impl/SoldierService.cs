@@ -12,7 +12,6 @@ using EasyIotSharp.Core.Domain.TenantAccount;
 using EasyIotSharp.Core.Extensions;
 using static EasyIotSharp.Core.GlobalConsts;
 using EasyIotSharp.Core.Dto.Tenant;
-using System.Linq;
 
 namespace EasyIotSharp.Core.Services.TenantAccount.Impl
 {
