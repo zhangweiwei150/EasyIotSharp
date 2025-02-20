@@ -12,6 +12,7 @@ using EasyIotSharp.Core.Domain.TenantAccount;
 using EasyIotSharp.Core.Extensions;
 using static EasyIotSharp.Core.GlobalConsts;
 using EasyIotSharp.Core.Dto.Tenant;
+using System.Linq;
 
 namespace EasyIotSharp.Core.Services.TenantAccount.Impl
 {
@@ -96,6 +97,19 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             var query = await _soldierRepository.Query(ContextUser.TenantNumId, input.Keyword, input.IsEnable, input.PageIndex, input.PageSize);
             int totalCount = query.totalCount;
             var list = query.items.MapTo<List<SoldierDto>>();
+            var soldierIds = list.Select(x => x.Id).ToList();
+            if (soldierIds.Count>0)
+            {
+                var soldierRoles = await _soldierRoleRepository.QueryBySoldierIds(soldierIds);
+                foreach (var item in list)
+                {
+                    var soldierRole = soldierRoles.FirstOrDefault(x => x.SoldierId == item.Id);
+                    if (soldierRole.IsNotNull())
+                    {
+                        item.RoleId= soldierRole.RoleId;
+                    }
+                }
+            }
             return new PagedResultDto<SoldierDto>() { TotalCount = totalCount, Items = list };
         }
 
