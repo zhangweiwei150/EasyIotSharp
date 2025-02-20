@@ -1,4 +1,5 @@
-﻿using EasyIotSharp.Core.Dto.TenantAccount;
+﻿using EasyIotSharp.Core.Domain.TenantAccount;
+using EasyIotSharp.Core.Dto.TenantAccount;
 using EasyIotSharp.Core.Dto.TenantAccount.Params;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,14 @@ namespace EasyIotSharp.Core.Services.TenantAccount
         /// 通过用户id获取用户对应的菜单列表
         /// </summary>
         /// <returns></returns>
-        Task<List<QueryMenuBySoldierIdOutput>> QueryMenuBySoldierId();
+        Task<(List<QueryMenuBySoldierIdOutput> output, List<Menu> menus)> QueryMenuBySoldierId(bool isTreeResult = true);
+
+        /// <summary>
+        /// 通过父级url获取按钮级别的url
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<List<string>> QueryUrlMenuByParentUrl(QueryUrlMenuByParentUrlInput input);
 
         /// <summary>
         /// 添加一条菜单信息

@@ -90,6 +90,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.QueryUrlMenuByParentUrl(EasyIotSharp.Core.Dto.TenantAccount.Params.QueryUrlMenuByParentUrlInput)">
+            <summary>
+            通过父级url获取按钮级别的url
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.InsertMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput)">
             <summary>
             添加一条菜单信息

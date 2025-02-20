@@ -5,6 +5,7 @@ using EasyIotSharp.Core.Repositories.TenantAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using UPrime.AutoMapper;
 using UPrime.Services.Dto;
@@ -55,7 +56,7 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             return new PagedResultDto<MenuTreeDto>() { TotalCount = totalCount, Items = tree };
         }
 
-        public async Task<List<QueryMenuBySoldierIdOutput>> QueryMenuBySoldierId()
+        public async Task<(List<QueryMenuBySoldierIdOutput> output,List<Menu> menus)> QueryMenuBySoldierId(bool isTreeResult = true)
         {
             var soldier = await _soldierRepository.FirstOrDefaultAsync(x => x.IsDelete == false && x.Id == ContextUser.UserId);
             if (soldier.IsNull())
@@ -72,19 +73,19 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
                 var soldierRoles = await _soldierRoleRepository.QueryBySoldierId(ContextUser.UserId);
                 if (soldierRoles.Count <= 0)
                 {
-                    return new List<QueryMenuBySoldierIdOutput>();
+                    return (new List<QueryMenuBySoldierIdOutput>(),new List<Menu>());
                 }
                 var soldierRoleIds = soldierRoles.Select(x => x.RoleId).ToList();
                 var roles = await _roleRepository.QueryByIds(soldierRoleIds);
                 if (roles.Count<=0)
                 {
-                    return new List<QueryMenuBySoldierIdOutput>();
+                    return (new List<QueryMenuBySoldierIdOutput>(), new List<Menu>());
                 }
                 var roleIds = roles.Select(x => x.Id).ToList();
                 var roleMenus = await _roleMenuRepository.QueryByRoleIds(roleIds);
                 if (roleMenus.Count <= 0)
                 {
-                    return new List<QueryMenuBySoldierIdOutput>();
+                    return (new List<QueryMenuBySoldierIdOutput>(), new List<Menu>());
                 }
                 var menuIds = roleMenus.Select(x => x.MenuId).ToList();
                 menus = await _menuRepository.QueryByIds(menuIds);
@@ -92,7 +93,11 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
             
             if (menus.Count<=0)
             {
-                return new List<QueryMenuBySoldierIdOutput>();
+                return (new List<QueryMenuBySoldierIdOutput>(), new List<Menu>());
+            }
+            if (isTreeResult==false)
+            {
+                return (new List<QueryMenuBySoldierIdOutput>(), menus);
             }
             List<QueryMenuBySoldierIdOutput> output = new List<QueryMenuBySoldierIdOutput>();
             var firstMenus = menus.Where(x => string.IsNullOrWhiteSpace(x.ParentId)).OrderBy(x=>x.CreationTime).ToList();
@@ -131,7 +136,19 @@ namespace EasyIotSharp.Core.Services.TenantAccount.Impl
                 return children;
             }
             output = output.OrderByDescending(x => x.Type).ToList();
-            return output;
+            return (output, menus);
+        }
+
+        public async Task<List<string>> QueryUrlMenuByParentUrl(QueryUrlMenuByParentUrlInput input)
+        {
+            var menus = await QueryMenuBySoldierId(false);
+            var parentMenu = menus.menus.FirstOrDefault(x => x.Url == input.Url);
+            if (parentMenu.IsNull())
+            {
+                return new List<string>();
+            }
+            var children = menus.menus.Where(x => x.Type == 3 && x.IsDelete == false && x.IsEnable == true && x.ParentId == parentMenu.Id);
+            return children.Select(x => x.Url).ToList();
         }
 
         public async Task InsertMenu(InsertMenuInput input)

@@ -71,6 +71,12 @@ namespace EasyIotSharp.Core.Repositories.Mysql
             return await db.Queryable<TEntity>().ToListAsync();
         }
 
+        public virtual List<TEntity> GetAll()
+        {
+            using var db = GetDbClient();
+            return db.Queryable<TEntity>().ToList();
+        }
+
         public virtual async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
             using var db = GetDbClient();

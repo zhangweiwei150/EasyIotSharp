@@ -62,6 +62,12 @@ namespace EasyIotSharp.Core.Repositories.Mysql
         Task<List<TEntity>> GetAllAsync();
 
         /// <summary>
+        /// 查询所有实体
+        /// </summary>
+        /// <returns></returns>
+        List<TEntity> GetAll();
+
+        /// <summary>
         /// 根据条件查询第一个实体，如果没有则返回默认值
         /// </summary>
         /// <param name="predicate"></param>

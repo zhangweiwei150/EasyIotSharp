@@ -1361,6 +1361,16 @@
             2=禁用
             </summary>
         </member>
+        <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryUrlMenuByParentUrlInput">
+            <summary>
+            通过父级Url查询按钮路由的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.TenantAccount.Params.QueryUrlMenuByParentUrlInput.Url">
+            <summary>
+            父级
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Dto.TenantAccount.Params.UpdateIsEnableMenuInput">
             <summary>
             通过id修改一条菜单信息的是否启用状态的入参类
@@ -2930,6 +2940,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.GetAll">
+            <summary>
+            查询所有实体
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2.FirstOrDefaultAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
             <summary>
             根据条件查询第一个实体，如果没有则返回默认值
@@ -3348,10 +3364,17 @@
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IMenuService.QueryMenuBySoldierId">
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IMenuService.QueryMenuBySoldierId(System.Boolean)">
             <summary>
             通过用户id获取用户对应的菜单列表
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.TenantAccount.IMenuService.QueryUrlMenuByParentUrl(EasyIotSharp.Core.Dto.TenantAccount.Params.QueryUrlMenuByParentUrlInput)">
+            <summary>
+            通过父级url获取按钮级别的url
+            </summary>
+            <param name="input"></param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Services.TenantAccount.IMenuService.InsertMenu(EasyIotSharp.Core.Dto.TenantAccount.Params.InsertMenuInput)">

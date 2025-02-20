@@ -180,7 +180,21 @@ namespace EasyIotSharp.API.Controllers
         public async Task<UPrimeResponse<List<QueryMenuBySoldierIdOutput>>> QueryMenuBySoldierId()
         {
             UPrimeResponse<List<QueryMenuBySoldierIdOutput>> res = new UPrimeResponse<List<QueryMenuBySoldierIdOutput>>();
-            res.Result = await _menuService.QueryMenuBySoldierId();
+            res.Result = (await _menuService.QueryMenuBySoldierId()).output;
+            return res;
+        }
+
+        /// <summary>
+        /// 通过父级url获取按钮级别的url
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/TenantAccount/Menu/Soldier/QueryButtonUrl")]
+        [Authorize]
+        public async Task<UPrimeResponse<List<string>>> QueryUrlMenuByParentUrl([FromBody] QueryUrlMenuByParentUrlInput input)
+        {
+            UPrimeResponse<List<string>> res = new UPrimeResponse<List<string>>();
+            res.Result = await _menuService.QueryUrlMenuByParentUrl(input);
             return res;
         }
 
