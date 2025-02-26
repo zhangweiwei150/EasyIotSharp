@@ -8,7 +8,7 @@ namespace EasyIotSharp.Core.Domain.Proejct
     /// 项目表
     /// </summary>
     /// <remarks>每个租户可以创建多个项目，每个项目包含测点、设备等数据收集部署</remarks>
-    public class Project:BaseEntity<string>
+    public class ProjectBase:BaseEntity<string>
     {
         /// <summary>
         /// 租户id

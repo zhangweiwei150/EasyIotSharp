@@ -19,6 +19,8 @@ using EasyIotSharp.Core.Repositories.Tenant;
 using EasyIotSharp.Core.Repositories.Tenant.Impl;
 using EasyIotSharp.Core.Repositories.TenantAccount;
 using EasyIotSharp.Core.Repositories.TenantAccount.Impl;
+using EasyIotSharp.Core.Repositories.Project;
+using EasyIotSharp.Core.Repositories.Project.Impl;
 
 namespace EasyIotSharp.Core
 {
@@ -59,6 +61,9 @@ namespace EasyIotSharp.Core
             IocManager.Register<IRoleRepository, RoleRepository>();
             IocManager.Register<ISoldierRepository, SoldierRepository>();
             IocManager.Register<ISoldierRoleRepository, SoldierRoleRepository>();
+
+            IocManager.Register<IProjectBaseRepository, ProjectBaseRepository>();
+            
         }
 
         /// <summary>
