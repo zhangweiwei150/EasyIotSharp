@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using EasyIotSharp.Core.Dto.Project;
+using UPrime.Services.Dto;
+using EasyIotSharp.Core.Dto.Project.Params;
 
 namespace EasyIotSharp.Core.Services.Project
 {
