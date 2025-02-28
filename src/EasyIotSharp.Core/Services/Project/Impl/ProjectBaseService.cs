@@ -30,7 +30,7 @@ namespace EasyIotSharp.Core.Services.Project.Impl
 
         public async Task<PagedResultDto<ProjectBaseDto>> QueryProjectBase(QueryProjectBaseInput input)
         {
-
+            return new PagedResultDto<ProjectBaseDto>();
         }
 
         public async Task InsertProjectBase(InsertProjectBaseInput input)
