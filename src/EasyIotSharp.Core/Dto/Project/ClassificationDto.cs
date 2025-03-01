@@ -4,10 +4,13 @@ using System.Text;
 
 namespace EasyIotSharp.Core.Dto.Project
 {
-    public class ProjectBaseDto
+    /// <summary>
+    /// 代表一条项目分类的“DTO”
+    /// </summary>
+    public class ClassificationDto
     {
         /// <summary>
-        /// id
+        /// 项目分类Id
         /// </summary>
         public string Id { get; set; }
 
@@ -17,36 +20,30 @@ namespace EasyIotSharp.Core.Dto.Project
         public int TenantNumId { get; set; }
 
         /// <summary>
-        /// 项目名称
+        /// 项目id
+        /// </summary>
+        public string ProjectId { get; set; }
+
+        /// <summary>
+        /// 分类名称
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// 经度
+        /// 排序字段
+        /// 字段越大越靠前
         /// </summary>
-        public string Longitude { get; set; }
+        public int Sort { get; set; }
 
         /// <summary>
-        /// 纬度
+        /// 创建时间
         /// </summary>
-        public string latitude { get; set; }
+        public DateTime CreationTime { get; set; }
 
         /// <summary>
-        /// 项目状态
-        /// 0=初始化状态
-        /// 1=正在运行状态
+        /// 修改时间
         /// </summary>
-        public int State { get; set; }
-
-        /// <summary>
-        /// 项目地址
-        /// </summary>
-        public string Address { get; set; }
-
-        /// <summary>
-        /// 项目描述
-        /// </summary>
-        public string Remark { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// 操作人标识
@@ -57,10 +54,5 @@ namespace EasyIotSharp.Core.Dto.Project
         /// 操作人
         /// </summary>
         public string OperatorName { get; set; }
-
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        public DateTime CreationTime { get; set; }
     }
 }

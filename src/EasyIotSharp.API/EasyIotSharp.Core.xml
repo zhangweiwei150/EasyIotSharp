@@ -607,11 +607,6 @@
             协议表
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.Protocol.TenantNumId">
-            <summary>
-            租户id
-            </summary>
-        </member>
         <member name="P:EasyIotSharp.Core.Domain.Proejct.Protocol.Name">
             <summary>
             协议名称
@@ -674,7 +669,7 @@
         </member>
         <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointType.Name">
             <summary>
-            测点名称
+            测点类型名称
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Domain.TenantAccount.Menu">
@@ -1059,6 +1054,241 @@
             是否分页
             </summary>
         </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.ClassificationDto">
+            <summary>
+            代表一条项目分类的“DTO”
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ClassificationDto.Id">
+            <summary>
+            项目分类Id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ClassificationDto.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ClassificationDto.ProjectId">
+            <summary>
+            项目id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ClassificationDto.Name">
+            <summary>
+            分类名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ClassificationDto.Sort">
+            <summary>
+            排序字段
+            字段越大越靠前
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ClassificationDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ClassificationDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ClassificationDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ClassificationDto.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.DeviceDto">
+            <summary>
+            代表一条设备信息的“DTO”
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.Id">
+            <summary>
+            设备id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.Name">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.State">
+            <summary>
+            设备状态
+            0=初始化
+            1=在线
+            2=离线
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.ProtocolId">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.ProjectId">
+            <summary>
+            项目id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.DeleteClassificationInput">
+            <summary>
+            通过id删除一条项目分类的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteClassificationInput.Id">
+            <summary>
+            项目分类id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.DeleteDeviceInput">
+            <summary>
+            通过id删除一条设备信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteDeviceInput.Id">
+            <summary>
+            设备id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteDeviceInput.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.DeleteProjectBaseInput">
+            <summary>
+            通过项目id删除一条项目信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteProjectBaseInput.Id">
+            <summary>
+            项目id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteProjectBaseInput.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.DeleteProtocolInput">
+            <summary>
+            通过id删除一条协议信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteProtocolInput.Id">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteProtocolInput.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointInput">
+            <summary>
+            通过id删除一条测点信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointInput.Id">
+            <summary>
+            测点id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointInput.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeInput">
+            <summary>
+            通过id删除一条测点类型的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeInput.Id">
+            <summary>
+            测点类型id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeInput.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertClassificationInput">
+            <summary>
+            添加一条项目分类的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertClassificationInput.ProjectId">
+            <summary>
+            项目id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertClassificationInput.Name">
+            <summary>
+            分类名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertClassificationInput.Sort">
+            <summary>
+            排序字段
+            字段越大越靠前
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertDeviceInput">
+            <summary>
+            添加一条设备信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertDeviceInput.Name">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertDeviceInput.ProtocolId">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertDeviceInput.ProjectId">
+            <summary>
+            项目id
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertProjectBaseInput">
             <summary>
             添加一个项目信息的入参类
@@ -1089,6 +1319,112 @@
             项目描述
             </summary>
         </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertProtocolInput">
+            <summary>
+            添加一条协议信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertProtocolInput.Name">
+            <summary>
+            协议名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertProtocolInput.Remark">
+            <summary>
+            协议描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertProtocolInput.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput">
+            <summary>
+            添加一条测点信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput.Name">
+            <summary>
+            测点名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput.ProjectId">
+            <summary>
+            项目id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput.ClassificationId">
+            <summary>
+            分类id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput.DeviceId">
+            <summary>
+            设备id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput.SensorTypeId">
+            <summary>
+            测点类型Id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeInput">
+            <summary>
+            添加一条测点类型的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeInput.Name">
+            <summary>
+            测点类型名称
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.QueryClassificationInput">
+            <summary>
+            通过条件分页查询项目分类列表的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryClassificationInput.ProjectId">
+            <summary>
+            项目Id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryClassificationInput.IsPage">
+            <summary>
+            是否分页
+            true=分页
+            false=查询全部
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput">
+            <summary>
+            通过条件分页查询设备列表的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput.Keyword">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput.State">
+            <summary>
+            设备状态
+            -1=全部
+            0=初始化
+            1=在线
+            2=离线
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput.ProtocolId">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput.ProjectId">
+            <summary>
+            项目id
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.Params.QueryProjectBaseInput">
             <summary>
             分页查询项目信息的入参类
@@ -1115,6 +1451,257 @@
         <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryProjectBaseInput.CreateEndTime">
             <summary>
             创建结束时间
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.QueryProtocolInput">
+            <summary>
+            通过条件分页查询协议列表的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryProtocolInput.Keyword">
+            <summary>
+            协议名称/描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryProtocolInput.IsEnable">
+            <summary>
+            是否启用
+            -1=不参与查询
+            1=启用
+            2=禁用
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryProtocolInput.IsPage">
+            <summary>
+            是否分页
+            true=分页
+            false=查询全部
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput">
+            <summary>
+            通过条件查询查询测点信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput.Keyword">
+            <summary>
+            测点名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput.ProjectId">
+            <summary>
+            项目id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput.ClassificationId">
+            <summary>
+            分类id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput.DeviceId">
+            <summary>
+            设备id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput.SensorTypeId">
+            <summary>
+            测点类型Id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput.IsPage">
+            <summary>
+            是否分页
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeInput">
+            <summary>
+            通过条件分页查询测点类型的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeInput.IsPage">
+            <summary>
+            是否分页
+            true=分页
+            false=查询全部
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateClassificationInput">
+            <summary>
+            通过id修改一条项目分类的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateClassificationInput.Id">
+            <summary>
+            项目分类id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateClassificationInput.Name">
+            <summary>
+            分类名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateClassificationInput.Sort">
+            <summary>
+            排序字段
+            字段越大越靠前
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput">
+            <summary>
+            根据id修改一条设备信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput.Id">
+            <summary>
+            设备id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput.Name">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput.State">
+            <summary>
+            设备状态
+            0=初始化
+            1=在线
+            2=离线
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput.ProtocolId">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput.ProjectId">
+            <summary>
+            项目id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateProjectBaseInput">
+            <summary>
+            通过id修改一条项目信息
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProjectBaseInput.Id">
+            <summary>
+            项目id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProjectBaseInput.Name">
+            <summary>
+            项目名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProjectBaseInput.Longitude">
+            <summary>
+            经度
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProjectBaseInput.latitude">
+            <summary>
+            纬度
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProjectBaseInput.Address">
+            <summary>
+            项目地址
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProjectBaseInput.Remark">
+            <summary>
+            项目描述
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateProtocolInput">
+            <summary>
+            通过id修改一条协议信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProtocolInput.Id">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProtocolInput.Name">
+            <summary>
+            协议名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProtocolInput.Remark">
+            <summary>
+            协议描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProtocolInput.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput">
+            <summary>
+            根据id修改一条测点信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput.Id">
+            <summary>
+            测点id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput.Name">
+            <summary>
+            测点名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput.ProjectId">
+            <summary>
+            项目id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput.ClassificationId">
+            <summary>
+            分类id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput.DeviceId">
+            <summary>
+            设备id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput.SensorTypeId">
+            <summary>
+            测点类型Id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeInput">
+            <summary>
+            通过id修改一条测点类型的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeInput.Id">
+            <summary>
+            测点类型id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeInput.Name">
+            <summary>
+            测点类型名称
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateStateProjectBaseInput">
+            <summary>
+            通过id修改一条项目信息的状态的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateStateProjectBaseInput.Id">
+            <summary>
+            项目id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateStateProjectBaseInput.State">
+            <summary>
+            项目状态
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Project.ProjectBaseDto.Id">
@@ -1159,9 +1746,164 @@
             项目描述
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ProjectBaseDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ProjectBaseDto.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.Project.ProjectBaseDto.CreationTime">
             <summary>
             创建时间
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.ProtocolDto">
+            <summary>
+            代表一条协议信息的"DTO"
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.Id">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.Name">
+            <summary>
+            协议名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.Remark">
+            <summary>
+            协议描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.SensorPointDto">
+            <summary>
+            代表一条测点信息的"DTO"
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.Id">
+            <summary>
+            测点id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.Name">
+            <summary>
+            测点名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.ProjectId">
+            <summary>
+            项目id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.ClassificationId">
+            <summary>
+            分类id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.DeviceId">
+            <summary>
+            设备id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.SensorTypeId">
+            <summary>
+            测点类型Id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto">
+            <summary>
+            代表一条测点类型的"DTO"
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.Name">
+            <summary>
+            测点类型名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.OperatorName">
+            <summary>
+            操作人
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.TenantAccount.MenuDto">
@@ -3298,6 +4040,79 @@
             <param name="pageSize"></param>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Project.IClassificationRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            通过条件分页查询项目分类列表
+            </summary>
+            <param name="tenantNumId">租户NumId</param>
+            <param name="projectId">项目id</param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条数据</param>
+            <param name="isPage">是否分页</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Project.IDeviceRepository.Query(System.Int32,System.String,System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            通过条件分页查询设备列表
+            </summary>
+            <param name="tenantNumId">租户NumId</param>
+            <param name="Keyword">设备名称</param>
+            <param name="state">设备状态 -1=不参与查询  0=初始化  1=在线  2=离线</param>
+            <param name="protocolId">协议id</param>
+            <param name="projectId">设备id</param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Project.IProjectBaseRepository.Query(System.Int32,System.String,System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Int32,System.Int32)">
+            <summary>
+            通过条件分页查询项目列表
+            </summary>
+            <param name="tenantNumId">租户NumId</param>
+            <param name="keyword">项目名称/备注</param>
+            <param name="state">状态 -1=全部  0=初始化状态  1=正在运行状态</param>
+            <param name="createStartTime">创建开始时间</param>
+            <param name="createEndTime">创建结束时间</param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Project.IProtocolRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            通过条件分页查询项目分类列表
+            </summary>
+            <param name="isEnable">是否启用 -1=不参与查询 1=启用  2=禁用</param>
+            <param name="keyword">协议名称/描述</param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条数据</param>
+            <param name="isPage">是否分页</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Project.ISensorPointRepository.Query(System.Int32,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            通过条件分页查询项目分类列表
+            </summary>
+            <param name="tenantNumId">租户numId</param>
+            <param name="keyword">测点名称</param>
+            <param name="projectId">项目id</param>
+            <param name="classificationId">分类id</param>
+            <param name="deviceId">设备id</param>
+            <param name="sensorTypeId">测点类型id</param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条数据</param>
+            <param name="isPage">是否分页</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Project.ISensorPointTypeRepository.Query(System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            通过条件分页查询测点类型列表
+            </summary>
+            <param name="tenantNumId">租户NumId</param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条数据</param>
+            <param name="isPage">是否分页</param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.IMenuRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Int32,System.Boolean)">
             <summary>
             通过条件分页查询菜单列表
@@ -3659,6 +4474,76 @@
             <param name="fileName"></param>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IClassificationService.GetClassification(System.String)">
+            <summary>
+            通过id获取一条项目分类
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IClassificationService.QueryClassification(EasyIotSharp.Core.Dto.Project.Params.QueryClassificationInput)">
+            <summary>
+            根据条件分页查询项目分类列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IClassificationService.InsertClassification(EasyIotSharp.Core.Dto.Project.Params.InsertClassificationInput)">
+            <summary>
+            添加一条项目分类
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IClassificationService.UpdateClassification(EasyIotSharp.Core.Dto.Project.Params.UpdateClassificationInput)">
+            <summary>
+            通过id修改一条项目分类
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IClassificationService.DeleteClassification(EasyIotSharp.Core.Dto.Project.Params.DeleteClassificationInput)">
+            <summary>
+            通过id删除一条项目分类
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IDeviceService.GetDevice(System.String)">
+            <summary>
+            通过id获取一条设备信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IDeviceService.QueryDevice(EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput)">
+            <summary>
+            根据条件分页查询设备列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IDeviceService.InsertDevice(EasyIotSharp.Core.Dto.Project.Params.InsertDeviceInput)">
+            <summary>
+            添加一条设备信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IDeviceService.UpdateDevice(EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput)">
+            <summary>
+            通过id修改一条设备信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IDeviceService.DeleteDevice(EasyIotSharp.Core.Dto.Project.Params.DeleteDeviceInput)">
+            <summary>
+            通过id删除一条设备信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.Core.Services.Project.IProjectBaseService.GetProjectBase(System.String)">
             <summary>
             通过id获取一条项目信息
@@ -3676,6 +4561,132 @@
         <member name="M:EasyIotSharp.Core.Services.Project.IProjectBaseService.InsertProjectBase(EasyIotSharp.Core.Dto.Project.Params.InsertProjectBaseInput)">
             <summary>
             添加一条项目信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IProjectBaseService.UpdateProjectBase(EasyIotSharp.Core.Dto.Project.Params.UpdateProjectBaseInput)">
+            <summary>
+            通过id修改一条项目信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IProjectBaseService.UpdateStateProjectBase(EasyIotSharp.Core.Dto.Project.Params.UpdateStateProjectBaseInput)">
+            <summary>
+            通过id修改一条项目信息的状态
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IProjectBaseService.DeleteProjectBase(EasyIotSharp.Core.Dto.Project.Params.DeleteProjectBaseInput)">
+            <summary>
+            通过id删除一条项目信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IProtocolService.GetProtocol(System.String)">
+            <summary>
+            通过id获取一条协议信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IProtocolService.QueryProtocol(EasyIotSharp.Core.Dto.Project.Params.QueryProtocolInput)">
+            <summary>
+            根据条件分页查询协议列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IProtocolService.InsertProtocol(EasyIotSharp.Core.Dto.Project.Params.InsertProtocolInput)">
+            <summary>
+            添加一条协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IProtocolService.UpdateProtocol(EasyIotSharp.Core.Dto.Project.Params.UpdateProtocolInput)">
+            <summary>
+            通过id修改一条协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IProtocolService.DeleteProtocol(EasyIotSharp.Core.Dto.Project.Params.DeleteProtocolInput)">
+            <summary>
+            通过id删除一条协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointService.GetSensorPoint(System.String)">
+            <summary>
+            通过id获取一条测点信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointService.QuerySensorPoint(EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput)">
+            <summary>
+            根据条件分页查询测点列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointService.InsertSensorPoint(EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput)">
+            <summary>
+            添加一条测点信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointService.UpdateSensorPoint(EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput)">
+            <summary>
+            根据id修改一条测点信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointService.DeleteSensorPoint(EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointInput)">
+            <summary>
+            通过id删除一条测点信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeService.GetSensorPointType(System.String)">
+            <summary>
+            通过id获取一条测点类型
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeService.QuerySensorPointType(EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeInput)">
+            <summary>
+            根据条件分页查询项目分类列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeService.InsertSensorPointType(EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeInput)">
+            <summary>
+            添加一条项目分类
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeService.UpdateSensorPointType(EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeInput)">
+            <summary>
+            通过id修改一条项目分类
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeService.DeleteSensorPointType(EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeInput)">
+            <summary>
+            通过id删除一条项目分类
             </summary>
             <param name="input"></param>
             <returns></returns>

@@ -30,5 +30,26 @@ namespace EasyIotSharp.Core.Services.Project
         /// <param name="input"></param>
         /// <returns></returns>
         Task InsertProjectBase(InsertProjectBaseInput input);
+
+        /// <summary>
+        /// 通过id修改一条项目信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task UpdateProjectBase(UpdateProjectBaseInput input);
+
+        /// <summary>
+        /// 通过id修改一条项目信息的状态
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task UpdateStateProjectBase(UpdateStateProjectBaseInput input);
+
+        /// <summary>
+        /// 通过id删除一条项目信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task DeleteProjectBase(DeleteProjectBaseInput input);
     }
 }

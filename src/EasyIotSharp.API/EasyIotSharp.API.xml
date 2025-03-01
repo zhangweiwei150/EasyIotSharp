@@ -9,6 +9,223 @@
             获取用户标识
             </summary>
         </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.GetProjectBase(System.String)">
+            <summary>
+            通过id获取一条项目信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.QueryProjectBase(EasyIotSharp.Core.Dto.Project.Params.QueryProjectBaseInput)">
+            <summary>
+            通过条件分页查询项目信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.InsertProjectBase(EasyIotSharp.Core.Dto.Project.Params.InsertProjectBaseInput)">
+            <summary>
+            添加一条项目信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.UpdateProjectBase(EasyIotSharp.Core.Dto.Project.Params.UpdateProjectBaseInput)">
+            <summary>
+            通过id修改一条项目信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.UpdateStateProjectBase(EasyIotSharp.Core.Dto.Project.Params.UpdateStateProjectBaseInput)">
+            <summary>
+            通过id修改一条项目信息状态
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.DeleteProjectBase(EasyIotSharp.Core.Dto.Project.Params.DeleteProjectBaseInput)">
+            <summary>
+            通过id删除一条项目信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.GetClassification(System.String)">
+            <summary>
+            通过id获取一条项目分类信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.QueryClassification(EasyIotSharp.Core.Dto.Project.Params.QueryClassificationInput)">
+            <summary>
+            通过条件分页查询项目分类信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.InsertClassification(EasyIotSharp.Core.Dto.Project.Params.InsertClassificationInput)">
+            <summary>
+            添加一条项目分类信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.UpdateClassification(EasyIotSharp.Core.Dto.Project.Params.UpdateClassificationInput)">
+            <summary>
+            通过id修改一条项目分类信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.DeleteClassification(EasyIotSharp.Core.Dto.Project.Params.DeleteClassificationInput)">
+            <summary>
+            通过id删除一条项目分类信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.GetProtocol(System.String)">
+            <summary>
+            通过id获取一条协议信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.QueryProtocol(EasyIotSharp.Core.Dto.Project.Params.QueryProtocolInput)">
+            <summary>
+            通过条件分页查询协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.InsertProtocol(EasyIotSharp.Core.Dto.Project.Params.InsertProtocolInput)">
+            <summary>
+            添加一条协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.UpdateProtocol(EasyIotSharp.Core.Dto.Project.Params.UpdateProtocolInput)">
+            <summary>
+            通过id修改一条协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.DeleteProtocol(EasyIotSharp.Core.Dto.Project.Params.DeleteProtocolInput)">
+            <summary>
+            通过id删除一条协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.GetDevice(System.String)">
+            <summary>
+            通过id获取一条设备信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.QueryDevice(EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput)">
+            <summary>
+            通过条件分页查询设备信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.InsertDevice(EasyIotSharp.Core.Dto.Project.Params.InsertDeviceInput)">
+            <summary>
+            添加一条设备信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.UpdateDevice(EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput)">
+            <summary>
+            通过id修改一条设备信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.DeleteDevice(EasyIotSharp.Core.Dto.Project.Params.DeleteDeviceInput)">
+            <summary>
+            通过id删除一条设备信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.GetSensorPoint(System.String)">
+            <summary>
+            通过id获取一条测点信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.QuerySensorPoint(EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput)">
+            <summary>
+            通过条件分页查询测点列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.InsertSensorPoint(EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput)">
+            <summary>
+            添加一条测点信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.UpdateSensorPoint(EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput)">
+            <summary>
+            通过id修改一条测点信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.DeleteSensorPoint(EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointInput)">
+            <summary>
+            通过id删除一条测点
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.GetSensorPointType(System.String)">
+            <summary>
+            通过id获取一条测点类型信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.QuerySensorPointType(EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeInput)">
+            <summary>
+            通过条件分页查询项目分类信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.InsertSensorPointType(EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeInput)">
+            <summary>
+            添加一条测点类型信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.UpdateSensorPointType(EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeInput)">
+            <summary>
+            通过id修改一条测点类型信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.DeleteSensorPointType(EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeInput)">
+            <summary>
+            通过id删除一条项目分类信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="T:EasyIotSharp.API.Controllers.TenantAccountController">
             <summary>
             租户账号控制器

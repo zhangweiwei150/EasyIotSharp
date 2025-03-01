@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasyIotSharp.Core.Domain.Proejct
+namespace EasyIotSharp.Core.Dto.Project.Params
 {
     /// <summary>
-    /// 测点类型表
+    /// 添加一条测点类型的入参类
     /// </summary>
-    public class SensorPointType:BaseEntity<string>
+    public class InsertSensorPointTypeInput
     {
-        /// <summary>
-        /// 租户id
-        /// </summary>
-        public int TenantNumId { get; set; }
-
         /// <summary>
         /// 测点类型名称
         /// </summary>

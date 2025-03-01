@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasyIotSharp.Core.Domain.Proejct
+namespace EasyIotSharp.Core.Dto.Project.Params
 {
     /// <summary>
-    /// 协议表
+    /// 通过id修改一条协议信息的入参类
     /// </summary>
-    public class Protocol:BaseEntity<string>
+    public class UpdateProtocolInput
     {
+        /// <summary>
+        /// 协议id
+        /// </summary>
+        public string Id { get; set; }
+
         /// <summary>
         /// 协议名称
         /// </summary>

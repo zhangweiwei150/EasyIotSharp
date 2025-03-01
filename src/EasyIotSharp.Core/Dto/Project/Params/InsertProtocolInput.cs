@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasyIotSharp.Core.Domain.Proejct
+namespace EasyIotSharp.Core.Dto.Project.Params
 {
     /// <summary>
-    /// 协议表
+    /// 添加一条协议信息的入参类
     /// </summary>
-    public class Protocol:BaseEntity<string>
+    public class InsertProtocolInput
     {
         /// <summary>
         /// 协议名称

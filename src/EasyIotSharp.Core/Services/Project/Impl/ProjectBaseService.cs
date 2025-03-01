@@ -30,20 +30,23 @@ namespace EasyIotSharp.Core.Services.Project.Impl
 
         public async Task<PagedResultDto<ProjectBaseDto>> QueryProjectBase(QueryProjectBaseInput input)
         {
-            return new PagedResultDto<ProjectBaseDto>();
+            var query = await _projectBaseRepository.Query(ContextUser.TenantNumId, input.Keyword, input.State, input.CreateStartTime, input.CreateEndTime, input.PageIndex, input.PageSize);
+            int totalCount = query.totalCount;
+            var list = query.items.MapTo<List<ProjectBaseDto>>();
+
+            return new PagedResultDto<ProjectBaseDto>() { TotalCount = totalCount, Items = list };
         }
 
         public async Task InsertProjectBase(InsertProjectBaseInput input)
         {
-            var info = await _projectBaseRepository.FirstOrDefaultAsync(x => x.TenantNumId == ContextUser.TenantNumId && x.Name == input.Name && x.IsDelete == false);
-            if (info.IsNotNull())
+            var isExistName = await _projectBaseRepository.FirstOrDefaultAsync(x => x.TenantNumId == ContextUser.TenantNumId && x.Name == input.Name && x.IsDelete == false);
+            if (isExistName.IsNotNull())
             {
                 throw new BizException(BizError.BIND_EXCEPTION_ERROR, "项目名称重复");
             }
-            int numId = (await _projectBaseRepository.CountAsync()) + 1;
             var model = new ProjectBase();
             model.Id = Guid.NewGuid().ToString().Replace("-", "");
-            model.TenantNumId = numId;
+            model.TenantNumId = ContextUser.TenantNumId;
             model.Name = input.Name;
             model.Longitude = input.Longitude;
             model.latitude = input.latitude;
@@ -56,6 +59,51 @@ namespace EasyIotSharp.Core.Services.Project.Impl
             model.OperatorId = ContextUser.UserId;
             model.OperatorName = ContextUser.UserName;
             await _projectBaseRepository.InsertAsync(model);
+        }
+
+        public async Task UpdateProjectBase(UpdateProjectBaseInput input)
+        {
+            var info= await _projectBaseRepository.FirstOrDefaultAsync(x => x.TenantNumId == ContextUser.TenantNumId && x.Id == input.Id && x.IsDelete == false);
+            var isExistName = await _projectBaseRepository.FirstOrDefaultAsync(x => x.TenantNumId == ContextUser.TenantNumId && x.Name == input.Name && x.IsDelete == false);
+            if (isExistName.IsNotNull() && isExistName.Id != input.Id)
+            {
+                throw new BizException(BizError.BIND_EXCEPTION_ERROR, "项目名称重复");
+            }
+            info.Name = input.Name;
+            info.Longitude = input.Longitude;
+            info.latitude = input.latitude;
+            info.Address = input.Address;
+            info.Remark = input.Remark;
+            info.UpdatedAt = DateTime.Now;
+            info.OperatorId = ContextUser.UserId;
+            info.OperatorName = ContextUser.UserName;
+            await _projectBaseRepository.UpdateAsync(info);
+        }
+
+        public async Task UpdateStateProjectBase(UpdateStateProjectBaseInput input)
+        {
+            var info = await _projectBaseRepository.FirstOrDefaultAsync(x => x.TenantNumId == ContextUser.TenantNumId && x.Id == input.Id && x.IsDelete == false);
+            if (info.State!=input.State)
+            {
+                info.State = input.State;
+                info.UpdatedAt = DateTime.Now;
+                info.OperatorId = ContextUser.UserId;
+                info.OperatorName = ContextUser.UserName;
+                await _projectBaseRepository.UpdateAsync(info);
+            }
+        }
+
+        public async Task DeleteProjectBase(DeleteProjectBaseInput input)
+        {
+            var info = await _projectBaseRepository.FirstOrDefaultAsync(x => x.TenantNumId == ContextUser.TenantNumId && x.Id == input.Id && x.IsDelete == false);
+            if (info.IsDelete != input.IsDelete)
+            {
+                info.IsDelete = input.IsDelete;
+                info.UpdatedAt = DateTime.Now;
+                info.OperatorId = ContextUser.UserId;
+                info.OperatorName = ContextUser.UserName;
+                await _projectBaseRepository.UpdateAsync(info);
+            }
         }
     }
 }

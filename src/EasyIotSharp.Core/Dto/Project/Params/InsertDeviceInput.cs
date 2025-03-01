@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasyIotSharp.Core.Domain.Proejct
+namespace EasyIotSharp.Core.Dto.Project.Params
 {
     /// <summary>
-    /// 协议表
+    /// 添加一条设备信息的入参类
     /// </summary>
-    public class Protocol:BaseEntity<string>
+    public class InsertDeviceInput
     {
         /// <summary>
-        /// 协议名称
+        /// 设备名称
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// 协议描述
+        /// 协议id
         /// </summary>
-        public string Remark { get; set; }
+        public string ProtocolId { get; set; }
 
         /// <summary>
-        /// 是否启用
+        /// 项目id
         /// </summary>
-        public bool IsEnable { get; set; }
+        public string ProjectId { get; set; }
     }
 }

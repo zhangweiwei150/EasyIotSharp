@@ -2,23 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasyIotSharp.Core.Domain.Proejct
+namespace EasyIotSharp.Core.Dto.Project.Params
 {
     /// <summary>
-    /// 分类表
+    /// 通过id修改一条项目分类的入参类
     /// </summary>
-    /// <remarks>项目下面的分类，一个类别里面关联的是多个测点</remarks>
-    public class Classification:BaseEntity<string>
+    public class UpdateClassificationInput
     {
         /// <summary>
-        /// 租户id
+        /// 项目分类id
         /// </summary>
-        public int TenantNumId { get; set; }
-
-        /// <summary>
-        /// 项目id
-        /// </summary>
-        public string ProjectId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// 分类名称
@@ -30,6 +24,5 @@ namespace EasyIotSharp.Core.Domain.Proejct
         /// 字段越大越靠前
         /// </summary>
         public int Sort { get; set; }
-
     }
 }
