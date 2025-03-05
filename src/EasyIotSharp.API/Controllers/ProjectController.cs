@@ -2,6 +2,7 @@
 using EasyIotSharp.Core.Dto.Project;
 using EasyIotSharp.Core.Dto.Project.Params;
 using EasyIotSharp.Core.Services.Project;
+using EasyIotSharp.Core.Services.Tenant;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,19 +23,14 @@ namespace EasyIotSharp.API.Controllers
         private readonly ISensorPointService _sensorPointService;
         private readonly ISensorPointTypeService _sensorPointTypeService;
 
-        public ProjectController(IProjectBaseService projectBaseService,
-                                 IClassificationService classificationService,
-                                 IProtocolService protocolService,
-                                 IDeviceService deviceService,
-                                 ISensorPointService sensorPointService,
-                                 ISensorPointTypeService sensorPointTypeService)
+        public ProjectController()
         {
-            _projectBaseService = projectBaseService;
-            _classificationService = classificationService;
-            _protocolService = protocolService;
-            _deviceService = deviceService;
-            _sensorPointService = sensorPointService;
-            _sensorPointTypeService = sensorPointTypeService;
+            _projectBaseService = UPrime.UPrimeEngine.Instance.Resolve<IProjectBaseService>();
+            _classificationService = UPrime.UPrimeEngine.Instance.Resolve<IClassificationService>();
+            _protocolService = UPrime.UPrimeEngine.Instance.Resolve<IProtocolService>();
+            _deviceService = UPrime.UPrimeEngine.Instance.Resolve<IDeviceService>();
+            _sensorPointService = UPrime.UPrimeEngine.Instance.Resolve<ISensorPointService>();
+            _sensorPointTypeService = UPrime.UPrimeEngine.Instance.Resolve<ISensorPointTypeService>();
         }
 
         #region 项目
