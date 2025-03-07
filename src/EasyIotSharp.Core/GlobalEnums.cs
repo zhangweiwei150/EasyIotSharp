@@ -5,7 +5,13 @@ using UPrime.CodeAnnotations;
 namespace EasyIotSharp.Core
 {
     /// <summary>
-    /// 合同主体
+    /// 数据类型
+    /// -1=全部
+    /// 1=string
+    /// 2=int
+    /// 3=double
+    /// 4=float
+    /// 5=bool
     /// </summary>
     public enum DataTypeMenu
     {
@@ -13,7 +19,7 @@ namespace EasyIotSharp.Core
         /// 全部(未知的)
         /// </summary>
         [EnumAlias("全部")]
-        None = 0,
+        None = -1,
 
         /// <summary>
         /// string
@@ -43,6 +49,6 @@ namespace EasyIotSharp.Core
         /// bool
         /// </summary>
         [EnumAlias("bool")]
-        Bool = 2
+        Bool = 5
     }
 }

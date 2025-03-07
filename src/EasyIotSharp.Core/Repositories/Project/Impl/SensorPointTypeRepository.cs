@@ -16,15 +16,20 @@ namespace EasyIotSharp.Core.Repositories.Project.Impl
         }
 
         public async Task<(int totalCount, List<SensorPointType> items)> Query(int tenantNumId,
-                                                                      int pageIndex,
-                                                                      int pageSize,
-                                                                      bool isPage)
+                                                                               string keyword,
+                                                                               int pageIndex,
+                                                                               int pageSize,
+                                                                               bool isPage)
         {
             // 初始化条件
             var predicate = PredicateBuilder.New<SensorPointType>(t => t.IsDelete == false);
             if (tenantNumId > 0)
             {
                 predicate = predicate.And(t => t.TenantNumId.Equals(tenantNumId));
+            }
+            if (!string.IsNullOrWhiteSpace(keyword)) 
+            {
+                predicate = predicate.And(t => t.Name.Contains(keyword) || t.BriefName.Contains(keyword) || t.Supplier.Contains(keyword));
             }
 
             // 获取总记录数

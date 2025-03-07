@@ -22,6 +22,7 @@ namespace EasyIotSharp.API.Controllers
         private readonly IDeviceService _deviceService;
         private readonly ISensorPointService _sensorPointService;
         private readonly ISensorPointTypeService _sensorPointTypeService;
+        private readonly ISensorPointTypeQuotaService _sensorPointTypeQuotaService;
 
         public ProjectController()
         {
@@ -31,6 +32,7 @@ namespace EasyIotSharp.API.Controllers
             _deviceService = UPrime.UPrimeEngine.Instance.Resolve<IDeviceService>();
             _sensorPointService = UPrime.UPrimeEngine.Instance.Resolve<ISensorPointService>();
             _sensorPointTypeService = UPrime.UPrimeEngine.Instance.Resolve<ISensorPointTypeService>();
+            _sensorPointTypeQuotaService= UPrime.UPrimeEngine.Instance.Resolve<ISensorPointTypeQuotaService>();
         }
 
         #region 项目
@@ -401,7 +403,7 @@ namespace EasyIotSharp.API.Controllers
 
         #endregion
 
-        #region 测点类型
+        #region 传感器类型
 
         /// <summary>
         /// 通过id获取一条测点类型信息
@@ -467,6 +469,77 @@ namespace EasyIotSharp.API.Controllers
         public async Task<UPrimeResponse> DeleteSensorPointType([FromBody] DeleteSensorPointTypeInput input)
         {
             await _sensorPointTypeService.DeleteSensorPointType(input);
+            return new UPrimeResponse();
+        }
+
+        #endregion
+
+        #region 传感器类型指标
+
+        /// <summary>
+        /// 通过id获取一条传感器类型指标
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost("/Project/SensorPointType/Quota/Get")]
+        [Authorize]
+        public async Task<UPrimeResponse<SensorPointTypeQuotaDto>> GetSensorPointTypeQuota(string id)
+        {
+            UPrimeResponse<SensorPointTypeQuotaDto> res = new UPrimeResponse<SensorPointTypeQuotaDto>();
+            res.Result = await _sensorPointTypeQuotaService.GetSensorPointTypeQuota(id);
+            return res;
+        }
+
+        /// <summary>
+        /// 根据条件分页查询传感器类型指标列表
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Project/SensorPointType/Quota/Query")]
+        [Authorize]
+        public async Task<UPrimeResponse<PagedResultDto<SensorPointTypeQuotaDto>>> QuerySensorPointTypeQuota([FromBody] QuerySensorPointTypeQuotaInput input)
+        {
+            UPrimeResponse<PagedResultDto<SensorPointTypeQuotaDto>> res = new UPrimeResponse<PagedResultDto<SensorPointTypeQuotaDto>>();
+            res.Result = await _sensorPointTypeQuotaService.QuerySensorPointTypeQuota(input);
+            return res;
+        }
+
+        /// <summary>
+        /// 添加一条传感器类型指标
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Project/SensorPointType/Quota/Insert")]
+        [Authorize]
+        public async Task<UPrimeResponse> InsertSensorPointTypeQuota([FromBody] InsertSensorPointTypeQuotaInput input)
+        {
+            await _sensorPointTypeQuotaService.InsertSensorPointTypeQuota(input);
+            return new UPrimeResponse();
+        }
+
+        /// <summary>
+        /// 通过id修改一条传感器类型指标
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Project/SensorPointType/Quota/Update")]
+        [Authorize]
+        public async Task<UPrimeResponse> UpdateSensorPointTypeQuota([FromBody] UpdateSensorPointTypeQuotaInput input)
+        {
+            await _sensorPointTypeQuotaService.UpdateSensorPointTypeQuota(input);
+            return new UPrimeResponse();
+        }
+
+        /// <summary>
+        /// 通过id删除一条传感器类型指标
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Project/SensorPointType/Quota/Delete")]
+        [Authorize]
+        public async Task<UPrimeResponse> DeleteSensorPointTypeQuota([FromBody] DeleteSensorPointTypeQuotaInput input)
+        {
+            await _sensorPointTypeQuotaService.DeleteSensorPointTypeQuota(input);
             return new UPrimeResponse();
         }
 

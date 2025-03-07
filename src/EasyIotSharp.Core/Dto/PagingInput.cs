@@ -18,6 +18,6 @@ namespace EasyIotSharp.Core.Dto
         /// <summary>
         /// 是否分页
         /// </summary>
-        public bool isPage { get; set; } = true;
+        public bool IsPage { get; set; } = true;
     }
 }

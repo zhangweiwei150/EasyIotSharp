@@ -10,6 +10,11 @@ namespace EasyIotSharp.Core.Dto.Project.Params
     public class QuerySensorPointTypeInput:PagingInput
     {
         /// <summary>
+        /// 名称/简称/厂家
+        /// </summary>
+        public string Keyword { get; set; }
+
+        /// <summary>
         /// 是否分页
         /// true=分页
         /// false=查询全部

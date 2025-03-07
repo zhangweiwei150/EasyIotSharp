@@ -28,7 +28,7 @@ namespace EasyIotSharp.Core.Services.Project.Impl
 
         public async Task<PagedResultDto<ClassificationDto>> QueryClassification(QueryClassificationInput input)
         {
-            var query = await _classificationRepository.Query(ContextUser.TenantNumId, input.ProjectId, input.PageIndex, input.PageSize, input.isPage);
+            var query = await _classificationRepository.Query(ContextUser.TenantNumId, input.ProjectId, input.PageIndex, input.PageSize, input.IsPage);
             int totalCount = query.totalCount;
             var list = query.items.MapTo<List<ClassificationDto>>();
 

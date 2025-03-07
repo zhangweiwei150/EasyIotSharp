@@ -23,7 +23,7 @@ namespace EasyIotSharp.Core.Domain.Proejct
         /// <summary>
         /// 简称
         /// </summary>
-        public string BriefNmae { get; set; }
+        public string BriefName { get; set; }
 
         /// <summary>
         /// 厂家名称

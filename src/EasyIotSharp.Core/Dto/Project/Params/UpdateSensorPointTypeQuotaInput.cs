@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasyIotSharp.Core.Domain.Proejct
+namespace EasyIotSharp.Core.Dto.Project.Params
 {
     /// <summary>
-    /// 测点类型指标表
+    /// 通过id修改一条传感器类型指标的入参类
     /// </summary>
-    ///  <remarks>一个传感器设备对应测对应的数据   温度  倾斜度等</remarks>
-    public class SensorPointTypeQuota : BaseEntity<string>
+    public class UpdateSensorPointTypeQuotaInput
     {
         /// <summary>
-        /// 租户id
+        /// id
         /// </summary>
-        public int TenantNumId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// 传感器类型id
+        /// 测点类型id
         /// </summary>
         public string SensorPointTypeId { get; set; }
 

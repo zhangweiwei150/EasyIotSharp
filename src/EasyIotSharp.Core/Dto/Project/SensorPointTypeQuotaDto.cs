@@ -5,9 +5,9 @@ using System.Text;
 namespace EasyIotSharp.Core.Dto.Project
 {
     /// <summary>
-    /// 代表一条测点类型的"DTO"
+    /// 代表一个传感器类型的指标的"DTO"
     /// </summary>
-    public class SensorPointTypeDto
+    public class SensorPointTypeQuotaDto
     {
         /// <summary>
         /// id
@@ -20,29 +20,58 @@ namespace EasyIotSharp.Core.Dto.Project
         public int TenantNumId { get; set; }
 
         /// <summary>
-        /// 测点类型名称
+        /// 测点类型id
+        /// </summary>
+        public string SensorPointTypeId { get; set; }
+
+        /// <summary>
+        /// 指标名称
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// 简称
+        /// 指标标识符
         /// </summary>
-        public string BriefName { get; set; }
+        public string Identifier { get; set; }
 
         /// <summary>
-        /// 厂家名称
+        /// 操作类型
+        /// R=只读
+        /// W=只写
+        /// RW=读写
         /// </summary>
-        public string Supplier { get; set; }
+        public string ControlsType { get; set; }
 
         /// <summary>
-        /// 传感器型号
+        /// <see cref="DataTypeMenu"/>
+        /// 数据类型
         /// </summary>
-        public string SensorModel { get; set; }
+        public int DataType { get; set; }
+
+        /// <summary>
+        /// 单位
+        /// </summary>
+        public string Unit { get; set; }
+
+        /// <summary>
+        /// 小数位精度
+        /// 数据类型是double float  小数点取几位
+        /// -1=全部
+        /// 0=零位
+        /// 1=一位
+        /// </summary>
+        public int Precision { get; set; }
 
         /// <summary>
         /// 描述
         /// </summary>
         public string Remark { get; set; }
+
+        /// <summary>
+        /// 排序字段
+        /// (数字越大越靠前)
+        /// </summary>
+        public int Sort { get; set; }
 
         /// <summary>
         /// 创建时间

@@ -226,6 +226,41 @@
             <param name="input"></param>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.GetSensorPointTypeQuota(System.String)">
+            <summary>
+            通过id获取一条传感器类型指标
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.QuerySensorPointTypeQuota(EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeQuotaInput)">
+            <summary>
+            根据条件分页查询传感器类型指标列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.InsertSensorPointTypeQuota(EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeQuotaInput)">
+            <summary>
+            添加一条传感器类型指标
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.UpdateSensorPointTypeQuota(EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeQuotaInput)">
+            <summary>
+            通过id修改一条传感器类型指标
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.DeleteSensorPointTypeQuota(EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeQuotaInput)">
+            <summary>
+            通过id删除一条传感器类型指标
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="T:EasyIotSharp.API.Controllers.TenantAccountController">
             <summary>
             租户账号控制器

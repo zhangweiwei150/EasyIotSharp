@@ -46,6 +46,1895 @@
         }
       }
     },
+    "/Project/ProjectBase/Get": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id获取一条项目信息",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string",
+              "description": "",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectBaseDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectBaseDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectBaseDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/ProjectBase/Query": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过条件分页查询项目信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryProjectBaseInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryProjectBaseInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryProjectBaseInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryProjectBaseInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectBaseDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectBaseDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectBaseDtoPagedResultDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/ProjectBase/Insert": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "添加一条项目信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertProjectBaseInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertProjectBaseInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertProjectBaseInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertProjectBaseInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/ProjectBase/Update": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id修改一条项目信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProjectBaseInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProjectBaseInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProjectBaseInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProjectBaseInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/ProjectBase/UpdateState": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id修改一条项目信息状态",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStateProjectBaseInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStateProjectBaseInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStateProjectBaseInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStateProjectBaseInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/ProjectBase/Delete": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id删除一条项目信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteProjectBaseInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteProjectBaseInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteProjectBaseInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteProjectBaseInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Classification/Get": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id获取一条项目分类信息",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string",
+              "description": "",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassificationDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassificationDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassificationDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Classification/Query": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过条件分页查询项目分类信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryClassificationInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryClassificationInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryClassificationInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryClassificationInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassificationDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassificationDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassificationDtoPagedResultDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Classification/Insert": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "添加一条项目分类信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertClassificationInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertClassificationInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertClassificationInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertClassificationInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Classification/Update": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id修改一条项目分类信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClassificationInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClassificationInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClassificationInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClassificationInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Classification/Delete": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id删除一条项目分类信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteClassificationInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteClassificationInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteClassificationInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteClassificationInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Protocol/Get": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id获取一条协议信息",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string",
+              "description": "",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProtocolDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProtocolDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProtocolDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Protocol/Query": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过条件分页查询协议信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryProtocolInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryProtocolInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryProtocolInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryProtocolInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProtocolDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProtocolDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProtocolDtoPagedResultDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Protocol/Insert": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "添加一条协议信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertProtocolInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertProtocolInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertProtocolInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertProtocolInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Protocol/Update": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id修改一条协议信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProtocolInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProtocolInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProtocolInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProtocolInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Protocol/Delete": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id删除一条协议信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteProtocolInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteProtocolInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteProtocolInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteProtocolInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Device/Get": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id获取一条设备信息",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string",
+              "description": "",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Device/Query": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过条件分页查询设备信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryDeviceInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryDeviceInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryDeviceInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryDeviceInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoPagedResultDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Device/Insert": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "添加一条设备信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertDeviceInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertDeviceInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertDeviceInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertDeviceInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Device/Update": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id修改一条设备信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDeviceInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDeviceInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDeviceInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDeviceInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/Device/Delete": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id删除一条设备信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteDeviceInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteDeviceInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteDeviceInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteDeviceInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPoint/Get": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id获取一条测点信息",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string",
+              "description": "",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPoint/Query": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过条件分页查询测点列表",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySensorPointInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySensorPointInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySensorPointInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySensorPointInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointDtoPagedResultDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPoint/Insert": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "添加一条测点信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertSensorPointInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertSensorPointInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertSensorPointInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertSensorPointInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPoint/Update": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id修改一条测点信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSensorPointInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSensorPointInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSensorPointInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSensorPointInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPoint/Delete": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id删除一条测点",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSensorPointInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSensorPointInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSensorPointInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSensorPointInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPointType/Get": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id获取一条测点类型信息",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string",
+              "description": "",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointTypeDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointTypeDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointTypeDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPointType/Query": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过条件分页查询项目分类信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySensorPointTypeInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySensorPointTypeInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySensorPointTypeInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySensorPointTypeInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointTypeDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointTypeDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointTypeDtoPagedResultDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPointType/Insert": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "添加一条测点类型信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertSensorPointTypeInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertSensorPointTypeInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertSensorPointTypeInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertSensorPointTypeInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPointType/Update": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id修改一条测点类型信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSensorPointTypeInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSensorPointTypeInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSensorPointTypeInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSensorPointTypeInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPointType/Delete": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id删除一条项目分类信息",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSensorPointTypeInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSensorPointTypeInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSensorPointTypeInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSensorPointTypeInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPointType/Quota/Get": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id获取一条传感器类型指标",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string",
+              "description": "",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointTypeQuotaDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointTypeQuotaDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointTypeQuotaDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPointType/Quota/Query": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "根据条件分页查询传感器类型指标列表",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySensorPointTypeQuotaInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySensorPointTypeQuotaInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySensorPointTypeQuotaInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuerySensorPointTypeQuotaInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointTypeQuotaDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointTypeQuotaDtoPagedResultDtoUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorPointTypeQuotaDtoPagedResultDtoUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPointType/Quota/Insert": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "添加一条传感器类型指标",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertSensorPointTypeQuotaInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertSensorPointTypeQuotaInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertSensorPointTypeQuotaInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertSensorPointTypeQuotaInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPointType/Quota/Update": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id修改一条传感器类型指标",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSensorPointTypeQuotaInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSensorPointTypeQuotaInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSensorPointTypeQuotaInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSensorPointTypeQuotaInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/SensorPointType/Quota/Delete": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "summary": "通过id删除一条传感器类型指标",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSensorPointTypeQuotaInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSensorPointTypeQuotaInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSensorPointTypeQuotaInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSensorPointTypeQuotaInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Tenant/Get": {
       "post": {
         "tags": [
@@ -853,17 +2742,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/MenuDtoPagedResultDtoUPrimeResponse"
+                  "$ref": "#/components/schemas/MenuTreeDtoPagedResultDtoUPrimeResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MenuDtoPagedResultDtoUPrimeResponse"
+                  "$ref": "#/components/schemas/MenuTreeDtoPagedResultDtoUPrimeResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MenuDtoPagedResultDtoUPrimeResponse"
+                  "$ref": "#/components/schemas/MenuTreeDtoPagedResultDtoUPrimeResponse"
                 }
               }
             }
@@ -876,7 +2765,7 @@
         "tags": [
           "TenantAccount"
         ],
-        "summary": "通过用户id获取用户对应的菜单列表",
+        "summary": "获取菜单列表",
         "responses": {
           "200": {
             "description": "Success",
@@ -894,6 +2783,61 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/QueryMenuBySoldierIdOutputListUPrimeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TenantAccount/Menu/Soldier/QueryButtonUrl": {
+      "post": {
+        "tags": [
+          "TenantAccount"
+        ],
+        "summary": "通过父级url获取按钮级别的url",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryUrlMenuByParentUrlInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryUrlMenuByParentUrlInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryUrlMenuByParentUrlInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryUrlMenuByParentUrlInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringListUPrimeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringListUPrimeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringListUPrimeResponse"
                 }
               }
             }
@@ -1441,6 +3385,1825 @@
   },
   "components": {
     "schemas": {
+      "ProjectBaseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id",
+            "nullable": true
+          },
+          "tenantNumId": {
+            "type": "integer",
+            "description": "租户id",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "项目名称",
+            "nullable": true
+          },
+          "longitude": {
+            "type": "string",
+            "description": "经度",
+            "nullable": true
+          },
+          "latitude": {
+            "type": "string",
+            "description": "纬度",
+            "nullable": true
+          },
+          "state": {
+            "type": "integer",
+            "description": "项目状态\r\n0=初始化状态\r\n1=正在运行状态",
+            "format": "int32"
+          },
+          "address": {
+            "type": "string",
+            "description": "项目地址",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "项目描述",
+            "nullable": true
+          },
+          "operatorId": {
+            "type": "string",
+            "description": "操作人标识",
+            "nullable": true
+          },
+          "operatorName": {
+            "type": "string",
+            "description": "操作人",
+            "nullable": true
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectBaseDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/ProjectBaseDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryProjectBaseInput": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "项目名称/备注",
+            "nullable": true
+          },
+          "state": {
+            "type": "integer",
+            "description": "项目状态\r\n-1=查询全部\r\n0=初始化状态\r\n1=正在运行状态",
+            "format": "int32"
+          },
+          "createStartTime": {
+            "type": "string",
+            "description": "创建开始时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "createEndTime": {
+            "type": "string",
+            "description": "创建结束时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前开始页",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "页大小",
+            "format": "int32"
+          },
+          "isPage": {
+            "type": "boolean",
+            "description": "是否分页"
+          }
+        },
+        "additionalProperties": false,
+        "description": "分页查询项目信息的入参类"
+      },
+      "ProjectBaseDtoPagedResultDto": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProjectBaseDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectBaseDtoPagedResultDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/ProjectBaseDtoPagedResultDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InsertProjectBaseInput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "项目名称",
+            "nullable": true
+          },
+          "longitude": {
+            "type": "string",
+            "description": "经度",
+            "nullable": true
+          },
+          "latitude": {
+            "type": "string",
+            "description": "纬度",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "description": "项目地址",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "项目描述",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "添加一个项目信息的入参类"
+      },
+      "UPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateProjectBaseInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "项目id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "项目名称",
+            "nullable": true
+          },
+          "longitude": {
+            "type": "string",
+            "description": "经度",
+            "nullable": true
+          },
+          "latitude": {
+            "type": "string",
+            "description": "纬度",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "description": "项目地址",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "项目描述",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id修改一条项目信息"
+      },
+      "UpdateStateProjectBaseInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "项目id",
+            "nullable": true
+          },
+          "state": {
+            "type": "integer",
+            "description": "项目状态",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id修改一条项目信息的状态的入参类"
+      },
+      "DeleteProjectBaseInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "项目id",
+            "nullable": true
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过项目id删除一条项目信息的入参类"
+      },
+      "ClassificationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "项目分类Id",
+            "nullable": true
+          },
+          "tenantNumId": {
+            "type": "integer",
+            "description": "租户id",
+            "format": "int32"
+          },
+          "projectId": {
+            "type": "string",
+            "description": "项目id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "分类名称",
+            "nullable": true
+          },
+          "sort": {
+            "type": "integer",
+            "description": "排序字段\r\n字段越大越靠前",
+            "format": "int32"
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "operatorId": {
+            "type": "string",
+            "description": "操作人标识",
+            "nullable": true
+          },
+          "operatorName": {
+            "type": "string",
+            "description": "操作人",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "代表一条项目分类的“DTO”"
+      },
+      "ClassificationDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/ClassificationDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryClassificationInput": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "description": "项目Id",
+            "nullable": true
+          },
+          "isPage": {
+            "type": "boolean",
+            "description": "是否分页\r\ntrue=分页\r\nfalse=查询全部"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前开始页",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "页大小",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过条件分页查询项目分类列表的入参类"
+      },
+      "ClassificationDtoPagedResultDto": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClassificationDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClassificationDtoPagedResultDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/ClassificationDtoPagedResultDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InsertClassificationInput": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "description": "项目id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "分类名称",
+            "nullable": true
+          },
+          "sort": {
+            "type": "integer",
+            "description": "排序字段\r\n字段越大越靠前",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "添加一条项目分类的入参类"
+      },
+      "UpdateClassificationInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "项目分类id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "分类名称",
+            "nullable": true
+          },
+          "sort": {
+            "type": "integer",
+            "description": "排序字段\r\n字段越大越靠前",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id修改一条项目分类的入参类"
+      },
+      "DeleteClassificationInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "项目分类id",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id删除一条项目分类的入参类"
+      },
+      "ProtocolDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "协议id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "协议名称",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "协议描述",
+            "nullable": true
+          },
+          "isEnable": {
+            "type": "boolean",
+            "description": "是否启用"
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "operatorId": {
+            "type": "string",
+            "description": "操作人标识",
+            "nullable": true
+          },
+          "operatorName": {
+            "type": "string",
+            "description": "操作人",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "代表一条协议信息的\"DTO\""
+      },
+      "ProtocolDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/ProtocolDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryProtocolInput": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "协议名称/描述",
+            "nullable": true
+          },
+          "isEnable": {
+            "type": "integer",
+            "description": "是否启用\r\n-1=不参与查询\r\n1=启用\r\n2=禁用",
+            "format": "int32"
+          },
+          "isPage": {
+            "type": "boolean",
+            "description": "是否分页\r\ntrue=分页\r\nfalse=查询全部"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前开始页",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "页大小",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过条件分页查询协议列表的入参类"
+      },
+      "ProtocolDtoPagedResultDto": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProtocolDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProtocolDtoPagedResultDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/ProtocolDtoPagedResultDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InsertProtocolInput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "协议名称",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "协议描述",
+            "nullable": true
+          },
+          "isEnable": {
+            "type": "boolean",
+            "description": "是否启用"
+          }
+        },
+        "additionalProperties": false,
+        "description": "添加一条协议信息的入参类"
+      },
+      "UpdateProtocolInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "协议id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "协议名称",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "协议描述",
+            "nullable": true
+          },
+          "isEnable": {
+            "type": "boolean",
+            "description": "是否启用"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id修改一条协议信息的入参类"
+      },
+      "DeleteProtocolInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "协议id",
+            "nullable": true
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id删除一条协议信息的入参类"
+      },
+      "DeviceDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "设备id",
+            "nullable": true
+          },
+          "tenantNumId": {
+            "type": "integer",
+            "description": "租户id",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "设备名称",
+            "nullable": true
+          },
+          "state": {
+            "type": "integer",
+            "description": "设备状态\r\n0=初始化\r\n1=在线\r\n2=离线",
+            "format": "int32"
+          },
+          "protocolId": {
+            "type": "string",
+            "description": "协议id",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "string",
+            "description": "项目id",
+            "nullable": true
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "operatorId": {
+            "type": "string",
+            "description": "操作人标识",
+            "nullable": true
+          },
+          "operatorName": {
+            "type": "string",
+            "description": "操作人",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "代表一条设备信息的“DTO”"
+      },
+      "DeviceDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/DeviceDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryDeviceInput": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "设备名称",
+            "nullable": true
+          },
+          "state": {
+            "type": "integer",
+            "description": "设备状态\r\n-1=全部\r\n0=初始化\r\n1=在线\r\n2=离线",
+            "format": "int32"
+          },
+          "protocolId": {
+            "type": "string",
+            "description": "协议id",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "string",
+            "description": "项目id",
+            "nullable": true
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前开始页",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "页大小",
+            "format": "int32"
+          },
+          "isPage": {
+            "type": "boolean",
+            "description": "是否分页"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过条件分页查询设备列表的入参类"
+      },
+      "DeviceDtoPagedResultDto": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeviceDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeviceDtoPagedResultDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/DeviceDtoPagedResultDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InsertDeviceInput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "设备名称",
+            "nullable": true
+          },
+          "protocolId": {
+            "type": "string",
+            "description": "协议id",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "string",
+            "description": "项目id",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "添加一条设备信息的入参类"
+      },
+      "UpdateDeviceInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "设备id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "设备名称",
+            "nullable": true
+          },
+          "state": {
+            "type": "integer",
+            "description": "设备状态\r\n0=初始化\r\n1=在线\r\n2=离线",
+            "format": "int32"
+          },
+          "protocolId": {
+            "type": "string",
+            "description": "协议id",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "string",
+            "description": "项目id",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "根据id修改一条设备信息的入参类"
+      },
+      "DeleteDeviceInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "设备id",
+            "nullable": true
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id删除一条设备信息的入参类"
+      },
+      "SensorPointDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "测点id",
+            "nullable": true
+          },
+          "tenantNumId": {
+            "type": "integer",
+            "description": "租户id",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "测点名称",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "string",
+            "description": "项目id",
+            "nullable": true
+          },
+          "classificationId": {
+            "type": "string",
+            "description": "分类id",
+            "nullable": true
+          },
+          "deviceId": {
+            "type": "string",
+            "description": "设备id",
+            "nullable": true
+          },
+          "sensorTypeId": {
+            "type": "string",
+            "description": "测点类型Id",
+            "nullable": true
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "operatorId": {
+            "type": "string",
+            "description": "操作人标识",
+            "nullable": true
+          },
+          "operatorName": {
+            "type": "string",
+            "description": "操作人",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "代表一条测点信息的\"DTO\""
+      },
+      "SensorPointDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/SensorPointDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuerySensorPointInput": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "测点名称",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "string",
+            "description": "项目id",
+            "nullable": true
+          },
+          "classificationId": {
+            "type": "string",
+            "description": "分类id",
+            "nullable": true
+          },
+          "deviceId": {
+            "type": "string",
+            "description": "设备id",
+            "nullable": true
+          },
+          "sensorTypeId": {
+            "type": "string",
+            "description": "测点类型Id",
+            "nullable": true
+          },
+          "isPage": {
+            "type": "boolean",
+            "description": "是否分页"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前开始页",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "页大小",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过条件查询查询测点信息的入参类"
+      },
+      "SensorPointDtoPagedResultDto": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SensorPointDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SensorPointDtoPagedResultDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/SensorPointDtoPagedResultDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InsertSensorPointInput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "测点名称",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "string",
+            "description": "项目id",
+            "nullable": true
+          },
+          "classificationId": {
+            "type": "string",
+            "description": "分类id",
+            "nullable": true
+          },
+          "deviceId": {
+            "type": "string",
+            "description": "设备id",
+            "nullable": true
+          },
+          "sensorTypeId": {
+            "type": "string",
+            "description": "测点类型Id",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "添加一条测点信息的入参类"
+      },
+      "UpdateSensorPointInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "测点id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "测点名称",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "string",
+            "description": "项目id",
+            "nullable": true
+          },
+          "classificationId": {
+            "type": "string",
+            "description": "分类id",
+            "nullable": true
+          },
+          "deviceId": {
+            "type": "string",
+            "description": "设备id",
+            "nullable": true
+          },
+          "sensorTypeId": {
+            "type": "string",
+            "description": "测点类型Id",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "根据id修改一条测点信息的入参类"
+      },
+      "DeleteSensorPointInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "测点id",
+            "nullable": true
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id删除一条测点信息的入参类"
+      },
+      "SensorPointTypeDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id",
+            "nullable": true
+          },
+          "tenantNumId": {
+            "type": "integer",
+            "description": "租户id",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "测点类型名称",
+            "nullable": true
+          },
+          "briefName": {
+            "type": "string",
+            "description": "简称",
+            "nullable": true
+          },
+          "supplier": {
+            "type": "string",
+            "description": "厂家名称",
+            "nullable": true
+          },
+          "sensorModel": {
+            "type": "string",
+            "description": "传感器型号",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "描述",
+            "nullable": true
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "operatorId": {
+            "type": "string",
+            "description": "操作人标识",
+            "nullable": true
+          },
+          "operatorName": {
+            "type": "string",
+            "description": "操作人",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "代表一条测点类型的\"DTO\""
+      },
+      "SensorPointTypeDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/SensorPointTypeDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuerySensorPointTypeInput": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "名称/简称/厂家",
+            "nullable": true
+          },
+          "isPage": {
+            "type": "boolean",
+            "description": "是否分页\r\ntrue=分页\r\nfalse=查询全部"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前开始页",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "页大小",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过条件分页查询测点类型的入参类"
+      },
+      "SensorPointTypeDtoPagedResultDto": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SensorPointTypeDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SensorPointTypeDtoPagedResultDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/SensorPointTypeDtoPagedResultDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InsertSensorPointTypeInput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "测点类型名称",
+            "nullable": true
+          },
+          "briefName": {
+            "type": "string",
+            "description": "简称",
+            "nullable": true
+          },
+          "supplier": {
+            "type": "string",
+            "description": "厂家名称",
+            "nullable": true
+          },
+          "sensorModel": {
+            "type": "string",
+            "description": "传感器型号",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "描述",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "添加一条测点类型的入参类"
+      },
+      "UpdateSensorPointTypeInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "测点类型id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "测点类型名称",
+            "nullable": true
+          },
+          "briefName": {
+            "type": "string",
+            "description": "简称",
+            "nullable": true
+          },
+          "supplier": {
+            "type": "string",
+            "description": "厂家名称",
+            "nullable": true
+          },
+          "sensorModel": {
+            "type": "string",
+            "description": "传感器型号",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "描述",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id修改一条测点类型的入参类"
+      },
+      "DeleteSensorPointTypeInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "测点类型id",
+            "nullable": true
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id删除一条测点类型的入参类"
+      },
+      "SensorPointTypeQuotaDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id",
+            "nullable": true
+          },
+          "tenantNumId": {
+            "type": "integer",
+            "description": "租户id",
+            "format": "int32"
+          },
+          "sensorPointTypeId": {
+            "type": "string",
+            "description": "测点类型id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "指标名称",
+            "nullable": true
+          },
+          "identifier": {
+            "type": "string",
+            "description": "指标标识符",
+            "nullable": true
+          },
+          "controlsType": {
+            "type": "string",
+            "description": "操作类型\r\nR=只读\r\nW=只写\r\nRW=读写",
+            "nullable": true
+          },
+          "dataType": {
+            "type": "integer",
+            "description": "EasyIotSharp.Core.DataTypeMenu\r\n            数据类型",
+            "format": "int32"
+          },
+          "unit": {
+            "type": "string",
+            "description": "单位",
+            "nullable": true
+          },
+          "precision": {
+            "type": "integer",
+            "description": "小数位精度\r\n数据类型是double float  小数点取几位\r\n-1=全部\r\n0=零位\r\n1=一位",
+            "format": "int32"
+          },
+          "remark": {
+            "type": "string",
+            "description": "描述",
+            "nullable": true
+          },
+          "sort": {
+            "type": "integer",
+            "description": "排序字段\r\n(数字越大越靠前)",
+            "format": "int32"
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "operatorId": {
+            "type": "string",
+            "description": "操作人标识",
+            "nullable": true
+          },
+          "operatorName": {
+            "type": "string",
+            "description": "操作人",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "代表一个传感器类型的指标的\"DTO\""
+      },
+      "SensorPointTypeQuotaDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/SensorPointTypeQuotaDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DataTypeMenu": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          -1
+        ],
+        "type": "integer",
+        "description": "数据类型\r\n-1=全部\r\n1=string\r\n2=int\r\n3=double\r\n4=float\r\n5=bool",
+        "format": "int32"
+      },
+      "QuerySensorPointTypeQuotaInput": {
+        "type": "object",
+        "properties": {
+          "sensorPointTypeId": {
+            "type": "string",
+            "description": "传感器类型id",
+            "nullable": true
+          },
+          "keyword": {
+            "type": "string",
+            "description": "指标名称/标识符",
+            "nullable": true
+          },
+          "dataType": {
+            "$ref": "#/components/schemas/DataTypeMenu"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前开始页",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "页大小",
+            "format": "int32"
+          },
+          "isPage": {
+            "type": "boolean",
+            "description": "是否分页"
+          }
+        },
+        "additionalProperties": false,
+        "description": "根据条件分页查询传感器类型指标列表的入参类"
+      },
+      "SensorPointTypeQuotaDtoPagedResultDto": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SensorPointTypeQuotaDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SensorPointTypeQuotaDtoPagedResultDtoUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/SensorPointTypeQuotaDtoPagedResultDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InsertSensorPointTypeQuotaInput": {
+        "type": "object",
+        "properties": {
+          "sensorPointTypeId": {
+            "type": "string",
+            "description": "测点类型id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "指标名称",
+            "nullable": true
+          },
+          "identifier": {
+            "type": "string",
+            "description": "指标标识符",
+            "nullable": true
+          },
+          "controlsType": {
+            "type": "string",
+            "description": "操作类型\r\nR=只读\r\nW=只写\r\nRW=读写",
+            "nullable": true
+          },
+          "dataType": {
+            "type": "integer",
+            "description": "EasyIotSharp.Core.DataTypeMenu\r\n            数据类型",
+            "format": "int32"
+          },
+          "unit": {
+            "type": "string",
+            "description": "单位",
+            "nullable": true
+          },
+          "precision": {
+            "type": "integer",
+            "description": "小数位精度\r\n数据类型是double float  小数点取几位\r\n-1=全部\r\n0=零位\r\n1=一位",
+            "format": "int32"
+          },
+          "remark": {
+            "type": "string",
+            "description": "描述",
+            "nullable": true
+          },
+          "sort": {
+            "type": "integer",
+            "description": "排序字段\r\n(数字越大越靠前)",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "添加一条传感器类型指标的入参类"
+      },
+      "UpdateSensorPointTypeQuotaInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id",
+            "nullable": true
+          },
+          "sensorPointTypeId": {
+            "type": "string",
+            "description": "测点类型id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "指标名称",
+            "nullable": true
+          },
+          "identifier": {
+            "type": "string",
+            "description": "指标标识符",
+            "nullable": true
+          },
+          "controlsType": {
+            "type": "string",
+            "description": "操作类型\r\nR=只读\r\nW=只写\r\nRW=读写",
+            "nullable": true
+          },
+          "dataType": {
+            "type": "integer",
+            "description": "EasyIotSharp.Core.DataTypeMenu\r\n            数据类型",
+            "format": "int32"
+          },
+          "unit": {
+            "type": "string",
+            "description": "单位",
+            "nullable": true
+          },
+          "precision": {
+            "type": "integer",
+            "description": "小数位精度\r\n数据类型是double float  小数点取几位\r\n-1=全部\r\n0=零位\r\n1=一位",
+            "format": "int32"
+          },
+          "remark": {
+            "type": "string",
+            "description": "描述",
+            "nullable": true
+          },
+          "sort": {
+            "type": "integer",
+            "description": "排序字段\r\n(数字越大越靠前)",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id修改一条传感器类型指标的入参类"
+      },
+      "DeleteSensorPointTypeQuotaInput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "传感器指标id",
+            "nullable": true
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过id删除一条传感器类型指标的入参类"
+      },
       "TenantDto": {
         "type": "object",
         "properties": {
@@ -1640,6 +5403,10 @@
             "type": "integer",
             "description": "页大小",
             "format": "int32"
+          },
+          "isPage": {
+            "type": "boolean",
+            "description": "是否分页"
           }
         },
         "additionalProperties": false,
@@ -1762,32 +5529,6 @@
             "type": "string",
             "description": "冻结描述",
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UPrimeResponse": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string",
-            "nullable": true
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "fullMessage": {
-            "type": "string",
-            "nullable": true
-          },
-          "timestamp": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "isSuccess": {
-            "type": "boolean",
-            "readOnly": true
           }
         },
         "additionalProperties": false
@@ -2003,6 +5744,11 @@
             "description": "邮箱",
             "nullable": true
           },
+          "roleId": {
+            "type": "string",
+            "description": "角色id",
+            "nullable": true
+          },
           "lastLoginTime": {
             "type": "string",
             "description": "最后一次登录时间",
@@ -2160,6 +5906,10 @@
             "type": "integer",
             "description": "页大小",
             "format": "int32"
+          },
+          "isPage": {
+            "type": "boolean",
+            "description": "是否分页"
           }
         },
         "additionalProperties": false,
@@ -2464,6 +6214,11 @@
             "description": "类型\r\n1=菜单\r\n2=路由\r\n3=按钮",
             "format": "int32"
           },
+          "sort": {
+            "type": "integer",
+            "description": "排序\r\n(数字越大越靠前）",
+            "format": "int32"
+          },
           "isSuperAdmin": {
             "type": "boolean",
             "description": "是否admin(超级管理员，没有租户限制)"
@@ -2527,11 +6282,103 @@
             "type": "integer",
             "description": "页大小",
             "format": "int32"
+          },
+          "isPage": {
+            "type": "boolean",
+            "description": "是否分页"
           }
         },
         "additionalProperties": false
       },
-      "MenuDtoPagedResultDto": {
+      "MenuTreeDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "creationTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "isDelete": {
+            "type": "boolean",
+            "description": "是否删除"
+          },
+          "deleteTime": {
+            "type": "string",
+            "description": "删除时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "operatorId": {
+            "type": "string",
+            "description": "操作人标识",
+            "nullable": true
+          },
+          "operatorName": {
+            "type": "string",
+            "description": "操作人",
+            "nullable": true
+          },
+          "parentId": {
+            "type": "string",
+            "description": "父级id",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "菜单名称",
+            "nullable": true
+          },
+          "icon": {
+            "type": "string",
+            "description": "菜单图标",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "菜单路径",
+            "nullable": true
+          },
+          "type": {
+            "type": "integer",
+            "description": "类型\r\n1=菜单\r\n2=路由\r\n3=按钮",
+            "format": "int32"
+          },
+          "sort": {
+            "type": "integer",
+            "description": "排序字段\r\n数字越大越靠前",
+            "format": "int32"
+          },
+          "isSuperAdmin": {
+            "type": "boolean",
+            "description": "是否admin(超级管理员，没有租户限制)"
+          },
+          "isEnable": {
+            "type": "boolean",
+            "description": "是否启用"
+          },
+          "hasChildren": {
+            "type": "boolean"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MenuTreeDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MenuTreeDtoPagedResultDto": {
         "type": "object",
         "properties": {
           "totalCount": {
@@ -2541,18 +6388,18 @@
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/MenuDto"
+              "$ref": "#/components/schemas/MenuTreeDto"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "MenuDtoPagedResultDtoUPrimeResponse": {
+      "MenuTreeDtoPagedResultDtoUPrimeResponse": {
         "type": "object",
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/MenuDtoPagedResultDto"
+            "$ref": "#/components/schemas/MenuTreeDtoPagedResultDto"
           },
           "code": {
             "type": "string",
@@ -2679,6 +6526,51 @@
         },
         "additionalProperties": false
       },
+      "QueryUrlMenuByParentUrlInput": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "父级",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "通过父级Url查询按钮路由的入参类"
+      },
+      "StringListUPrimeResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
       "InsertMenuInput": {
         "type": "object",
         "properties": {
@@ -2705,6 +6597,11 @@
           "type": {
             "type": "integer",
             "description": "类型\r\n1=菜单\r\n2=路由",
+            "format": "int32"
+          },
+          "sort": {
+            "type": "integer",
+            "description": "排序字段\r\n数字越大越靠前",
             "format": "int32"
           },
           "isSuperAdmin": {
@@ -2741,6 +6638,11 @@
             "type": "string",
             "description": "菜单路径",
             "nullable": true
+          },
+          "sort": {
+            "type": "integer",
+            "description": "排序字段\r\n数字越大越靠前",
+            "format": "int32"
           },
           "isEnable": {
             "type": "boolean",
@@ -2821,7 +6723,7 @@
           "menus": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/MenuDto"
+              "type": "string"
             },
             "description": "菜单信息",
             "nullable": true
@@ -2881,6 +6783,10 @@
             "type": "integer",
             "description": "页大小",
             "format": "int32"
+          },
+          "isPage": {
+            "type": "boolean",
+            "description": "是否分页"
           }
         },
         "additionalProperties": false,
