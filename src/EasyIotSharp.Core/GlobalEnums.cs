@@ -51,4 +51,26 @@ namespace EasyIotSharp.Core
         [EnumAlias("bool")]
         Bool = 5
     }
+
+    /// <summary>
+    /// 表单标签类型
+    /// -1=全部
+    /// </summary>
+    public enum TagTypeMenu
+    {
+        /// <summary>
+        /// 全部(未知的)
+        /// </summary>
+        [EnumAlias("全部")]
+        None = -1,
+
+        [EnumAlias("text")]
+        Text=1,
+
+        [EnumAlias("checkbox")]
+        Checkbox = 2,
+
+        [EnumAlias("number")]
+        Number = 3,
+    }
 }

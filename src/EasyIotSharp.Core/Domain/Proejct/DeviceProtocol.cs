@@ -5,9 +5,9 @@ using System.Text;
 namespace EasyIotSharp.Core.Domain.Proejct
 {
     /// <summary>
-    /// 设备协议表
+    /// 网关协议表
     /// </summary>
-    /// <remarks>定于当前设备所选的协议的存储数据</remarks>
+    /// <remarks>定于当前网关所选的协议传输过来的存储数据</remarks>
     public class DeviceProtocol:BaseEntity<string>
     {
         /// <summary>
@@ -26,7 +26,13 @@ namespace EasyIotSharp.Core.Domain.Proejct
         public string ProtocolId { get; set; }
 
         /// <summary>
+        /// 协议配置id
+        /// </summary>
+        public string ProtocoConfigId { get; set; }
+
+        /// <summary>
         /// json定义
+        /// 网关发送命令json数据
         /// </summary>
         public string ConfigJson { get; set; }
     }
