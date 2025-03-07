@@ -54,6 +54,7 @@ namespace EasyIotSharp.Core.Services.Project.Impl
             model.Name = input.Name;
             model.Identifier = input.Identifier;
             model.ControlsType = input.ControlsType;
+            model.SensorPointTypeId = input.SensorPointTypeId;
             model.DataType = input.DataType;
             model.Unit = input.Unit;
             model.Precision = input.Precision;
