@@ -1192,6 +1192,21 @@
             对象id
             </summary>
         </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.DeleteProtocolConfigInput">
+            <summary>
+            通过id删除一条协议配置的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.DeleteProtocolConfigInput.Id">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.DeleteProtocolConfigInput.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.DeleteProtocolInput">
             <summary>
             通过id删除一条协议信息的入参类
@@ -1235,6 +1250,70 @@
         <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.DeleteSensorQuotaInput.IsDelete">
             <summary>
             是否删除 
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput">
+            <summary>
+            田家园一条协议配置的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput.ProtocolId">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput.Identifier">
+            <summary>
+            标识符
+            （反序列化到class里面对应的字段名）
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput.Label">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput.Placeholder">
+            <summary>
+            文本提示
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput.Tag">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput.TagType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.TagTypeMenu"/>
+            标签类型  select、number、text
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput.IsRequired">
+            <summary>
+            是否必填
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput.ValidateType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
+            验证数据类型
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput.ValidateMessage">
+            <summary>
+            验证数据类型不正确提示
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput.Sort">
+            <summary>
+            排序字段
+            (数字越大越靠前)
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput.Options">
+            <summary>
+            下拉
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolInput">
@@ -1346,6 +1425,85 @@
             (数字越大越靠前)
             </summary>
         </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput">
+            <summary>
+            通过协议id获取协议配置列表的出参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.Identifier">
+            <summary>
+            标识符
+            （反序列化到class里面对应的字段名）
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.Label">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.Placeholder">
+            <summary>
+            文本提示
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.Tag">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.TagType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.TagTypeMenu"/>
+            标签类型  select、number、text
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.IsRequired">
+            <summary>
+            是否必填
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.ValidateType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
+            验证数据类型
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.ValidateMessage">
+            <summary>
+            验证数据类型不正确提示
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.Options">
+            <summary>
+            下拉
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigInput">
+            <summary>
+            通过条件分页查询协议配置的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigInput.ProtocolId">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigInput.Keyword">
+            <summary>
+            label/placeholder/tag
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigInput.TagType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.TagTypeMenu"/>
+            标签类型  select、number、text
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolInput">
             <summary>
             通过条件分页查询协议列表的入参类
@@ -1407,6 +1565,75 @@
             <summary>
             <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
             数据类型
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput">
+            <summary>
+            根据id修改一条协议配置的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput.Id">
+            <summary>
+            协议配置id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput.Identifier">
+            <summary>
+            标识符
+            （反序列化到class里面对应的字段名）
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput.Label">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput.Placeholder">
+            <summary>
+            文本提示
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput.Tag">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput.TagType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.TagTypeMenu"/>
+            标签类型  select、number、text
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput.IsRequired">
+            <summary>
+            是否必填
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput.ValidateType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
+            验证数据类型
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput.ValidateMessage">
+            <summary>
+            验证数据类型不正确提示
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput.Sort">
+            <summary>
+            排序字段
+            (数字越大越靠前)
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput.IsUpdateExt">
+            <summary>
+            是否修改协议配置扩展
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput.Options">
+            <summary>
+            下拉
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolInput">
@@ -1531,6 +1758,90 @@
             <summary>
             排序字段
             (数字越大越靠前)
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto">
+            <summary>
+            代表一条协议配置的"DTO"
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.ProtocolId">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.Identifier">
+            <summary>
+            标识符
+            （反序列化到class里面对应的字段名）
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.Label">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.Placeholder">
+            <summary>
+            文本提示
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.Tag">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.TagType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.TagTypeMenu"/>
+            标签类型  select、number、text
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.IsRequired">
+            <summary>
+            是否必填
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.ValidateType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
+            验证数据类型
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.ValidateMessage">
+            <summary>
+            验证数据类型不正确提示
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.Sort">
+            <summary>
+            排序字段
+            (数字越大越靠前)
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.OperatorName">
+            <summary>
+            操作人
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.Hardware.ProtocolDto">
@@ -4308,6 +4619,9 @@
             <summary>
             表单标签类型
             -1=全部
+            text=1
+            checkbox=2
+            number=3
             </summary>
         </member>
         <member name="F:EasyIotSharp.Core.TagTypeMenu.None">
@@ -4468,6 +4782,32 @@
             <summary>
             true or false
             </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Hardware.IProtocolConfigExtRepository.QueryByConfigIds(System.Collections.Generic.List{System.String})">
+            <summary>
+            通过配置id集合查询配置扩展列表
+            </summary>
+            <param name="configIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Hardware.IProtocolConfigExtRepository.DeleteManyByConfigId(System.String)">
+            <summary>
+            通过协议配置id批量删除配置扩展
+            </summary>
+            <param name="configId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Hardware.IProtocolConfigRepository.Query(System.String,System.String,EasyIotSharp.Core.TagTypeMenu,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            通过条件分页查询
+            </summary>
+            <param name="protocolId">协议id</param>
+            <param name="keyword">label/placeholder/tag</param>
+            <param name="tagType">标签类型  -1=全部  1=text  2=checkbox  3=number</param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条</param>
+            <param name="isPage">是否分页</param>
+            <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.Hardware.IProtocolRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Boolean)">
             <summary>
@@ -4971,6 +5311,41 @@
             <summary>
             获取所有省份列表（静态的）
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.IProtocolConfigService.GetProtocolConfig(System.String)">
+            <summary>
+            通过id获取一条协议配置信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.IProtocolConfigService.QueryProtocolConfig(EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigInput)">
+            <summary>
+            通过条件分页查询协议配置信息列表
+            </summary>.
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.IProtocolConfigService.InsertProtocolConfig(EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput)">
+            <summary>
+            添加一条协议配置
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.IProtocolConfigService.UpdateProtocolConfig(EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput)">
+            <summary>
+            通过id修改一条协议配置
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.IProtocolConfigService.DeleteProtocolConfig(EasyIotSharp.Core.Dto.Hardware.Params.DeleteProtocolConfigInput)">
+            <summary>
+            通过id删除一条协议配置
+            </summary>
+            <param name="input"></param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Services.Hardware.IProtocolService.GetProtocol(System.String)">

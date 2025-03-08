@@ -1,23 +1,21 @@
-﻿using Confluent.Kafka;
-using Nest;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Numeric;
+﻿using EasyIotSharp.Core.Domain.Hardware;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UPrime.AutoMapper;
 
-namespace EasyIotSharp.Core.Domain.Hardware
+namespace EasyIotSharp.Core.Dto.Hardware.Params
 {
     /// <summary>
-    /// 协议表单配置表
+    /// 通过协议id获取协议配置列表的出参类
     /// </summary>
-    /// <remarks>构建动态表单</remarks>
-    public class ProtocolConfig : BaseEntity<string>
+    [AutoMapFrom(typeof(ProtocolConfig))]
+    public class QueryProtocolConfigByProtocolIdOutput
     {
         /// <summary>
-        /// 协议id
+        /// id
         /// </summary>
-        public string ProtocolId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// 标识符
@@ -63,9 +61,8 @@ namespace EasyIotSharp.Core.Domain.Hardware
         public int ValidateMessage { get; set; }
 
         /// <summary>
-        /// 排序字段
-        /// (数字越大越靠前)
+        /// 下拉
         /// </summary>
-        public int Sort { get; set; }
+        public Dictionary<string,string> Options { get; set; }
     }
 }

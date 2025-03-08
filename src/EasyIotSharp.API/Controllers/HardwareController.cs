@@ -16,12 +16,14 @@ namespace EasyIotSharp.API.Controllers
     public class HardwareController : ApiControllerBase
     {
         private readonly IProtocolService _protocolService;
+        private readonly IProtocolConfigService _protocolConfigService;
         private readonly ISensorService _sensorService;
         private readonly ISensorQuotaService _sensorQuotaService;
 
         public HardwareController()
         {
             _protocolService = UPrime.UPrimeEngine.Instance.Resolve<IProtocolService>();
+            _protocolConfigService= UPrime.UPrimeEngine.Instance.Resolve<IProtocolConfigService>();
             _sensorService = UPrime.UPrimeEngine.Instance.Resolve<ISensorService>();
             _sensorQuotaService = UPrime.UPrimeEngine.Instance.Resolve<ISensorQuotaService>();
         }
@@ -92,6 +94,77 @@ namespace EasyIotSharp.API.Controllers
         public async Task<UPrimeResponse> DeleteProtocol([FromBody] DeleteProtocolInput input)
         {
             await _protocolService.DeleteProtocol(input);
+            return new UPrimeResponse();
+        }
+
+        #endregion
+
+        #region 协议配置
+
+        /// <summary>
+        /// 通过id获取一条协议配置信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost("/Hardware/Protocol/Config/Get")]
+        [Authorize]
+        public async Task<UPrimeResponse<ProtocolConfigDto>> GetProtocolConfig(string id)
+        {
+            UPrimeResponse<ProtocolConfigDto> res = new UPrimeResponse<ProtocolConfigDto>();
+            res.Result = await _protocolConfigService.GetProtocolConfig(id);
+            return res;
+        }
+
+        /// <summary>
+        /// 通过条件分页查询协议配置信息列表
+        /// </summary>.
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Hardware/Protocol/Config/Query")]
+        [Authorize]
+        public async Task<UPrimeResponse<PagedResultDto<QueryProtocolConfigByProtocolIdOutput>>> QueryProtocolConfig([FromBody]QueryProtocolConfigInput input)
+        {
+            UPrimeResponse<PagedResultDto<QueryProtocolConfigByProtocolIdOutput>> res = new UPrimeResponse<PagedResultDto<QueryProtocolConfigByProtocolIdOutput>>();
+            res.Result = await _protocolConfigService.QueryProtocolConfig(input);
+            return res;
+        }
+
+        /// <summary>
+        /// 添加一条协议配置
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Hardware/Protocol/Config/Insert")]
+        [Authorize]
+        public async Task<UPrimeResponse> InsertProtocolConfig([FromBody] InsertProtocolConfigInput input)
+        {
+            await _protocolConfigService.InsertProtocolConfig(input);
+            return new UPrimeResponse();
+        }
+
+        /// <summary>
+        /// 通过id修改一条协议配置
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Hardware/Protocol/Config/Update")]
+        [Authorize]
+        public async  Task<UPrimeResponse> UpdateProtocolConfig([FromBody] UpdateProtocolConfigInput input)
+        {
+            await _protocolConfigService.UpdateProtocolConfig(input);
+            return new UPrimeResponse();
+        }
+
+        /// <summary>
+        /// 通过id删除一条协议配置
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Hardware/Protocol/Config/Delete")]
+        [Authorize]
+        public async Task<UPrimeResponse> DeleteProtocolConfig([FromBody]DeleteProtocolConfigInput input)
+        {
+            await _protocolConfigService.DeleteProtocolConfig(input);
             return new UPrimeResponse();
         }
 

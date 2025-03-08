@@ -1,19 +1,19 @@
-﻿using Confluent.Kafka;
-using Nest;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Numeric;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasyIotSharp.Core.Domain.Hardware
+namespace EasyIotSharp.Core.Dto.Hardware
 {
     /// <summary>
-    /// 协议表单配置表
+    /// 代表一条协议配置的"DTO"
     /// </summary>
-    /// <remarks>构建动态表单</remarks>
-    public class ProtocolConfig : BaseEntity<string>
+    public class ProtocolConfigDto
     {
+        /// <summary>
+        /// id
+        /// </summary>
+        public string Id { get; set; }
+
         /// <summary>
         /// 协议id
         /// </summary>
@@ -67,5 +67,25 @@ namespace EasyIotSharp.Core.Domain.Hardware
         /// (数字越大越靠前)
         /// </summary>
         public int Sort { get; set; }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreationTime { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime UpdatedAt { get; set; }
+
+        /// <summary>
+        /// 操作人标识
+        /// </summary>
+        public string OperatorId { get; set; }
+
+        /// <summary>
+        /// 操作人
+        /// </summary>
+        public string OperatorName { get; set; }
     }
 }

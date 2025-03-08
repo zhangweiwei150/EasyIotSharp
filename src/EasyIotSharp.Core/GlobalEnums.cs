@@ -55,6 +55,9 @@ namespace EasyIotSharp.Core
     /// <summary>
     /// 表单标签类型
     /// -1=全部
+    /// text=1
+    /// checkbox=2
+    /// number=3
     /// </summary>
     public enum TagTypeMenu
     {

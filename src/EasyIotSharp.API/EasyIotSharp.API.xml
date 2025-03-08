@@ -44,6 +44,41 @@
             <param name="input"></param>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.API.Controllers.HardwareController.GetProtocolConfig(System.String)">
+            <summary>
+            通过id获取一条协议配置信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.HardwareController.QueryProtocolConfig(EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigInput)">
+            <summary>
+            通过条件分页查询协议配置信息列表
+            </summary>.
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.HardwareController.InsertProtocolConfig(EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolConfigInput)">
+            <summary>
+            添加一条协议配置
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.HardwareController.UpdateProtocolConfig(EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolConfigInput)">
+            <summary>
+            通过id修改一条协议配置
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.HardwareController.DeleteProtocolConfig(EasyIotSharp.Core.Dto.Hardware.Params.DeleteProtocolConfigInput)">
+            <summary>
+            通过id删除一条协议配置
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.API.Controllers.HardwareController.GetSensor(System.String)">
             <summary>
             通过id获取一条传感器类型信息
