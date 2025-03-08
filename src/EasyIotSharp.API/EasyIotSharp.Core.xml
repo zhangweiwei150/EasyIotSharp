@@ -473,6 +473,208 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:EasyIotSharp.Core.Domain.Hardware.Protocol">
+            <summary>
+            协议表
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.Protocol.Name">
+            <summary>
+            协议名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.Protocol.Remark">
+            <summary>
+            协议描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.Protocol.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Domain.Hardware.ProtocolConfig">
+            <summary>
+            协议表单配置表
+            </summary>
+            <remarks>构建动态表单</remarks>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.ProtocolConfig.ProtocolId">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.ProtocolConfig.Identifier">
+            <summary>
+            标识符
+            （反序列化到class里面对应的字段名）
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.ProtocolConfig.Label">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.ProtocolConfig.Placeholder">
+            <summary>
+            文本提示
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.ProtocolConfig.Tag">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.ProtocolConfig.TagType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.TagTypeMenu"/>
+            标签类型  select、number、text
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.ProtocolConfig.IsRequired">
+            <summary>
+            是否必填
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.ProtocolConfig.ValidateType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
+            验证数据类型
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.ProtocolConfig.ValidateMessage">
+            <summary>
+            验证数据类型不正确提示
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.ProtocolConfig.Sort">
+            <summary>
+            排序字段
+            (数字越大越靠前)
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Domain.Hardware.ProtocolConfigExt">
+            <summary>
+            协议配置扩展表
+            </summary>
+            <remarks>代表一条协议配置表单元素关联的额外扩展数据，例如下拉select的option</remarks>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.ProtocolConfigExt.ProtocolConfigId">
+            <summary>
+            协议配置id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.ProtocolConfigExt.Label">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.ProtocolConfigExt.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Domain.Hardware.Sensor">
+            <summary>
+            传感器表
+            </summary>
+            <remarks>一个传感器设备</remarks>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.Sensor.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.Sensor.Name">
+            <summary>
+            测点类型名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.Sensor.BriefName">
+            <summary>
+            简称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.Sensor.Supplier">
+            <summary>
+            厂家名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.Sensor.SensorModel">
+            <summary>
+            传感器型号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.Sensor.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Domain.Hardware.SensorQuota">
+            <summary>
+            传感器指标表
+            </summary>
+             <remarks>一个传感器设备对应测对应的数据   温度  倾斜度等</remarks>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.SensorQuota.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.SensorQuota.SensorId">
+            <summary>
+            传感器类型id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.SensorQuota.Name">
+            <summary>
+            指标名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.SensorQuota.Identifier">
+            <summary>
+            指标标识符
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.SensorQuota.ControlsType">
+            <summary>
+            操作类型
+            R=只读
+            W=只写
+            RW=读写
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.SensorQuota.DataType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
+            数据类型
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.SensorQuota.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.SensorQuota.Precision">
+            <summary>
+            小数位精度
+            数据类型是double float  小数点取几位
+            -1=全部
+            0=零位
+            1=一位
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.SensorQuota.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Hardware.SensorQuota.Sort">
+            <summary>
+            排序字段
+            (数字越大越靠前)
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Domain.Proejct.Classification">
             <summary>
             分类表
@@ -535,9 +737,9 @@
         </member>
         <member name="T:EasyIotSharp.Core.Domain.Proejct.DeviceProtocol">
             <summary>
-            设备协议表
+            网关协议表
             </summary>
-            <remarks>定于当前设备所选的协议的存储数据</remarks>
+            <remarks>定于当前网关所选的协议传输过来的存储数据</remarks>
         </member>
         <member name="P:EasyIotSharp.Core.Domain.Proejct.DeviceProtocol.TenantNumId">
             <summary>
@@ -554,9 +756,15 @@
             协议id
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.DeviceProtocol.ProtocoConfigId">
+            <summary>
+            协议配置id
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Domain.Proejct.DeviceProtocol.ConfigJson">
             <summary>
             json定义
+            网关发送命令json数据
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Domain.Proejct.ProjectBase">
@@ -602,31 +810,6 @@
             项目描述
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Domain.Proejct.Protocol">
-            <summary>
-            协议表
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.Protocol.Name">
-            <summary>
-            协议名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.Protocol.Remark">
-            <summary>
-            协议描述
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.Protocol.IsEnable">
-            <summary>
-            是否启用
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Domain.Proejct.ProtocolConfig">
-            <summary>
-            协议配置表
-            </summary>
-        </member>
         <member name="T:EasyIotSharp.Core.Domain.Proejct.SensorPoint">
             <summary>
             测点表
@@ -657,110 +840,9 @@
             设备id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPoint.SensorTypeId">
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPoint.SensorId">
             <summary>
-            测点类型Id
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Domain.Proejct.SensorPointType">
-            <summary>
-            测点类型表
-            </summary>
-            <remarks>一个传感器设备</remarks>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointType.TenantNumId">
-            <summary>
-            租户id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointType.Name">
-            <summary>
-            测点类型名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointType.BriefName">
-            <summary>
-            简称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointType.Supplier">
-            <summary>
-            厂家名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointType.SensorModel">
-            <summary>
-            传感器型号
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointType.Remark">
-            <summary>
-            描述
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Domain.Proejct.SensorPointTypeQuota">
-            <summary>
-            测点类型指标表
-            </summary>
-             <remarks>一个传感器设备对应测对应的数据   温度  倾斜度等</remarks>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointTypeQuota.TenantNumId">
-            <summary>
-            租户id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointTypeQuota.SensorPointTypeId">
-            <summary>
-            传感器类型id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointTypeQuota.Name">
-            <summary>
-            指标名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointTypeQuota.Identifier">
-            <summary>
-            指标标识符
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointTypeQuota.ControlsType">
-            <summary>
-            操作类型
-            R=只读
-            W=只写
-            RW=读写
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointTypeQuota.DataType">
-            <summary>
-            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
-            数据类型
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointTypeQuota.Unit">
-            <summary>
-            单位
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointTypeQuota.Precision">
-            <summary>
-            小数位精度
-            数据类型是double float  小数点取几位
-            -1=全部
-            0=零位
-            1=一位
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointTypeQuota.Remark">
-            <summary>
-            描述
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPointTypeQuota.Sort">
-            <summary>
-            排序字段
-            (数字越大越靠前)
+            传感器Id
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Domain.TenantAccount.Menu">
@@ -1110,6 +1192,541 @@
             对象id
             </summary>
         </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.DeleteProtocolInput">
+            <summary>
+            通过id删除一条协议信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.DeleteProtocolInput.Id">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.DeleteProtocolInput.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.DeleteSensorInput">
+            <summary>
+            通过id删除一条传感器的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.DeleteSensorInput.Id">
+            <summary>
+            传感器id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.DeleteSensorInput.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.DeleteSensorQuotaInput">
+            <summary>
+            通过id删除一条传感器类型指标的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.DeleteSensorQuotaInput.Id">
+            <summary>
+            传感器指标id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.DeleteSensorQuotaInput.IsDelete">
+            <summary>
+            是否删除 
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolInput">
+            <summary>
+            添加一条协议信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolInput.Name">
+            <summary>
+            协议名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolInput.Remark">
+            <summary>
+            协议描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolInput.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorInput">
+            <summary>
+            添加一条传感器的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorInput.Name">
+            <summary>
+            测点类型名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorInput.BriefName">
+            <summary>
+            简称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorInput.Supplier">
+            <summary>
+            厂家名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorInput.SensorModel">
+            <summary>
+            传感器型号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorInput.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorQuotaInput">
+            <summary>
+            添加一条传感器类型指标的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorQuotaInput.SensorId">
+            <summary>
+            传感器id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorQuotaInput.Name">
+            <summary>
+            指标名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorQuotaInput.Identifier">
+            <summary>
+            指标标识符
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorQuotaInput.ControlsType">
+            <summary>
+            操作类型
+            R=只读
+            W=只写
+            RW=读写
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorQuotaInput.DataType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
+            数据类型
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorQuotaInput.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorQuotaInput.Precision">
+            <summary>
+            小数位精度
+            数据类型是double float  小数点取几位
+            -1=全部
+            0=零位
+            1=一位
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorQuotaInput.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorQuotaInput.Sort">
+            <summary>
+            排序字段
+            (数字越大越靠前)
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolInput">
+            <summary>
+            通过条件分页查询协议列表的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolInput.Keyword">
+            <summary>
+            协议名称/描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolInput.IsEnable">
+            <summary>
+            是否启用
+            -1=不参与查询
+            1=启用
+            2=禁用
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolInput.IsPage">
+            <summary>
+            是否分页
+            true=分页
+            false=查询全部
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.QuerySensorInput">
+            <summary>
+            通过条件分页查询传感器的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QuerySensorInput.Keyword">
+            <summary>
+            名称/简称/厂家
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QuerySensorInput.IsPage">
+            <summary>
+            是否分页
+            true=分页
+            false=查询全部
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.QuerySensorQuotaInput">
+            <summary>
+            根据条件分页查询传感器类型指标列表的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QuerySensorQuotaInput.SensorPointTypeId">
+            <summary>
+            传感器类型id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QuerySensorQuotaInput.Keyword">
+            <summary>
+            指标名称/标识符
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QuerySensorQuotaInput.DataType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
+            数据类型
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolInput">
+            <summary>
+            通过id修改一条协议信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolInput.Id">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolInput.Name">
+            <summary>
+            协议名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolInput.Remark">
+            <summary>
+            协议描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolInput.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorInput">
+            <summary>
+            通过id修改一条传感器的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorInput.Id">
+            <summary>
+            测点类型id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorInput.Name">
+            <summary>
+            测点类型名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorInput.BriefName">
+            <summary>
+            简称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorInput.Supplier">
+            <summary>
+            厂家名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorInput.SensorModel">
+            <summary>
+            传感器型号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorInput.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput">
+            <summary>
+            通过id修改一条传感器类型指标的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput.SensorPointTypeId">
+            <summary>
+            测点类型id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput.Name">
+            <summary>
+            指标名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput.Identifier">
+            <summary>
+            指标标识符
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput.ControlsType">
+            <summary>
+            操作类型
+            R=只读
+            W=只写
+            RW=读写
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput.DataType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
+            数据类型
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput.Precision">
+            <summary>
+            小数位精度
+            数据类型是double float  小数点取几位
+            -1=全部
+            0=零位
+            1=一位
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput.Sort">
+            <summary>
+            排序字段
+            (数字越大越靠前)
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.ProtocolDto">
+            <summary>
+            代表一条协议信息的"DTO"
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolDto.Id">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolDto.Name">
+            <summary>
+            协议名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolDto.Remark">
+            <summary>
+            协议描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolDto.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolDto.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.SensorDto">
+            <summary>
+            代表一条传感器的"DTO"
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorDto.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorDto.Name">
+            <summary>
+            测点类型名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorDto.BriefName">
+            <summary>
+            简称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorDto.Supplier">
+            <summary>
+            厂家名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorDto.SensorModel">
+            <summary>
+            传感器型号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorDto.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorDto.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto">
+            <summary>
+            代表一个传感器类型的指标的"DTO"
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.TenantNumId">
+            <summary>
+            租户id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.SensorId">
+            <summary>
+            测点类型id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.Name">
+            <summary>
+            指标名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.Identifier">
+            <summary>
+            指标标识符
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.ControlsType">
+            <summary>
+            操作类型
+            R=只读
+            W=只写
+            RW=读写
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.DataType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
+            数据类型
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.Precision">
+            <summary>
+            小数位精度
+            数据类型是double float  小数点取几位
+            -1=全部
+            0=零位
+            1=一位
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.Remark">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.Sort">
+            <summary>
+            排序字段
+            (数字越大越靠前)
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Dto.OperateUserInput">
             <summary>
             操作用户信息输入
@@ -1294,21 +1911,6 @@
             是否删除
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.DeleteProtocolInput">
-            <summary>
-            通过id删除一条协议信息的入参类
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteProtocolInput.Id">
-            <summary>
-            协议id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteProtocolInput.IsDelete">
-            <summary>
-            是否删除
-            </summary>
-        </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointInput">
             <summary>
             通过id删除一条测点信息的入参类
@@ -1322,36 +1924,6 @@
         <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointInput.IsDelete">
             <summary>
             是否删除
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeInput">
-            <summary>
-            通过id删除一条测点类型的入参类
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeInput.Id">
-            <summary>
-            测点类型id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeInput.IsDelete">
-            <summary>
-            是否删除
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeQuotaInput">
-            <summary>
-            通过id删除一条传感器类型指标的入参类
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeQuotaInput.Id">
-            <summary>
-            传感器指标id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeQuotaInput.IsDelete">
-            <summary>
-            是否删除 
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertClassificationInput">
@@ -1425,26 +1997,6 @@
             项目描述
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertProtocolInput">
-            <summary>
-            添加一条协议信息的入参类
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertProtocolInput.Name">
-            <summary>
-            协议名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertProtocolInput.Remark">
-            <summary>
-            协议描述
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertProtocolInput.IsEnable">
-            <summary>
-            是否启用
-            </summary>
-        </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput">
             <summary>
             添加一条测点信息的入参类
@@ -1470,98 +2022,9 @@
             设备id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput.SensorTypeId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput.SensorId">
             <summary>
-            测点类型Id
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeInput">
-            <summary>
-            添加一条测点类型的入参类
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeInput.Name">
-            <summary>
-            测点类型名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeInput.BriefName">
-            <summary>
-            简称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeInput.Supplier">
-            <summary>
-            厂家名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeInput.SensorModel">
-            <summary>
-            传感器型号
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeInput.Remark">
-            <summary>
-            描述
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeQuotaInput">
-            <summary>
-            添加一条传感器类型指标的入参类
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeQuotaInput.SensorPointTypeId">
-            <summary>
-            测点类型id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeQuotaInput.Name">
-            <summary>
-            指标名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeQuotaInput.Identifier">
-            <summary>
-            指标标识符
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeQuotaInput.ControlsType">
-            <summary>
-            操作类型
-            R=只读
-            W=只写
-            RW=读写
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeQuotaInput.DataType">
-            <summary>
-            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
-            数据类型
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeQuotaInput.Unit">
-            <summary>
-            单位
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeQuotaInput.Precision">
-            <summary>
-            小数位精度
-            数据类型是double float  小数点取几位
-            -1=全部
-            0=零位
-            1=一位
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeQuotaInput.Remark">
-            <summary>
-            描述
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeQuotaInput.Sort">
-            <summary>
-            排序字段
-            (数字越大越靠前)
+            传感器Id
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.Params.QueryClassificationInput">
@@ -1638,31 +2101,6 @@
             创建结束时间
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.QueryProtocolInput">
-            <summary>
-            通过条件分页查询协议列表的入参类
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryProtocolInput.Keyword">
-            <summary>
-            协议名称/描述
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryProtocolInput.IsEnable">
-            <summary>
-            是否启用
-            -1=不参与查询
-            1=启用
-            2=禁用
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryProtocolInput.IsPage">
-            <summary>
-            是否分页
-            true=分页
-            false=查询全部
-            </summary>
-        </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput">
             <summary>
             通过条件查询查询测点信息的入参类
@@ -1688,52 +2126,9 @@
             设备id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput.SensorTypeId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput.SensorId">
             <summary>
-            测点类型Id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput.IsPage">
-            <summary>
-            是否分页
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeInput">
-            <summary>
-            通过条件分页查询测点类型的入参类
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeInput.Keyword">
-            <summary>
-            名称/简称/厂家
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeInput.IsPage">
-            <summary>
-            是否分页
-            true=分页
-            false=查询全部
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeQuotaInput">
-            <summary>
-            根据条件分页查询传感器类型指标列表的入参类
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeQuotaInput.SensorPointTypeId">
-            <summary>
-            传感器类型id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeQuotaInput.Keyword">
-            <summary>
-            指标名称/标识符
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeQuotaInput.DataType">
-            <summary>
-            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
-            数据类型
+            传感器Id
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateClassificationInput">
@@ -1825,31 +2220,6 @@
             项目描述
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateProtocolInput">
-            <summary>
-            通过id修改一条协议信息的入参类
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProtocolInput.Id">
-            <summary>
-            协议id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProtocolInput.Name">
-            <summary>
-            协议名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProtocolInput.Remark">
-            <summary>
-            协议描述
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateProtocolInput.IsEnable">
-            <summary>
-            是否启用
-            </summary>
-        </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput">
             <summary>
             根据id修改一条测点信息的入参类
@@ -1880,108 +2250,9 @@
             设备id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput.SensorTypeId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput.SensorId">
             <summary>
-            测点类型Id
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeInput">
-            <summary>
-            通过id修改一条测点类型的入参类
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeInput.Id">
-            <summary>
-            测点类型id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeInput.Name">
-            <summary>
-            测点类型名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeInput.BriefName">
-            <summary>
-            简称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeInput.Supplier">
-            <summary>
-            厂家名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeInput.SensorModel">
-            <summary>
-            传感器型号
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeInput.Remark">
-            <summary>
-            描述
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeQuotaInput">
-            <summary>
-            通过id修改一条传感器类型指标的入参类
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeQuotaInput.Id">
-            <summary>
-            id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeQuotaInput.SensorPointTypeId">
-            <summary>
-            测点类型id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeQuotaInput.Name">
-            <summary>
-            指标名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeQuotaInput.Identifier">
-            <summary>
-            指标标识符
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeQuotaInput.ControlsType">
-            <summary>
-            操作类型
-            R=只读
-            W=只写
-            RW=读写
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeQuotaInput.DataType">
-            <summary>
-            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
-            数据类型
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeQuotaInput.Unit">
-            <summary>
-            单位
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeQuotaInput.Precision">
-            <summary>
-            小数位精度
-            数据类型是double float  小数点取几位
-            -1=全部
-            0=零位
-            1=一位
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeQuotaInput.Remark">
-            <summary>
-            描述
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeQuotaInput.Sort">
-            <summary>
-            排序字段
-            (数字越大越靠前)
+            传感器Id
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateStateProjectBaseInput">
@@ -2056,51 +2327,6 @@
             创建时间
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.ProtocolDto">
-            <summary>
-            代表一条协议信息的"DTO"
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.Id">
-            <summary>
-            协议id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.Name">
-            <summary>
-            协议名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.Remark">
-            <summary>
-            协议描述
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.IsEnable">
-            <summary>
-            是否启用
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.CreationTime">
-            <summary>
-            创建时间
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.UpdatedAt">
-            <summary>
-            修改时间
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.OperatorId">
-            <summary>
-            操作人标识
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.ProtocolDto.OperatorName">
-            <summary>
-            操作人
-            </summary>
-        </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.SensorPointDto">
             <summary>
             代表一条测点信息的"DTO"
@@ -2136,9 +2362,9 @@
             设备id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.SensorTypeId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.SensoId">
             <summary>
-            测点类型Id
+            传感器Id
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.CreationTime">
@@ -2157,155 +2383,6 @@
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.OperatorName">
-            <summary>
-            操作人
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto">
-            <summary>
-            代表一条测点类型的"DTO"
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.Id">
-            <summary>
-            id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.TenantNumId">
-            <summary>
-            租户id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.Name">
-            <summary>
-            测点类型名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.BriefName">
-            <summary>
-            简称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.Supplier">
-            <summary>
-            厂家名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.SensorModel">
-            <summary>
-            传感器型号
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.Remark">
-            <summary>
-            描述
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.CreationTime">
-            <summary>
-            创建时间
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.UpdatedAt">
-            <summary>
-            修改时间
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.OperatorId">
-            <summary>
-            操作人标识
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeDto.OperatorName">
-            <summary>
-            操作人
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto">
-            <summary>
-            代表一个传感器类型的指标的"DTO"
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.Id">
-            <summary>
-            id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.TenantNumId">
-            <summary>
-            租户id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.SensorPointTypeId">
-            <summary>
-            测点类型id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.Name">
-            <summary>
-            指标名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.Identifier">
-            <summary>
-            指标标识符
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.ControlsType">
-            <summary>
-            操作类型
-            R=只读
-            W=只写
-            RW=读写
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.DataType">
-            <summary>
-            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
-            数据类型
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.Unit">
-            <summary>
-            单位
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.Precision">
-            <summary>
-            小数位精度
-            数据类型是double float  小数点取几位
-            -1=全部
-            0=零位
-            1=一位
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.Remark">
-            <summary>
-            描述
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.Sort">
-            <summary>
-            排序字段
-            (数字越大越靠前)
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.CreationTime">
-            <summary>
-            创建时间
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.UpdatedAt">
-            <summary>
-            修改时间
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.OperatorId">
-            <summary>
-            操作人标识
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointTypeQuotaDto.OperatorName">
             <summary>
             操作人
             </summary>
@@ -4227,6 +4304,17 @@
             bool
             </summary>
         </member>
+        <member name="T:EasyIotSharp.Core.TagTypeMenu">
+            <summary>
+            表单标签类型
+            -1=全部
+            </summary>
+        </member>
+        <member name="F:EasyIotSharp.Core.TagTypeMenu.None">
+            <summary>
+            全部(未知的)
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Queue.IKafkaService">
             <summary>
             Kafka 消息中间件服务，处理消息的发送与订阅
@@ -4381,6 +4469,41 @@
             true or false
             </summary>
         </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Hardware.IProtocolRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            通过条件分页查询项目分类列表
+            </summary>
+            <param name="isEnable">是否启用 -1=不参与查询 1=启用  2=禁用</param>
+            <param name="keyword">协议名称/描述</param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条数据</param>
+            <param name="isPage">是否分页</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Hardware.ISensorQuotaRepository.Query(System.Int32,System.String,System.String,EasyIotSharp.Core.DataTypeMenu,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            通过条件分页查询传感器指标列表
+            </summary>
+            <param name="tenantNumId">租户NumId</param>
+            <param name="sensorId">传感器类型id</param>
+            <param name="keyword">名称/标识符</param>
+            <param name="dataType">数据类型  -1=全部 1=string 2=int 3=double 4=float 5=bool </param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条数据</param>
+            <param name="isPage">是否分页</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Hardware.ISensorRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            通过条件分页查询传感器列表
+            </summary>
+            <param name="tenantNumId">租户NumId</param>
+            <param name="keyword">名称/简称/厂家</param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条数据</param>
+            <param name="isPage">是否分页</param>
+            <returns></returns>
+        </member>
         <member name="T:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2">
             <summary>
             
@@ -4522,17 +4645,6 @@
             <param name="pageSize">每页多少条数据</param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Project.IProtocolRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Boolean)">
-            <summary>
-            通过条件分页查询项目分类列表
-            </summary>
-            <param name="isEnable">是否启用 -1=不参与查询 1=启用  2=禁用</param>
-            <param name="keyword">协议名称/描述</param>
-            <param name="pageIndex">起始页</param>
-            <param name="pageSize">每页多少条数据</param>
-            <param name="isPage">是否分页</param>
-            <returns></returns>
-        </member>
         <member name="M:EasyIotSharp.Core.Repositories.Project.ISensorPointRepository.Query(System.Int32,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean)">
             <summary>
             通过条件分页查询项目分类列表
@@ -4542,31 +4654,7 @@
             <param name="projectId">项目id</param>
             <param name="classificationId">分类id</param>
             <param name="deviceId">设备id</param>
-            <param name="sensorTypeId">测点类型id</param>
-            <param name="pageIndex">起始页</param>
-            <param name="pageSize">每页多少条数据</param>
-            <param name="isPage">是否分页</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Project.ISensorPointTypeQuotaRepository.Query(System.Int32,System.String,System.String,EasyIotSharp.Core.DataTypeMenu,System.Int32,System.Int32,System.Boolean)">
-            <summary>
-            通过条件分页查询传感器指标列表
-            </summary>
-            <param name="tenantNumId">租户NumId</param>
-            <param name="sensorPointTypeId">传感器类型id</param>
-            <param name="keyword">名称/标识符</param>
-            <param name="dataType">数据类型  -1=全部 1=string 2=int 3=double 4=float 5=bool </param>
-            <param name="pageIndex">起始页</param>
-            <param name="pageSize">每页多少条数据</param>
-            <param name="isPage">是否分页</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Project.ISensorPointTypeRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Boolean)">
-            <summary>
-            通过条件分页查询测点类型列表
-            </summary>
-            <param name="tenantNumId">租户NumId</param>
-            <param name="keyword">名称/简称/厂家</param>
+            <param name="sensorId">传感器id</param>
             <param name="pageIndex">起始页</param>
             <param name="pageSize">每页多少条数据</param>
             <param name="isPage">是否分页</param>
@@ -4885,6 +4973,111 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.IProtocolService.GetProtocol(System.String)">
+            <summary>
+            通过id获取一条协议信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.IProtocolService.QueryProtocol(EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolInput)">
+            <summary>
+            根据条件分页查询协议列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.IProtocolService.InsertProtocol(EasyIotSharp.Core.Dto.Hardware.Params.InsertProtocolInput)">
+            <summary>
+            添加一条协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.IProtocolService.UpdateProtocol(EasyIotSharp.Core.Dto.Hardware.Params.UpdateProtocolInput)">
+            <summary>
+            通过id修改一条协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.IProtocolService.DeleteProtocol(EasyIotSharp.Core.Dto.Hardware.Params.DeleteProtocolInput)">
+            <summary>
+            通过id删除一条协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.ISensorQuotaService.GetSensorQuota(System.String)">
+            <summary>
+            通过id获取一条传感器类型指标
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.ISensorQuotaService.QuerySensorQuota(EasyIotSharp.Core.Dto.Hardware.Params.QuerySensorQuotaInput)">
+            <summary>
+            根据条件分页查询传感器类型指标列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.ISensorQuotaService.InsertSensorQuota(EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorQuotaInput)">
+            <summary>
+            添加一条传感器类型指标
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.ISensorQuotaService.UpdateSensorQuota(EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput)">
+            <summary>
+            通过id修改一条传感器类型指标
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.ISensorQuotaService.DeleteSensorQuota(EasyIotSharp.Core.Dto.Hardware.Params.DeleteSensorQuotaInput)">
+            <summary>
+            通过id删除一条传感器类型指标
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.ISensorService.GetSensor(System.String)">
+            <summary>
+            通过id获取一条传感器类型
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.ISensorService.QuerySensor(EasyIotSharp.Core.Dto.Hardware.Params.QuerySensorInput)">
+            <summary>
+            根据条件分页查询传感器类型列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.ISensorService.InsertSensor(EasyIotSharp.Core.Dto.Hardware.Params.InsertSensorInput)">
+            <summary>
+            添加一条传感器类型
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.ISensorService.UpdateSensor(EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorInput)">
+            <summary>
+            通过id修改一条传感器类型
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Hardware.ISensorService.DeleteSensor(EasyIotSharp.Core.Dto.Hardware.Params.DeleteSensorInput)">
+            <summary>
+            通过id删除一条传感器类型
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="P:EasyIotSharp.Core.Services.IO.Impl.TempFolderService.Path">
             <summary>
             临时文件夹应用绝对路径
@@ -5045,41 +5238,6 @@
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.IProtocolService.GetProtocol(System.String)">
-            <summary>
-            通过id获取一条协议信息
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.IProtocolService.QueryProtocol(EasyIotSharp.Core.Dto.Project.Params.QueryProtocolInput)">
-            <summary>
-            根据条件分页查询协议列表
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.IProtocolService.InsertProtocol(EasyIotSharp.Core.Dto.Project.Params.InsertProtocolInput)">
-            <summary>
-            添加一条协议信息
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.IProtocolService.UpdateProtocol(EasyIotSharp.Core.Dto.Project.Params.UpdateProtocolInput)">
-            <summary>
-            通过id修改一条协议信息
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.IProtocolService.DeleteProtocol(EasyIotSharp.Core.Dto.Project.Params.DeleteProtocolInput)">
-            <summary>
-            通过id删除一条协议信息
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
         <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointService.GetSensorPoint(System.String)">
             <summary>
             通过id获取一条测点信息
@@ -5111,76 +5269,6 @@
         <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointService.DeleteSensorPoint(EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointInput)">
             <summary>
             通过id删除一条测点信息
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeQuotaService.GetSensorPointTypeQuota(System.String)">
-            <summary>
-            通过id获取一条传感器类型指标
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeQuotaService.QuerySensorPointTypeQuota(EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeQuotaInput)">
-            <summary>
-            根据条件分页查询传感器类型指标列表
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeQuotaService.InsertSensorPointTypeQuota(EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeQuotaInput)">
-            <summary>
-            添加一条传感器类型指标
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeQuotaService.UpdateSensorPointTypeQuota(EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeQuotaInput)">
-            <summary>
-            通过id修改一条传感器类型指标
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeQuotaService.DeleteSensorPointTypeQuota(EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeQuotaInput)">
-            <summary>
-            通过id删除一条传感器类型指标
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeService.GetSensorPointType(System.String)">
-            <summary>
-            通过id获取一条传感器类型
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeService.QuerySensorPointType(EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointTypeInput)">
-            <summary>
-            根据条件分页查询传感器类型列表
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeService.InsertSensorPointType(EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointTypeInput)">
-            <summary>
-            添加一条传感器类型
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeService.UpdateSensorPointType(EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointTypeInput)">
-            <summary>
-            通过id修改一条传感器类型
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.ISensorPointTypeService.DeleteSensorPointType(EasyIotSharp.Core.Dto.Project.Params.DeleteSensorPointTypeInput)">
-            <summary>
-            通过id删除一条传感器类型
             </summary>
             <param name="input"></param>
             <returns></returns>

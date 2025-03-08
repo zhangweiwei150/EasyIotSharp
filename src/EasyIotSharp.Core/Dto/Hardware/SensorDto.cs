@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasyIotSharp.Core.Dto.Project
+namespace EasyIotSharp.Core.Dto.Hardware
 {
     /// <summary>
-    /// 代表一条测点信息的"DTO"
+    /// 代表一条传感器的"DTO"
     /// </summary>
-    public class SensorPointDto
+    public class SensorDto
     {
         /// <summary>
-        /// 测点id
+        /// id
         /// </summary>
         public string Id { get; set; }
 
@@ -20,29 +20,29 @@ namespace EasyIotSharp.Core.Dto.Project
         public int TenantNumId { get; set; }
 
         /// <summary>
-        /// 测点名称
+        /// 测点类型名称
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// 项目id
+        /// 简称
         /// </summary>
-        public string ProjectId { get; set; }
+        public string BriefName { get; set; }
 
         /// <summary>
-        /// 分类id
+        /// 厂家名称
         /// </summary>
-        public string ClassificationId { get; set; }
+        public string Supplier { get; set; }
 
         /// <summary>
-        /// 设备id
+        /// 传感器型号
         /// </summary>
-        public string DeviceId { get; set; }
+        public string SensorModel { get; set; }
 
         /// <summary>
-        /// 传感器Id
+        /// 描述
         /// </summary>
-        public string SensoId { get; set; }
+        public string Remark { get; set; }
 
         /// <summary>
         /// 创建时间

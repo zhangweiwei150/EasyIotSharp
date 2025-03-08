@@ -28,7 +28,7 @@ namespace EasyIotSharp.Core.Services.Project.Impl
 
         public async Task<PagedResultDto<SensorPointDto>> QuerySensorPoint(QuerySensorPointInput input)
         {
-            var query = await _sensorPointRepository.Query(ContextUser.TenantNumId, input.Keyword,input.ProjectId,input.ClassificationId,input.DeviceId,input.SensorTypeId, input.PageIndex, input.PageSize, input.IsPage);
+            var query = await _sensorPointRepository.Query(ContextUser.TenantNumId, input.Keyword,input.ProjectId,input.ClassificationId,input.DeviceId,input.SensorId, input.PageIndex, input.PageSize, input.IsPage);
             int totalCount = query.totalCount;
             var list = query.items.MapTo<List<SensorPointDto>>();
 
@@ -49,7 +49,7 @@ namespace EasyIotSharp.Core.Services.Project.Impl
             model.ProjectId = input.ProjectId;
             model.ClassificationId = input.ClassificationId;
             model.DeviceId = input.DeviceId;
-            model.SensorTypeId = input.SensorTypeId;
+            model.SensorId = input.SensorId;
             model.IsDelete = false;
             model.CreationTime = DateTime.Now;
             model.UpdatedAt = DateTime.Now;
@@ -74,7 +74,7 @@ namespace EasyIotSharp.Core.Services.Project.Impl
             info.ProjectId = info.ProjectId;
             info.ClassificationId = input.ClassificationId;
             info.DeviceId = input.DeviceId;
-            info.SensorTypeId = input.SensorTypeId;
+            info.SensorId = input.SensorId;
             info.UpdatedAt = DateTime.Now;
             info.OperatorId = ContextUser.UserId;
             info.OperatorName = ContextUser.UserName;

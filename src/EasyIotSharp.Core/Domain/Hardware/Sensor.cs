@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasyIotSharp.Core.Domain.Proejct
+namespace EasyIotSharp.Core.Domain.Hardware
 {
     /// <summary>
-    /// 测点表
+    /// 传感器表
     /// </summary>
-    public class SensorPoint:BaseEntity<string>
+    /// <remarks>一个传感器设备</remarks>
+    public class Sensor:BaseEntity<string>
     {
         /// <summary>
         /// 租户id
@@ -15,28 +16,28 @@ namespace EasyIotSharp.Core.Domain.Proejct
         public int TenantNumId { get; set; }
 
         /// <summary>
-        /// 测点名称
+        /// 测点类型名称
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// 项目id
+        /// 简称
         /// </summary>
-        public string ProjectId { get; set; }
+        public string BriefName { get; set; }
 
         /// <summary>
-        /// 分类id
+        /// 厂家名称
         /// </summary>
-        public string ClassificationId { get; set; }
+        public string Supplier { get; set; }
 
         /// <summary>
-        /// 设备id
+        /// 传感器型号
         /// </summary>
-        public string DeviceId { get; set; }
+        public string SensorModel { get; set; }
 
         /// <summary>
-        /// 传感器Id
+        /// 描述
         /// </summary>
-        public string SensorId { get; set; }
+        public string Remark { get; set; }
     }
 }

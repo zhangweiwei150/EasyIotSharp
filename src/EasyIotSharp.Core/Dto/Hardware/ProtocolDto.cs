@@ -2,47 +2,32 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasyIotSharp.Core.Dto.Project
+namespace EasyIotSharp.Core.Dto.Hardware
 {
     /// <summary>
-    /// 代表一条测点信息的"DTO"
+    /// 代表一条协议信息的"DTO"
     /// </summary>
-    public class SensorPointDto
+    public class ProtocolDto
     {
         /// <summary>
-        /// 测点id
+        /// 协议id
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// 租户id
-        /// </summary>
-        public int TenantNumId { get; set; }
-
-        /// <summary>
-        /// 测点名称
+        /// 协议名称
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// 项目id
+        /// 协议描述
         /// </summary>
-        public string ProjectId { get; set; }
+        public string Remark { get; set; }
 
         /// <summary>
-        /// 分类id
+        /// 是否启用
         /// </summary>
-        public string ClassificationId { get; set; }
-
-        /// <summary>
-        /// 设备id
-        /// </summary>
-        public string DeviceId { get; set; }
-
-        /// <summary>
-        /// 传感器Id
-        /// </summary>
-        public string SensoId { get; set; }
+        public bool IsEnable { get; set; }
 
         /// <summary>
         /// 创建时间

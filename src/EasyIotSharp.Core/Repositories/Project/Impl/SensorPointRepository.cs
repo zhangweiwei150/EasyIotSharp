@@ -20,7 +20,7 @@ namespace EasyIotSharp.Core.Repositories.Project.Impl
                                                                            string projectId,
                                                                            string classificationId,
                                                                            string deviceId,
-                                                                           string sensorTypeId,
+                                                                           string sensorId,
                                                                            int pageIndex,
                                                                            int pageSize,
                                                                            bool isPage)
@@ -50,9 +50,9 @@ namespace EasyIotSharp.Core.Repositories.Project.Impl
                 predicate = predicate.And(t => t.DeviceId.Equals(deviceId));
             }
 
-            if (!string.IsNullOrWhiteSpace(sensorTypeId))
+            if (!string.IsNullOrWhiteSpace(sensorId))
             {
-                predicate = predicate.And(t => t.SensorTypeId.Equals(sensorTypeId));
+                predicate = predicate.And(t => t.SensorId.Equals(sensorId));
             }
 
             // 获取总记录数

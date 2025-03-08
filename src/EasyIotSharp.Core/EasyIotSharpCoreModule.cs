@@ -21,6 +21,8 @@ using EasyIotSharp.Core.Repositories.TenantAccount;
 using EasyIotSharp.Core.Repositories.TenantAccount.Impl;
 using EasyIotSharp.Core.Repositories.Project;
 using EasyIotSharp.Core.Repositories.Project.Impl;
+using EasyIotSharp.Core.Repositories.Hardware;
+using EasyIotSharp.Core.Repositories.Hardware.Impl;
 
 namespace EasyIotSharp.Core
 {
@@ -55,23 +57,24 @@ namespace EasyIotSharp.Core
 
             //仓储
             IocManager.Register<ITenantRepository, TenantRepository>();
-
+            //权限
             IocManager.Register<IMenuRepository, MenuRepository>();
             IocManager.Register<IRoleMenuRepository, RoleMenuRepository>();
             IocManager.Register<IRoleRepository, RoleRepository>();
             IocManager.Register<ISoldierRepository, SoldierRepository>();
             IocManager.Register<ISoldierRoleRepository, SoldierRoleRepository>();
-
+            //项目
             IocManager.Register<IProjectBaseRepository, ProjectBaseRepository>();
             IocManager.Register<IClassificationRepository, ClassificationRepository>();
             IocManager.Register<IDeviceProtocolRepository, DeviceProtocolRepository>();
             IocManager.Register<IDeviceRepository, DeviceRepository>();
+            IocManager.Register<ISensorPointRepository, SensorPointRepository>();
+            //硬件
             IocManager.Register<IProtocolRepository, ProtocolRepository>();
             IocManager.Register<IProtocolConfigRepository, ProtocolConfigRepository>();
             IocManager.Register<IProtocolConfigExtRepository, ProtocolConfigExtRepository>();
-            IocManager.Register<ISensorPointRepository, SensorPointRepository>();
-            IocManager.Register<ISensorPointTypeRepository, SensorPointTypeRepository>();
-            IocManager.Register<ISensorPointTypeQuotaRepository, SensorPointTypeQuotaRepository>();
+            IocManager.Register<ISensorRepository, SensorRepository>();
+            IocManager.Register<ISensorQuotaRepository, SensorQuotaRepository>();
 
         }
 

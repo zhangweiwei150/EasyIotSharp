@@ -18,21 +18,15 @@ namespace EasyIotSharp.API.Controllers
     {
         private readonly IProjectBaseService _projectBaseService;
         private readonly IClassificationService _classificationService;
-        private readonly IProtocolService _protocolService;
         private readonly IDeviceService _deviceService;
         private readonly ISensorPointService _sensorPointService;
-        private readonly ISensorPointTypeService _sensorPointTypeService;
-        private readonly ISensorPointTypeQuotaService _sensorPointTypeQuotaService;
 
         public ProjectController()
         {
             _projectBaseService = UPrime.UPrimeEngine.Instance.Resolve<IProjectBaseService>();
             _classificationService = UPrime.UPrimeEngine.Instance.Resolve<IClassificationService>();
-            _protocolService = UPrime.UPrimeEngine.Instance.Resolve<IProtocolService>();
             _deviceService = UPrime.UPrimeEngine.Instance.Resolve<IDeviceService>();
             _sensorPointService = UPrime.UPrimeEngine.Instance.Resolve<ISensorPointService>();
-            _sensorPointTypeService = UPrime.UPrimeEngine.Instance.Resolve<ISensorPointTypeService>();
-            _sensorPointTypeQuotaService= UPrime.UPrimeEngine.Instance.Resolve<ISensorPointTypeQuotaService>();
         }
 
         #region 项目
@@ -190,77 +184,6 @@ namespace EasyIotSharp.API.Controllers
 
         #endregion
 
-        #region 协议
-
-        /// <summary>
-        /// 通过id获取一条协议信息
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/Protocol/Get")]
-        [Authorize]
-        public async Task<UPrimeResponse<ProtocolDto>> GetProtocol(string id)
-        {
-            UPrimeResponse<ProtocolDto> res = new UPrimeResponse<ProtocolDto>();
-            res.Result = await _protocolService.GetProtocol(id);
-            return res;
-        }
-
-        /// <summary>
-        /// 通过条件分页查询协议信息
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/Protocol/Query")]
-        [Authorize]
-        public async Task<UPrimeResponse<PagedResultDto<ProtocolDto>>> QueryProtocol([FromBody] QueryProtocolInput input)
-        {
-            UPrimeResponse<PagedResultDto<ProtocolDto>> res = new UPrimeResponse<PagedResultDto<ProtocolDto>>();
-            res.Result = await _protocolService.QueryProtocol(input);
-            return res;
-        }
-
-        /// <summary>
-        /// 添加一条协议信息
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/Protocol/Insert")]
-        [Authorize]
-        public async Task<UPrimeResponse> InsertProtocol([FromBody] InsertProtocolInput input)
-        {
-            await _protocolService.InsertProtocol(input);
-            return new UPrimeResponse();
-        }
-
-        /// <summary>
-        /// 通过id修改一条协议信息
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/Protocol/Update")]
-        [Authorize]
-        public async Task<UPrimeResponse> UpdateProtocol([FromBody] UpdateProtocolInput input)
-        {
-            await _protocolService.UpdateProtocol(input);
-            return new UPrimeResponse();
-        }
-
-        /// <summary>
-        /// 通过id删除一条协议信息
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/Protocol/Delete")]
-        [Authorize]
-        public async Task<UPrimeResponse> DeleteProtocol([FromBody] DeleteProtocolInput input)
-        {
-            await _protocolService.DeleteProtocol(input);
-            return new UPrimeResponse();
-        }
-
-        #endregion
-
         #region 设备
 
         /// <summary>
@@ -403,146 +326,5 @@ namespace EasyIotSharp.API.Controllers
 
         #endregion
 
-        #region 传感器类型
-
-        /// <summary>
-        /// 通过id获取一条测点类型信息
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/SensorPointType/Get")]
-        [Authorize]
-        public async Task<UPrimeResponse<SensorPointTypeDto>> GetSensorPointType(string id)
-        {
-            UPrimeResponse<SensorPointTypeDto> res = new UPrimeResponse<SensorPointTypeDto>();
-            res.Result = await _sensorPointTypeService.GetSensorPointType(id);
-            return res;
-        }
-
-        /// <summary>
-        /// 通过条件分页查询项目分类信息
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/SensorPointType/Query")]
-        [Authorize]
-        public async Task<UPrimeResponse<PagedResultDto<SensorPointTypeDto>>> QuerySensorPointType([FromBody] QuerySensorPointTypeInput input)
-        {
-            UPrimeResponse<PagedResultDto<SensorPointTypeDto>> res = new UPrimeResponse<PagedResultDto<SensorPointTypeDto>>();
-            res.Result = await _sensorPointTypeService.QuerySensorPointType(input);
-            return res;
-        }
-
-        /// <summary>
-        /// 添加一条测点类型信息
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/SensorPointType/Insert")]
-        [Authorize]
-        public async Task<UPrimeResponse> InsertSensorPointType([FromBody] InsertSensorPointTypeInput input)
-        {
-            await _sensorPointTypeService.InsertSensorPointType(input);
-            return new UPrimeResponse();
-        }
-
-        /// <summary>
-        /// 通过id修改一条测点类型信息
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/SensorPointType/Update")]
-        [Authorize]
-        public async Task<UPrimeResponse> UpdateSensorPointType([FromBody] UpdateSensorPointTypeInput input)
-        {
-            await _sensorPointTypeService.UpdateSensorPointType(input);
-            return new UPrimeResponse();
-        }
-
-        /// <summary>
-        /// 通过id删除一条项目分类信息
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/SensorPointType/Delete")]
-        [Authorize]
-        public async Task<UPrimeResponse> DeleteSensorPointType([FromBody] DeleteSensorPointTypeInput input)
-        {
-            await _sensorPointTypeService.DeleteSensorPointType(input);
-            return new UPrimeResponse();
-        }
-
-        #endregion
-
-        #region 传感器类型指标
-
-        /// <summary>
-        /// 通过id获取一条传感器类型指标
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/SensorPointType/Quota/Get")]
-        [Authorize]
-        public async Task<UPrimeResponse<SensorPointTypeQuotaDto>> GetSensorPointTypeQuota(string id)
-        {
-            UPrimeResponse<SensorPointTypeQuotaDto> res = new UPrimeResponse<SensorPointTypeQuotaDto>();
-            res.Result = await _sensorPointTypeQuotaService.GetSensorPointTypeQuota(id);
-            return res;
-        }
-
-        /// <summary>
-        /// 根据条件分页查询传感器类型指标列表
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/SensorPointType/Quota/Query")]
-        [Authorize]
-        public async Task<UPrimeResponse<PagedResultDto<SensorPointTypeQuotaDto>>> QuerySensorPointTypeQuota([FromBody] QuerySensorPointTypeQuotaInput input)
-        {
-            UPrimeResponse<PagedResultDto<SensorPointTypeQuotaDto>> res = new UPrimeResponse<PagedResultDto<SensorPointTypeQuotaDto>>();
-            res.Result = await _sensorPointTypeQuotaService.QuerySensorPointTypeQuota(input);
-            return res;
-        }
-
-        /// <summary>
-        /// 添加一条传感器类型指标
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/SensorPointType/Quota/Insert")]
-        [Authorize]
-        public async Task<UPrimeResponse> InsertSensorPointTypeQuota([FromBody] InsertSensorPointTypeQuotaInput input)
-        {
-            await _sensorPointTypeQuotaService.InsertSensorPointTypeQuota(input);
-            return new UPrimeResponse();
-        }
-
-        /// <summary>
-        /// 通过id修改一条传感器类型指标
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/SensorPointType/Quota/Update")]
-        [Authorize]
-        public async Task<UPrimeResponse> UpdateSensorPointTypeQuota([FromBody] UpdateSensorPointTypeQuotaInput input)
-        {
-            await _sensorPointTypeQuotaService.UpdateSensorPointTypeQuota(input);
-            return new UPrimeResponse();
-        }
-
-        /// <summary>
-        /// 通过id删除一条传感器类型指标
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [HttpPost("/Project/SensorPointType/Quota/Delete")]
-        [Authorize]
-        public async Task<UPrimeResponse> DeleteSensorPointTypeQuota([FromBody] DeleteSensorPointTypeQuotaInput input)
-        {
-            await _sensorPointTypeQuotaService.DeleteSensorPointTypeQuota(input);
-            return new UPrimeResponse();
-        }
-
-        #endregion
     }
 }

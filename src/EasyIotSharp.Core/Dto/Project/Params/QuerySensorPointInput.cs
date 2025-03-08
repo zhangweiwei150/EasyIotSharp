@@ -30,13 +30,8 @@ namespace EasyIotSharp.Core.Dto.Project.Params
         public string DeviceId { get; set; }
 
         /// <summary>
-        /// 测点类型Id
+        /// 传感器Id
         /// </summary>
-        public string SensorTypeId { get; set; }
-
-        /// <summary>
-        /// 是否分页
-        /// </summary>
-        public bool IsPage { get; set; }
+        public string SensorId { get; set; }
     }
 }
