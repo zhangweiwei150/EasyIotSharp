@@ -2,8 +2,10 @@
 using EasyIotSharp.Core.Dto.Project;
 using EasyIotSharp.Core.Dto.Project.Params;
 using EasyIotSharp.Core.Repositories.Project;
+using EasyIotSharp.Core.Services.Hardware;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UPrime.AutoMapper;
@@ -13,17 +15,29 @@ namespace EasyIotSharp.Core.Services.Project.Impl
 {
     public class ClassificationService:ServiceBase,IClassificationService
     {
+        private readonly IProjectBaseRepository _projectBaseRepository;
         private readonly IClassificationRepository _classificationRepository;
 
-        public ClassificationService(IClassificationRepository classificationRepository)
+        public ClassificationService(IClassificationRepository classificationRepository,
+                                     IProjectBaseRepository projectBaseRepository)
         {
+            _projectBaseRepository = projectBaseRepository;
             _classificationRepository = classificationRepository;
         }
 
         public async Task<ClassificationDto> GetClassification(string id)
         {
             var info = await _classificationRepository.FirstOrDefaultAsync(x => x.Id == id && x.IsDelete == false);
-            return info.MapTo<ClassificationDto>();
+            var output = info.MapTo<ClassificationDto>();
+            if (output.IsNotNull())
+            {
+                var project = await _projectBaseRepository.GetByIdAsync(output.ProjectId);
+                if (project.IsNotNull())
+                {
+                    output.ProjectName = project.Name;
+                }
+            }
+            return output;
         }
 
         public async Task<PagedResultDto<ClassificationDto>> QueryClassification(QueryClassificationInput input)
@@ -31,7 +45,15 @@ namespace EasyIotSharp.Core.Services.Project.Impl
             var query = await _classificationRepository.Query(ContextUser.TenantNumId, input.ProjectId, input.PageIndex, input.PageSize, input.IsPage);
             int totalCount = query.totalCount;
             var list = query.items.MapTo<List<ClassificationDto>>();
-
+            var projects = await _projectBaseRepository.QueryByIds(list.Select(x => x.ProjectId).ToList());
+            foreach (var item in list)
+            {
+                var project = projects.FirstOrDefault(x => x.Id == item.ProjectId);
+                if (project.IsNotNull())
+                {
+                    item.ProjectName = project.Name;
+                }
+            }
             return new PagedResultDto<ClassificationDto>() { TotalCount = totalCount, Items = list };
         }
 

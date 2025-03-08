@@ -226,37 +226,72 @@
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.API.Controllers.ProjectController.GetDevice(System.String)">
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.GetGateway(System.String)">
             <summary>
-            通过id获取一条设备信息
+            通过id获取一条网关信息
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.API.Controllers.ProjectController.QueryDevice(EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput)">
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.QueryGateway(EasyIotSharp.Core.Dto.Project.Params.QueryGatewayInput)">
             <summary>
-            通过条件分页查询设备信息
+            通过条件分页查询网关信息
             </summary>
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.API.Controllers.ProjectController.InsertDevice(EasyIotSharp.Core.Dto.Project.Params.InsertDeviceInput)">
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.InsertGateway(EasyIotSharp.Core.Dto.Project.Params.InsertGatewayInput)">
             <summary>
-            添加一条设备信息
+            添加一条网关信息
             </summary>
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.API.Controllers.ProjectController.UpdateDevice(EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput)">
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.UpdateGateway(EasyIotSharp.Core.Dto.Project.Params.UpdateGatewayInput)">
             <summary>
-            通过id修改一条设备信息
+            通过id修改一条网关信息
             </summary>
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.API.Controllers.ProjectController.DeleteDevice(EasyIotSharp.Core.Dto.Project.Params.DeleteDeviceInput)">
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.DeleteGateway(EasyIotSharp.Core.Dto.Project.Params.DeleteGatewayInput)">
             <summary>
-            通过id删除一条设备信息
+            通过id删除一条网关信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.GetGatewayProtocol(System.String)">
+            <summary>
+            通过id获取一条网关协议信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.QueryGatewayProtocol(EasyIotSharp.Core.Dto.Project.Params.QueryGatewayProtocolInput)">
+            <summary>
+            通过条件分页查询网关协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.InsertGatewayProtocol(EasyIotSharp.Core.Dto.Project.Params.InsertGatewayProtocolInput)">
+            <summary>
+            添加一条网关协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.UpdateGatewayProtocol(EasyIotSharp.Core.Dto.Project.Params.UpdateGatewayProtocolInput)">
+            <summary>
+            通过id修改一条网关协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.DeleteGatewayProtocol(EasyIotSharp.Core.Dto.Project.Params.DeleteGatewayProtocolInput)">
+            <summary>
+            通过id删除一条网关协议信息
             </summary>
             <param name="input"></param>
             <returns></returns>

@@ -18,14 +18,16 @@ namespace EasyIotSharp.API.Controllers
     {
         private readonly IProjectBaseService _projectBaseService;
         private readonly IClassificationService _classificationService;
-        private readonly IDeviceService _deviceService;
+        private readonly IGatewayService _gatewayService;
+        private readonly IGatewayProtocolService _gatewayProtocolService;
         private readonly ISensorPointService _sensorPointService;
 
         public ProjectController()
         {
             _projectBaseService = UPrime.UPrimeEngine.Instance.Resolve<IProjectBaseService>();
             _classificationService = UPrime.UPrimeEngine.Instance.Resolve<IClassificationService>();
-            _deviceService = UPrime.UPrimeEngine.Instance.Resolve<IDeviceService>();
+            _gatewayService = UPrime.UPrimeEngine.Instance.Resolve<IGatewayService>();
+            _gatewayProtocolService= UPrime.UPrimeEngine.Instance.Resolve<IGatewayProtocolService>();
             _sensorPointService = UPrime.UPrimeEngine.Instance.Resolve<ISensorPointService>();
         }
 
@@ -184,72 +186,143 @@ namespace EasyIotSharp.API.Controllers
 
         #endregion
 
-        #region 设备
+        #region 网关
 
         /// <summary>
-        /// 通过id获取一条设备信息
+        /// 通过id获取一条网关信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpPost("/Project/Device/Get")]
+        [HttpPost("/Project/Gateway/Get")]
         [Authorize]
-        public async Task<UPrimeResponse<DeviceDto>> GetDevice(string id)
+        public async Task<UPrimeResponse<GatewayDto>> GetGateway(string id)
         {
-            UPrimeResponse<DeviceDto> res = new UPrimeResponse<DeviceDto>();
-            res.Result = await _deviceService.GetDevice(id);
+            UPrimeResponse<GatewayDto> res = new UPrimeResponse<GatewayDto>();
+            res.Result = await _gatewayService.GetGateway(id);
             return res;
         }
 
         /// <summary>
-        /// 通过条件分页查询设备信息
+        /// 通过条件分页查询网关信息
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [HttpPost("/Project/Device/Query")]
+        [HttpPost("/Project/Gateway/Query")]
         [Authorize]
-        public async Task<UPrimeResponse<PagedResultDto<DeviceDto>>> QueryDevice([FromBody] QueryDeviceInput input)
+        public async Task<UPrimeResponse<PagedResultDto<GatewayDto>>> QueryGateway([FromBody] QueryGatewayInput input)
         {
-            UPrimeResponse<PagedResultDto<DeviceDto>> res = new UPrimeResponse<PagedResultDto<DeviceDto>>();
-            res.Result = await _deviceService.QueryDevice(input);
+            UPrimeResponse<PagedResultDto<GatewayDto>> res = new UPrimeResponse<PagedResultDto<GatewayDto>>();
+            res.Result = await _gatewayService.QueryGateway(input);
             return res;
         }
 
         /// <summary>
-        /// 添加一条设备信息
+        /// 添加一条网关信息
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [HttpPost("/Project/Device/Insert")]
+        [HttpPost("/Project/Gateway/Insert")]
         [Authorize]
-        public async Task<UPrimeResponse> InsertDevice([FromBody] InsertDeviceInput input)
+        public async Task<UPrimeResponse> InsertGateway([FromBody] InsertGatewayInput input)
         {
-            await _deviceService.InsertDevice(input);
+            await _gatewayService.InsertGateway(input);
             return new UPrimeResponse();
         }
 
         /// <summary>
-        /// 通过id修改一条设备信息
+        /// 通过id修改一条网关信息
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [HttpPost("/Project/Device/Update")]
+        [HttpPost("/Project/Gateway/Update")]
         [Authorize]
-        public async Task<UPrimeResponse> UpdateDevice([FromBody] UpdateDeviceInput input)
+        public async Task<UPrimeResponse> UpdateGateway([FromBody] UpdateGatewayInput input)
         {
-            await _deviceService.UpdateDevice(input);
+            await _gatewayService.UpdateGateway(input);
             return new UPrimeResponse();
         }
 
         /// <summary>
-        /// 通过id删除一条设备信息
+        /// 通过id删除一条网关信息
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [HttpPost("/Project/Device/Delete")]
+        [HttpPost("/Project/Gateway/Delete")]
         [Authorize]
-        public async Task<UPrimeResponse> DeleteDevice([FromBody] DeleteDeviceInput input)
+        public async Task<UPrimeResponse> DeleteGateway([FromBody] DeleteGatewayInput input)
         {
-            await _deviceService.DeleteDevice(input);
+            await _gatewayService.DeleteGateway(input);
+            return new UPrimeResponse();
+        }
+
+        #endregion
+
+        #region 网关协议
+
+        /// <summary>
+        /// 通过id获取一条网关协议信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost("/Project/GatewayProtocol/Get")]
+        [Authorize]
+        public async Task<UPrimeResponse<GatewayProtocolDto>> GetGatewayProtocol(string id)
+        {
+            UPrimeResponse<GatewayProtocolDto> res = new UPrimeResponse<GatewayProtocolDto>();
+            res.Result = await _gatewayProtocolService.GetGatewayProtocol(id);
+            return res;
+        }
+
+        /// <summary>
+        /// 通过条件分页查询网关协议信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Project/GatewayProtocol/Query")]
+        [Authorize]
+        public async Task<UPrimeResponse<PagedResultDto<GatewayProtocolDto>>> QueryGatewayProtocol([FromBody] QueryGatewayProtocolInput input)
+        {
+            UPrimeResponse<PagedResultDto<GatewayProtocolDto>> res = new UPrimeResponse<PagedResultDto<GatewayProtocolDto>>();
+            res.Result = await _gatewayProtocolService.QueryGatewayProtocol(input);
+            return res;
+        }
+
+        /// <summary>
+        /// 添加一条网关协议信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Project/GatewayProtocol/Insert")]
+        [Authorize]
+        public async Task<UPrimeResponse> InsertGatewayProtocol([FromBody] InsertGatewayProtocolInput input)
+        {
+            await _gatewayProtocolService.InsertGatewayProtocol(input);
+            return new UPrimeResponse();
+        }
+
+        /// <summary>
+        /// 通过id修改一条网关协议信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Project/GatewayProtocol/Update")]
+        [Authorize]
+        public async Task<UPrimeResponse> UpdateGatewayProtocol([FromBody] UpdateGatewayProtocolInput input)
+        {
+            await _gatewayProtocolService.UpdateGatewayProtocol(input);
+            return new UPrimeResponse();
+        }
+
+        /// <summary>
+        /// 通过id删除一条网关协议信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Project/GatewayProtocol/Delete")]
+        [Authorize]
+        public async Task<UPrimeResponse> DeleteGatewayProtocol([FromBody] DeleteGatewayProtocolInput input)
+        {
+            await _gatewayProtocolService.DeleteGatewayProtocol(input);
             return new UPrimeResponse();
         }
 

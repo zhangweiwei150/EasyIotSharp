@@ -1,12 +1,15 @@
-﻿using System;
+﻿using EasyIotSharp.Core.Domain.Proejct;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using UPrime.AutoMapper;
 
 namespace EasyIotSharp.Core.Dto.Project
 {
     /// <summary>
     /// 代表一条项目分类的“DTO”
     /// </summary>
+    [AutoMapFrom(typeof(Classification))]
     public class ClassificationDto
     {
         /// <summary>
@@ -23,6 +26,11 @@ namespace EasyIotSharp.Core.Dto.Project
         /// 项目id
         /// </summary>
         public string ProjectId { get; set; }
+
+        /// <summary>
+        /// 项目名称
+        /// </summary>
+        public string ProjectName { get; set; }
 
         /// <summary>
         /// 分类名称

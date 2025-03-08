@@ -4,6 +4,7 @@ using LinqKit;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -59,6 +60,27 @@ namespace EasyIotSharp.Core.Repositories.Hardware.Impl
                 var items = await query.ToListAsync();
                 return (totalCount, items);
             }
+        }
+
+        public async Task<List<Protocol>> QueryByIds(List<string> ids)
+        {
+            if (ids == null || ids.Count == 0)
+            {
+                return new List<Protocol>();
+            }
+
+            // 使用表达式构建查询条件
+            var predicate = PredicateBuilder.New<Protocol>(false); // 初始化为空条件
+            foreach (var id in ids)
+            {
+                var tempId = id; // 避免闭包问题
+                predicate = predicate.Or(m => m.Id == tempId);
+            }
+            predicate = predicate.And(m => m.IsDelete == false); // 是否删除 = false
+
+            // 查询数据
+            var items = await GetListAsync(predicate);
+            return items.ToList();
         }
     }
 }

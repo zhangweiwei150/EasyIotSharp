@@ -8,41 +8,41 @@ using UPrime.Services.Dto;
 
 namespace EasyIotSharp.Core.Services.Project
 {
-    public interface IDeviceService
+    public interface IGatewayProtocolService
     {
         /// <summary>
-        /// 通过id获取一条设备信息
+        /// 通过id获取一条网关协议信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<DeviceDto> GetDevice(string id);
+        Task<GatewayProtocolDto> GetGatewayProtocol(string id);
 
         /// <summary>
-        /// 根据条件分页查询设备列表
+        /// 根据条件分页查询网关协议列表
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultDto<DeviceDto>> QueryDevice(QueryDeviceInput input);
+        Task<PagedResultDto<GatewayProtocolDto>> QueryGatewayProtocol(QueryGatewayProtocolInput input);
 
         /// <summary>
-        /// 添加一条设备信息
+        /// 添加一条网关协议信息
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task InsertDevice(InsertDeviceInput input);
+        Task InsertGatewayProtocol(InsertGatewayProtocolInput input);
 
         /// <summary>
-        /// 通过id修改一条设备信息
+        /// 通过id修改一条网关协议信息
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task UpdateDevice(UpdateDeviceInput input);
+        Task UpdateGatewayProtocol(UpdateGatewayProtocolInput input);
 
         /// <summary>
-        /// 通过id删除一条设备信息
+        /// 通过id删除一条网关协议信息
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task DeleteDevice(DeleteDeviceInput input);
+        Task DeleteGatewayProtocol(DeleteGatewayProtocolInput input);
     }
 }

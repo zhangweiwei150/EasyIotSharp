@@ -19,9 +19,16 @@ namespace EasyIotSharp.Core.Repositories.Hardware
         /// <param name="isPage">是否分页</param>
         /// <returns></returns>
         Task<(int totalCount, List<Sensor> items)> Query(int tenantNumId,
-                                                                  string keyword,
-                                                                  int pageIndex,
-                                                                  int pageSize,
-                                                                  bool isPage);
+                                                         string keyword,
+                                                         int pageIndex,
+                                                         int pageSize,
+                                                         bool isPage);
+
+        /// <summary>
+        /// 根据ID集合查询传感器列表
+        /// </summary>
+        /// <param name="ids">ID集合</param>
+        /// <returns></returns>
+        Task<List<Sensor>> QueryByIds(List<string> ids);
     }
 }

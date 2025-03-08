@@ -16,7 +16,7 @@ namespace EasyIotSharp.Core.Repositories.Project
         /// <param name="keyword">测点名称</param>
         /// <param name="projectId">项目id</param>
         /// <param name="classificationId">分类id</param>
-        /// <param name="deviceId">设备id</param>
+        /// <param name="gatewayId">网关id</param>
         /// <param name="sensorId">传感器id</param>
         /// <param name="pageIndex">起始页</param>
         /// <param name="pageSize">每页多少条数据</param>
@@ -26,7 +26,7 @@ namespace EasyIotSharp.Core.Repositories.Project
                                                               string keyword,
                                                               string projectId,
                                                               string classificationId,
-                                                              string deviceId,
+                                                              string gatewayId,
                                                               string sensorId,
                                                               int pageIndex,
                                                               int pageSize,

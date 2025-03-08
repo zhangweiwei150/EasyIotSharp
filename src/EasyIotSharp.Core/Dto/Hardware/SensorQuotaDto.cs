@@ -1,12 +1,15 @@
-﻿using System;
+﻿using EasyIotSharp.Core.Domain.Hardware;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using UPrime.AutoMapper;
 
 namespace EasyIotSharp.Core.Dto.Hardware
 {
     /// <summary>
     /// 代表一个传感器类型的指标的"DTO"
     /// </summary>
+    [AutoMapFrom(typeof(SensorQuota))]
     public class SensorQuotaDto
     {
         /// <summary>
@@ -20,9 +23,14 @@ namespace EasyIotSharp.Core.Dto.Hardware
         public int TenantNumId { get; set; }
 
         /// <summary>
-        /// 测点类型id
+        /// 传感器类型id
         /// </summary>
         public string SensorId { get; set; }
+
+        /// <summary>
+        /// 传感器类型名称
+        /// </summary>
+        public string SensorName { get; set; }
 
         /// <summary>
         /// 指标名称

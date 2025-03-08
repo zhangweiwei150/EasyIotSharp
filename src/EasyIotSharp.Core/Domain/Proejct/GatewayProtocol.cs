@@ -8,7 +8,7 @@ namespace EasyIotSharp.Core.Domain.Proejct
     /// 网关协议表
     /// </summary>
     /// <remarks>定于当前网关所选的协议传输过来的存储数据</remarks>
-    public class DeviceProtocol:BaseEntity<string>
+    public class GatewayProtocol:BaseEntity<string>
     {
         /// <summary>
         /// 租户id
@@ -16,19 +16,14 @@ namespace EasyIotSharp.Core.Domain.Proejct
         public int TenantNumId { get; set; }
 
         /// <summary>
-        /// 设备id
+        /// 网关id
         /// </summary>
-        public string DeviceId { get; set; }
+        public string GatewayId { get; set; }
 
         /// <summary>
         /// 协议id
         /// </summary>
         public string ProtocolId { get; set; }
-
-        /// <summary>
-        /// 协议配置id
-        /// </summary>
-        public string ProtocoConfigId { get; set; }
 
         /// <summary>
         /// json定义

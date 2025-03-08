@@ -23,5 +23,12 @@ namespace EasyIotSharp.Core.Repositories.Hardware
                                                            int pageIndex,
                                                            int pageSize,
                                                            bool isPage);
+
+        /// <summary>
+        /// 根据ID集合查询协议列表
+        /// </summary>
+        /// <param name="ids">ID集合</param>
+        /// <returns></returns>
+        Task<List<Protocol>> QueryByIds(List<string> ids);
     }
 }

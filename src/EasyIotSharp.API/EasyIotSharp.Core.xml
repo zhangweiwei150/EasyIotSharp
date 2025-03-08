@@ -702,22 +702,22 @@
             字段越大越靠前
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Domain.Proejct.Device">
+        <member name="T:EasyIotSharp.Core.Domain.Proejct.Gateway">
             <summary>
-            设备表
+            网关设备表
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.Device.TenantNumId">
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.Gateway.TenantNumId">
             <summary>
             租户id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.Device.Name">
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.Gateway.Name">
             <summary>
             设备名称
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.Device.State">
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.Gateway.State">
             <summary>
             设备状态
             0=初始化
@@ -725,46 +725,58 @@
             2=离线
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.Device.ProtocolId">
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.Gateway.ProtocolId">
             <summary>
             协议id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.Device.ProjectId">
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.Gateway.ProjectId">
             <summary>
             项目id
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Domain.Proejct.DeviceProtocol">
+        <member name="T:EasyIotSharp.Core.Domain.Proejct.GatewayProtocol">
             <summary>
             网关协议表
             </summary>
             <remarks>定于当前网关所选的协议传输过来的存储数据</remarks>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.DeviceProtocol.TenantNumId">
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.GatewayProtocol.TenantNumId">
             <summary>
             租户id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.DeviceProtocol.DeviceId">
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.GatewayProtocol.GatewayId">
             <summary>
-            设备id
+            网关id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.DeviceProtocol.ProtocolId">
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.GatewayProtocol.ProtocolId">
             <summary>
             协议id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.DeviceProtocol.ProtocoConfigId">
-            <summary>
-            协议配置id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.DeviceProtocol.ConfigJson">
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.GatewayProtocol.ConfigJson">
             <summary>
             json定义
             网关发送命令json数据
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Domain.Proejct.GatewayProtocolConfig">
+            <summary>
+            网关协议配置表
+            </summary>
+            <remarks>需要序列化的参数</remarks>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.GatewayProtocolConfig.GatewayProtocolId">
+            <summary>
+            网关协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.GatewayProtocolConfig.Identifier">
+            <summary>
+            标识符
+            （反序列化到class里面对应的字段名）
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Domain.Proejct.ProjectBase">
@@ -835,9 +847,9 @@
             分类id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPoint.DeviceId">
+        <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPoint.GatewayId">
             <summary>
-            设备id
+            网关id
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Domain.Proejct.SensorPoint.SensorId">
@@ -1435,6 +1447,16 @@
             id
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.ProtocolId">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.ProtocolName">
+            <summary>
+            协议名称
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.Identifier">
             <summary>
             标识符
@@ -1775,6 +1797,11 @@
             协议id
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.ProtocolName">
+            <summary>
+            协议名称
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.Identifier">
             <summary>
             标识符
@@ -1966,7 +1993,12 @@
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.SensorId">
             <summary>
-            测点类型id
+            传感器类型id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.SensorName">
+            <summary>
+            传感器类型名称
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto.Name">
@@ -2093,6 +2125,11 @@
             项目id
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.ClassificationDto.ProjectName">
+            <summary>
+            项目名称
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.Project.ClassificationDto.Name">
             <summary>
             分类名称
@@ -2124,27 +2161,27 @@
             操作人
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.DeviceDto">
+        <member name="T:EasyIotSharp.Core.Dto.Project.GatewayDto">
             <summary>
-            代表一条设备信息的“DTO”
+            代表一条网关设备的“DTO”
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.Id">
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayDto.Id">
             <summary>
             设备id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.TenantNumId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayDto.TenantNumId">
             <summary>
             租户id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.Name">
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayDto.Name">
             <summary>
             设备名称
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.State">
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayDto.State">
             <summary>
             设备状态
             0=初始化
@@ -2152,32 +2189,98 @@
             2=离线
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.ProtocolId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayDto.ProtocolId">
             <summary>
             协议id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.ProjectId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayDto.ProtocolName">
+            <summary>
+            协议名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayDto.ProjectId">
             <summary>
             项目id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.CreationTime">
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayDto.ProjectName">
+            <summary>
+            项目名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayDto.CreationTime">
             <summary>
             创建时间
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.UpdatedAt">
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayDto.UpdatedAt">
             <summary>
             修改时间
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.OperatorId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayDto.OperatorId">
             <summary>
             操作人标识
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.DeviceDto.OperatorName">
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayDto.OperatorName">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.GatewayProtocolDto">
+            <summary>
+            代表一条网关协议的"DTO"
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayProtocolDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayProtocolDto.GatewayId">
+            <summary>
+            网关id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayProtocolDto.GatewayName">
+            <summary>
+            网关名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayProtocolDto.ProtocolId">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayProtocolDto.ProtocolName">
+            <summary>
+            协议名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayProtocolDto.ConfigJson">
+            <summary>
+            json定义
+            网关发送命令json数据
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayProtocolDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayProtocolDto.UpdatedAt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayProtocolDto.OperatorId">
+            <summary>
+            操作人标识
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayProtocolDto.OperatorName">
             <summary>
             操作人
             </summary>
@@ -2192,17 +2295,32 @@
             项目分类id
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.DeleteDeviceInput">
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.DeleteGatewayInput">
             <summary>
-            通过id删除一条设备信息的入参类
+            通过id删除一条网关信息的入参类
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteDeviceInput.Id">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteGatewayInput.Id">
             <summary>
-            设备id
+            id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteDeviceInput.IsDelete">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteGatewayInput.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.DeleteGatewayProtocolInput">
+            <summary>
+            通过id删除一条网关协议信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteGatewayProtocolInput.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.DeleteGatewayProtocolInput.IsDelete">
             <summary>
             是否删除
             </summary>
@@ -2258,24 +2376,45 @@
             字段越大越靠前
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertDeviceInput">
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertGatewayInput">
             <summary>
-            添加一条设备信息的入参类
+            添加一条网关信息的入参类
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertDeviceInput.Name">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertGatewayInput.Name">
             <summary>
             设备名称
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertDeviceInput.ProtocolId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertGatewayInput.ProtocolId">
             <summary>
             协议id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertDeviceInput.ProjectId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertGatewayInput.ProjectId">
             <summary>
             项目id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertGatewayProtocolInput">
+            <summary>
+            田家园一条网关协议的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertGatewayProtocolInput.GatewayId">
+            <summary>
+            网关id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertGatewayProtocolInput.ProtocolId">
+            <summary>
+            协议id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertGatewayProtocolInput.ConfigJson">
+            <summary>
+            json定义
+            网关发送命令json数据
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.Params.InsertProjectBaseInput">
@@ -2328,9 +2467,9 @@
             分类id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput.DeviceId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput.GatewayId">
             <summary>
-            设备id
+            网关id
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput.SensorId">
@@ -2355,17 +2494,17 @@
             false=查询全部
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput">
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.QueryGatewayInput">
             <summary>
-            通过条件分页查询设备列表的入参类
+            通过条件分页查询网关列表的入参类
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput.Keyword">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryGatewayInput.Keyword">
             <summary>
             设备名称
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput.State">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryGatewayInput.State">
             <summary>
             设备状态
             -1=全部
@@ -2374,14 +2513,24 @@
             2=离线
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput.ProtocolId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryGatewayInput.ProtocolId">
             <summary>
             协议id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput.ProjectId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryGatewayInput.ProjectId">
             <summary>
             项目id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.QueryGatewayProtocolInput">
+            <summary>
+            通过条件分页查询网关协议列表的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QueryGatewayProtocolInput.GatewayId">
+            <summary>
+            网关id
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.Params.QueryProjectBaseInput">
@@ -2432,9 +2581,9 @@
             分类id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput.DeviceId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput.GatewayId">
             <summary>
-            设备id
+            网关id
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Project.Params.QuerySensorPointInput.SensorId">
@@ -2463,22 +2612,22 @@
             字段越大越靠前
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput">
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateGatewayInput">
             <summary>
-            根据id修改一条设备信息的入参类
+            根据id修改一条网关信息的入参类
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput.Id">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateGatewayInput.Id">
             <summary>
             设备id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput.Name">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateGatewayInput.Name">
             <summary>
             设备名称
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput.State">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateGatewayInput.State">
             <summary>
             设备状态
             0=初始化
@@ -2486,14 +2635,30 @@
             2=离线
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput.ProtocolId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateGatewayInput.ProtocolId">
             <summary>
             协议id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput.ProjectId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateGatewayInput.ProjectId">
             <summary>
             项目id
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateGatewayProtocolInput">
+            <summary>
+            通过id修改一条网关协议的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateGatewayProtocolInput.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateGatewayProtocolInput.ConfigJson">
+            <summary>
+            json定义
+            网关发送命令json数据
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.Project.Params.UpdateProjectBaseInput">
@@ -2556,9 +2721,9 @@
             分类id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput.DeviceId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput.GatewayId">
             <summary>
-            设备id
+            网关id
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Project.Params.UpdateSensorPointInput.SensorId">
@@ -2663,19 +2828,39 @@
             项目id
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.ProjectName">
+            <summary>
+            项目名称
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.ClassificationId">
             <summary>
             分类id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.DeviceId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.ClassificationName">
             <summary>
-            设备id
+            分类名称
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.SensoId">
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.GatewayId">
+            <summary>
+            网关id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.GatewayName">
+            <summary>
+            网关名称
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.SensorId">
             <summary>
             传感器Id
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.SensorName">
+            <summary>
+            传感器名称
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.CreationTime">
@@ -4820,6 +5005,13 @@
             <param name="isPage">是否分页</param>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Hardware.IProtocolRepository.QueryByIds(System.Collections.Generic.List{System.String})">
+            <summary>
+            根据ID集合查询协议列表
+            </summary>
+            <param name="ids">ID集合</param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.Core.Repositories.Hardware.ISensorQuotaRepository.Query(System.Int32,System.String,System.String,EasyIotSharp.Core.DataTypeMenu,System.Int32,System.Int32,System.Boolean)">
             <summary>
             通过条件分页查询传感器指标列表
@@ -4842,6 +5034,13 @@
             <param name="pageIndex">起始页</param>
             <param name="pageSize">每页多少条数据</param>
             <param name="isPage">是否分页</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Hardware.ISensorRepository.QueryByIds(System.Collections.Generic.List{System.String})">
+            <summary>
+            根据ID集合查询传感器列表
+            </summary>
+            <param name="ids">ID集合</param>
             <returns></returns>
         </member>
         <member name="T:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2">
@@ -4959,17 +5158,41 @@
             <param name="isPage">是否分页</param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Project.IDeviceRepository.Query(System.Int32,System.String,System.Int32,System.String,System.String,System.Int32,System.Int32)">
+        <member name="M:EasyIotSharp.Core.Repositories.Project.IClassificationRepository.QueryByIds(System.Collections.Generic.List{System.String})">
             <summary>
-            通过条件分页查询设备列表
+            根据ID集合查询项目分类列表
+            </summary>
+            <param name="ids">ID集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Project.IGatewayProtocolRepository.Query(System.Int32,System.String,System.Int32,System.Int32)">
+            <summary>
+            通过条件分页查询网关协议列表
+            </summary>
+            <param name="tenantNumId">租户NumId</param>
+            <param name="gatewayId">网关id</param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Project.IGatewayRepository.Query(System.Int32,System.String,System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            通过条件分页查询网关列表
             </summary>
             <param name="tenantNumId">租户NumId</param>
             <param name="Keyword">设备名称</param>
             <param name="state">设备状态 -1=不参与查询  0=初始化  1=在线  2=离线</param>
             <param name="protocolId">协议id</param>
-            <param name="projectId">设备id</param>
+            <param name="projectId">项目id</param>
             <param name="pageIndex">起始页</param>
             <param name="pageSize">每页多少条</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Project.IGatewayRepository.QueryByIds(System.Collections.Generic.List{System.String})">
+            <summary>
+            根据ID集合查询网关列表
+            </summary>
+            <param name="ids">ID集合</param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Repositories.Project.IProjectBaseRepository.Query(System.Int32,System.String,System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Int32,System.Int32)">
@@ -4985,6 +5208,13 @@
             <param name="pageSize">每页多少条数据</param>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Project.IProjectBaseRepository.QueryByIds(System.Collections.Generic.List{System.String})">
+            <summary>
+            根据ID集合查询项目列表
+            </summary>
+            <param name="ids">ID集合</param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.Core.Repositories.Project.ISensorPointRepository.Query(System.Int32,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean)">
             <summary>
             通过条件分页查询项目分类列表
@@ -4993,7 +5223,7 @@
             <param name="keyword">测点名称</param>
             <param name="projectId">项目id</param>
             <param name="classificationId">分类id</param>
-            <param name="deviceId">设备id</param>
+            <param name="gatewayId">网关id</param>
             <param name="sensorId">传感器id</param>
             <param name="pageIndex">起始页</param>
             <param name="pageSize">每页多少条数据</param>
@@ -5536,37 +5766,72 @@
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.IDeviceService.GetDevice(System.String)">
+        <member name="M:EasyIotSharp.Core.Services.Project.IGatewayProtocolService.GetGatewayProtocol(System.String)">
             <summary>
-            通过id获取一条设备信息
+            通过id获取一条网关协议信息
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.IDeviceService.QueryDevice(EasyIotSharp.Core.Dto.Project.Params.QueryDeviceInput)">
+        <member name="M:EasyIotSharp.Core.Services.Project.IGatewayProtocolService.QueryGatewayProtocol(EasyIotSharp.Core.Dto.Project.Params.QueryGatewayProtocolInput)">
             <summary>
-            根据条件分页查询设备列表
+            根据条件分页查询网关协议列表
             </summary>
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.IDeviceService.InsertDevice(EasyIotSharp.Core.Dto.Project.Params.InsertDeviceInput)">
+        <member name="M:EasyIotSharp.Core.Services.Project.IGatewayProtocolService.InsertGatewayProtocol(EasyIotSharp.Core.Dto.Project.Params.InsertGatewayProtocolInput)">
             <summary>
-            添加一条设备信息
+            添加一条网关协议信息
             </summary>
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.IDeviceService.UpdateDevice(EasyIotSharp.Core.Dto.Project.Params.UpdateDeviceInput)">
+        <member name="M:EasyIotSharp.Core.Services.Project.IGatewayProtocolService.UpdateGatewayProtocol(EasyIotSharp.Core.Dto.Project.Params.UpdateGatewayProtocolInput)">
             <summary>
-            通过id修改一条设备信息
+            通过id修改一条网关协议信息
             </summary>
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:EasyIotSharp.Core.Services.Project.IDeviceService.DeleteDevice(EasyIotSharp.Core.Dto.Project.Params.DeleteDeviceInput)">
+        <member name="M:EasyIotSharp.Core.Services.Project.IGatewayProtocolService.DeleteGatewayProtocol(EasyIotSharp.Core.Dto.Project.Params.DeleteGatewayProtocolInput)">
             <summary>
-            通过id删除一条设备信息
+            通过id删除一条网关协议信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IGatewayService.GetGateway(System.String)">
+            <summary>
+            通过id获取一条网关信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IGatewayService.QueryGateway(EasyIotSharp.Core.Dto.Project.Params.QueryGatewayInput)">
+            <summary>
+            根据条件分页查询网关列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IGatewayService.InsertGateway(EasyIotSharp.Core.Dto.Project.Params.InsertGatewayInput)">
+            <summary>
+            添加一条网关信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IGatewayService.UpdateGateway(EasyIotSharp.Core.Dto.Project.Params.UpdateGatewayInput)">
+            <summary>
+            通过id修改一条网关信息
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Project.IGatewayService.DeleteGateway(EasyIotSharp.Core.Dto.Project.Params.DeleteGatewayInput)">
+            <summary>
+            通过id删除一条网关信息
             </summary>
             <param name="input"></param>
             <returns></returns>

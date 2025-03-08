@@ -5,12 +5,12 @@ using System.Text;
 namespace EasyIotSharp.Core.Dto.Project.Params
 {
     /// <summary>
-    /// 通过id删除一条设备信息的入参类
+    /// 通过id删除一条网关协议信息的入参类
     /// </summary>
-    public class DeleteDeviceInput
+    public class DeleteGatewayProtocolInput
     {
         /// <summary>
-        /// 设备id
+        /// id
         /// </summary>
         public string Id { get; set; }
 

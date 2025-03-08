@@ -9,14 +9,17 @@ using UPrime.Services.Dto;
 using EasyIotSharp.Core.Repositories.Hardware.Impl;
 using UPrime.AutoMapper;
 using EasyIotSharp.Core.Domain.Hardware;
+using System.Linq;
 
 namespace EasyIotSharp.Core.Services.Hardware.Impl
 {
     public class SensorQuotaService : ServiceBase, ISensorQuotaService
     {
         private readonly ISensorQuotaRepository _sensorQuotaRepository;
+        private readonly ISensorRepository _sensorRepository;
 
-        public SensorQuotaService(ISensorQuotaRepository sensorQuotaRepository)
+        public SensorQuotaService(ISensorQuotaRepository sensorQuotaRepository,
+                                  ISensorRepository sensorRepository)
         {
             _sensorQuotaRepository = sensorQuotaRepository;
         }
@@ -24,7 +27,16 @@ namespace EasyIotSharp.Core.Services.Hardware.Impl
         public async Task<SensorQuotaDto> GetSensorQuota(string id)
         {
             var info = await _sensorQuotaRepository.FirstOrDefaultAsync(x => x.Id == id && x.IsDelete == false);
-            return info.MapTo<SensorQuotaDto>();
+            var output = info.MapTo<SensorQuotaDto>();
+            if (output.IsNotNull())
+            {
+                var sensor = await _sensorRepository.GetByIdAsync(output.SensorId);
+                if (sensor.IsNotNull())
+                {
+                    output.SensorName = sensor.Name;
+                }
+            }
+            return output;
         }
 
         public async Task<PagedResultDto<SensorQuotaDto>> QuerySensorQuota(QuerySensorQuotaInput input)
@@ -32,7 +44,19 @@ namespace EasyIotSharp.Core.Services.Hardware.Impl
             var query = await _sensorQuotaRepository.Query(ContextUser.TenantNumId, input.SensorPointTypeId, input.Keyword, input.DataType, input.PageIndex, input.PageSize, input.IsPage);
             int totalCount = query.totalCount;
             var list = query.items.MapTo<List<SensorQuotaDto>>();
-
+            var sensorIds = list.Select(x => x.SensorId).ToList();
+            if (sensorIds.Count>0)
+            {
+                var sensors = await _sensorRepository.QueryByIds(sensorIds);
+                foreach (var item in list)
+                {
+                    var sensor = sensors.FirstOrDefault(x => x.Id == item.SensorId);
+                    if (sensor.IsNotNull())
+                    {
+                        item.SensorName = sensor.Name;
+                    }
+                }
+            }
             return new PagedResultDto<SensorQuotaDto>() { TotalCount = totalCount, Items = list };
         }
 

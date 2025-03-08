@@ -27,5 +27,12 @@ namespace EasyIotSharp.Core.Repositories.Project
                                                               DateTime? createEndTime,
                                                               int pageIndex,
                                                               int pageSize);
+
+        /// <summary>
+        /// 根据ID集合查询项目列表
+        /// </summary>
+        /// <param name="ids">ID集合</param>
+        /// <returns></returns>
+        Task<List<ProjectBase>> QueryByIds(List<string> ids);
     }
 }

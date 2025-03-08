@@ -19,7 +19,7 @@ namespace EasyIotSharp.Core.Repositories.Project.Impl
                                                                            string keyword,
                                                                            string projectId,
                                                                            string classificationId,
-                                                                           string deviceId,
+                                                                           string gatewayId,
                                                                            string sensorId,
                                                                            int pageIndex,
                                                                            int pageSize,
@@ -45,9 +45,9 @@ namespace EasyIotSharp.Core.Repositories.Project.Impl
             {
                 predicate = predicate.And(t => t.ClassificationId.Equals(classificationId));
             }
-            if (!string.IsNullOrWhiteSpace(deviceId))
+            if (!string.IsNullOrWhiteSpace(gatewayId))
             {
-                predicate = predicate.And(t => t.DeviceId.Equals(deviceId));
+                predicate = predicate.And(t => t.GatewayId.Equals(gatewayId));
             }
 
             if (!string.IsNullOrWhiteSpace(sensorId))

@@ -23,5 +23,11 @@ namespace EasyIotSharp.Core.Repositories.Project
                                                                  int pageIndex,
                                                                  int pageSize,
                                                                  bool isPage);
+        /// <summary>
+        /// 根据ID集合查询项目分类列表
+        /// </summary>
+        /// <param name="ids">ID集合</param>
+        /// <returns></returns>
+        Task<List<Classification>> QueryByIds(List<string> ids);
     }
 }

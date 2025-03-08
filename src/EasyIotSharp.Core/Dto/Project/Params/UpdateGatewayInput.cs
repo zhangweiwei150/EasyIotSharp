@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasyIotSharp.Core.Domain.Proejct
+namespace EasyIotSharp.Core.Dto.Project.Params
 {
     /// <summary>
-    /// 设备表
+    /// 根据id修改一条网关信息的入参类
     /// </summary>
-    public class Device:BaseEntity<string>
+    public class UpdateGatewayInput
     {
         /// <summary>
-        /// 租户id
+        /// 设备id
         /// </summary>
-        public int TenantNumId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// 设备名称

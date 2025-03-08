@@ -25,9 +25,9 @@ namespace EasyIotSharp.Core.Dto.Project.Params
         public string ClassificationId { get; set; }
 
         /// <summary>
-        /// 设备id
+        /// 网关id
         /// </summary>
-        public string DeviceId { get; set; }
+        public string GatewayId { get; set; }
 
         /// <summary>
         /// 传感器Id

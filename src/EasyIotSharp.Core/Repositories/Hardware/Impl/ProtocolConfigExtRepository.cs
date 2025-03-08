@@ -29,6 +29,7 @@ namespace EasyIotSharp.Core.Repositories.Hardware.Impl
                 var tempConfigId = configId; // 避免闭包问题
                 predicate = predicate.Or(m => m.ProtocolConfigId == tempConfigId);
             }
+            predicate = predicate.And(m => m.IsDelete == false); // 是否删除 = false
 
             // 查询数据
             var items = await GetListAsync(predicate);

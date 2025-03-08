@@ -7,13 +7,13 @@ using UPrime.AutoMapper;
 namespace EasyIotSharp.Core.Dto.Project
 {
     /// <summary>
-    /// 代表一条测点信息的"DTO"
+    /// 代表一条网关设备的“DTO”
     /// </summary>
-    [AutoMapFrom(typeof(SensorPoint))]
-    public class SensorPointDto
+    [AutoMapFrom(typeof(Gateway))]
+    public class GatewayDto
     {
         /// <summary>
-        /// 测点id
+        /// 设备id
         /// </summary>
         public string Id { get; set; }
 
@@ -23,9 +23,27 @@ namespace EasyIotSharp.Core.Dto.Project
         public int TenantNumId { get; set; }
 
         /// <summary>
-        /// 测点名称
+        /// 设备名称
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// 设备状态
+        /// 0=初始化
+        /// 1=在线
+        /// 2=离线
+        /// </summary>
+        public int State { get; set; }
+
+        /// <summary>
+        /// 协议id
+        /// </summary>
+        public string ProtocolId { get; set; }
+
+        /// <summary>
+        /// 协议名称
+        /// </summary>
+        public string ProtocolName { get; set; }
 
         /// <summary>
         /// 项目id
@@ -36,36 +54,6 @@ namespace EasyIotSharp.Core.Dto.Project
         /// 项目名称
         /// </summary>
         public string ProjectName { get; set; }
-
-        /// <summary>
-        /// 分类id
-        /// </summary>
-        public string ClassificationId { get; set; }
-
-        /// <summary>
-        /// 分类名称
-        /// </summary>
-        public string ClassificationName { get; set; }
-
-        /// <summary>
-        /// 网关id
-        /// </summary>
-        public string GatewayId { get; set; }
-
-        /// <summary>
-        /// 网关名称
-        /// </summary>
-        public string GatewayName { get; set; }
-
-        /// <summary>
-        /// 传感器Id
-        /// </summary>
-        public string SensorId { get; set; }
-
-        /// <summary>
-        /// 传感器名称
-        /// </summary>
-        public string SensorName { get; set; }
 
         /// <summary>
         /// 创建时间

@@ -5,14 +5,23 @@ using System.Text;
 namespace EasyIotSharp.Core.Dto.Project.Params
 {
     /// <summary>
-    /// 添加一条设备信息的入参类
+    /// 通过条件分页查询网关列表的入参类
     /// </summary>
-    public class InsertDeviceInput
+    public class QueryGatewayInput:PagingInput
     {
         /// <summary>
         /// 设备名称
         /// </summary>
-        public string Name { get; set; }
+        public string Keyword { get; set; }
+
+        /// <summary>
+        /// 设备状态
+        /// -1=全部
+        /// 0=初始化
+        /// 1=在线
+        /// 2=离线
+        /// </summary>
+        public int State { get; set; }
 
         /// <summary>
         /// 协议id

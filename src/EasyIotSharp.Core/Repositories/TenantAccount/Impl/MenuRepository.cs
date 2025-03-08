@@ -102,7 +102,6 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             return items.ToList();
         }
 
-
         /// <summary>
         /// 构建菜单树形结构
         /// </summary>

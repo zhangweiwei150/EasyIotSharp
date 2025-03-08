@@ -18,6 +18,16 @@ namespace EasyIotSharp.Core.Dto.Hardware.Params
         public string Id { get; set; }
 
         /// <summary>
+        /// 协议id
+        /// </summary>
+        public string ProtocolId { get; set; }
+
+        /// <summary>
+        /// 协议名称
+        /// </summary>
+        public string ProtocolName { get; set; }
+
+        /// <summary>
         /// 标识符
         /// （反序列化到class里面对应的字段名）
         /// </summary>

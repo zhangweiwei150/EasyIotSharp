@@ -1,36 +1,31 @@
-﻿using System;
+﻿using EasyIotSharp.Core.Domain.Proejct;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using UPrime.AutoMapper;
 
 namespace EasyIotSharp.Core.Dto.Project
 {
     /// <summary>
-    /// 代表一条设备信息的“DTO”
+    /// 代表一条网关协议的"DTO"
     /// </summary>
-    public class DeviceDto
+    [AutoMapFrom(typeof(GatewayProtocol))]
+    public class GatewayProtocolDto
     {
         /// <summary>
-        /// 设备id
+        /// id
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// 租户id
+        /// 网关id
         /// </summary>
-        public int TenantNumId { get; set; }
+        public string GatewayId { get; set; }
 
         /// <summary>
-        /// 设备名称
+        /// 网关名称
         /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// 设备状态
-        /// 0=初始化
-        /// 1=在线
-        /// 2=离线
-        /// </summary>
-        public int State { get; set; }
+        public string GatewayName { get; set; }
 
         /// <summary>
         /// 协议id
@@ -38,9 +33,15 @@ namespace EasyIotSharp.Core.Dto.Project
         public string ProtocolId { get; set; }
 
         /// <summary>
-        /// 项目id
+        /// 协议名称
         /// </summary>
-        public string ProjectId { get; set; }
+        public string ProtocolName { get; set; }
+
+        /// <summary>
+        /// json定义
+        /// 网关发送命令json数据
+        /// </summary>
+        public string ConfigJson { get; set; }
 
         /// <summary>
         /// 创建时间

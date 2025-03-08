@@ -66,8 +66,9 @@ namespace EasyIotSharp.Core
             //ÏîÄ¿
             IocManager.Register<IProjectBaseRepository, ProjectBaseRepository>();
             IocManager.Register<IClassificationRepository, ClassificationRepository>();
-            IocManager.Register<IDeviceProtocolRepository, DeviceProtocolRepository>();
-            IocManager.Register<IDeviceRepository, DeviceRepository>();
+            IocManager.Register<IGatewayProtocolRepository, GatewayProtocolRepository>();
+            IocManager.Register<IGatewayProtocolConfigRepository, GatewayProtocolConfigRepository>();
+            IocManager.Register<IGatewayRepository, GatewayRepository>();
             IocManager.Register<ISensorPointRepository, SensorPointRepository>();
             //Ó²¼ş
             IocManager.Register<IProtocolRepository, ProtocolRepository>();

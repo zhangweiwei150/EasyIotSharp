@@ -1,12 +1,15 @@
-﻿using System;
+﻿using EasyIotSharp.Core.Domain.Hardware;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using UPrime.AutoMapper;
 
 namespace EasyIotSharp.Core.Dto.Hardware
 {
     /// <summary>
     /// 代表一条协议配置的"DTO"
     /// </summary>
+    [AutoMapFrom(typeof(ProtocolConfig))]
     public class ProtocolConfigDto
     {
         /// <summary>
@@ -18,6 +21,11 @@ namespace EasyIotSharp.Core.Dto.Hardware
         /// 协议id
         /// </summary>
         public string ProtocolId { get; set; }
+
+        /// <summary>
+        /// 协议名称
+        /// </summary>
+        public string ProtocolName { get; set; }
 
         /// <summary>
         /// 标识符

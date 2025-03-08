@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EasyIotSharp.Core.Repositories.Project
 {
-    public interface IDeviceProtocolRepository : IMySqlRepositoryBase<DeviceProtocol, string>
+    public interface IGatewayProtocolConfigRepository : IMySqlRepositoryBase<GatewayProtocolConfig, string>
     {
     }
 }
