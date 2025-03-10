@@ -67,7 +67,7 @@ namespace EasyIotSharp.Core
         [EnumAlias("全部")]
         None = -1,
 
-        [EnumAlias("text")]
+        [EnumAlias("input")]
         Text=1,
 
         [EnumAlias("checkbox")]
@@ -75,5 +75,7 @@ namespace EasyIotSharp.Core
 
         [EnumAlias("number")]
         Number = 3,
+        [EnumAlias("select")]
+        Select = 4,
     }
 }
