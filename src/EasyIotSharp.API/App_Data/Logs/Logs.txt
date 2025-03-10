@@ -237,3 +237,54 @@ DEBUG 2025-03-10 09:41:32,126 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule -
 DEBUG 2025-03-10 09:41:32,126 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput
 DEBUG 2025-03-10 09:41:32,389 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化完成.
 ERROR 2025-03-10 09:41:59,992 [6    ] Default                                  - {"Method":"POST","Url":"http://localhost:5000/Hardware/Sensor/Quota/Query","Headers":null,"QueryString":"","Body":"","ClientIp":"0.0.0.1","Exception":"   at EasyIotSharp.Core.Services.Hardware.Impl.SensorQuotaService.QuerySensorQuota(QuerySensorQuotaInput input) in E:\\2025年项目\\物联网平台\\EasyIotSharp\\src\\EasyIotSharp.Core\\Services\\Hardware\\Impl\\SensorQuotaService.cs:line 50\r\n   at EasyIotSharp.API.Controllers.HardwareController.QuerySensorQuota(QuerySensorQuotaInput input) in E:\\2025年项目\\物联网平台\\EasyIotSharp\\src\\EasyIotSharp.API\\Controllers\\HardwareController.cs:line 270\r\n   at lambda_method(Closure , Object )\r\n   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)"}
+DEBUG 2025-03-10 09:52:24,775 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化中.
+DEBUG 2025-03-10 09:52:24,801 [1    ] UPrime.Modules.UPrimeModuleManager       - Loading UPrime modules...
+DEBUG 2025-03-10 09:52:24,974 [1    ] UPrime.Modules.UPrimeModuleManager       - Found 9 UPrime modules in total.
+DEBUG 2025-03-10 09:52:24,977 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.API.EasyIotSharpAPICoreModule, EasyIotSharp.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:52:24,979 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.Core.EasyIotSharpCoreModule, EasyIotSharp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:52:24,979 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.UPrimeLeadershipModule, UPrime, Version=2.6.27.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:52:24,979 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.Runtime.Caching.Redis.UPrimeRedisCacheModule, UPrime.RedisCache, Version=2.4.12.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:52:24,979 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.AutoMapper.UPrimeAutoMapperModule, UPrime.AutoMapper, Version=2.2.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:52:24,980 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Weixin.UPrimeSDKWeixinModule, UPrime.SDK.Weixin, Version=2.2.6.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:52:24,980 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UPrimeSDKModule, UPrime.SDK, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:52:24,980 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UCloudUFile.UPrimeSDKUCloudUFileModule, UPrime.SDK.UCloudUFile, Version=2.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:52:24,980 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Sms.UPrimeSDKSmsModule, UPrime.SDK.Sms, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:52:24,981 [1    ] UPrime.Modules.UPrimeModuleManager       - 9 modules loaded.
+DEBUG 2025-03-10 09:52:27,137 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - Found 10 classes define auto mapping attributes
+DEBUG 2025-03-10 09:52:27,137 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.RoleDto
+DEBUG 2025-03-10 09:52:27,139 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.SoldierDto
+DEBUG 2025-03-10 09:52:27,139 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput
+DEBUG 2025-03-10 09:52:27,139 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Project.ClassificationDto
+DEBUG 2025-03-10 09:52:27,139 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Project.GatewayDto
+DEBUG 2025-03-10 09:52:27,139 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Project.GatewayProtocolDto
+DEBUG 2025-03-10 09:52:27,139 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Project.SensorPointDto
+DEBUG 2025-03-10 09:52:27,139 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto
+DEBUG 2025-03-10 09:52:27,139 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto
+DEBUG 2025-03-10 09:52:27,139 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput
+DEBUG 2025-03-10 09:52:27,859 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化完成.
+ERROR 2025-03-10 09:55:52,007 [17   ] Default                                  - {"Method":"POST","Url":"http://localhost:5000/Hardware/Sensor/Quota/Query","Headers":null,"QueryString":"","Body":"","ClientIp":"0.0.0.1","Exception":"   at EasyIotSharp.Core.Services.Hardware.Impl.SensorQuotaService.QuerySensorQuota(QuerySensorQuotaInput input) in E:\\iot\\EasyIotSharp\\src\\EasyIotSharp.Core\\Services\\Hardware\\Impl\\SensorQuotaService.cs:line 50\r\n   at EasyIotSharp.API.Controllers.HardwareController.QuerySensorQuota(QuerySensorQuotaInput input) in E:\\iot\\EasyIotSharp\\src\\EasyIotSharp.API\\Controllers\\HardwareController.cs:line 270\r\n   at lambda_method(Closure , Object )\r\n   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)"}
+DEBUG 2025-03-10 09:56:16,733 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化中.
+DEBUG 2025-03-10 09:56:16,759 [1    ] UPrime.Modules.UPrimeModuleManager       - Loading UPrime modules...
+DEBUG 2025-03-10 09:56:16,779 [1    ] UPrime.Modules.UPrimeModuleManager       - Found 9 UPrime modules in total.
+DEBUG 2025-03-10 09:56:16,781 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.API.EasyIotSharpAPICoreModule, EasyIotSharp.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:56:16,783 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: EasyIotSharp.Core.EasyIotSharpCoreModule, EasyIotSharp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:56:16,783 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.UPrimeLeadershipModule, UPrime, Version=2.6.27.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:56:16,783 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.Runtime.Caching.Redis.UPrimeRedisCacheModule, UPrime.RedisCache, Version=2.4.12.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:56:16,783 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.AutoMapper.UPrimeAutoMapperModule, UPrime.AutoMapper, Version=2.2.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:56:16,784 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Weixin.UPrimeSDKWeixinModule, UPrime.SDK.Weixin, Version=2.2.6.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:56:16,784 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UPrimeSDKModule, UPrime.SDK, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:56:16,784 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.UCloudUFile.UPrimeSDKUCloudUFileModule, UPrime.SDK.UCloudUFile, Version=2.1.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:56:16,784 [1    ] UPrime.Modules.UPrimeModuleManager       - Loaded module: UPrime.SDK.Sms.UPrimeSDKSmsModule, UPrime.SDK.Sms, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-03-10 09:56:16,785 [1    ] UPrime.Modules.UPrimeModuleManager       - 9 modules loaded.
+DEBUG 2025-03-10 09:56:17,434 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - Found 10 classes define auto mapping attributes
+DEBUG 2025-03-10 09:56:17,434 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.RoleDto
+DEBUG 2025-03-10 09:56:17,435 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.SoldierDto
+DEBUG 2025-03-10 09:56:17,435 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.TenantAccount.Params.GetRoleMenuOutput
+DEBUG 2025-03-10 09:56:17,435 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Project.ClassificationDto
+DEBUG 2025-03-10 09:56:17,435 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Project.GatewayDto
+DEBUG 2025-03-10 09:56:17,435 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Project.GatewayProtocolDto
+DEBUG 2025-03-10 09:56:17,435 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Project.SensorPointDto
+DEBUG 2025-03-10 09:56:17,435 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto
+DEBUG 2025-03-10 09:56:17,435 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Hardware.SensorQuotaDto
+DEBUG 2025-03-10 09:56:17,435 [1    ] UPrime.AutoMapper.UPrimeAutoMapperModule - EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput
+DEBUG 2025-03-10 09:56:17,777 [1    ] UPrime.UPrimeStarter                     - UPrimeStarter 初始化完成.

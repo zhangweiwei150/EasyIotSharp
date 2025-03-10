@@ -22,6 +22,7 @@ namespace EasyIotSharp.Core.Services.Hardware.Impl
                                   ISensorRepository sensorRepository)
         {
             _sensorQuotaRepository = sensorQuotaRepository;
+            _sensorRepository = sensorRepository;
         }
 
         public async Task<SensorQuotaDto> GetSensorQuota(string id)
