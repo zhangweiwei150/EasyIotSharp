@@ -1573,7 +1573,7 @@
             根据条件分页查询传感器类型指标列表的入参类
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QuerySensorQuotaInput.SensorPointTypeId">
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QuerySensorQuotaInput.SensorId">
             <summary>
             传感器类型id
             </summary>
@@ -1728,7 +1728,7 @@
             id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput.SensorPointTypeId">
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.UpdateSensorQuotaInput.SensorId">
             <summary>
             测点类型id
             </summary>

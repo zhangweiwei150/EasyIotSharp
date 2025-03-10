@@ -41,7 +41,7 @@ namespace EasyIotSharp.Core.Services.Hardware.Impl
 
         public async Task<PagedResultDto<SensorQuotaDto>> QuerySensorQuota(QuerySensorQuotaInput input)
         {
-            var query = await _sensorQuotaRepository.Query(ContextUser.TenantNumId, input.SensorPointTypeId, input.Keyword, input.DataType, input.PageIndex, input.PageSize, input.IsPage);
+            var query = await _sensorQuotaRepository.Query(ContextUser.TenantNumId, input.SensorId, input.Keyword, input.DataType, input.PageIndex, input.PageSize, input.IsPage);
             int totalCount = query.totalCount;
             var list = query.items.MapTo<List<SensorQuotaDto>>();
             var sensorIds = list.Select(x => x.SensorId).ToList();

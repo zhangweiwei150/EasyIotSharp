@@ -12,7 +12,7 @@ namespace EasyIotSharp.Core.Dto.Hardware.Params
         /// <summary>
         /// 传感器类型id
         /// </summary>
-        public string SensorPointTypeId { get; set; }
+        public string SensorId { get; set; }
 
         /// <summary>
         /// 指标名称/标识符

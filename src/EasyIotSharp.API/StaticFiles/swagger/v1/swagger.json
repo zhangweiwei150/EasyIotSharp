@@ -4888,7 +4888,7 @@
             "description": "租户id",
             "format": "int32"
           },
-          "sensorPointTypeId": {
+          "SensorId": {
             "type": "string",
             "description": "测点类型id",
             "nullable": true
@@ -5002,7 +5002,7 @@
       "QuerySensorPointTypeQuotaInput": {
         "type": "object",
         "properties": {
-          "sensorPointTypeId": {
+          "SensorId": {
             "type": "string",
             "description": "传感器类型id",
             "nullable": true
@@ -5082,7 +5082,7 @@
       "InsertSensorPointTypeQuotaInput": {
         "type": "object",
         "properties": {
-          "sensorPointTypeId": {
+          "SensorId": {
             "type": "string",
             "description": "测点类型id",
             "nullable": true
@@ -5139,7 +5139,7 @@
             "description": "id",
             "nullable": true
           },
-          "sensorPointTypeId": {
+          "SensorId": {
             "type": "string",
             "description": "测点类型id",
             "nullable": true
