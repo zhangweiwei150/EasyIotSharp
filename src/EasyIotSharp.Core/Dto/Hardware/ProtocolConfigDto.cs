@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UPrime.AutoMapper;
+using UPrime.CodeAnnotations;
 
 namespace EasyIotSharp.Core.Dto.Hardware
 {
@@ -55,6 +56,18 @@ namespace EasyIotSharp.Core.Dto.Hardware
         public TagTypeMenu TagType { get; set; }
 
         /// <summary>
+        /// <see cref="TagTypeMenu"/>
+        /// 标签类型  select、number、text
+        /// </summary>
+        public string TagTypeName
+        {
+            get
+            {
+                return TagType.ToAlias();
+            }
+        }
+
+        /// <summary>
         /// 是否必填
         /// </summary>
         public int IsRequired { get; set; }
@@ -64,6 +77,18 @@ namespace EasyIotSharp.Core.Dto.Hardware
         /// 验证数据类型
         /// </summary>
         public DataTypeMenu ValidateType { get; set; }
+
+        /// <summary>
+        /// <see cref="DataTypeMenu"/>
+        /// 验证数据类型
+        /// </summary>
+        public string ValidateTypeName
+        {
+            get
+            {
+                return ValidateType.ToAlias();
+            }
+        }
 
         /// <summary>
         /// 验证数据类型不正确提示
