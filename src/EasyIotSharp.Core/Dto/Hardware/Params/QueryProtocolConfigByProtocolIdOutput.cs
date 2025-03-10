@@ -69,6 +69,11 @@ namespace EasyIotSharp.Core.Dto.Hardware.Params
         /// 验证数据类型不正确提示
         /// </summary>
         public int ValidateMessage { get; set; }
+        /// <summary>
+        /// 排序
+        /// </summary>
+        public int Sort { get; set; }
+
 
         /// <summary>
         /// 下拉
