@@ -1484,12 +1484,24 @@
             标签类型  select、number、text
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.TagTypeName">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.TagTypeMenu"/>
+            标签类型  select、number、text
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.IsRequired">
             <summary>
             是否必填
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.ValidateType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
+            验证数据类型
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.Params.QueryProtocolConfigByProtocolIdOutput.ValidateTypeName">
             <summary>
             <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
             验证数据类型
@@ -1829,12 +1841,24 @@
             标签类型  select、number、text
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.TagTypeName">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.TagTypeMenu"/>
+            标签类型  select、number、text
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.IsRequired">
             <summary>
             是否必填
             </summary>
         </member>
         <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.ValidateType">
+            <summary>
+            <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
+            验证数据类型
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Hardware.ProtocolConfigDto.ValidateTypeName">
             <summary>
             <see cref="T:EasyIotSharp.Core.DataTypeMenu"/>
             验证数据类型

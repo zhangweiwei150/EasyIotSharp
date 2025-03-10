@@ -62,6 +62,7 @@ namespace EasyIotSharp.Core.Services.Hardware.Impl
                 {
                     dic.Add(item1.Value, item1.Label);
                 }
+                item.Options = new Dictionary<string, string>();
                 item.Options = dic;
             }
 
