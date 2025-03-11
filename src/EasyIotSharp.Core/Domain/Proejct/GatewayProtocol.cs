@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -29,6 +30,7 @@ namespace EasyIotSharp.Core.Domain.Proejct
         /// json定义
         /// 网关发送命令json数据
         /// </summary>
+        [SugarColumn(ColumnDataType = "TEXT")]
         public string ConfigJson { get; set; }
     }
 }
