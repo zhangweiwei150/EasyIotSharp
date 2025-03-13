@@ -83,17 +83,17 @@ namespace EasyIotSharp.Core.Services.Project.Impl
                 var classification = classifications.FirstOrDefault(x => x.Id == item.ClassificationId);
                 if (classification.IsNotNull())
                 {
-                    item.ClassificationName = project.Name;
+                    item.ClassificationName = classification.Name;
                 }
                 var gateway = gateways.FirstOrDefault(x => x.Id == item.GatewayId);
                 if (gateway.IsNotNull())
                 {
-                    item.GatewayName = project.Name;
+                    item.GatewayName = gateway.Name;
                 }
                 var sensor = sensors.FirstOrDefault(x => x.Id == item.SensorId);
                 if (sensor.IsNotNull())
                 {
-                    item.SensorName = project.Name;
+                    item.SensorName = sensor.Name;
                 }
             }
             return new PagedResultDto<SensorPointDto>() { TotalCount = totalCount, Items = list };
@@ -101,7 +101,7 @@ namespace EasyIotSharp.Core.Services.Project.Impl
 
         public async Task InsertSensorPoint(InsertSensorPointInput input)
         {
-            var isExistName = await _sensorPointRepository.FirstOrDefaultAsync(x => x.Name == input.Name && x.TenantNumId == ContextUser.TenantNumId && x.ProjectId == input.ProjectId && x.GatewayId == input.GatewayId && x.IsDelete == false);
+            var isExistName = await _sensorPointRepository.FirstOrDefaultAsync(x => x.Name == input.Name && x.TenantNumId == ContextUser.TenantNumId && x.ProjectId == input.ProjectId && x.IsDelete == false);
             if (isExistName.IsNotNull())
             {
                 throw new BizException(BizError.BIND_EXCEPTION_ERROR, "测点名称重复");
@@ -112,7 +112,7 @@ namespace EasyIotSharp.Core.Services.Project.Impl
             model.Name = input.Name;
             model.ProjectId = input.ProjectId;
             model.ClassificationId = input.ClassificationId;
-            model.GatewayId = input.GatewayId;
+            model.GatewayId = "";
             model.SensorId = input.SensorId;
             model.IsDelete = false;
             model.CreationTime = DateTime.Now;

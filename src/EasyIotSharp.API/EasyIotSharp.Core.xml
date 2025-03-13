@@ -2496,11 +2496,6 @@
             分类id
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput.GatewayId">
-            <summary>
-            网关id
-            </summary>
-        </member>
         <member name="P:EasyIotSharp.Core.Dto.Project.Params.InsertSensorPointInput.SensorId">
             <summary>
             传感器Id
