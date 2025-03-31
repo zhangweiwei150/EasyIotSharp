@@ -7,6 +7,7 @@ using EasyIotSharp.Core.Domain.TenantAccount;
 using EasyIotSharp.Core.Repositories.Mysql;
 using EasyIotSharp.Repositories.Mysql;
 using LinqKit;
+using SqlSugar;
 
 namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
 {
@@ -15,8 +16,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
         /// <summary>
         /// 构造函数
         /// </summary>
-        /// <param name="databaseProvider">数据库提供者</param>
-        public RoleMenuRepository(SqlSugarDatabaseProvider databaseProvider) : base(databaseProvider)
+        public RoleMenuRepository(ISqlSugarDatabaseProvider databaseProvider) : base(databaseProvider)
         {
         }
 
@@ -58,7 +58,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             }
 
             // 删除符合条件的数据
-            var count = await GetDbClient().Deleteable<RoleMenu>()
+            var count = await Client.Deleteable<RoleMenu>()
                                      .Where(m => m.RoleId == roleId)
                                      .ExecuteCommandAsync();
             return count;

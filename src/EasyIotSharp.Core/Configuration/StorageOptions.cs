@@ -14,7 +14,7 @@ namespace EasyIotSharp.Core.Configuration
         /// </summary>
         public IList<string> Elasticsearch { get; internal set; }
 
-        public IList<MysqlServerAddress> MysqlServers { get; internal set; }
+        public IList<ServerAddress> MysqlServers { get; internal set; }
 
         public string MysqlConnectionMode { get; internal set; }
 
@@ -23,6 +23,16 @@ namespace EasyIotSharp.Core.Configuration
         public string MysqlUsername { get; internal set; }
 
         public string MysqlPassword { get; internal set; }
+
+        public List<ServerAddress> InfluxdbServers { get; internal set; }
+
+        public string InfluxdbConnectionMode { get; internal set; }
+
+        public string InfluxdbName { get; internal set; }
+
+        public string InfluxdbUsername { get; internal set; }
+
+        public string InfluxdbPassword { get; internal set; }
 
         public static StorageOptions ReadFromConfiguration(IConfiguration config)
         {
@@ -38,16 +48,16 @@ namespace EasyIotSharp.Core.Configuration
                 });
             }
 
-            options.MysqlServers = new List<MysqlServerAddress>();
-            var mongoServersSource = cs.GetValue<string>(nameof(MysqlServers));
-            if (mongoServersSource.IsNotNullOrEmpty())
+            options.MysqlServers = new List<ServerAddress>();
+            var mysqlServersSource = cs.GetValue<string>(nameof(MysqlServers));
+            if (mysqlServersSource.IsNotNullOrEmpty())
             {
-                mongoServersSource.Split(",").ForEach(item =>
+                mysqlServersSource.Split(",").ForEach(item =>
                 {
                     var host = item.Replace("：", ":").Split(':');
                     if (host.Length == 2)
                     {
-                        options.MysqlServers.Add(new MysqlServerAddress() { Host = host[0], Port = host[1].ToInt() });
+                        options.MysqlServers.Add(new ServerAddress() { Host = host[0], Port = host[1].ToInt() });
                     }
                 });
             }
@@ -56,6 +66,25 @@ namespace EasyIotSharp.Core.Configuration
             options.MysqlDbName = cs.GetValue<string>(nameof(MysqlDbName));
             options.MysqlUsername = cs.GetValue<string>(nameof(MysqlUsername));
             options.MysqlPassword = cs.GetValue<string>(nameof(MysqlPassword));
+
+            options.InfluxdbServers = new List<ServerAddress>();
+            var influxdbServersSource = cs.GetValue<string>(nameof(InfluxdbServers));
+            if (influxdbServersSource.IsNotNullOrEmpty())
+            {
+                influxdbServersSource.Split(",").ForEach(item =>
+                {
+                    var host = item.Replace("：", ":").Split(':');
+                    if (host.Length == 2)
+                    {
+                        options.MysqlServers.Add(new ServerAddress() { Host = host[0], Port = host[1].ToInt() });
+                    }
+                });
+            }
+
+            options.InfluxdbConnectionMode = cs.GetValue<string>(nameof(InfluxdbConnectionMode));
+            options.InfluxdbName = cs.GetValue<string>(nameof(InfluxdbName));
+            options.InfluxdbUsername = cs.GetValue<string>(nameof(InfluxdbUsername));
+            options.InfluxdbPassword = cs.GetValue<string>(nameof(InfluxdbPassword));
 
             return options;
         }

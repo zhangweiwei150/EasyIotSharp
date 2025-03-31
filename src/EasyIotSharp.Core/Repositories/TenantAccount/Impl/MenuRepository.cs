@@ -18,7 +18,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
         /// 构造函数
         /// </summary>
         /// <param name="databaseProvider">数据库提供者</param>
-        public MenuRepository(SqlSugarDatabaseProvider databaseProvider) : base(databaseProvider)
+        public MenuRepository(ISqlSugarDatabaseProvider databaseProvider) : base(databaseProvider)
         {
         }
 
@@ -53,7 +53,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             if (isPage==true)
             {
                 // 手动拼接排序和分页逻辑
-                var query = GetDbClient().Queryable<Menu>().Where(predicate)
+                var query = Client.Queryable<Menu>().Where(predicate)
                                   .OrderBy(x => x.Sort, OrderByType.Desc) // 先按 Sort 降序排序
                                   .OrderBy(m => m.CreationTime, OrderByType.Desc) // 再按 CreationTime 降序排序
                                   .Skip((pageIndex - 1) * pageSize)
@@ -65,7 +65,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             }
             else
             {
-                var query = GetDbClient().Queryable<Menu>().Where(predicate)
+                var query = Client.Queryable<Menu>().Where(predicate)
                                                .OrderBy(x => x.Sort, OrderByType.Desc) // 先按 Sort 降序排序
                                                .OrderBy(m => m.CreationTime, OrderByType.Desc); // 再按 CreationTime 降序排序
 

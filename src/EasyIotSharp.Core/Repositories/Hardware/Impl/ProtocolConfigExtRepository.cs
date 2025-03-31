@@ -1,6 +1,7 @@
 ﻿using EasyIotSharp.Core.Domain.Hardware;
 using EasyIotSharp.Core.Repositories.Mysql;
 using LinqKit;
+using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,7 @@ namespace EasyIotSharp.Core.Repositories.Hardware.Impl
             }
 
             // 删除符合条件的数据
-            var count = await GetDbClient().Deleteable<ProtocolConfigExt>()
+            var count = await Client.Deleteable<ProtocolConfigExt>()
                                      .Where(m => m.ProtocolConfigId == configId)
                                      .ExecuteCommandAsync();
             return count;

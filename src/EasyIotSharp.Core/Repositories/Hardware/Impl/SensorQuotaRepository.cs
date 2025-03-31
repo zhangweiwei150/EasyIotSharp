@@ -51,7 +51,7 @@ namespace EasyIotSharp.Core.Repositories.Hardware.Impl
 
             if (isPage == true)
             {
-                var query = GetDbClient().Queryable<SensorQuota>().Where(predicate)
+                var query = Client.Queryable<SensorQuota>().Where(predicate)
                                   .OrderBy(t => t.Sort,OrderByType.Desc)
                                   .OrderBy(m => m.CreationTime, OrderByType.Desc)
                                   .Skip((pageIndex - 1) * pageSize)
@@ -62,7 +62,7 @@ namespace EasyIotSharp.Core.Repositories.Hardware.Impl
             }
             else
             {
-                var query = GetDbClient().Queryable<SensorQuota>().Where(predicate)
+                var query = Client.Queryable<SensorQuota>().Where(predicate)
                                   .OrderBy(t => t.Sort, OrderByType.Desc)
                                   .OrderBy(m => m.CreationTime, OrderByType.Desc);
                 // 查询数据

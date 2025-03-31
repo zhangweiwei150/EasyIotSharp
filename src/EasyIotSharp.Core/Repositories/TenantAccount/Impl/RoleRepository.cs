@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using EasyIotSharp.Core.Domain.TenantAccount;
 using EasyIotSharp.Core.Repositories.Mysql;
-using EasyIotSharp.Repositories.Mysql;
+using SqlSugar;
 using LinqKit;
 
 namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
@@ -15,8 +15,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
         /// <summary>
         /// 构造函数
         /// </summary>
-        /// <param name="databaseProvider">数据库提供者</param>
-        public RoleRepository(SqlSugarDatabaseProvider databaseProvider) : base(databaseProvider)
+        public RoleRepository(ISqlSugarDatabaseProvider databaseProvider) : base(databaseProvider)
         {
         }
 
@@ -61,7 +60,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             if (isPage)
             {
                 // 手动拼接排序和分页逻辑
-                var query = GetDbClient().Queryable<Role>().Where(predicate)
+                var query = Client.Queryable<Role>().Where(predicate)
                                   .OrderByDescending(m => m.CreationTime) // 默认按 CreationTime 降序排序
                                   .Skip((pageIndex - 1) * pageSize)
                                   .Take(pageSize);
@@ -72,7 +71,7 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount.Impl
             else
             {
                 // 手动拼接排序和分页逻辑
-                var query = await GetDbClient().Queryable<Role>().Where(predicate)
+                var query = await Client.Queryable<Role>().Where(predicate)
                                   .OrderByDescending(m => m.CreationTime).ToListAsync(); // 默认按 CreationTime 降序排序
                 // 分页查询，默认按 CreationTime 降序排序
                 var items = query;

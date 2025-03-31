@@ -10,107 +10,82 @@ namespace EasyIotSharp.Core.Repositories.Mysql
     public abstract class MySqlRepositoryBase<TEntity, TPrimaryKey> : IMySqlRepositoryBase<TEntity, TPrimaryKey>
         where TEntity : class, IEntity<TPrimaryKey>, new()
     {
-        private ISqlSugarDatabaseProvider _databaseProvider;
+        public ISqlSugarClient Client { get; }
 
         public MySqlRepositoryBase(ISqlSugarDatabaseProvider databaseProvider)
         {
-            _databaseProvider = databaseProvider;
-        }
-
-        protected ISqlSugarClient GetDbClient()
-        {
-            return new SqlSugarClient(new ConnectionConfig()
-            {
-                ConnectionString = _databaseProvider.Client.CurrentConnectionConfig.ConnectionString,
-                DbType = DbType.MySql,
-                IsAutoCloseConnection = true,
-                InitKeyType = InitKeyType.Attribute
-            });
+            Client = databaseProvider.Client;
         }
 
         public virtual async Task<int> InsertAsync(TEntity entity)
         {
-            using var db = GetDbClient();
-            return await db.Insertable(entity).ExecuteCommandAsync();
+            return await Client.Insertable(entity).ExecuteCommandAsync();
         }
 
         public virtual async Task<int> InserManyAsync(List<TEntity> entities)
         {
-            using var db = GetDbClient();
-            return await db.Insertable(entities).ExecuteCommandAsync();
+            return await Client.Insertable(entities).ExecuteCommandAsync();
         }
 
         public virtual async Task<bool> DeleteByIdAsync(object id)
         {
-            using var db = GetDbClient();
-            return await db.Deleteable<TEntity>().In(id).ExecuteCommandAsync() > 0;
+            return await Client.Deleteable<TEntity>().In(id).ExecuteCommandAsync() > 0;
         }
 
         public virtual async Task<bool> DeleteAsync(TEntity entity)
         {
-            using var db = GetDbClient();
-            return await db.Deleteable(entity).ExecuteCommandAsync() > 0;
+            return await Client.Deleteable(entity).ExecuteCommandAsync() > 0;
         }
 
         public virtual async Task<bool> UpdateAsync(TEntity entity)
         {
-            using var db = GetDbClient();
-            var result = await db.Updateable(entity).ExecuteCommandAsync();
+            var result = await Client.Updateable(entity).ExecuteCommandAsync();
             return result > 0;
         }
 
         public virtual async Task<TEntity> GetByIdAsync(object id)
         {
-            using var db = GetDbClient();
-            return await db.Queryable<TEntity>().InSingleAsync(id);
+            return await Client.Queryable<TEntity>().InSingleAsync(id);
         }
 
         public virtual async Task<List<TEntity>> GetAllAsync()
         {
-            using var db = GetDbClient();
-            return await db.Queryable<TEntity>().ToListAsync();
+            return await Client.Queryable<TEntity>().ToListAsync();
         }
 
         public virtual List<TEntity> GetAll()
         {
-            using var db = GetDbClient();
-            return db.Queryable<TEntity>().ToList();
+            return Client.Queryable<TEntity>().ToList();
         }
 
         public virtual async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            using var db = GetDbClient();
-            return await db.Queryable<TEntity>().FirstAsync(predicate);
+            return await Client.Queryable<TEntity>().FirstAsync(predicate);
         }
 
         public virtual async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            using var db = GetDbClient();
-            return await db.Queryable<TEntity>().AnyAsync(predicate);
+            return await Client.Queryable<TEntity>().AnyAsync(predicate);
         }
 
         public virtual async Task<int> CountAsync()
         {
-            using var db = GetDbClient();
-            return await db.Queryable<TEntity>().CountAsync();
+            return await Client.Queryable<TEntity>().CountAsync();
         }
 
         public virtual async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            using var db = GetDbClient();
-            return await db.Queryable<TEntity>().CountAsync(predicate);
+            return await Client.Queryable<TEntity>().CountAsync(predicate);
         }
 
         public virtual async Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            using var db = GetDbClient();
-            return await db.Queryable<TEntity>().Where(predicate).ToListAsync();
+            return await Client.Queryable<TEntity>().Where(predicate).ToListAsync();
         }
 
         public virtual async Task<List<TEntity>> GetPagedListAsync(Expression<Func<TEntity, bool>> predicate, int pageIndex, int pageSize)
         {
-            using var db = GetDbClient();
-            return await db.Queryable<TEntity>()
+            return await Client.Queryable<TEntity>()
                 .Where(predicate)
                 .ToPageListAsync(pageIndex, pageSize);
         }

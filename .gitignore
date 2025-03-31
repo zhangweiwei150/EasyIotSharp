@@ -16,3 +16,7 @@
 /.vs/VSWorkspaceState.json
 /src/.vs
 /src/EasyIotSharp.API.Admin/App_Data
+/src/EasyIotSharp.Cloud.MqttGateway/obj
+/src/EasyIotSharp.Cloud.MqttGateway/bin
+/src/EasyIotSharp.Cloud.TcpGateway/obj
+/src/EasyIotSharp.Cloud.TcpGateway/bin

@@ -11,6 +11,11 @@ Storage:
   MysqlDbName:  'easyiotsharp'
   MysqlUsername:  'root'
   MysqlPassword:  'jichang2025!@#'
+  InfluxdbServers: '82.156.125.76:8086'
+  InfluxdbConnectionMode: ''
+  InfluxdbName: 'db_sports_center'
+  InfluxdbUsername: 'jsuper'
+  InfluxdbPassword: 'jsuper[admin]'
 
 Caching:
   IsOpen: false

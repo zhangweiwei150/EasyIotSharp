@@ -58,7 +58,7 @@ namespace EasyIotSharp.Core.Repositories.Project.Impl
                 return (0, new List<Gateway>());
             }
 
-            var query = GetDbClient().Queryable<Gateway>().Where(predicate)
+            var query = Client.Queryable<Gateway>().Where(predicate)
                               .OrderBy(m => m.CreationTime, OrderByType.Desc)
                               .Skip((pageIndex - 1) * pageSize)
                               .Take(pageSize);

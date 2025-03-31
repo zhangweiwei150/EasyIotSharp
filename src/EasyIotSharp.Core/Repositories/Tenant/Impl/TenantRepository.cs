@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EasyIotSharp.Core.Extensions;
 using EasyIotSharp.Core.Repositories.Mysql;
 using LinqKit;
+using SqlSugar;
 
 namespace EasyIotSharp.Core.Repositories.Tenant.Impl
 {

@@ -44,7 +44,7 @@ namespace EasyIotSharp.Core.Repositories.Hardware.Impl
 
             if (isPage == true)
             {
-                var query = GetDbClient().Queryable<Protocol>().Where(predicate)
+                var query = Client.Queryable<Protocol>().Where(predicate)
                                   .OrderBy(m => m.CreationTime, OrderByType.Desc)
                                   .Skip((pageIndex - 1) * pageSize)
                                   .Take(pageSize);
@@ -54,7 +54,7 @@ namespace EasyIotSharp.Core.Repositories.Hardware.Impl
             }
             else
             {
-                var query = GetDbClient().Queryable<Protocol>().Where(predicate)
+                var query = Client.Queryable<Protocol>().Where(predicate)
                   .OrderBy(m => m.CreationTime, OrderByType.Desc);
                 // 查询数据
                 var items = await query.ToListAsync();

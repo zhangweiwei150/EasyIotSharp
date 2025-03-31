@@ -1,5 +1,6 @@
 ﻿using EasyIotSharp.Core.Domain.Proejct;
 using EasyIotSharp.Core.Repositories.Mysql;
+using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Text;

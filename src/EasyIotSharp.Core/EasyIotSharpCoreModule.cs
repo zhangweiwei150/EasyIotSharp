@@ -23,6 +23,7 @@ using EasyIotSharp.Core.Repositories.Project;
 using EasyIotSharp.Core.Repositories.Project.Impl;
 using EasyIotSharp.Core.Repositories.Hardware;
 using EasyIotSharp.Core.Repositories.Hardware.Impl;
+using EasyIotSharp.Core.Repositories.Influxdb;
 
 namespace EasyIotSharp.Core
 {
@@ -39,6 +40,8 @@ namespace EasyIotSharp.Core
             IocManager.Register<IElasticsearchDatabaseProvider, EasyIotSharpElasticsearchDatabaseProvider>();
 
             IocManager.Register<ISqlSugarDatabaseProvider, SqlSugarDatabaseProvider>();
+
+
             var camelCaseConventionPack = new ConventionPack { new CamelCaseElementNameConvention() };
             ConventionRegistry.Register("CamelCase", camelCaseConventionPack, type => true);
 

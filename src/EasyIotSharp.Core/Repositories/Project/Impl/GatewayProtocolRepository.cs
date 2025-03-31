@@ -39,7 +39,7 @@ namespace EasyIotSharp.Core.Repositories.Project.Impl
                 return (0, new List<GatewayProtocol>());
             }
 
-            var query = GetDbClient().Queryable<GatewayProtocol>().Where(predicate)
+            var query = Client.Queryable<GatewayProtocol>().Where(predicate)
                               .OrderBy(m => m.CreationTime, OrderByType.Desc)
                               .Skip((pageIndex - 1) * pageSize)
                               .Take(pageSize);
