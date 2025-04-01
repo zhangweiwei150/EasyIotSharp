@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EasyIotSharp.Cloud.MqttGateway")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+64fb2493bfea66acf5c67efd60093faecd73264f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99f983003c38c408cf36d58ce7fbd2b13cf84be8")]
 [assembly: System.Reflection.AssemblyProductAttribute("EasyIotSharp.Cloud.MqttGateway")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EasyIotSharp.Cloud.MqttGateway")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
