@@ -10,6 +10,12 @@
 /src/EasyIotSharp.MSub.PushTask/obj
 /src/EasyIotSharp.API.Admin/obj
 /src/EasyIotSharp.API.Admin/bin
+/src/EasyIotSharp.API.Admin/obj
+/src/EasyIotSharp.API.Admin/bin
+/src/EasyIotSharp.Cloud.TcpGateway/bin
+/src/EasyIotSharp.Cloud.TcpGateway/obj
+/src/EasyIotSharp.Cloud.MqttGateway/bin
+/src/EasyIotSharp.Cloud.MqttGateway/obj
 .vs/*
 /.vs
 /.vs/slnx.sqlite
