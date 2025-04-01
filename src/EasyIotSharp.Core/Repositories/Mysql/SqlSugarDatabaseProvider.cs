@@ -31,10 +31,10 @@ namespace EasyIotSharp.Repositories.Mysql
             {
                 connectionString = $"Server={storageOptions.MysqlServers[0].Host};Port={storageOptions.MysqlServers[0].Port};Database={storageOptions.MysqlDbName};Uid={storageOptions.MysqlUsername};Pwd={storageOptions.MysqlPassword};";
             }
-            Client = new SqlSugarClient(new ConnectionConfig()
+            Client = new SqlSugarScope(new ConnectionConfig
             {
                 ConnectionString = connectionString,
-                DbType = SqlSugar.DbType.MySql,
+                DbType = DbType.MySql,
                 IsAutoCloseConnection = true,
                 InitKeyType = InitKeyType.Attribute
             });
