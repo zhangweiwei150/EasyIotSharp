@@ -41,6 +41,8 @@ namespace EasyIotSharp.Core
 
             IocManager.Register<ISqlSugarDatabaseProvider, SqlSugarDatabaseProvider>();
 
+            IocManager.Register<IInfluxdbDatabaseProvider, InfluxdbDatabaseProvider>();
+
 
             var camelCaseConventionPack = new ConventionPack { new CamelCaseElementNameConvention() };
             ConventionRegistry.Register("CamelCase", camelCaseConventionPack, type => true);

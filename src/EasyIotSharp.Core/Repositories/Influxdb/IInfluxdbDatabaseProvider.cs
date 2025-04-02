@@ -1,11 +1,9 @@
-﻿using InfluxDB.Client;
+﻿using InfluxData.Net.InfluxDb;
 
 namespace EasyIotSharp.Core.Repositories.Influxdb
 {
     public interface IInfluxdbDatabaseProvider
     {
-        public IInfluxDBClient Client { get; }
-
-        public string Org { get; }
+        public IInfluxDbClient Client { get; }
     }
 }

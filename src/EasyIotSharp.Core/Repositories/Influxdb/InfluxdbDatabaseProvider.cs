@@ -1,20 +1,17 @@
 ﻿using EasyIotSharp.Core.Configuration;
-using InfluxDB.Client;
+using InfluxData.Net.Common.Enums;
+using InfluxData.Net.InfluxDb;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 using UPrime;
 
 namespace EasyIotSharp.Core.Repositories.Influxdb
 {
-    public class InfluxdbDatabaseProvider:IInfluxdbDatabaseProvider
+    public class InfluxdbDatabaseProvider : IInfluxdbDatabaseProvider
     {
-        public IInfluxDBClient Client { get; }
-
-        public string Org { get; }
-
-        public InfluxdbDatabaseProvider(string org)
+        public InfluxdbDatabaseProvider()
         {
-            Org = org;
-
             var storageOptions = UPrimeEngine.Instance.Resolve<StorageOptions>();
 
             string connectionString = "";
@@ -26,7 +23,7 @@ namespace EasyIotSharp.Core.Repositories.Influxdb
                 connectionString = string.Join(",", storageOptions.InfluxdbServers
                     .Select(server => $"{server.Host}:{server.Port}"));
 
-                Client = InfluxDBClientFactory.Create($"http://{connectionString}", token.ToCharArray());
+                Client = new InfluxDbClient(connectionString, storageOptions.InfluxdbUsername, storageOptions.InfluxdbPassword, InfluxDbVersion.Latest);
             }
             else
             {
@@ -34,25 +31,10 @@ namespace EasyIotSharp.Core.Repositories.Influxdb
                 var server = storageOptions.InfluxdbServers[0];
                 connectionString = $"http://{server.Host}:{server.Port}";
 
-                Client = InfluxDBClientFactory.Create(connectionString, token.ToCharArray());
+                Client = new InfluxDbClient(connectionString, storageOptions.InfluxdbUsername, storageOptions.InfluxdbPassword, InfluxDbVersion.Latest);
             }
-
-            InitializeDatabase(storageOptions.InfluxdbName);
         }
 
-        private void InitializeDatabase(string bucket)
-        {
-            // 检查并创建bucket
-            var bucketsApi = Client.GetBucketsApi();
-            var existingBucket = bucketsApi.FindBucketByNameAsync(bucket).GetAwaiter().GetResult();
-
-            if (existingBucket == null)
-            {
-                bucketsApi.CreateBucketAsync(bucket, Org).GetAwaiter().GetResult();
-            }
-
-            // InfluxDB是无模式的，不需要像关系型数据库那样初始化表结构
-            // 但可以在这里添加初始化标签或测量(measurement)的逻辑
-        }
+        public IInfluxDbClient Client { get; }
     }
 }
