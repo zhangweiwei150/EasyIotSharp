@@ -76,7 +76,7 @@ namespace EasyIotSharp.Core.Configuration
                     var host = item.Replace("：", ":").Split(':');
                     if (host.Length == 2)
                     {
-                        options.MysqlServers.Add(new ServerAddress() { Host = host[0], Port = host[1].ToInt() });
+                        options.InfluxdbServers.Add(new ServerAddress() { Host = host[0], Port = host[1].ToInt() });
                     }
                 });
             }

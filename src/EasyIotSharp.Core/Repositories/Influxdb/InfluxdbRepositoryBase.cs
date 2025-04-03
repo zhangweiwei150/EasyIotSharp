@@ -14,8 +14,7 @@ using UPrime.Domain.Repositories;
 
 namespace EasyIotSharp.Core.Repositories.Influxdb
 {
-    public abstract class InfluxDbRepositoryBase<TEntity, TPrimaryKey> : IInfluxdbRepositoryBase<TEntity, TPrimaryKey>
-        where TEntity : class, IEntity<TPrimaryKey>, new()
+    public class InfluxdbRepositoryBase<TEntity> : IInfluxdbRepositoryBase<TEntity>
     {
         private readonly IInfluxdbDatabaseProvider _databaseProvider;
 
@@ -27,28 +26,29 @@ namespace EasyIotSharp.Core.Repositories.Influxdb
         /// <summary>
         /// 测量名称(相当于表名)
         /// </summary>
-        public abstract string MeasurementName { get; }
+        public readonly string _measurementName;
 
         /// <summary>
         /// 租户数据库名称
         /// </summary>
-        public abstract string TenantDatabase { get; }
+        public readonly string _tenantDatabase;
 
         /// <summary>
         /// 默认数据库名称
         /// </summary>
-        public virtual string DefaultDatabase => "default";
+        public string DefaultDatabase => "default";
 
-        public InfluxDbRepositoryBase(IInfluxdbDatabaseProvider databaseProvider)
+        public InfluxdbRepositoryBase(IInfluxdbDatabaseProvider databaseProvider,string measurementName,string tenantDatabase)
         {
             _databaseProvider = databaseProvider;
-
+            _measurementName = measurementName;
+            _tenantDatabase = tenantDatabase;
             InitializeDatabase(_databaseProvider).Wait();
         }
 
         public async Task InitializeDatabase(IInfluxdbDatabaseProvider provider)
         {
-            var requiredDatabases = new[] { DefaultDatabase, TenantDatabase };
+            var requiredDatabases = new[] { DefaultDatabase, _tenantDatabase };
             var dataBases = await provider.Client.Database.GetDatabasesAsync();
             foreach (var dbName in requiredDatabases)
             {
@@ -65,43 +65,21 @@ namespace EasyIotSharp.Core.Repositories.Influxdb
         /// <summary>
         /// 获取所有数据
         /// </summary>
-        public virtual IQueryable<TEntity> GetAll()
+        public async Task<IQueryable<Serie>> GetAll()
         {
-            var query = $"SELECT * FROM {MeasurementName}";
-            var result = _databaseProvider.Client.Client.QueryAsync(query, DefaultDatabase).Result;
-            return ConvertSeriesToEntities(result.FirstOrDefault()).AsQueryable();
-        }
-
-        /// <summary>
-        /// 根据ID获取实体
-        /// </summary>
-        public virtual TEntity Get(TPrimaryKey id)
-        {
-            var query = $"SELECT * FROM {MeasurementName} WHERE id='{id}'";
-            var result = _databaseProvider.Client.Client.QueryAsync(query, DefaultDatabase).Result;
-            var entity = ConvertSeriesToEntities(result.FirstOrDefault()).FirstOrDefault();
-
-            if (entity == null)
-            {
-                throw new EntityNotFoundException($"There is no such an entity with given primary key. Entity type: {typeof(TEntity).FullName}, primary key: {id}");
-            }
-
-            return entity;
+            var query = $"SELECT * FROM {_measurementName}";
+            var result = await _databaseProvider.Client.Client.QueryAsync(query, _tenantDatabase);
+            return result.AsQueryable();
         }
 
         /// <summary>
         /// 根据ID异步获取实体
         /// </summary>
-        public virtual async Task<TEntity> GetAsync(TPrimaryKey id)
+        public async Task<Serie> GetAsync(Serie id)
         {
-            var query = $"SELECT * FROM {MeasurementName} WHERE id='{id}'";
-            var result = await _databaseProvider.Client.Client.QueryAsync(query, DefaultDatabase);
-            var entity = ConvertSeriesToEntities(result.FirstOrDefault()).FirstOrDefault();
-
-            if (entity == null)
-            {
-                throw new EntityNotFoundException($"There is no such an entity with given primary key. Entity type: {typeof(TEntity).FullName}, primary key: {id}");
-            }
+            var query = $"SELECT * FROM {_measurementName} WHERE id='{id}'";
+            var result = await _databaseProvider.Client.Client.QueryAsync(query, _tenantDatabase);
+            var entity = result.FirstOrDefault();
 
             return entity;
         }
@@ -109,16 +87,16 @@ namespace EasyIotSharp.Core.Repositories.Influxdb
         /// <summary>
         /// 根据条件查询
         /// </summary>
-        public virtual async Task<List<TEntity>> QueryAsync(string whereClause)
+        public async Task<List<Serie>> QueryAsync(string whereClause)
         {
-            var query = $"SELECT * FROM {MeasurementName}";
+            var query = $"SELECT * FROM {_measurementName}";
             if (!string.IsNullOrWhiteSpace(whereClause))
             {
                 query += $" WHERE {whereClause}";
             }
 
-            var result = await _databaseProvider.Client.Client.QueryAsync(query, DefaultDatabase);
-            return ConvertSeriesToEntities(result.FirstOrDefault()).ToList();
+            var result = await _databaseProvider.Client.Client.QueryAsync(query, _tenantDatabase);
+            return result.ToList();
         }
 
         #endregion
@@ -126,37 +104,21 @@ namespace EasyIotSharp.Core.Repositories.Influxdb
         #region 写入操作
 
         /// <summary>
-        /// 插入实体
-        /// </summary>
-        public virtual TEntity Insert(TEntity entity)
-        {
-            SetCreationAuditProperties(entity);
-            CheckAndSetDefaultValue(entity);
-
-            var point = ConvertEntityToPoint(entity);
-            _databaseProvider.Client.Client.WriteAsync(point, DefaultDatabase).Wait();
-
-            return entity;
-        }
-
-        /// <summary>
         /// 异步插入实体
         /// </summary>
-        public virtual async Task<TEntity> InsertAsync(TEntity entity)
+        public async Task InsertAsync(TEntity entity)
         {
             SetCreationAuditProperties(entity);
             CheckAndSetDefaultValue(entity);
 
             var point = ConvertEntityToPoint(entity);
-            await _databaseProvider.Client.Client.WriteAsync(point, DefaultDatabase);
-
-            return entity;
+            await _databaseProvider.Client.Client.WriteAsync(point, _tenantDatabase);
         }
 
         /// <summary>
         /// 批量插入
         /// </summary>
-        public virtual async Task BulkInsertAsync(IEnumerable<TEntity> entities)
+        public async Task BulkInsertAsync(IEnumerable<TEntity> entities)
         {
             var points = entities.Select(entity =>
             {
@@ -165,83 +127,7 @@ namespace EasyIotSharp.Core.Repositories.Influxdb
                 return ConvertEntityToPoint(entity);
             });
 
-            await _databaseProvider.Client.Client.WriteAsync(points, DefaultDatabase);
-        }
-
-        #endregion
-
-        #region 更新操作
-
-        /// <summary>
-        /// 更新实体
-        /// </summary>
-        public virtual TEntity Update(TEntity entity)
-        {
-            var point = ConvertEntityToPoint(entity);
-            _databaseProvider.Client.Client.WriteAsync(point, DefaultDatabase).Wait();
-            return entity;
-        }
-
-        /// <summary>
-        /// 异步更新实体
-        /// </summary>
-        public virtual async Task<TEntity> UpdateAsync(TEntity entity)
-        {
-            var point = ConvertEntityToPoint(entity);
-            await _databaseProvider.Client.Client.WriteAsync(point, DefaultDatabase);
-            return entity;
-        }
-
-        #endregion
-
-        #region 删除操作
-
-        /// <summary>
-        /// 删除实体
-        /// </summary>
-        public virtual void Delete(TEntity entity)
-        {
-            if (entity is ISoftDelete softDeleteEntity)
-            {
-                softDeleteEntity.IsDeleted = true;
-                Update(entity);
-            }
-            else
-            {
-                DeleteById(entity.Id);
-            }
-        }
-
-        /// <summary>
-        /// 根据ID删除
-        /// </summary>
-        public virtual void Delete(TPrimaryKey id)
-        {
-            DeleteById(id);
-        }
-
-        /// <summary>
-        /// 异步删除实体
-        /// </summary>
-        public virtual async Task DeleteAsync(TEntity entity)
-        {
-            if (entity is ISoftDelete softDeleteEntity)
-            {
-                softDeleteEntity.IsDeleted = true;
-                await UpdateAsync(entity);
-            }
-            else
-            {
-                await DeleteByIdAsync(entity.Id);
-            }
-        }
-
-        /// <summary>
-        /// 根据ID异步删除
-        /// </summary>
-        public virtual async Task DeleteAsync(TPrimaryKey id)
-        {
-            await DeleteByIdAsync(id);
+            await _databaseProvider.Client.Client.WriteAsync(points, _tenantDatabase);
         }
 
         #endregion
@@ -255,7 +141,7 @@ namespace EasyIotSharp.Core.Repositories.Influxdb
         {
             var point = new Point
             {
-                Name = MeasurementName,
+                Name = _measurementName,
                 Timestamp = GetEntityTimestamp(entity),
                 Tags = new Dictionary<string, object>(),
                 Fields = new Dictionary<string, object>()
@@ -303,47 +189,6 @@ namespace EasyIotSharp.Core.Repositories.Influxdb
         }
 
         /// <summary>
-        /// 将查询结果转换为实体列表
-        /// </summary>
-        protected virtual IEnumerable<TEntity> ConvertSeriesToEntities(Serie serie)
-        {
-            if (serie == null || serie.Values == null)
-                return Enumerable.Empty<TEntity>();
-
-            var entities = new List<TEntity>();
-            var columns = serie.Columns.ToList();
-
-            foreach (var valueArray in serie.Values)
-            {
-                var entity = new TEntity();
-
-                for (int i = 0; i < columns.Count; i++)
-                {
-                    var column = columns[i];
-                    var value = valueArray[i];
-
-                    var prop = typeof(TEntity).GetProperty(column);
-                    if (prop != null && value != null && prop.CanWrite)
-                    {
-                        try
-                        {
-                            var convertedValue = Convert.ChangeType(value, prop.PropertyType);
-                            prop.SetValue(entity, convertedValue);
-                        }
-                        catch
-                        {
-                            // 忽略转换错误
-                        }
-                    }
-                }
-
-                entities.Add(entity);
-            }
-
-            return entities;
-        }
-
-        /// <summary>
         /// 获取实体时间戳
         /// </summary>
         protected virtual DateTime GetEntityTimestamp(TEntity entity)
@@ -354,29 +199,11 @@ namespace EasyIotSharp.Core.Repositories.Influxdb
             return DateTime.UtcNow;
         }
 
-        /// <summary>
-        /// 根据ID删除数据
-        /// </summary>
-        protected virtual void DeleteById(TPrimaryKey id)
-        {
-            var query = $"DROP SERIES FROM {MeasurementName} WHERE id='{id}'";
-            _databaseProvider.Client.Client.QueryAsync(query, DefaultDatabase).Wait();
-        }
-
-        /// <summary>
-        /// 异步根据ID删除数据
-        /// </summary>
-        protected virtual async Task DeleteByIdAsync(TPrimaryKey id)
-        {
-            var query = $"DROP SERIES FROM {MeasurementName} WHERE id='{id}'";
-            await _databaseProvider.Client.Client.QueryAsync(query, DefaultDatabase);
-        }
-
         #endregion
 
         #region 继承自基类的方法
 
-        protected virtual void SetCreationAuditProperties(object entityAsObj)
+        private void SetCreationAuditProperties(object entityAsObj)
         {
             if (entityAsObj is IHasCreationTime hasCreationTime)
             {
@@ -387,7 +214,7 @@ namespace EasyIotSharp.Core.Repositories.Influxdb
             }
         }
 
-        protected virtual void CheckAndSetDefaultValue(object entityAsObj)
+        private void CheckAndSetDefaultValue(object entityAsObj)
         {
             var properties = entityAsObj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
 

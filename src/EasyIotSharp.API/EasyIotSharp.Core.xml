@@ -5067,119 +5067,89 @@
             <param name="ids">ID集合</param>
             <returns></returns>
         </member>
-        <member name="P:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.Client">
-            <summary>
-            InfluxDB 客户端
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.MeasurementName">
-            <summary>
-            测量名称(相当于表名)
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.TenantDatabase">
-            <summary>
-            租户数据库名称
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.DefaultDatabase">
-            <summary>
-            默认数据库名称
-            </summary>
-        </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.GetAll">
+        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.IInfluxdbRepositoryBase`1.GetAll">
             <summary>
             获取所有数据
             </summary>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.Get(`1)">
-            <summary>
-            根据ID获取实体
-            </summary>
-        </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.GetAsync(`1)">
+        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.IInfluxdbRepositoryBase`1.GetAsync(InfluxData.Net.InfluxDb.Models.Responses.Serie)">
             <summary>
             根据ID异步获取实体
             </summary>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.QueryAsync(System.String)">
+        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.IInfluxdbRepositoryBase`1.QueryAsync(System.String)">
             <summary>
             根据条件查询
             </summary>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.Insert(`0)">
-            <summary>
-            插入实体
-            </summary>
-        </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.InsertAsync(`0)">
+        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.IInfluxdbRepositoryBase`1.InsertAsync(`0)">
             <summary>
             异步插入实体
             </summary>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.BulkInsertAsync(System.Collections.Generic.IEnumerable{`0})">
+        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.IInfluxdbRepositoryBase`1.BulkInsertAsync(System.Collections.Generic.IEnumerable{`0})">
             <summary>
             批量插入
             </summary>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.Update(`0)">
+        <member name="P:EasyIotSharp.Core.Repositories.Influxdb.InfluxdbRepositoryBase`1.Client">
             <summary>
-            更新实体
+            InfluxDB 客户端
             </summary>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.UpdateAsync(`0)">
+        <member name="F:EasyIotSharp.Core.Repositories.Influxdb.InfluxdbRepositoryBase`1._measurementName">
             <summary>
-            异步更新实体
+            测量名称(相当于表名)
             </summary>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.Delete(`0)">
+        <member name="F:EasyIotSharp.Core.Repositories.Influxdb.InfluxdbRepositoryBase`1._tenantDatabase">
             <summary>
-            删除实体
+            租户数据库名称
             </summary>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.Delete(`1)">
+        <member name="P:EasyIotSharp.Core.Repositories.Influxdb.InfluxdbRepositoryBase`1.DefaultDatabase">
             <summary>
-            根据ID删除
+            默认数据库名称
             </summary>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.DeleteAsync(`0)">
+        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxdbRepositoryBase`1.GetAll">
             <summary>
-            异步删除实体
+            获取所有数据
             </summary>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.DeleteAsync(`1)">
+        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxdbRepositoryBase`1.GetAsync(InfluxData.Net.InfluxDb.Models.Responses.Serie)">
             <summary>
-            根据ID异步删除
+            根据ID异步获取实体
             </summary>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.ConvertEntityToPoint(`0)">
+        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxdbRepositoryBase`1.QueryAsync(System.String)">
+            <summary>
+            根据条件查询
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxdbRepositoryBase`1.InsertAsync(`0)">
+            <summary>
+            异步插入实体
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxdbRepositoryBase`1.BulkInsertAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量插入
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxdbRepositoryBase`1.ConvertEntityToPoint(`0)">
             <summary>
             将实体转换为Point
             </summary>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.ShouldStoreAsTag(System.Reflection.PropertyInfo)">
+        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxdbRepositoryBase`1.ShouldStoreAsTag(System.Reflection.PropertyInfo)">
             <summary>
             判断属性是否应存储为Tag
             </summary>
         </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.ConvertSeriesToEntities(InfluxData.Net.InfluxDb.Models.Responses.Serie)">
-            <summary>
-            将查询结果转换为实体列表
-            </summary>
-        </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.GetEntityTimestamp(`0)">
+        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxdbRepositoryBase`1.GetEntityTimestamp(`0)">
             <summary>
             获取实体时间戳
-            </summary>
-        </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.DeleteById(`1)">
-            <summary>
-            根据ID删除数据
-            </summary>
-        </member>
-        <member name="M:EasyIotSharp.Core.Repositories.Influxdb.InfluxDbRepositoryBase`2.DeleteByIdAsync(`1)">
-            <summary>
-            异步根据ID删除数据
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Repositories.Mysql.IMySqlRepositoryBase`2">
