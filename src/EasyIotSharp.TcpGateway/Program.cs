@@ -1,8 +1,10 @@
 ﻿// Program.cs
+using EasyIotSharp.Cloud.TcpGateway;
 using EasyIotSharp.Cloud.TcpGateway.src.Core.Abstractions;
 using EasyIotSharp.Cloud.TcpGateway.src.Core.Services;
 using EasyIotSharp.Cloud.TcpGateway.src.Infrastructure.Networking;
 using EasyIotSharp.Cloud.TcpGateway.src.ProtocolServices.Modbus;
+using EasyIotSharp.Core.Configuration;
 using EasyIotSharp.Core.Services.Project;
 using EasyIotSharp.Core.Services.Project.Impl;
 using HPSocket;
@@ -13,10 +15,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Prometheus;
 using System.Text;
+using UPrime;
+using UPrime.Configuration;
+using Castle.Facilities.Logging;
+
+using EasyIotSharp.Core.Extensions;
+using UPrime.Castle.Log4Net;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // 日志配置
@@ -44,8 +53,20 @@ builder.Services.AddOptions<TcpServerOptions>()
     .BindConfiguration("TcpServer") // .NET 8新语法
     .ValidateDataAnnotations();
 
-// 服务注册
 
+var config = new ConfigurationBuilder()
+                  .SetBasePath(Directory.GetCurrentDirectory())
+                  .AddYamlFile("appsettings.yml", optional: true, reloadOnChange: true)
+                  .AddYamlFile($"appsettings.dev.yml", optional: true, reloadOnChange: true)
+                  .AddCommandLine(args)
+                  .Build();
+// 服务注册
+var appOptions = AppOptions.ReadFromConfiguration(config);
+UPrimeStarter.Create<EasyIotSharpTcpGatwayModule>((options) =>
+{
+    options.IocManager.IocContainer.AddFacility<LoggingFacility>(f => f.UseUpLog4Net().WithConfig("log4net.config"));
+    options.IocManager.AddAppOptions(appOptions);
+}).Initialize();
 // Add services to the container
 builder.Services.AddSingleton<IDeviceConfigService, DeviceConfigService>();
 builder.Services.AddSingleton<IProtocolRegistry, ProtocolRegistry>();
