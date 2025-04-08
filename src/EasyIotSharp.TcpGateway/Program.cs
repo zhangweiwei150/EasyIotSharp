@@ -1,7 +1,12 @@
 ﻿// Program.cs
 using EasyIotSharp.Cloud.TcpGateway.src.Core.Abstractions;
+using EasyIotSharp.Cloud.TcpGateway.src.Core.Services;
 using EasyIotSharp.Cloud.TcpGateway.src.Infrastructure.Networking;
 using EasyIotSharp.Cloud.TcpGateway.src.ProtocolServices.Modbus;
+using EasyIotSharp.Core.Services.Project;
+using EasyIotSharp.Core.Services.Project.Impl;
+using HPSocket;
+using HPSocket.Tcp;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Http;
@@ -11,19 +16,28 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Prometheus;
-
+using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // 日志配置
-builder.Logging.AddConsole()
-       .AddDebug()
-       .AddJsonConsole()
-       .SetMinimumLevel(LogLevel.Information);
-
-// 添加以下配置
-//builder.Configuration
-//    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-//    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true);
+builder.Logging.ClearProviders()  // 先清除默认提供程序
+    .AddConsole(options =>
+    {
+        options.FormatterName = "simple";
+        // 设置控制台输出编码为 UTF-8 并启用 BOM
+        Console.OutputEncoding = new UTF8Encoding(true);
+    })
+    .AddDebug()
+    .AddJsonConsole(options =>
+    {
+        options.JsonWriterOptions = new System.Text.Json.JsonWriterOptions
+        {
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            Indented = true
+        };
+        options.UseUtcTimestamp = true;
+    })
+    .SetMinimumLevel(LogLevel.Information);
 
 // TCP服务配置
 builder.Services.AddOptions<TcpServerOptions>()
@@ -31,9 +45,28 @@ builder.Services.AddOptions<TcpServerOptions>()
     .ValidateDataAnnotations();
 
 // 服务注册
+
+// Add services to the container
+builder.Services.AddSingleton<IDeviceConfigService, DeviceConfigService>();
+builder.Services.AddSingleton<IProtocolRegistry, ProtocolRegistry>();
 builder.Services.AddSingleton<IProtocolProcessor, ModbusProcessor>();
-builder.Services.AddHostedService<TcpServerService>();
+builder.Services.AddSingleton<IProtocolProcessor, ModbusRtuProcessor>();
+builder.Services.AddSingleton<IProtocolIdentifier, ModbusRtuIdentifier>();
+
+
+builder.Services.AddSingleton<IGatewayProtocolService, GatewayProtocolService>();
+builder.Services.AddSingleton<ITcpServer>(sp => 
+{
+    var server = new TcpServer();
+    return server;
+});
+
+builder.Services.AddSingleton<DeviceSchedulerService>();
 builder.Services.AddSingleton<TcpServerService>();
+
+// 注册TCP服务
+builder.Services.AddHostedService(sp => sp.GetRequiredService<TcpServerService>());
+
 // 健康检查
 builder.Services.AddHealthChecks()
     .AddCheck<TcpServerHealthCheck>("tcp_server");

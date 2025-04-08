@@ -1,22 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\list\\EasyIotSharp\\EasyIotSharp.API\\",
+  "WorkspaceRootPath": "E:\\2025\u5E74\u9879\u76EE\\\u7269\u8054\u7F51\u5E73\u53F0\\EasyIotSharp\\src\\EasyIotSharp.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{951180DD-6288-425B-BCE3-C8EE5FAE008E}|EasyIotSharp.Infrastructure\\EasyIotSharp.Infrastructure.csproj|e:\\list\\easyiotsharp\\easyiotsharp.api\\easyiotsharp.infrastructure\\database\\sqlsugardbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{951180DD-6288-425B-BCE3-C8EE5FAE008E}|EasyIotSharp.Infrastructure\\EasyIotSharp.Infrastructure.csproj|solutionrelative:easyiotsharp.infrastructure\\database\\sqlsugardbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.Infrastructure\\Database\\SqlSugarDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{951180DD-6288-425B-BCE3-C8EE5FAE008E}|EasyIotSharp.Infrastructure\\EasyIotSharp.Infrastructure.csproj|e:\\list\\easyiotsharp\\easyiotsharp.api\\easyiotsharp.infrastructure\\database\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{951180DD-6288-425B-BCE3-C8EE5FAE008E}|EasyIotSharp.Infrastructure\\EasyIotSharp.Infrastructure.csproj|solutionrelative:easyiotsharp.infrastructure\\database\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.Infrastructure\\Database\\Config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B95A2154-DA54-4D56-8FF6-BAF66DE5B327}|EasyIotSharp.API\\EasyIotSharp.API.csproj|e:\\list\\easyiotsharp\\easyiotsharp.api\\easyiotsharp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B95A2154-DA54-4D56-8FF6-BAF66DE5B327}|EasyIotSharp.API\\EasyIotSharp.API.csproj|solutionrelative:easyiotsharp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.API\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B95A2154-DA54-4D56-8FF6-BAF66DE5B327}|EasyIotSharp.API\\EasyIotSharp.API.csproj|e:\\list\\easyiotsharp\\easyiotsharp.api\\easyiotsharp.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B95A2154-DA54-4D56-8FF6-BAF66DE5B327}|EasyIotSharp.API\\EasyIotSharp.API.csproj|solutionrelative:easyiotsharp.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.API\\Startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,131 +22,54 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 18,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:133:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:134:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:135:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:137:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:137:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:136:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:138:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "SqlSugarDbContext.cs",
               "DocumentMoniker": "E:\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.Infrastructure\\Database\\SqlSugarDbContext.cs",
-              "RelativeDocumentMoniker": "EasyIotSharp.Infrastructure\\Database\\SqlSugarDbContext.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.Infrastructure\\Database\\SqlSugarDbContext.cs",
               "ToolTip": "E:\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.Infrastructure\\Database\\SqlSugarDbContext.cs",
-              "RelativeToolTip": "EasyIotSharp.Infrastructure\\Database\\SqlSugarDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvyAAAAAOAAAA",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.Infrastructure\\Database\\SqlSugarDbContext.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T02:37:05.322Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-16T02:37:05.322Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Config.cs",
               "DocumentMoniker": "E:\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.Infrastructure\\Database\\Config.cs",
-              "RelativeDocumentMoniker": "EasyIotSharp.Infrastructure\\Database\\Config.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.Infrastructure\\Database\\Config.cs",
               "ToolTip": "E:\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.Infrastructure\\Database\\Config.cs",
-              "RelativeToolTip": "EasyIotSharp.Infrastructure\\Database\\Config.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.Infrastructure\\Database\\Config.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T02:37:00.523Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-16T02:37:00.523Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.API\\Program.cs",
-              "RelativeDocumentMoniker": "EasyIotSharp.API\\Program.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.API\\Program.cs",
               "ToolTip": "E:\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.API\\Program.cs",
-              "RelativeToolTip": "EasyIotSharp.API\\Program.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.API\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAADwvxoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T02:35:55.163Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-16T02:35:55.163Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Startup.cs",
               "DocumentMoniker": "E:\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.API\\Startup.cs",
-              "RelativeDocumentMoniker": "EasyIotSharp.API\\Startup.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.API\\Startup.cs",
               "ToolTip": "E:\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.API\\Startup.cs",
-              "RelativeToolTip": "EasyIotSharp.API\\Startup.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\list\\EasyIotSharp\\EasyIotSharp.API\\EasyIotSharp.API\\Startup.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T02:35:53.776Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-16T02:35:53.776Z"
             }
           ]
         }

@@ -33,8 +33,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\Infrastructure\Logging\" />
     <Folder Include="src\Core\Services\" />
+    <Folder Include="src\Infrastructure\Logging\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyIotSharp.Core\EasyIotSharp.Core.csproj" />
   </ItemGroup>
 
 </Project>

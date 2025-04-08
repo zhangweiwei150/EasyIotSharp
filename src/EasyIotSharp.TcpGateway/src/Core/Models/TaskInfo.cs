@@ -16,7 +16,7 @@ namespace EasyIotSharp.Cloud.TcpGateway.src.Core.Models
         /// <summary>
         /// 客户信息
         /// </summary>
-        public ClientInfo Client { get; set; }
+        public DeviceContext Client { get; set; }
         public IServer Server { get; set; }
         /// <summary>
         /// 封包

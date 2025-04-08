@@ -1,38 +1,41 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace EasyIotSharp.Cloud.TcpGateway.src.Infrastructure.Networking
 {
     /// <summary>
-    /// 用于检测 TCP 服务健康状态的健康检查类
+    /// TCP服务器健康检查
     /// </summary>
     public class TcpServerHealthCheck : IHealthCheck
     {
-        private readonly TcpServerService _tcpServer;
+        private readonly TcpServerService _tcpServerService;
+        private readonly ILogger<TcpServerHealthCheck> _logger;
 
-        // 确保有构造函数用于依赖注入
-        public TcpServerHealthCheck(TcpServerService tcpServer)
+        public TcpServerHealthCheck(
+            TcpServerService tcpServerService,
+            ILogger<TcpServerHealthCheck> logger)
         {
-            _tcpServer = tcpServer ?? throw new ArgumentNullException(nameof(tcpServer));
+            _tcpServerService = tcpServerService;
+            _logger = logger;
         }
 
-        public Task<HealthCheckResult> CheckHealthAsync(
-            HealthCheckContext context,
-            CancellationToken cancellationToken = default)
+        public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
             try
             {
-                return Task.FromResult(_tcpServer.IsRunning
-                    ? HealthCheckResult.Healthy("TCP server is running")
-                    : HealthCheckResult.Unhealthy("TCP server is stopped"));
+                if (_tcpServerService.IsRunning)
+                {
+                    return Task.FromResult(HealthCheckResult.Healthy("TCP服务器运行正常"));
+                }
+                else
+                {
+                    return Task.FromResult(HealthCheckResult.Degraded("TCP服务器未运行"));
+                }
             }
             catch (Exception ex)
             {
-                return Task.FromResult(HealthCheckResult.Unhealthy("Health check failed", ex));
+                _logger.LogError(ex, "TCP服务器健康检查失败");
+                return Task.FromResult(HealthCheckResult.Unhealthy("TCP服务器健康检查异常", ex));
             }
         }
     }
