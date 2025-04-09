@@ -79,11 +79,13 @@ namespace EasyIotSharp.API
                      webBuilder
                      .UseConfiguration(config)
                      .UseContentRoot(Directory.GetCurrentDirectory())
+                      .UseUrls("http://*:5000")  // 添加此行，监听所有网络接口
                      .ConfigureKestrel(c =>
                      {
                          // kestrel server options：
                          // https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions?view=aspnetcore-3.1
                          c.AddServerHeader = false;
+                         c.ListenAnyIP(5000); // 添加此行，明确指定监听所有IP
                      })
                      .UseStartup<Startup>();
                  })
