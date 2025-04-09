@@ -7,7 +7,6 @@ namespace EasyIotSharp.GateWay.Core.Socket.Factory
 {
     public abstract class EasyTCPSuper
     {
-
         public abstract void DecodeData(TaskInfo taskData);
     }
 }

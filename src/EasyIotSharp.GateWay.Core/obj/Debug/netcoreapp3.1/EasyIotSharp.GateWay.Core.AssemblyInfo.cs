@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EasyIotSharp.GateWay.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e9bc5da3774fed9e3b0116a92e4e0587b63b753")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0310fb456f9c936d48178789c1d06ecdd042acf")]
 [assembly: System.Reflection.AssemblyProductAttribute("EasyIotSharp.GateWay.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EasyIotSharp.GateWay.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

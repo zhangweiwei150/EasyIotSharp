@@ -12,9 +12,10 @@ using System.Text;
 using System.Threading;
 using ThreadPool = HPSocket.Thread.ThreadPool;
 using Timer = System.Timers.Timer;
+
 namespace EasyIotSharp.GateWay.Core.Socket
 {
-    public class EasyTcpServer : EasySocketBase
+    public class EasyTcpServer : EasySocketBase, IDisposable
     {
         private readonly ITcpServer _server = new TcpServer();
 
@@ -122,10 +123,6 @@ namespace EasyIotSharp.GateWay.Core.Socket
         /// <summary>
         /// Server连接事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="connId"></param>
-        /// <param name="client"></param>
-        /// <returns></returns>
         private HandleResult OnAccept(IServer sender, IntPtr connId, IntPtr client)
         {
             // 获取客户端地址
@@ -139,18 +136,17 @@ namespace EasyIotSharp.GateWay.Core.Socket
                 ConnId = connId,
                 ConfigJson=""
             });
+            
+            // 添加到网关连接管理器
+            GatewayConnectionManager.Instance.AddConnection(connId, ip, port);
+            
             LogHelper.Info($"OnAccept({connId}), ip: {ip}, port: {port}");
             return HandleResult.Ok;
         }
 
-
         /// <summary>
         /// 数据监听事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="connId"></param>
-        /// <param name="data"></param>
-        /// <returns></returns>
         private HandleResult OnReceive(IServer sender, IntPtr connId, byte[] data)
         {
             var client = sender.GetExtra<ClientInfo<IntPtr>>(connId);
@@ -158,6 +154,10 @@ namespace EasyIotSharp.GateWay.Core.Socket
             {
                 return HandleResult.Error;
             }
+            
+            // 更新网关数据记录
+            GatewayConnectionManager.Instance.UpdateGatewayData(connId, data);
+            
             HandleResult result;
             result = OnProcessFullPacket(sender, client, data);
             return result;
@@ -172,15 +172,16 @@ namespace EasyIotSharp.GateWay.Core.Socket
                 if (client.PacketData != IntPtr.Zero)
                 {
                     Marshal.FreeHGlobal(client.PacketData);
-                    //client.PacketData.Clear();
                 }
-
+                
+                // 从网关连接管理器中移除
+                GatewayConnectionManager.Instance.RemoveConnection(connId);
+                
                 return HandleResult.Error;
             }
             LogHelper.Info($"OnClose({connId}), socket operation: {socketOperation}, error code: {errorCode}");
             return HandleResult.Ok;
         }
-
 
         private HandleResult OnProcessFullPacket(IServer sender, ClientInfo client, byte[] data)
         {
@@ -216,6 +217,24 @@ namespace EasyIotSharp.GateWay.Core.Socket
             }
             TaskInfo taskData = (TaskInfo)obj;
             tcpManufacture.DecodeData(taskData);
+        }
+       
+        /// <summary>
+        /// 释放资源
+        /// </summary>
+        public void Dispose()
+        {
+            try
+            {
+                _timer?.Stop();
+                _timer?.Dispose();
+                _threadPool?.Stop();
+                _server?.Stop();
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("释放资源异常", ex);
+            }
         }
     }
 }

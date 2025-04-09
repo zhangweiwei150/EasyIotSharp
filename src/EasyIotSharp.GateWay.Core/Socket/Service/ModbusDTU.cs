@@ -25,7 +25,6 @@ namespace EasyIotSharp.GateWay.Core.Socket.Service
         {
             try
             {
-
                 //1、server查询是否ConfigJson=null
                 string modbusConfig = taskData.Client.ConfigJson;
                 if (taskData.Packet == null || taskData.Packet.BData == null)
@@ -34,44 +33,15 @@ namespace EasyIotSharp.GateWay.Core.Socket.Service
                     return;
                 }
                 byte[] bReceived = taskData.Packet.BData;//队列的封包数据
+                
+                // 记录接收到的数据
+                string dataType = string.IsNullOrEmpty(modbusConfig) ? "注册包" : "数据包";
+                GatewayConnectionManager.Instance.UpdateGatewayData(taskData.Client.ConnId, bReceived, dataType);
+                
                 if (!string.IsNullOrEmpty(modbusConfig))
                 {
-                    //2、如果有则正常解析数据
-                    byte[] bData = taskData.Packet.BData;
-                    StringBuilder sResult = new StringBuilder();
-                    //bool isPushMQ = (modbusDevieConfig.IsPushMq == "1");
-                    if (bData == null || bData.Length < 7)
-                    {
-                        // LogHelper.Error(modbusDevieConfig.DeviceName + " 数据异常：" + ParseUtil.ToHexString(bData, bData.Length));
-                        return;
-                    }
-                    //LogHelper.Info("Pid:" + modbusDevieConfig.Pid + " DeviceName: " + modbusDevieConfig.DeviceName + " 数据=> " + ParseUtil.ToHexString(bData, bData.Length));
-
-                    int length = bData.Length;
-                    //byte[] bCRC = DataCheck.ModbusCRC16(bData, 0, bData.Length - 2);
-                    //if (bData[length - 2] == bCRC[0] && bData[length - 1] == bCRC[1] || modbusDevieConfig.RegistCode == "dawangqiao102")
-                    //{
-                    //    //更新HPSocket附加数据配置
-                    //    ComModbusDevice deviceLatest = CacheManager.Get<List<ComModbusDevice>>("lsmodbusDevice").Find(s => s.RegistCode == modbusDevieConfig.RegistCode);
-                    //    if (deviceLatest != null)
-                    //    {
-                    //        taskData.Client.ModbusDevieConfig = deviceLatest;
-                    //        manufactureTagbase = ManufactureFactory.CreateManufacturer(deviceLatest.Manufacturer);
-                    //        if (manufactureTagbase == null)
-                    //        {
-                    //            LogHelper.Error("SensorTagFactory.CreateManufacturer 工厂创建对象失败！manufacturer = " + manufactureTagbase);
-                    //            return;
-                    //        }
-                    //        else
-                    //        {
-                    //            manufactureTagbase.PushMQ(deviceLatest, bData);
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-                    //        LogHelper.Error("CacheManager.Get<List<ComModbusDevie>>(lsmodbusDevice).Find(s => s.RegistCode == modbusDevieConfig.RegistCode)  为空 RegistCode=" + modbusDevieConfig.RegistCode);
-                    //    }
-                    //}
+                    // 如果是数据包，进行解析
+                    ParseReceivedData(taskData.Client.ConnId, bReceived, modbusConfig);
                 }
                 else
                 {
@@ -84,6 +54,10 @@ namespace EasyIotSharp.GateWay.Core.Socket.Service
                         LogHelper.Info("未找到注册包: " + strData);
                         return;
                     }
+                    
+                    // 注册网关ID与连接的关联
+                    ProcessGatewayRegister(taskData.Client.ConnId, strData, bReceived);
+                    
                     //3.2 查询ComModbusDevie配置、
                     taskData.Client.ConfigJson = gatewayprotocol.ConfigJson;
                     //3.3更新server的Extra
@@ -97,6 +71,121 @@ namespace EasyIotSharp.GateWay.Core.Socket.Service
             {
                 LogHelper.Error("ModbusDTU 异常:" + ex.ToString());
                 return;
+            }
+        }
+
+        /// <summary>
+        /// 解析接收到的数据包
+        /// </summary>
+        private void ParseReceivedData(IntPtr connId, byte[] data, string configJson)
+        {
+            try
+            {
+                if (data == null || data.Length < 7)
+                {
+                    return;
+                }
+                
+                // 获取连接信息
+                var connectionInfo = GatewayConnectionManager.Instance.GetConnectionByConnId(connId);
+                if (connectionInfo == null || !connectionInfo.IsRegistered)
+                {
+                    return;
+                }
+                
+                // 解析Modbus数据
+                StringBuilder resultInfo = new StringBuilder();
+                resultInfo.AppendLine($"网关ID: {connectionInfo.GatewayId}");
+                resultInfo.AppendLine($"数据包: {BitConverter.ToString(data).Replace("-", " ")}");
+                
+                // 检查是否是Modbus响应
+                if (data.Length >= 3)
+                {
+                    byte slaveAddress = data[0];
+                    byte functionCode = data[1];
+                    
+                    resultInfo.AppendLine($"从站地址: {slaveAddress}");
+                    resultInfo.AppendLine($"功能码: {functionCode}");
+                    
+                    // 解析不同功能码的数据
+                    if (functionCode == 3 || functionCode == 4) // 读保持寄存器或输入寄存器
+                    {
+                        if (data.Length >= 3 && data[2] > 0)
+                        {
+                            byte byteCount = data[2];
+                            resultInfo.AppendLine($"字节数: {byteCount}");
+                            
+                            // 解析寄存器值
+                            if (data.Length >= 3 + byteCount)
+                            {
+                                resultInfo.AppendLine("寄存器值:");
+                                for (int i = 0; i < byteCount / 2; i++)
+                                {
+                                    int index = 3 + i * 2;
+                                    if (index + 1 < data.Length)
+                                    {
+                                        ushort registerValue = (ushort)((data[index] << 8) | data[index + 1]);
+                                        resultInfo.AppendLine($"  寄存器[{i}]: {registerValue} (0x{registerValue:X4})");
+                                        
+                                        // 根据图片中的寄存器地址解析
+                                        if (slaveAddress == 1 && functionCode == 3)
+                                        {
+                                            // 解析变送器类型、温度、频率等
+                                            switch (i)
+                                            {
+                                                case 0:
+                                                    resultInfo.AppendLine($"  变送器类型: {registerValue}");
+                                                    break;
+                                                case 1:
+                                                    // 温度值已放大10倍
+                                                    double temperature = registerValue / 10.0;
+                                                    resultInfo.AppendLine($"  温度: {temperature}℃");
+                                                    break;
+                                                case 2:
+                                                    // 频率值已放大10倍
+                                                    double frequency = registerValue / 10.0;
+                                                    resultInfo.AppendLine($"  频率: {frequency}Hz");
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                // 将解析结果添加到连接信息中
+                string parsedResult = resultInfo.ToString();
+                LogHelper.Info($"解析数据包结果:\n{parsedResult}");
+                
+                // 更新连接信息中的解析结果
+                GatewayConnectionManager.Instance.UpdateGatewayDataParsedResult(connId, data, parsedResult);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error($"解析数据包异常: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// 处理网关注册包
+        /// </summary>
+        protected void ProcessGatewayRegister(IntPtr connId, string gatewayId, byte[] data)
+        {
+            try
+            {
+                // 获取客户端IP和端口
+                string ip = "未知";
+                ushort port = 0;
+                
+                // 注册网关ID与连接的关联
+                GatewayConnectionManager.Instance.RegisterGateway(connId, gatewayId);
+                LogHelper.Info($"网关 {gatewayId} 注册成功，连接ID: {connId}, IP: {ip}, 端口: {port}");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error($"处理网关注册包异常: {ex.Message}");
             }
         }
 
@@ -167,12 +256,7 @@ namespace EasyIotSharp.GateWay.Core.Socket.Service
                             {
                                 int sleepTime = interval * 1000; // 转换为毫秒
                                 intervalMap[BitConverter.ToString(cmd)] = sleepTime;
-                                
-                                // 使用最小的间隔时间作为全局间隔
-                                if (sleepTime < defaultSleepTime)
-                                {
-                                    defaultSleepTime = sleepTime;
-                                }
+                                defaultSleepTime = sleepTime;
                             }
                         }
                         catch (Exception ex)
@@ -207,6 +291,12 @@ namespace EasyIotSharp.GateWay.Core.Socket.Service
                                     {
                                         int cmdSleepTime = intervalMap.TryGetValue(BitConverter.ToString(cmd), out int time) ? time : defaultSleepTime;
                                         LogHelper.Info($"发送命令成功: {cmdHex}, 间隔: {cmdSleepTime}ms");
+                                        
+                                        // 记录发送的命令到网关连接管理器
+                                        GatewayConnectionManager.Instance.UpdateGatewayData(
+                                            taskData.Client.ConnId, 
+                                            cmd, 
+                                            "发送命令");
                                     }
                                     else
                                     {
