@@ -16,6 +16,8 @@
 /src/EasyIotSharp.TcpGateway/obj
 /src/EasyIotSharp.MqttGateway/bin
 /src/EasyIotSharp.MqttGateway/obj
+/src/EasyIotSharp.GateWay.Core/bin
+/src/EasyIotSharp.GateWay.Core/obj
 .vs/*
 /.vs
 /.vs/slnx.sqlite
