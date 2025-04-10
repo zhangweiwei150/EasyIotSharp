@@ -11,15 +11,21 @@ using EasyIotSharp.GateWay.Core.Domain;
 using System.Linq;
 using System.Text.Json;
 using EasyIotSharp.GateWay.Core.Util.ModbusUtil;
+using EasyIotSharp.GateWay.Core.Services;
 
 namespace EasyIotSharp.GateWay.Core.Socket.Service
 {
     public class ModbusDTU : EasyTCPSuper
     {
         public easyiotsharpContext _easyiotsharpContext;
+        // 在类的成员变量中添加
+        private RabbitMQService _rabbitMQService;
+        
+        // 修改构造函数
         public ModbusDTU(easyiotsharpContext easyiotsharpContext)
         {
             _easyiotsharpContext = easyiotsharpContext;
+            _rabbitMQService = new RabbitMQService();
         }
         public override void DecodeData(TaskInfo taskData)
         {
@@ -98,6 +104,48 @@ namespace EasyIotSharp.GateWay.Core.Socket.Service
                 resultInfo.AppendLine($"网关ID: {connectionInfo.GatewayId}");
                 resultInfo.AppendLine($"数据包: {BitConverter.ToString(data).Replace("-", " ")}");
                 
+                // 从配置中解析系数映射
+                Dictionary<int, double> coefficientMap = new Dictionary<int, double>();
+                try
+                {
+                    using (JsonDocument document = JsonDocument.Parse(configJson))
+                    {
+                        var root = document.RootElement;
+                        if (root.ValueKind == JsonValueKind.Array)
+                        {
+                            foreach (JsonElement element in root.EnumerateArray())
+                            {
+                                if (element.TryGetProperty("formData", out JsonElement formData))
+                                {
+                                    // 获取从站地址和起始地址
+                                    if (TryParseJsonValue(formData, "address", out byte slaveAddress) &&
+                                        TryParseJsonValue(formData, "StartingAddress", out ushort startAddress))
+                                    {
+                                        // 获取系数K
+                                        if (formData.TryGetProperty("k", out JsonElement kElement) && 
+                                            double.TryParse(kElement.GetString(), out double k))
+                                        {
+                                            // 为每个寄存器地址创建系数映射
+                                            if (TryParseJsonValue(formData, "Quantity", out ushort quantity))
+                                            {
+                                                for (int i = 0; i < quantity; i++)
+                                                {
+                                                    int key = (slaveAddress << 16) | (startAddress + i);
+                                                    coefficientMap[key] = k;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Error($"解析配置系数时发生错误: {ex.Message}");
+                }
+                
                 // 检查是否是Modbus响应
                 if (data.Length >= 3)
                 {
@@ -127,24 +175,60 @@ namespace EasyIotSharp.GateWay.Core.Socket.Service
                                         ushort registerValue = (ushort)((data[index] << 8) | data[index + 1]);
                                         resultInfo.AppendLine($"  寄存器[{i}]: {registerValue} (0x{registerValue:X4})");
                                         
-                                        // 根据图片中的寄存器地址解析
-                                        if (slaveAddress == 1 && functionCode == 3)
+                                        // 根据从站地址和功能码解析数据
+                                        if (functionCode == 3 || functionCode == 4)
                                         {
-                                            // 解析变送器类型、温度、频率等
+                                            // 计算寄存器地址
+                                            ushort startAddress = 0;
+                                            // 尝试从配置中获取起始地址
+                                            using (JsonDocument document = JsonDocument.Parse(configJson))
+                                            {
+                                                var root = document.RootElement;
+                                                if (root.ValueKind == JsonValueKind.Array)
+                                                {
+                                                    foreach (JsonElement element in root.EnumerateArray())
+                                                    {
+                                                        if (element.TryGetProperty("formData", out JsonElement formData) &&
+                                                            TryParseJsonValue(formData, "address", out byte configSlaveAddress) &&
+                                                            configSlaveAddress == slaveAddress &&
+                                                            TryParseJsonValue(formData, "functionCode", out byte configFunctionCode) &&
+                                                            configFunctionCode == functionCode &&
+                                                            TryParseJsonValue(formData, "StartingAddress", out ushort configStartAddress))
+                                                        {
+                                                            startAddress = configStartAddress;
+                                                            break;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            
+                                            // 计算实际寄存器地址
+                                            ushort actualAddress = (ushort)(startAddress + i);
+                                            int key = (slaveAddress << 16) | actualAddress;
+                                            
+                                            // 获取系数K，默认为1.0
+                                            double k = coefficientMap.TryGetValue(key, out double coefficient) ? coefficient : 1.0;
+                                            
+                                            // 根据寄存器地址解析特定数据
                                             switch (i)
                                             {
                                                 case 0:
                                                     resultInfo.AppendLine($"  变送器类型: {registerValue}");
                                                     break;
                                                 case 1:
-                                                    // 温度值已放大10倍
-                                                    double temperature = registerValue / 10.0;
-                                                    resultInfo.AppendLine($"  温度: {temperature}℃");
+                                                    // 使用配置中的系数K
+                                                    double temperature = registerValue * k;
+                                                    resultInfo.AppendLine($"  温度: {temperature}℃ (系数K={k})");
                                                     break;
                                                 case 2:
-                                                    // 频率值已放大10倍
-                                                    double frequency = registerValue / 10.0;
-                                                    resultInfo.AppendLine($"  频率: {frequency}Hz");
+                                                    // 使用配置中的系数K
+                                                    double frequency = registerValue * k;
+                                                    resultInfo.AppendLine($"  频率: {frequency}Hz (系数K={k})");
+                                                    break;
+                                                default:
+                                                    // 对于其他寄存器，也应用系数K
+                                                    double value = registerValue * k;
+                                                    resultInfo.AppendLine($"  值: {value} (系数K={k})");
                                                     break;
                                             }
                                         }
@@ -155,12 +239,54 @@ namespace EasyIotSharp.GateWay.Core.Socket.Service
                     }
                 }
                 
+                // 在ParseReceivedData方法中修改RabbitMQ发送部分
                 // 将解析结果添加到连接信息中
                 string parsedResult = resultInfo.ToString();
                 LogHelper.Info($"解析数据包结果:\n{parsedResult}");
                 
                 // 更新连接信息中的解析结果
                 GatewayConnectionManager.Instance.UpdateGatewayDataParsedResult(connId, data, parsedResult);
+                
+                // 发送解析结果到RabbitMQ
+                try
+                {
+                    if (connectionInfo != null && !string.IsNullOrEmpty(connectionInfo.GatewayId))
+                    {
+                        // 查询网关所属的项目ID
+                        var gateway = _easyiotsharpContext.Gateway.FirstOrDefault(g => g.Id == connectionInfo.GatewayId);
+                        if (gateway != null && !string.IsNullOrEmpty(gateway.ProjectId))
+                        {
+                            // 创建消息对象
+                            var message = new
+                            {
+                                GatewayId = connectionInfo.GatewayId,
+                                Timestamp = DateTime.Now,
+                                Data = BitConverter.ToString(data).Replace("-", " "),
+                                ParsedResult = parsedResult,
+                                IP = connectionInfo.IP,
+                                Port = connectionInfo.Port
+                            };
+                            
+                            // 发送到RabbitMQ
+                            try
+                            {
+                                _rabbitMQService.SendMessage(int.Parse(gateway.ProjectId), message);
+                            }
+                            catch (Exception mqEx)
+                            {
+                                LogHelper.Error($"发送到RabbitMQ失败: {mqEx.Message}");
+                            }
+                        }
+                        else
+                        {
+                            LogHelper.Warn($"未找到网关 {connectionInfo.GatewayId} 对应的项目ID");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Error($"准备发送数据到RabbitMQ时发生错误: {ex.Message}");
+                }
             }
             catch (Exception ex)
             {

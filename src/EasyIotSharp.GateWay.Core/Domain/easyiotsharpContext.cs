@@ -28,6 +28,8 @@ namespace EasyIotSharp.GateWay.Core.Domain
         public virtual DbSet<Protocol> Protocol { get; set; }
         public virtual DbSet<Protocolconfig> Protocolconfig { get; set; }
         public virtual DbSet<Protocolconfigext> Protocolconfigext { get; set; }
+        public virtual DbSet<RabbitProject> RabbitProject { get; set; }
+        public virtual DbSet<RabbitServerinfo> RabbitServerinfo { get; set; }
         public virtual DbSet<Rolemenus> Rolemenus { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Sensor> Sensor { get; set; }
@@ -599,6 +601,105 @@ namespace EasyIotSharp.GateWay.Core.Domain
                     .HasComment("值")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
+            });
+
+            modelBuilder.Entity<RabbitProject>(entity =>
+            {
+                entity.ToTable("rabbit_project");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.CreateTime)
+                    .HasColumnName("create_time")
+                    .HasColumnType("timestamp")
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                entity.Property(e => e.Extendint)
+                    .HasColumnName("extendint")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.Extendstr)
+                    .HasColumnName("extendstr")
+                    .HasColumnType("varchar(50)")
+                    .HasDefaultValueSql("'remark'")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.MqId)
+                    .HasColumnName("mq_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.ProjectId)
+                    .HasColumnName("project_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.UpdateTime)
+                    .HasColumnName("update_time")
+                    .HasColumnType("timestamp")
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                    .ValueGeneratedOnAddOrUpdate();
+            });
+
+            modelBuilder.Entity<RabbitServerinfo>(entity =>
+            {
+                entity.ToTable("rabbit_serverinfo");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.CreateTime)
+                    .HasColumnName("create_time")
+                    .HasColumnType("timestamp")
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                entity.Property(e => e.Exchange)
+                    .IsRequired()
+                    .HasColumnName("exchange")
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Host)
+                    .IsRequired()
+                    .HasColumnName("host")
+                    .HasColumnType("varchar(30)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasColumnName("password")
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Port)
+                    .HasColumnName("port")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.UpdateTime)
+                    .HasColumnName("update_time")
+                    .HasColumnType("timestamp")
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                    .ValueGeneratedOnAddOrUpdate();
+
+                entity.Property(e => e.Username)
+                    .IsRequired()
+                    .HasColumnName("username")
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Virtualhost)
+                    .IsRequired()
+                    .HasColumnName("virtualhost")
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
             });
 
             modelBuilder.Entity<Rolemenus>(entity =>
