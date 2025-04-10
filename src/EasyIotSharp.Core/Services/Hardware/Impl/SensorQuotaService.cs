@@ -63,12 +63,12 @@ namespace EasyIotSharp.Core.Services.Hardware.Impl
 
         public async Task InsertSensorQuota(InsertSensorQuotaInput input)
         {
-            var isExistName = await _sensorQuotaRepository.FirstOrDefaultAsync(x => x.TenantNumId == ContextUser.TenantNumId && x.Name == input.Name && x.IsDelete == false);
+            var isExistName = await _sensorQuotaRepository.FirstOrDefaultAsync(x => x.TenantNumId == ContextUser.TenantNumId && x.Name == input.Name && x.SensorId==input.SensorId && x.IsDelete == false);
             if (isExistName.IsNotNull())
             {
                 throw new BizException(BizError.BIND_EXCEPTION_ERROR, "传感器类型指标名称重复");
             }
-            var isExistIdentifier = await _sensorQuotaRepository.FirstOrDefaultAsync(x => x.TenantNumId == ContextUser.TenantNumId && x.Identifier == input.Identifier && x.IsDelete == false);
+            var isExistIdentifier = await _sensorQuotaRepository.FirstOrDefaultAsync(x => x.TenantNumId == ContextUser.TenantNumId && x.Identifier == input.Identifier && x.SensorId == input.SensorId && x.IsDelete == false);
             if (isExistIdentifier.IsNotNull())
             {
                 throw new BizException(BizError.BIND_EXCEPTION_ERROR, "传感器类型指标标识符重复");

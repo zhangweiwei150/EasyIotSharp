@@ -90,7 +90,7 @@ namespace EasyIotSharp.GateWay.Core.Model.RaddbitDTO
                         _channel.QueueBind(
                             queue: queueName,
                             exchange: formattedExchange,
-                            routingKey: "payload");
+                            routingKey: Exchange);
 
                         LogHelper.Info($"成功创建交换机 [{formattedExchange}] 和队列 [{queueName}]");
                         

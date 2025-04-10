@@ -18,7 +18,7 @@ namespace EasyIotSharp.GateWay.Core.Services
         /// <param name="projectId">项目ID</param>
         /// <param name="message">消息内容</param>
         /// <returns>是否发送成功</returns>
-        public bool SendMessage(int projectId, object message)
+        public bool SendMessage(string projectId, object message)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace EasyIotSharp.GateWay.Core.Services
         /// <param name="projectId">项目ID</param>
         /// <param name="data">字节数据</param>
         /// <returns>是否发送成功</returns>
-        public bool SendRawData(int projectId, byte[] data)
+        public bool SendRawData(string projectId, byte[] data)
         {
             try
             {

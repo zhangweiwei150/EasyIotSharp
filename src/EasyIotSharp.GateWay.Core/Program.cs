@@ -2,6 +2,7 @@
 using EasyIotSharp.GateWay.Core.Socket;
 using EasyIotSharp.GateWay.Core.UI;
 using EasyIotSharp.GateWay.Core.Util;
+using EasyIotSharp.GateWay.Core.Util.Encrypotion;
 using System;
 using System.Threading;
 
@@ -21,7 +22,6 @@ namespace EasyIotSharp.GateWay.Core
                 
                 var serviceManager = new GateWayService();
                 serviceManager.InitializeServices();
-
                 var exitEvent = new ManualResetEvent(false);
                 Console.CancelKeyPress += (sender, e) =>
                 {
