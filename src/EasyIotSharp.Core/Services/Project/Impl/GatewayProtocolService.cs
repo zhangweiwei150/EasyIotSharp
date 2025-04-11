@@ -61,6 +61,7 @@ namespace EasyIotSharp.Core.Services.Project.Impl
                 if (gateway.IsNotNull())
                 {
                     item.GatewayName = gateway.Name;
+                    item.ProjectId = gateway.ProjectId;
                 }
                 var protocol = protocols.FirstOrDefault(x => x.Id == item.ProtocolId);
                 if (protocol.IsNotNull())

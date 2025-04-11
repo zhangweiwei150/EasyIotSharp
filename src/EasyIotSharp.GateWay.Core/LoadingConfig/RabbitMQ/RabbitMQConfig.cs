@@ -24,7 +24,7 @@ namespace EasyIotSharp.GateWay.Core.LoadingConfig.RabbitMQ
         /// <summary>
         /// 项目ID到MQ客户端的映射
         /// </summary>
-        public static Dictionary<int, RabbitMQClient> dicPid2MQClient = new Dictionary<int, RabbitMQClient>();
+        public static Dictionary<string, RabbitMQClient> dicPid2MQClient = new Dictionary<string, RabbitMQClient>();
         
         /// <summary>
         /// MQ客户端列表
@@ -165,7 +165,7 @@ namespace EasyIotSharp.GateWay.Core.LoadingConfig.RabbitMQ
         /// </summary>
         /// <param name="projectId">项目ID</param>
         /// <returns>RabbitMQ客户端实例，如果不存在则返回null</returns>
-        public static RabbitMQClient GetMQClient(int projectId)
+        public static RabbitMQClient GetMQClient(string projectId)
         {
             if (dicPid2MQClient.TryGetValue(projectId, out RabbitMQClient client))
             {
@@ -179,7 +179,7 @@ namespace EasyIotSharp.GateWay.Core.LoadingConfig.RabbitMQ
         /// </summary>
         /// <param name="projectId">项目ID</param>
         /// <returns>路由键，如果不存在则返回空字符串</returns>
-        public static string GetRoutingKey(int projectId)
+        public static string GetRoutingKey(string projectId)
         {
             string key = projectId.ToString();
             if (m_RoutingKey.TryGetValue(key, out string routingKey))

@@ -18,6 +18,11 @@ namespace EasyIotSharp.Core.Dto.Project
         public string Id { get; set; }
 
         /// <summary>
+        /// 项目id
+        /// </summary>
+        public string ProjectId { get; set; }
+
+        /// <summary>
         /// 网关id
         /// </summary>
         public string GatewayId { get; set; }

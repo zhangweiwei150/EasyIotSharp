@@ -2268,6 +2268,11 @@
             id
             </summary>
         </member>
+        <member name="P:EasyIotSharp.Core.Dto.Project.GatewayProtocolDto.ProjectId">
+            <summary>
+            项目id
+            </summary>
+        </member>
         <member name="P:EasyIotSharp.Core.Dto.Project.GatewayProtocolDto.GatewayId">
             <summary>
             网关id

@@ -633,8 +633,11 @@ namespace EasyIotSharp.GateWay.Core.Domain
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.ProjectId)
+                    .IsRequired()
                     .HasColumnName("project_id")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("varchar(255)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
 
                 entity.Property(e => e.UpdateTime)
                     .HasColumnName("update_time")

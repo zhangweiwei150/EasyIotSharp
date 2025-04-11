@@ -12,6 +12,9 @@ using System.Linq;
 using System.Text.Json;
 using EasyIotSharp.GateWay.Core.Util.ModbusUtil;
 using EasyIotSharp.GateWay.Core.Services;
+using EasyIotSharp.GateWay.Core.Model.AnalysisDTO;
+using EasyIotSharp.GateWay.Core.Model.ConfigDTO;
+using System.Collections.Generic;
 
 namespace EasyIotSharp.GateWay.Core.Socket.Service
 {
@@ -87,216 +90,118 @@ namespace EasyIotSharp.GateWay.Core.Socket.Service
         {
             try
             {
-                if (data == null || data.Length < 7)
-                {
-                    return;
-                }
-                
-                // 获取连接信息
+                if (data == null || data.Length < 7) return;
+
                 var connectionInfo = GatewayConnectionManager.Instance.GetConnectionByConnId(connId);
-                if (connectionInfo == null || !connectionInfo.IsRegistered)
+                if (connectionInfo == null || !connectionInfo.IsRegistered) return;
+
+                // 使用JsonExtensions进行反序列化
+                List<ModbusConfigModel> configModels = configJson.FromJson<List<ModbusConfigModel>>();
+
+                if (configModels == null || configModels.Count == 0)
                 {
+                    LogHelper.Error("配置解析失败或为空");
                     return;
                 }
-                
-                // 解析Modbus数据
-                StringBuilder resultInfo = new StringBuilder();
-                resultInfo.AppendLine($"网关ID: {connectionInfo.GatewayId}");
-                resultInfo.AppendLine($"数据包: {BitConverter.ToString(data).Replace("-", " ")}");
-                
-                // 从配置中解析系数映射
-                Dictionary<int, double> coefficientMap = new Dictionary<int, double>();
-                try
+
+                // 查找匹配的配置项
+                foreach (var config in configModels)
                 {
-                    using (JsonDocument document = JsonDocument.Parse(configJson))
+                    // 检查从站地址和功能码是否匹配
+                    if (config.FormData.Address == data[0] && config.FormData.FunctionCode == data[1])
                     {
-                        var root = document.RootElement;
-                        if (root.ValueKind == JsonValueKind.Array)
+                        // 通过测点id拿到sensorid
+                        if (string.IsNullOrEmpty(config.MeasurementPoint))
                         {
-                            foreach (JsonElement element in root.EnumerateArray())
-                            {
-                                if (element.TryGetProperty("formData", out JsonElement formData))
-                                {
-                                    // 获取从站地址和起始地址
-                                    if (TryParseJsonValue(formData, "address", out byte slaveAddress) &&
-                                        TryParseJsonValue(formData, "StartingAddress", out ushort startAddress))
-                                    {
-                                        // 获取系数K
-                                        if (formData.TryGetProperty("k", out JsonElement kElement) && 
-                                            double.TryParse(kElement.GetString(), out double k))
-                                        {
-                                            // 为每个寄存器地址创建系数映射
-                                            if (TryParseJsonValue(formData, "Quantity", out ushort quantity))
-                                            {
-                                                for (int i = 0; i < quantity; i++)
-                                                {
-                                                    int key = (slaveAddress << 16) | (startAddress + i);
-                                                    coefficientMap[key] = k;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            LogHelper.Error($"测点ID为空，跳过处理");
+                            continue;
                         }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    LogHelper.Error($"解析配置系数时发生错误: {ex.Message}");
-                }
-                
-                // 检查是否是Modbus响应
-                if (data.Length >= 3)
-                {
-                    byte slaveAddress = data[0];
-                    byte functionCode = data[1];
-                    
-                    resultInfo.AppendLine($"从站地址: {slaveAddress}");
-                    resultInfo.AppendLine($"功能码: {functionCode}");
-                    
-                    // 解析不同功能码的数据
-                    if (functionCode == 3 || functionCode == 4) // 读保持寄存器或输入寄存器
-                    {
+
+                        var sensorPoint = _easyiotsharpContext.Sensorpoint
+                            .Where(x => x.Id == config.MeasurementPoint)
+                            .FirstOrDefault();
+
+                        if (sensorPoint == null)
+                        {
+                            LogHelper.Error($"未找到测点信息，测点ID: {config.MeasurementPoint}");
+                            continue;
+                        }
+
+                        var sensor = _easyiotsharpContext.Sensor
+                         .Where(x => x.Id == sensorPoint.SensorId)
+                         .FirstOrDefault();
+
+                        if (sensor == null)
+                        {
+                            LogHelper.Error($"未找到测点类型信息，测点类型id: {sensorPoint.SensorId}");
+                            continue;
+                        }
+                        var sensorQuota = _easyiotsharpContext.Sensorquota
+                            .Where(x => x.SensorId == sensorPoint.SensorId)
+                            .OrderBy(x => x.Sort)
+                            .ToList();
+
+                        if (sensorQuota == null || !sensorQuota.Any())
+                        {
+                            LogHelper.Warn($"未找到传感器指标信息，传感器ID: {sensorPoint.SensorId}");
+                        }
+
+                        // 使用SensorDataFactory创建传感器数据对象
+                        var sensorData = SensorDataFactory.CreateSensorData<LowFrequencyData>(
+                            config.projectId,
+                            DateTime.Now);
+                        
+                        // 设置测点类型
+                        sensorData.PointType = sensor.BriefName;
+
                         if (data.Length >= 3 && data[2] > 0)
                         {
                             byte byteCount = data[2];
-                            resultInfo.AppendLine($"字节数: {byteCount}");
-                            
-                            // 解析寄存器值
-                            if (data.Length >= 3 + byteCount)
+                            var pointData = new PointData
                             {
-                                resultInfo.AppendLine("寄存器值:");
-                                for (int i = 0; i < byteCount / 2; i++)
+                                PointId = config.MeasurementPoint,
+                                IndicatorCount = byteCount / 2
+                            };
+
+                            // 使用配置中的系数K
+                            double k = config.FormData.K;
+
+                            for (int i = 0; i < byteCount / 2; i++)
+                            {
+                                if (3 + i * 2 + 1 < data.Length)
                                 {
-                                    int index = 3 + i * 2;
-                                    if (index + 1 < data.Length)
-                                    {
-                                        ushort registerValue = (ushort)((data[index] << 8) | data[index + 1]);
-                                        resultInfo.AppendLine($"  寄存器[{i}]: {registerValue} (0x{registerValue:X4})");
-                                        
-                                        // 根据从站地址和功能码解析数据
-                                        if (functionCode == 3 || functionCode == 4)
-                                        {
-                                            // 计算寄存器地址
-                                            ushort startAddress = 0;
-                                            // 尝试从配置中获取起始地址
-                                            using (JsonDocument document = JsonDocument.Parse(configJson))
-                                            {
-                                                var root = document.RootElement;
-                                                if (root.ValueKind == JsonValueKind.Array)
-                                                {
-                                                    foreach (JsonElement element in root.EnumerateArray())
-                                                    {
-                                                        if (element.TryGetProperty("formData", out JsonElement formData) &&
-                                                            TryParseJsonValue(formData, "address", out byte configSlaveAddress) &&
-                                                            configSlaveAddress == slaveAddress &&
-                                                            TryParseJsonValue(formData, "functionCode", out byte configFunctionCode) &&
-                                                            configFunctionCode == functionCode &&
-                                                            TryParseJsonValue(formData, "StartingAddress", out ushort configStartAddress))
-                                                        {
-                                                            startAddress = configStartAddress;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            
-                                            // 计算实际寄存器地址
-                                            ushort actualAddress = (ushort)(startAddress + i);
-                                            int key = (slaveAddress << 16) | actualAddress;
-                                            
-                                            // 获取系数K，默认为1.0
-                                            double k = coefficientMap.TryGetValue(key, out double coefficient) ? coefficient : 1.0;
-                                            
-                                            // 根据寄存器地址解析特定数据
-                                            switch (i)
-                                            {
-                                                case 0:
-                                                    resultInfo.AppendLine($"  变送器类型: {registerValue}");
-                                                    break;
-                                                case 1:
-                                                    // 使用配置中的系数K
-                                                    double temperature = registerValue * k;
-                                                    resultInfo.AppendLine($"  温度: {temperature}℃ (系数K={k})");
-                                                    break;
-                                                case 2:
-                                                    // 使用配置中的系数K
-                                                    double frequency = registerValue * k;
-                                                    resultInfo.AppendLine($"  频率: {frequency}Hz (系数K={k})");
-                                                    break;
-                                                default:
-                                                    // 对于其他寄存器，也应用系数K
-                                                    double value = registerValue * k;
-                                                    resultInfo.AppendLine($"  值: {value} (系数K={k})");
-                                                    break;
-                                            }
-                                        }
-                                    }
+                                    ushort registerValue = (ushort)((data[3 + i * 2] << 8) | data[3 + i * 2 + 1]);
+                                    
+                                    // 获取对应的指标名称
+                                    string quotaName = i < sensorQuota.Count ? sensorQuota[i].Identifier : $"指标{i+1}";
+                                    double quotaValue = registerValue * k;
+                                    string Unit= i < sensorQuota.Count ? sensorQuota[i].Unit : $"指标{i + 1}";
+                                    // 添加带有名称的值
+                                    pointData.Values.Add(new NamedValue 
+                                    { 
+                                        Name = quotaName, 
+                                        Value = quotaValue,
+                                        Unit= Unit
+                                    });
                                 }
                             }
+
+                            sensorData.Points.Add(pointData);
+                            DataParserHelper.SendEncryptedData(sensorData, connectionInfo, _easyiotsharpContext, _rabbitMQService);
                         }
+                        break; // 找到匹配的配置后退出循环
                     }
-                }
-                
-                // 在ParseReceivedData方法中修改RabbitMQ发送部分
-                // 将解析结果添加到连接信息中
-                string parsedResult = resultInfo.ToString();
-                LogHelper.Info($"解析数据包结果:\n{parsedResult}");
-                
-                // 更新连接信息中的解析结果
-                GatewayConnectionManager.Instance.UpdateGatewayDataParsedResult(connId, data, parsedResult);
-                
-                // 发送解析结果到RabbitMQ
-                try
-                {
-                    if (connectionInfo != null && !string.IsNullOrEmpty(connectionInfo.GatewayId))
-                    {
-                        // 查询网关所属的项目ID
-                        var gateway = _easyiotsharpContext.Gateway.FirstOrDefault(g => g.Id == connectionInfo.GatewayId);
-                        if (gateway != null && !string.IsNullOrEmpty(gateway.ProjectId))
-                        {
-                            // 创建消息对象
-                            var message = new
-                            {
-                                GatewayId = connectionInfo.GatewayId,
-                                Timestamp = DateTime.Now,
-                                Data = BitConverter.ToString(data).Replace("-", " "),
-                                ParsedResult = parsedResult,
-                                IP = connectionInfo.IP,
-                                Port = connectionInfo.Port
-                            };
-                            
-                            // 发送到RabbitMQ
-                            try
-                            {
-                                _rabbitMQService.SendMessage(int.Parse(gateway.ProjectId), message);
-                            }
-                            catch (Exception mqEx)
-                            {
-                                LogHelper.Error($"发送到RabbitMQ失败: {mqEx.Message}");
-                            }
-                        }
-                        else
-                        {
-                            LogHelper.Warn($"未找到网关 {connectionInfo.GatewayId} 对应的项目ID");
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    LogHelper.Error($"准备发送数据到RabbitMQ时发生错误: {ex.Message}");
                 }
             }
             catch (Exception ex)
             {
-                LogHelper.Error($"解析数据包异常: {ex.Message}");
+                LogHelper.Error($"解析数据包异常: {ex.ToString()}");
             }
         }
 
-        /// <summary>
+        
+
         /// 处理网关注册包
-        /// </summary>
         protected void ProcessGatewayRegister(IntPtr connId, string gatewayId, byte[] data)
         {
             try
@@ -326,69 +231,55 @@ namespace EasyIotSharp.GateWay.Core.Socket.Service
 
             try
             {
-                int defaultSleepTime = 20000; // 默认间隔时间
-                Dictionary<string, int> intervalMap = new Dictionary<string, int>(); // 存储每个命令的间隔时间
+                int defaultSleepTime = 20000;
+                Dictionary<string, int> intervalMap = new Dictionary<string, int>();
                 List<byte[]> commandList = new List<byte[]>();
 
-                using (JsonDocument document = JsonDocument.Parse(taskData.Client.ConfigJson))
+                // 使用JsonExtensions进行反序列化
+                List<ModbusConfigModel> configModels = taskData.Client.ConfigJson.FromJson<List<ModbusConfigModel>>();
+
+                if (configModels == null || configModels.Count == 0)
                 {
-                    var root = document.RootElement;
-                    if (root.ValueKind != JsonValueKind.Array)
+                    LogHelper.Error("配置解析失败或为空");
+                    return;
+                }
+
+                // 解析配置并生成命令
+                foreach (var config in configModels)
+                {
+                    try
                     {
-                        LogHelper.Error("ConfigJson格式错误，应为数组格式");
-                        return;
+                        var formData = config.FormData;
+                        if (formData == null)
+                        {
+                            LogHelper.Warn("配置项缺少formData字段，跳过");
+                            continue;
+                        }
+
+                        // 组装Modbus命令
+                        byte[] cmd = new byte[8];
+                        cmd[0] = formData.Address;                  // 从站地址
+                        cmd[1] = formData.FunctionCode;             // 功能码
+                        cmd[2] = (byte)(formData.StartingAddress >> 8);     // 起始地址高字节
+                        cmd[3] = (byte)(formData.StartingAddress & 0xFF);   // 起始地址低字节
+                        cmd[4] = (byte)(formData.Quantity >> 8);         // 数量高字节
+                        cmd[5] = (byte)(formData.Quantity & 0xFF);       // 数量低字节
+
+                        // 计算CRC16
+                        byte[] bCRC = ModbusCRC.ModbusCRC16(cmd, 0, 6);
+                        cmd[6] = bCRC[0];                       // CRC低字节
+                        cmd[7] = bCRC[1];                       // CRC高字节
+                        
+                        commandList.Add(cmd);
+                        
+                        // 获取间隔时间
+                        int sleepTime = formData.Interval * 1000; // 转换为毫秒
+                        intervalMap[BitConverter.ToString(cmd)] = sleepTime;
+                        defaultSleepTime = sleepTime;
                     }
-
-                    // 解析JSON并生成命令
-                    foreach (JsonElement element in root.EnumerateArray())
+                    catch (Exception ex)
                     {
-                        try
-                        {
-                            if (!element.TryGetProperty("formData", out JsonElement formData))
-                            {
-                                LogHelper.Warn("配置项缺少formData字段，跳过");
-                                continue;
-                            }
-
-                            // 获取必要参数，添加错误处理
-                            if (!TryParseJsonValue(formData, "functionCode", out byte functionCode) ||
-                                !TryParseJsonValue(formData, "address", out byte slaveAddress) ||
-                                !TryParseJsonValue(formData, "StartingAddress", out ushort startAddress) ||
-                                !TryParseJsonValue(formData, "Quantity", out ushort quantity))
-                            {
-                                LogHelper.Warn("配置项缺少必要字段或格式错误，跳过");
-                                continue;
-                            }
-
-                            // 组装Modbus命令
-                            byte[] cmd = new byte[8];
-                            cmd[0] = slaveAddress;                  // 从站地址
-                            cmd[1] = functionCode;                  // 功能码
-                            cmd[2] = (byte)(startAddress >> 8);     // 起始地址高字节
-                            cmd[3] = (byte)(startAddress & 0xFF);   // 起始地址低字节
-                            cmd[4] = (byte)(quantity >> 8);         // 数量高字节
-                            cmd[5] = (byte)(quantity & 0xFF);       // 数量低字节
-
-                            // 计算CRC16
-                            byte[] bCRC = ModbusCRC.ModbusCRC16(cmd, 0, 6);
-                            cmd[6] = bCRC[0];                       // CRC低字节
-                            cmd[7] = bCRC[1];                       // CRC高字节
-                            
-                            commandList.Add(cmd);
-                            
-                            // 获取间隔时间
-                            if (formData.TryGetProperty("Interval", out JsonElement intervalElement) && 
-                                int.TryParse(intervalElement.GetString(), out int interval))
-                            {
-                                int sleepTime = interval * 1000; // 转换为毫秒
-                                intervalMap[BitConverter.ToString(cmd)] = sleepTime;
-                                defaultSleepTime = sleepTime;
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            LogHelper.Error($"解析配置项时发生错误: {ex.Message}");
-                        }
+                        LogHelper.Error($"解析配置项时发生错误: {ex.Message}");
                     }
                 }
 
@@ -431,7 +322,7 @@ namespace EasyIotSharp.GateWay.Core.Socket.Service
                                     }
                                     
                                     // 命令间隔
-                                    Thread.Sleep(2000);
+                                    Thread.Sleep(200);
                                 }
                                 catch (Exception ex)
                                 {
@@ -445,49 +336,14 @@ namespace EasyIotSharp.GateWay.Core.Socket.Service
                     }
                     catch (Exception ex)
                     {
-                        LogHelper.Error($"命令发送循环中断: {ex.Message}");
+                        LogHelper.Error($"命令发送循环中断: {ex.ToString()}");
                     }
                 });
             }
             catch (Exception ex)
             {
-                LogHelper.Error($"SendMsgToClient() 发生异常: {ex.Message}");
+                LogHelper.Error($"SendMsgToClient() 发生异常: {ex.ToString()}");
             }
-        }
-
-        // 辅助方法：尝试从JSON中解析值
-        private static bool TryParseJsonValue<T>(JsonElement element, string propertyName, out T value)
-        {
-            value = default;
-            
-            if (!element.TryGetProperty(propertyName, out JsonElement property))
-                return false;
-                
-            try
-            {
-                if (typeof(T) == typeof(byte))
-                {
-                    if (byte.TryParse(property.GetString(), out byte byteValue))
-                    {
-                        value = (T)(object)byteValue;
-                        return true;
-                    }
-                }
-                else if (typeof(T) == typeof(ushort))
-                {
-                    if (ushort.TryParse(property.GetString(), out ushort ushortValue))
-                    {
-                        value = (T)(object)ushortValue;
-                        return true;
-                    }
-                }
-            }
-            catch
-            {
-                return false;
-            }
-            
-            return false;
         }
     }
 }

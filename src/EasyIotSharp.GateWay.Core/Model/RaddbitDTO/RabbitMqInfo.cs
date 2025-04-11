@@ -8,7 +8,7 @@ namespace EasyIotSharp.GateWay.Core.Model.RaddbitDTO
     {
         public int Id { get; set; }
         public int MqId { get; set; }
-        public int ProjectId { get; set; }
+        public string ProjectId { get; set; }
         public string Extendstr { get; set; }
         public int Extendint { get; set; }
         public DateTime? CreateTime { get; set; }
