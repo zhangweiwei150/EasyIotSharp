@@ -41,11 +41,6 @@ namespace EasyIotSharp.Core.Configuration
         /// </summary>
         public APIServiceOptions APIServiceOptions { get; internal set; }
 
-        /// <summary>
-        ///【watchmen】token配置项
-        /// </summary>
-        public WatchmenOptions WatchmenOptions { get; set; }
-
 
         /// <summary>
         /// es 分页读写相关
