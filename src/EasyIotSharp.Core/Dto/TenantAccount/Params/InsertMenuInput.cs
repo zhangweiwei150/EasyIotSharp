@@ -9,8 +9,6 @@ namespace EasyIotSharp.Core.Dto.TenantAccount.Params
     /// </summary>
     public class InsertMenuInput
     {
-        public string Id { get; set; }
-
         /// <summary>
         /// 父级id
         /// </summary>

@@ -3,7 +3,6 @@ using EasyIotSharp.Core.Domain.TenantAccount;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using EasyIotSharp.Core.Dto.TenantAccount;
-using EasyIotSharp.Core.Dto.TenantAccount.Params;
 
 namespace EasyIotSharp.Core.Repositories.TenantAccount
 {
@@ -33,12 +32,5 @@ namespace EasyIotSharp.Core.Repositories.TenantAccount
         /// <param name="menuList"></param>
         /// <returns></returns>
         List<MenuTreeDto> BuildMenuTree(List<MenuDto> menuList);
-
-        /// <summary>
-        /// 验证
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        Task<bool> VerifyMenu(InsertMenuInput input);
     }
 }
