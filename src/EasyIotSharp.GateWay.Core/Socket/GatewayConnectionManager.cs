@@ -105,27 +105,48 @@ namespace EasyIotSharp.GateWay.Core.Socket
     public class GatewayConnectionManager
     {
         public easyiotsharpContext _easyiotsharpContext;
+        
+        // 修改为懒加载单例模式
+        private static volatile GatewayConnectionManager _instance;
+        private static readonly object _lock = new object();
+    
+        /// <summary>
+        /// 单例实例
+        /// </summary>
+        public static GatewayConnectionManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new GatewayConnectionManager(new easyiotsharpContext());
+                            LogHelper.Info("GatewayConnectionManager单例已初始化");
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+
         public GatewayConnectionManager(easyiotsharpContext easyiotsharpContext)
         {
             _easyiotsharpContext = easyiotsharpContext;
         }
-        private static readonly GatewayConnectionManager _instance = new GatewayConnectionManager(new easyiotsharpContext());
-
-        /// <summary>
-        /// 单例实例
-        /// </summary>
-        public static GatewayConnectionManager Instance => _instance;
-
+    
         /// <summary>
         /// 连接ID到网关连接信息的映射
         /// </summary>
-        private readonly ConcurrentDictionary<IntPtr, GatewayConnectionInfo> _connectionMap =
+        private static readonly ConcurrentDictionary<IntPtr, GatewayConnectionInfo> _connectionMap =
             new ConcurrentDictionary<IntPtr, GatewayConnectionInfo>();
-
+    
         /// <summary>
         /// 网关ID到连接ID的映射
         /// </summary>
-        private readonly ConcurrentDictionary<string, IntPtr> _gatewayMap =
+        private static readonly ConcurrentDictionary<string, IntPtr> _gatewayMap =
             new ConcurrentDictionary<string, IntPtr>();
 
         /// <summary>

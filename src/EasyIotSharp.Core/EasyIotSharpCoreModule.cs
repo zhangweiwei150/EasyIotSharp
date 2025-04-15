@@ -24,6 +24,8 @@ using EasyIotSharp.Core.Repositories.Project.Impl;
 using EasyIotSharp.Core.Repositories.Hardware;
 using EasyIotSharp.Core.Repositories.Hardware.Impl;
 using EasyIotSharp.Core.Repositories.Influxdb;
+using EasyIotSharp.Core.Repositories.Queue;
+using EasyIotSharp.Core.Repositories.Queue.Impl;
 
 namespace EasyIotSharp.Core
 {
@@ -60,28 +62,29 @@ namespace EasyIotSharp.Core
 
             IocManager.Register<ICorpWeixinSettings, CorpWeixinOptions>();
 
-            //�ִ�
+            //租户
             IocManager.Register<ITenantRepository, TenantRepository>();
-            //Ȩ��
+            //系统管理
             IocManager.Register<IMenuRepository, MenuRepository>();
             IocManager.Register<IRoleMenuRepository, RoleMenuRepository>();
             IocManager.Register<IRoleRepository, RoleRepository>();
             IocManager.Register<ISoldierRepository, SoldierRepository>();
             IocManager.Register<ISoldierRoleRepository, SoldierRoleRepository>();
-            //��Ŀ
+            //项目
             IocManager.Register<IProjectBaseRepository, ProjectBaseRepository>();
             IocManager.Register<IClassificationRepository, ClassificationRepository>();
             IocManager.Register<IGatewayProtocolRepository, GatewayProtocolRepository>();
             IocManager.Register<IGatewayProtocolConfigRepository, GatewayProtocolConfigRepository>();
             IocManager.Register<IGatewayRepository, GatewayRepository>();
             IocManager.Register<ISensorPointRepository, SensorPointRepository>();
-            //Ӳ��
+            //协议测点
             IocManager.Register<IProtocolRepository, ProtocolRepository>();
             IocManager.Register<IProtocolConfigRepository, ProtocolConfigRepository>();
             IocManager.Register<IProtocolConfigExtRepository, ProtocolConfigExtRepository>();
             IocManager.Register<ISensorRepository, SensorRepository>();
             IocManager.Register<ISensorQuotaRepository, SensorQuotaRepository>();
-
+            // 在现有的依赖注入注册代码中添加以下内容
+            IocManager.Register<IRabbitServerInfoRepository, RabbitServerInfoRepository>();
         }
 
         /// <summary>

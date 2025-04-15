@@ -857,6 +857,46 @@
             传感器Id
             </summary>
         </member>
+        <member name="T:EasyIotSharp.Core.Domain.Queue.RabbitServerInfo">
+            <summary>
+            RabbitMQ服务器配置信息表
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Queue.RabbitServerInfo.TenantNumId">
+            <summary>
+            租户ID
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Queue.RabbitServerInfo.Host">
+            <summary>
+            主机地址
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Queue.RabbitServerInfo.Port">
+            <summary>
+            端口号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Queue.RabbitServerInfo.Username">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Queue.RabbitServerInfo.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Queue.RabbitServerInfo.VirtualHost">
+            <summary>
+            虚拟主机
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Domain.Queue.RabbitServerInfo.Exchange">
+            <summary>
+            交换机名称
+            </summary>
+        </member>
         <member name="T:EasyIotSharp.Core.Domain.TenantAccount.Menu">
             <summary>
             租户菜单表
@@ -2910,6 +2950,141 @@
         <member name="P:EasyIotSharp.Core.Dto.Project.SensorPointDto.OperatorName">
             <summary>
             操作人
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Queue.Params.DeleteRabbitServerInfoInput">
+            <summary>
+            删除一条RabbitMQ服务器配置信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.DeleteRabbitServerInfoInput.Id">
+            <summary>
+            主键ID
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Queue.Params.InsertRabbitServerInfoInput">
+            <summary>
+            添加一条RabbitMQ服务器配置信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.InsertRabbitServerInfoInput.Host">
+            <summary>
+            主机地址
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.InsertRabbitServerInfoInput.Port">
+            <summary>
+            端口号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.InsertRabbitServerInfoInput.Username">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.InsertRabbitServerInfoInput.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.InsertRabbitServerInfoInput.VirtualHost">
+            <summary>
+            虚拟主机
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.InsertRabbitServerInfoInput.Exchange">
+            <summary>
+            交换机名称
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Queue.Params.QueryRabbitServerInfoInput">
+            <summary>
+            查询RabbitMQ服务器配置信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.QueryRabbitServerInfoInput.Keyword">
+            <summary>
+            关键字（主机地址/用户名）
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Queue.Params.UpdateRabbitServerInfoInput">
+            <summary>
+            修改一条RabbitMQ服务器配置信息的入参类
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.UpdateRabbitServerInfoInput.Id">
+            <summary>
+            主键ID
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.UpdateRabbitServerInfoInput.Host">
+            <summary>
+            主机地址
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.UpdateRabbitServerInfoInput.Port">
+            <summary>
+            端口号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.UpdateRabbitServerInfoInput.Username">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.UpdateRabbitServerInfoInput.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.UpdateRabbitServerInfoInput.VirtualHost">
+            <summary>
+            虚拟主机
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.Params.UpdateRabbitServerInfoInput.Exchange">
+            <summary>
+            交换机名称
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Dto.Queue.RabbitServerInfoDto">
+            <summary>
+            代表一条RabbitMQ服务器配置信息的"DTO"
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.RabbitServerInfoDto.TenantNumId">
+            <summary>
+            租户ID
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.RabbitServerInfoDto.Host">
+            <summary>
+            主机地址
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.RabbitServerInfoDto.Port">
+            <summary>
+            端口号
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.RabbitServerInfoDto.Username">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.RabbitServerInfoDto.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.RabbitServerInfoDto.VirtualHost">
+            <summary>
+            虚拟主机
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Dto.Queue.RabbitServerInfoDto.Exchange">
+            <summary>
+            交换机名称
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Dto.TenantAccount.MenuDto">
@@ -5344,6 +5519,38 @@
             <param name="isPage">是否分页</param>
             <returns></returns>
         </member>
+        <member name="T:EasyIotSharp.Core.Repositories.Queue.Impl.RabbitServerInfoRepository">
+            <summary>
+            RabbitMQ服务器配置信息仓储实现类
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Queue.Impl.RabbitServerInfoRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            分页查询RabbitMQ服务器配置信息列表
+            </summary>
+            <param name="tenantNumId">租户编号（大于0时参与查询）</param>
+            <param name="keyword">关键字（模糊匹配主机地址或用户名）</param>
+            <param name="pageIndex">当前页码</param>
+            <param name="pageSize">每页记录数</param>
+            <param name="isPage">是否分页</param>
+            <returns>返回总记录数和分页数据</returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Repositories.Queue.IRabbitServerInfoRepository">
+            <summary>
+            RabbitMQ服务器配置信息仓储接口
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Repositories.Queue.IRabbitServerInfoRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            通过条件分页查询RabbitMQ服务器配置信息列表
+            </summary>
+            <param name="tenantNumId">租户ID</param>
+            <param name="keyword">关键字（主机地址/用户名）</param>
+            <param name="pageIndex">起始页</param>
+            <param name="pageSize">每页多少条</param>
+            <param name="isPage">是否分页</param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.Core.Repositories.TenantAccount.IMenuRepository.Query(System.Int32,System.String,System.Int32,System.Int32,System.Int32,System.Boolean)">
             <summary>
             通过条件分页查询菜单列表
@@ -6021,6 +6228,76 @@
             通过id删除一条测点信息
             </summary>
             <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyIotSharp.Core.Services.Queue.Impl.RabbitServerInfoService">
+            <summary>
+            RabbitMQ服务器配置信息服务实现类
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Queue.Impl.RabbitServerInfoService.GetRabbitServerInfo(System.String)">
+            <summary>
+            通过ID获取一条RabbitMQ服务器配置信息
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Queue.Impl.RabbitServerInfoService.InsertRabbitServerInfo(EasyIotSharp.Core.Dto.Queue.Params.InsertRabbitServerInfoInput)">
+            <summary>
+            添加一条RabbitMQ服务器配置信息
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Queue.Impl.RabbitServerInfoService.UpdateRabbitServerInfo(EasyIotSharp.Core.Dto.Queue.Params.UpdateRabbitServerInfoInput)">
+            <summary>
+            修改一条RabbitMQ服务器配置信息
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Queue.Impl.RabbitServerInfoService.DeleteRabbitServerInfo(EasyIotSharp.Core.Dto.Queue.Params.DeleteRabbitServerInfoInput)">
+            <summary>
+            删除一条RabbitMQ服务器配置信息
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Queue.Impl.RabbitServerInfoService.QueryRabbitServerInfo(EasyIotSharp.Core.Dto.Queue.Params.QueryRabbitServerInfoInput)">
+            <summary>
+            分页查询RabbitMQ服务器配置信息列表
+            </summary>
+        </member>
+        <member name="T:EasyIotSharp.Core.Services.Queue.IRabbitServerInfoService">
+            <summary>
+            RabbitMQ服务器配置信息服务接口
+            </summary>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Queue.IRabbitServerInfoService.GetRabbitServerInfo(System.String)">
+            <summary>
+            通过ID获取一条RabbitMQ服务器配置信息
+            </summary>
+            <param name="id">主键ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Queue.IRabbitServerInfoService.InsertRabbitServerInfo(EasyIotSharp.Core.Dto.Queue.Params.InsertRabbitServerInfoInput)">
+            <summary>
+            添加一条RabbitMQ服务器配置信息
+            </summary>
+            <param name="input">输入参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Queue.IRabbitServerInfoService.UpdateRabbitServerInfo(EasyIotSharp.Core.Dto.Queue.Params.UpdateRabbitServerInfoInput)">
+            <summary>
+            修改一条RabbitMQ服务器配置信息
+            </summary>
+            <param name="input">输入参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Queue.IRabbitServerInfoService.DeleteRabbitServerInfo(EasyIotSharp.Core.Dto.Queue.Params.DeleteRabbitServerInfoInput)">
+            <summary>
+            删除一条RabbitMQ服务器配置信息
+            </summary>
+            <param name="input">输入参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.Core.Services.Queue.IRabbitServerInfoService.QueryRabbitServerInfo(EasyIotSharp.Core.Dto.Queue.Params.QueryRabbitServerInfoInput)">
+            <summary>
+            分页查询RabbitMQ服务器配置信息列表
+            </summary>
+            <param name="input">输入参数</param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Services.TenantAccount.IMenuService.GetMenu(System.String)">

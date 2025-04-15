@@ -20,6 +20,7 @@ using EasyIotSharp.Core.Services.Tenant;
 using EasyIotSharp.Core.Services.Tenant.Impl;
 using EasyIotSharp.Core.Repositories.Mysql;
 using EasyIotSharp.Repositories.Mysql;
+using EasyIotSharp.GateWay.Core.Socket;
 
 namespace EasyIotSharp.API
 {
@@ -66,7 +67,10 @@ namespace EasyIotSharp.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // 注册GatewayConnectionManager为单例服务
+            services.AddSingleton(provider => GatewayConnectionManager.Instance);
             var appOptions = UPrimeEngine.Instance.Resolve<AppOptions>();
+
             services.AddCors(options =>
             {
                 options.AddPolicy($"{appOptions.Name}-policy",

@@ -1,4 +1,6 @@
 ﻿using EasyIotSharp.API.Filters;
+using EasyIotSharp.Core.Dto.Queue.Params;
+using EasyIotSharp.Core.Dto.Queue;
 using EasyIotSharp.Core.Dto.TenantAccount;
 using EasyIotSharp.Core.Dto.TenantAccount.Params;
 using EasyIotSharp.Core.Services.TenantAccount;
@@ -10,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UPrime.Services.Dto;
 using UPrime.WebApi;
+using EasyIotSharp.Core.Services.Queue;
 
 namespace EasyIotSharp.API.Controllers
 {
@@ -22,13 +25,14 @@ namespace EasyIotSharp.API.Controllers
         private readonly IMenuService _menuService;
         private readonly IRoleService _roleService;
         private readonly ISoldierRoleService _soldierRoleService;
-
+        private readonly IRabbitServerInfoService _rabbitServerInfoService;
         public TenantAccountController()
         {
             _soldierService = UPrime.UPrimeEngine.Instance.Resolve<ISoldierService>();
             _menuService = UPrime.UPrimeEngine.Instance.Resolve<IMenuService>();
             _roleService = UPrime.UPrimeEngine.Instance.Resolve<IRoleService>();
             _soldierRoleService= UPrime.UPrimeEngine.Instance.Resolve<ISoldierRoleService>();
+            _rabbitServerInfoService = UPrime.UPrimeEngine.Instance.Resolve<IRabbitServerInfoService>();
         }
 
         #region 用户
@@ -335,5 +339,76 @@ namespace EasyIotSharp.API.Controllers
         }
 
         #endregion
+
+        #region 队列配置
+
+        /// <summary>
+        /// 获取RabbitMQ服务器配置信息
+        /// </summary>
+        /// <param name="id">配置ID</param>
+        /// <returns></returns>
+        [HttpPost("/Queue/RabbitServerInfo/Get")]
+        [Authorize]
+        public async Task<UPrimeResponse<RabbitServerInfoDto>> GetRabbitServerInfo(string id)
+        {
+            var res = new UPrimeResponse<RabbitServerInfoDto>();
+            res.Result = await _rabbitServerInfoService.GetRabbitServerInfo(id);
+            return res;
+        }
+
+        /// <summary>
+        /// 分页查询RabbitMQ服务器配置信息列表
+        /// </summary>
+        /// <param name="input">查询参数</param>
+        /// <returns></returns>
+        [HttpPost("/Queue/RabbitServerInfo/Query")]
+        [Authorize]
+        public async Task<UPrimeResponse<PagedResultDto<RabbitServerInfoDto>>> QueryRabbitServerInfo([FromBody] QueryRabbitServerInfoInput input)
+        {
+            UPrimeResponse<PagedResultDto<RabbitServerInfoDto>> res = new UPrimeResponse<PagedResultDto<RabbitServerInfoDto>>();
+            res.Result = await _rabbitServerInfoService.QueryRabbitServerInfo(input);
+            return res;
+        }
+
+        /// <summary>
+        /// 添加RabbitMQ服务器配置信息
+        /// </summary>
+        /// <param name="input">添加参数</param>
+        /// <returns></returns>
+        [HttpPost("/Queue/RabbitServerInfo/Insert")]
+        [Authorize]
+        public async Task<UPrimeResponse> InsertRabbitServerInfo([FromBody] InsertRabbitServerInfoInput input)
+        {
+            await _rabbitServerInfoService.InsertRabbitServerInfo(input);
+            return new UPrimeResponse();
+        }
+
+        /// <summary>
+        /// 修改RabbitMQ服务器配置信息
+        /// </summary>
+        /// <param name="input">修改参数</param>
+        /// <returns></returns>
+        [HttpPost("/Queue/RabbitServerInfo/Update")]
+        [Authorize]
+        public async Task<UPrimeResponse> UpdateRabbitServerInfo([FromBody] UpdateRabbitServerInfoInput input)
+        {
+            await _rabbitServerInfoService.UpdateRabbitServerInfo(input);
+            return new UPrimeResponse();
+        }
+
+        /// <summary>
+        /// 删除RabbitMQ服务器配置信息
+        /// </summary>
+        /// <param name="input">删除参数</param>
+        /// <returns></returns>
+        [HttpPost("/Queue/RabbitServerInfo/Delete")]
+        [Authorize]
+        public async Task<UPrimeResponse> DeleteRabbitServerInfo([FromBody] DeleteRabbitServerInfoInput input)
+        {
+            await _rabbitServerInfoService.DeleteRabbitServerInfo(input);
+            return new UPrimeResponse();
+        }
+        #endregion
+
     }
 }

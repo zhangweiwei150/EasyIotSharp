@@ -3,6 +3,7 @@ using EasyIotSharp.Core.Dto.Project;
 using EasyIotSharp.Core.Dto.Project.Params;
 using EasyIotSharp.Core.Services.Project;
 using EasyIotSharp.Core.Services.Tenant;
+using EasyIotSharp.GateWay.Core.Socket;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -324,6 +325,22 @@ namespace EasyIotSharp.API.Controllers
         {
             await _gatewayProtocolService.DeleteGatewayProtocol(input);
             return new UPrimeResponse();
+        }
+
+        /// <summary>
+        /// 通过网关id获取网关连接日志
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Project/GatewayProtocolLogs/Query")]
+        [Authorize]
+        public async Task<UPrimeResponse<PagedResultDto<GatewayConnectionInfo>>> GatewayProtocolLogs([FromBody] QueryGatewayProtocolInput input)
+        {
+            UPrimeResponse<PagedResultDto<GatewayConnectionInfo>> res = new UPrimeResponse<PagedResultDto<GatewayConnectionInfo>>();
+            var ls = GatewayConnectionManager.Instance.GetAllRegisteredGateways();
+            var connections = GatewayConnectionManager.Instance.GetAllRegisteredGateways().Where(x => x.GatewayId == input.GatewayId).ToList();
+            res.Result = new PagedResultDto<GatewayConnectionInfo>() { TotalCount = connections.Count, Items = connections };
+            return res;
         }
 
         #endregion

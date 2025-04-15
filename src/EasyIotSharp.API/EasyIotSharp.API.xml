@@ -296,6 +296,13 @@
             <param name="input"></param>
             <returns></returns>
         </member>
+        <member name="M:EasyIotSharp.API.Controllers.ProjectController.GatewayProtocolLogs(EasyIotSharp.Core.Dto.Project.Params.QueryGatewayProtocolInput)">
+            <summary>
+            通过网关id获取网关连接日志
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="M:EasyIotSharp.API.Controllers.ProjectController.GetSensorPoint(System.String)">
             <summary>
             通过id获取一条测点信息
@@ -487,6 +494,41 @@
             通过id获取一条角色信息
             </summary>
             <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.GetRabbitServerInfo(System.String)">
+            <summary>
+            获取RabbitMQ服务器配置信息
+            </summary>
+            <param name="id">配置ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.QueryRabbitServerInfo(EasyIotSharp.Core.Dto.Queue.Params.QueryRabbitServerInfoInput)">
+            <summary>
+            分页查询RabbitMQ服务器配置信息列表
+            </summary>
+            <param name="input">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.InsertRabbitServerInfo(EasyIotSharp.Core.Dto.Queue.Params.InsertRabbitServerInfoInput)">
+            <summary>
+            添加RabbitMQ服务器配置信息
+            </summary>
+            <param name="input">添加参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.UpdateRabbitServerInfo(EasyIotSharp.Core.Dto.Queue.Params.UpdateRabbitServerInfoInput)">
+            <summary>
+            修改RabbitMQ服务器配置信息
+            </summary>
+            <param name="input">修改参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyIotSharp.API.Controllers.TenantAccountController.DeleteRabbitServerInfo(EasyIotSharp.Core.Dto.Queue.Params.DeleteRabbitServerInfoInput)">
+            <summary>
+            删除RabbitMQ服务器配置信息
+            </summary>
+            <param name="input">删除参数</param>
             <returns></returns>
         </member>
         <member name="T:EasyIotSharp.API.Controllers.TenantController">

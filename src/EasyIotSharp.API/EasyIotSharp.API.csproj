@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.5" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.5.0" />
+    <PackageReference Include="MySqlConnector" Version="2.2.5" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.5.0" />
@@ -21,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EasyIotSharp.Core\EasyIotSharp.Core.csproj" />
+    <ProjectReference Include="..\EasyIotSharp.GateWay.Core\EasyIotSharp.GateWay.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

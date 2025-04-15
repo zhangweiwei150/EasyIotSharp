@@ -12,8 +12,7 @@ namespace EasyIotSharp.Core
         public void RegisterMaps(IMapperConfigurationExpression config)
         {
             //config.CreateMap<PolyvWatchLog_ES, ExportPolyvWatchLogDataDto>()
-                //.ForMember(dto => dto.UserMobile, opt => opt.MapFrom(f => f.UserMobile.EncryptMobileNumber()));
-
+            //.ForMember(dto => dto.UserMobile, opt => opt.MapFrom(f => f.UserMobile.EncryptMobileNumber()));
         }
     }
 }

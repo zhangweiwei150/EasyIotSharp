@@ -37,4 +37,8 @@
     <PackageReference Include="UPrime.SDK.UCloudUFile" Version="2.1.1" />
     <PackageReference Include="UPrime.SDK.Weixin" Version="2.2.6" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repositories\Queue\Impl\" />
+  </ItemGroup>
 </Project>
