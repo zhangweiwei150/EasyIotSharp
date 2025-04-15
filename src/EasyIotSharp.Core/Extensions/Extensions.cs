@@ -76,28 +76,28 @@ namespace EasyIotSharp.Core.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="t"></param>
         /// <returns></returns>
-        public static Dictionary<string, string> ConvertToDic<T>(this T t)
-        {
-            var dics = new Dictionary<string, string>();
-            var type = t.GetType();
-            var members = type.GetRuntimeProperties();
-            foreach (var member in members)
-            {
-                if (member.IsNull())
-                    continue;
-                var isIgnore = member.GetCustomAttributesData().Any(x => x.AttributeType.Name == typeof(IgnoreParamAttribute).Name);
-                if (member.PropertyType.IsPublic && !isIgnore)
-                {
-                    var value = member.GetValue(t);
-                    var val = Convert.ToString(value);
-                    if (val.IsNotNullOrWhiteSpace())
-                    {
-                        dics.Add(member.Name.Substring(0, 1).ToLower() + member.Name.Substring(1), val);
-                    }
-                }
-            }
-            return dics;
-        }
+        //public static Dictionary<string, string> ConvertToDic<T>(this T t)
+        //{
+        //    var dics = new Dictionary<string, string>();
+        //    var type = t.GetType();
+        //    var members = type.GetRuntimeProperties();
+        //    foreach (var member in members)
+        //    {
+        //        if (member.IsNull())
+        //            continue;
+        //        var isIgnore = member.GetCustomAttributesData().Any(x => x.AttributeType.Name == typeof(IgnoreParamAttribute).Name);
+        //        if (member.PropertyType.IsPublic && !isIgnore)
+        //        {
+        //            var value = member.GetValue(t);
+        //            var val = Convert.ToString(value);
+        //            if (val.IsNotNullOrWhiteSpace())
+        //            {
+        //                dics.Add(member.Name.Substring(0, 1).ToLower() + member.Name.Substring(1), val);
+        //            }
+        //        }
+        //    }
+        //    return dics;
+        //}
 
         /// <summary>
         /// 加密11位手机号

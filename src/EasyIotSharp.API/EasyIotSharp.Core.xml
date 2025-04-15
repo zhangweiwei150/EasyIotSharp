@@ -217,11 +217,6 @@
             DMS api 地址相关
             </summary>
         </member>
-        <member name="P:EasyIotSharp.Core.Configuration.AppOptions.WatchmenOptions">
-             <summary>
-            【watchmen】token配置项
-             </summary>
-        </member>
         <member name="P:EasyIotSharp.Core.Configuration.AppOptions.ESPaggingOptions">
             <summary>
             es 分页读写相关
@@ -314,11 +309,6 @@
             单次写入的最大数量
             </summary>
         </member>
-        <member name="T:EasyIotSharp.Core.Configuration.IgnoreParamAttribute">
-            <summary>
-            实体转换为字典时忽略的参数
-            </summary>
-        </member>
         <member name="T:EasyIotSharp.Core.Configuration.JWTTokenOptions">
             <summary>
             JWTToken验证配置
@@ -352,6 +342,26 @@
         <member name="P:EasyIotSharp.Core.Configuration.JWT_User.ExpireTime">
             <summary>
             过期时间
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.MinIOOptions.Servers">
+            <summary>
+            连接地址
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.MinIOOptions.AccessKey">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.MinIOOptions.SecretKey">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:EasyIotSharp.Core.Configuration.MinIOOptions.BucketName">
+            <summary>
+            文件存储的桶名称
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Configuration.QueueOptions">
@@ -405,31 +415,6 @@
         <member name="P:EasyIotSharp.Core.Configuration.UserTokenData.TenantNumId">
             <summary>
             当前租户NumId
-            </summary>
-        </member>
-        <member name="T:EasyIotSharp.Core.Configuration.WatchmenOptions">
-            <summary>
-            【watchmen】token配置项
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Configuration.WatchmenOptions.APIBaseUrl">
-            <summary>
-            API地址
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Configuration.WatchmenOptions.AppId">
-            <summary>
-            应用id
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Configuration.WatchmenOptions.Secret">
-            <summary>
-            应用秘钥
-            </summary>
-        </member>
-        <member name="P:EasyIotSharp.Core.Configuration.WatchmenOptions.GrantType">
-            <summary>
-            授权模式
             </summary>
         </member>
         <member name="T:EasyIotSharp.Core.Domain.BaseEntity`1">
@@ -4544,14 +4529,6 @@
             Unix时间戳转DateTime
             </summary>
             <param name="timestamp">时间戳</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyIotSharp.Core.Extensions.Extensions.ConvertToDic``1(``0)">
-            <summary>
-            实体转换为字典
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="t"></param>
             <returns></returns>
         </member>
         <member name="M:EasyIotSharp.Core.Extensions.Extensions.EncryptMobileNumber(System.String)">
