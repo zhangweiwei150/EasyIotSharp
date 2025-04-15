@@ -4,6 +4,8 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Transactions;
 
 namespace EasyIotSharp.GateWay.Core.Socket
 {
@@ -132,11 +134,10 @@ namespace EasyIotSharp.GateWay.Core.Socket
             }
         }
 
-        public GatewayConnectionManager(easyiotsharpContext easyiotsharpContext)
-        {
-            _easyiotsharpContext = easyiotsharpContext;
-        }
-    
+        private readonly Timer _statusCheckTimer;
+        private const int STATUS_CHECK_INTERVAL = 30000; // 30秒检查一次
+        private const int GATEWAY_TIMEOUT = 60000; // 60秒没有心跳就认为离线
+        
         /// <summary>
         /// 连接ID到网关连接信息的映射
         /// </summary>
@@ -149,29 +150,73 @@ namespace EasyIotSharp.GateWay.Core.Socket
         private static readonly ConcurrentDictionary<string, IntPtr> _gatewayMap =
             new ConcurrentDictionary<string, IntPtr>();
 
-        /// <summary>
-        /// 添加新连接
-        /// </summary>
-        public void AddConnection(IntPtr connId, string ip, ushort port)
+        public GatewayConnectionManager(easyiotsharpContext easyiotsharpContext)
         {
-            var connectionInfo = new GatewayConnectionInfo
-            {
-                ConnId = connId,
-                IP = ip,
-                Port = port,
-                ConnectTime = DateTime.Now,
-                LastActiveTime = DateTime.Now,
-                ReceivedPackets = 0,
-                ReceivedBytes = 0,
-                IsRegistered = false
-            };
-
-            _connectionMap.TryAdd(connId, connectionInfo);
+            _easyiotsharpContext = easyiotsharpContext;
+            _statusCheckTimer = new Timer(CheckGatewayStatus, null, STATUS_CHECK_INTERVAL, STATUS_CHECK_INTERVAL);
         }
 
         /// <summary>
-        /// 注册网关ID与连接的关联
+        /// 检查所有网关状态
         /// </summary>
+        private void CheckGatewayStatus(object state)
+        {
+            try
+            {
+                var now = DateTime.Now;
+                var offlineGateways = new List<string>();
+
+                foreach (var connection in _connectionMap.Values)
+                {
+                    if (connection.IsRegistered && !string.IsNullOrEmpty(connection.GatewayId))
+                    {
+                        var timeSinceLastActive = (now - connection.LastActiveTime).TotalMilliseconds;
+                        if (timeSinceLastActive > GATEWAY_TIMEOUT)
+                        {
+                            offlineGateways.Add(connection.GatewayId);
+                            // 从映射中移除超时的连接
+                            _connectionMap.TryRemove(connection.ConnId, out _);
+                            _gatewayMap.TryRemove(connection.GatewayId, out _);
+                        }
+                    }
+                }
+
+                if (offlineGateways.Any())
+                {
+                    using (var scope = new TransactionScope())
+                    {
+                        try
+                        {
+                            var gateways = _easyiotsharpContext.Gateway
+                                .Where(x => offlineGateways.Contains(x.Id))
+                                .ToList();
+
+                            foreach (var gateway in gateways)
+                            {
+                                gateway.State = 2; // 离线状态
+                            }
+
+                            _easyiotsharpContext.SaveChanges();
+                            scope.Complete();
+
+                            foreach (var gatewayId in offlineGateways)
+                            {
+                                LogHelper.Warn($"网关 {gatewayId} 因超时未收到心跳被标记为离线");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            LogHelper.Error($"更新网关离线状态时发生错误: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error($"检查网关状态时发生错误: {ex.Message}");
+            }
+        }
+
         public void RegisterGateway(IntPtr connId, string gatewayId)
         {
             if (_connectionMap.TryGetValue(connId, out var connectionInfo))
@@ -179,24 +224,80 @@ namespace EasyIotSharp.GateWay.Core.Socket
                 connectionInfo.GatewayId = gatewayId;
                 connectionInfo.IsRegistered = true;
                 connectionInfo.RegisterTime = DateTime.Now;
+                connectionInfo.LastActiveTime = DateTime.Now;
 
-                // 更新网关ID到连接ID的映射
                 _gatewayMap.AddOrUpdate(gatewayId, connId, (_, __) => connId);
-                //修改网关状态
-                var gateway = _easyiotsharpContext.Gateway.Where(x => x.Id.Equals(gatewayId)).FirstOrDefault();
-                gateway.State = 1;
-                _easyiotsharpContext.SaveChangesAsync();
-                LogHelper.Info($"网关 {gatewayId} 已注册，连接ID: {connId}");
+
+                try
+                {
+                    using (var scope = new TransactionScope())
+                    {
+                        var gateway = _easyiotsharpContext.Gateway
+                            .FirstOrDefault(x => x.Id.Equals(gatewayId));
+
+                        if (gateway != null)
+                        {
+                            gateway.State = 1; // 在线状态
+                            _easyiotsharpContext.SaveChanges();
+                            scope.Complete();
+                        }
+                    }
+                    LogHelper.Info($"网关 {gatewayId} 已注册并更新状态为在线");
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Error($"更新网关 {gatewayId} 注册状态时发生错误: {ex.Message}");
+                }
+            }
+        }
+
+        public void RemoveConnection(IntPtr connId)
+        {
+            if (_connectionMap.TryRemove(connId, out var connectionInfo) &&
+                !string.IsNullOrEmpty(connectionInfo.GatewayId))
+            {
+                _gatewayMap.TryRemove(connectionInfo.GatewayId, out _);
+
+                try
+                {
+                    using (var scope = new TransactionScope())
+                    {
+                        var gateway = _easyiotsharpContext.Gateway
+                            .FirstOrDefault(x => x.Id.Equals(connectionInfo.GatewayId));
+
+                        if (gateway != null)
+                        {
+                            gateway.State = 2; // 离线状态
+                            _easyiotsharpContext.SaveChanges();
+                            scope.Complete();
+                        }
+                    }
+                    LogHelper.Info($"网关 {connectionInfo.GatewayId} 连接已断开并更新状态为离线");
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Error($"更新网关 {connectionInfo.GatewayId} 离线状态时发生错误: {ex.Message}");
+                }
             }
         }
 
         /// <summary>
-        /// 更新网关数据
+        /// 更新网关心跳
         /// </summary>
+        public void UpdateGatewayHeartbeat(IntPtr connId)
+        {
+            if (_connectionMap.TryGetValue(connId, out var connectionInfo))
+            {
+                connectionInfo.LastActiveTime = DateTime.Now;
+            }
+        }
+
+        // 修改现有的 UpdateGatewayData 方法
         public void UpdateGatewayData(IntPtr connId, byte[] data, string dataType = "数据包")
         {
             if (_connectionMap.TryGetValue(connId, out var connectionInfo))
             {
+                // 更新最后活动时间
                 connectionInfo.LastActiveTime = DateTime.Now;
                 connectionInfo.ReceivedPackets++;
                 connectionInfo.ReceivedBytes += data.Length;
@@ -242,24 +343,7 @@ namespace EasyIotSharp.GateWay.Core.Socket
                 }
             }
         }
-        /// <summary>
-        /// 移除连接
-        /// </summary>
-        public void RemoveConnection(IntPtr connId)
-        {
-            if (_connectionMap.TryRemove(connId, out var connectionInfo) &&
-                !string.IsNullOrEmpty(connectionInfo.GatewayId))
-            {
-                _gatewayMap.TryRemove(connectionInfo.GatewayId, out _);
-
-                //修改网关状态
-                var gateway = _easyiotsharpContext.Gateway.Where(x => x.Id.Equals(connectionInfo.GatewayId)).FirstOrDefault();
-                gateway.State = 2;
-                _easyiotsharpContext.SaveChangesAsync();
-                LogHelper.Info($"网关 {connectionInfo.GatewayId} 连接已断开");
-            }
-        }
-
+         
         /// <summary>
         /// 通过网关ID获取连接信息
         /// </summary>
